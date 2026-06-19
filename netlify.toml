@@ -1,0 +1,9 @@
+# Static portfolio — no build step
+[build]
+  publish = "."
+
+[[headers]]
+  for = "/pre-plm-agent/tutorial.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800"

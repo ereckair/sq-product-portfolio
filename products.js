@@ -82,7 +82,7 @@ const PORTFOLIO = {
           resources: {
             landingPage: { url: 'pre-plm-agent/', label: 'Full product page' },
             prd: { url: 'pre-plm-agent/docs/PRD_EN.pdf', label: 'PRD (EN)' },
-            demoVideo: { url: 'pre-plm-agent/tutorial.mov', label: 'Tutorial video' },
+            demoVideo: { url: 'pre-plm-agent/tutorial.mp4', label: 'Tutorial video' },
             liveLink: { url: '#', label: 'Feishu bot (internal)' },
             github: { url: '#', repo: 'org/sample-management-agent' },
             documents: [

@@ -1,5 +1,5 @@
 .DS_Store
 *.log
 
-# tutorial.mov is ~130MB (exceeds GitHub's 100MB file limit) — host separately or use Git LFS
+# Original QuickTime export (~130MB) — use tutorial.mp4 for deploy
 pre-plm-agent/tutorial.mov

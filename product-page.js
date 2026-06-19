@@ -115,17 +115,22 @@
 
   const videoSection =
     r.demoVideo?.url && /\.(mov|mp4|webm)$/i.test(r.demoVideo.url)
-      ? `
+      ? (() => {
+          const url = r.demoVideo.url;
+          const isMp4 = /\.mp4$/i.test(url);
+          const isWebm = /\.webm$/i.test(url);
+          const sourceType = isWebm ? 'video/webm' : isMp4 ? 'video/mp4' : 'video/quicktime';
+          return `
     <div class="mt-8">
       <h3 class="font-display text-lg font-medium text-black mb-4">${r.demoVideo.label || 'Demo video'}</h3>
       <div class="rounded-sm overflow-hidden border border-black/10 bg-black">
         <video controls playsinline preload="metadata" class="w-full max-h-[480px]">
-          <source src="${r.demoVideo.url}" type="video/quicktime">
-          <source src="${r.demoVideo.url}" type="video/mp4">
-          <a href="${r.demoVideo.url}" class="text-sm text-black p-4 block">Download video</a>
+          <source src="${url}" type="${sourceType}">
+          <a href="${url}" class="text-sm text-white p-4 block">Download video</a>
         </video>
       </div>
-    </div>`
+    </div>`;
+        })()
       : '';
 
   main.innerHTML = `
