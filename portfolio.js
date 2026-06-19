@@ -95,7 +95,6 @@
     const headlineEl = document.getElementById('ecosystem-headline');
     const summaryEl = document.getElementById('ecosystem-summary');
     const flowEl = document.getElementById('ecosystem-flow');
-    const metricsEl = document.getElementById('ecosystem-metrics');
     if (headlineEl) headlineEl.textContent = eco.headline;
     if (summaryEl) summaryEl.textContent = eco.summary;
     if (flowEl && eco.flow) {
@@ -106,16 +105,6 @@
           ${i < eco.flow.length - 1 ? '<span class="hidden lg:block absolute -right-2 top-1/2 -translate-y-1/2 text-zinc-600 z-10">→</span>' : ''}
           <div class="font-display font-medium text-accent mb-1">${f.step}</div>
           <p class="text-xs text-zinc-500 leading-relaxed">${f.detail}</p>
-        </div>`
-        )
-        .join('');
-    }
-    if (metricsEl && eco.valueMetrics) {
-      metricsEl.innerHTML = eco.valueMetrics
-        .map(
-          (m) => `
-        <div class="text-center p-4 rounded-xl border border-surface-border bg-surface-card">
-          <p class="text-xs text-zinc-400 leading-relaxed">${m}</p>
         </div>`
         )
         .join('');

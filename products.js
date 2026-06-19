@@ -646,11 +646,6 @@ const PORTFOLIO = {
       { step: 'Cost & Change', detail: 'DPCS costing, ECO impact feedback, negotiation alerts' },
       { step: 'Procurement', detail: 'APS PO management + planned savings analytics' },
     ],
-    valueMetrics: [
-      '~50 authorized suppliers — price negotiation agent could save $30K/supplier/year',
-      '$50K/year external commodity data — planned Market Research integration',
-      '100+ compliance protocols — previously manual lookup by engineers',
-    ],
   },
 };
 

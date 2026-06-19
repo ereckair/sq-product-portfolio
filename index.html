@@ -27,26 +27,9 @@
   </script>
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body class="bg-surface text-white font-sans antialiased overflow-x-hidden">
+<body class="bg-surface text-white font-sans antialiased overflow-x-hidden" data-nav-theme="dark" data-nav-active="home">
 
-  <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
-    <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3 rounded-2xl border border-surface-border bg-surface/80 backdrop-blur-xl">
-      <a href="index.html" class="flex items-center gap-2.5 cursor-pointer">
-        <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-display font-bold text-sm text-white">SQ</div>
-        <span class="font-display font-semibold text-base tracking-tight hidden sm:inline">SQ Product Team</span>
-      </a>
-      <div class="hidden lg:flex items-center gap-1">
-        <a href="products.html" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">Products</a>
-        <a href="blog.html" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">News</a>
-        <a href="products.html#plm" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">PLM</a>
-        <a href="products.html#compliance" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">Compliance</a>
-        <a href="products.html#quality" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">Quality</a>
-        <a href="products.html#sourcing" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">Sourcing</a>
-        <a href="team.html" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">About</a>
-      </div>
-      <a href="products.html" class="inline-flex items-center px-4 py-2 text-sm font-medium bg-white text-black rounded-full hover:bg-zinc-200 transition-colors cursor-pointer">Browse portfolio</a>
-    </nav>
-  </header>
+  <header id="site-header"></header>
 
   <main>
     <!-- Hero -->
@@ -118,8 +101,7 @@
           <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-tight mb-4" id="ecosystem-headline">One connected ecosystem</h2>
           <p class="text-zinc-400 max-w-2xl mx-auto leading-relaxed" id="ecosystem-summary"></p>
         </div>
-        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-10" id="ecosystem-flow"></div>
-        <div class="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto" id="ecosystem-metrics"></div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3" id="ecosystem-flow"></div>
       </div>
     </section>
 
@@ -181,21 +163,9 @@
     </section>
   </main>
 
-  <footer class="border-t border-surface-border py-12 px-4">
-    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-      <div class="flex items-center gap-2">
-        <div class="w-7 h-7 rounded-md bg-accent flex items-center justify-center font-display font-bold text-xs">SQ</div>
-        <span class="font-display font-semibold text-sm">Sourcing & Quality Product Team</span>
-      </div>
-      <div class="flex flex-wrap justify-center gap-6 text-sm text-zinc-500">
-        <a href="products.html" class="hover:text-white transition-colors cursor-pointer">Products</a>
-        <a href="blog.html" class="hover:text-white transition-colors cursor-pointer">News</a>
-        <a href="team.html" class="hover:text-white transition-colors cursor-pointer">About</a>
-      </div>
-      <p class="text-sm text-zinc-600">&copy; 2026 SQ Product Team</p>
-    </div>
-  </footer>
+  <footer id="site-footer"></footer>
 
+  <script src="site-nav.js"></script>
   <script src="products.js"></script>
   <script src="portfolio.js"></script>
   <script src="home-animations.js"></script>

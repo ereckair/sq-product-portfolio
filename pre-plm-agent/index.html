@@ -12,27 +12,22 @@
   <link rel="stylesheet" href="../styles.css" />
   <link rel="stylesheet" href="pre-plm.css" />
 </head>
-<body class="theme-light plm-page font-sans antialiased overflow-x-hidden">
+<body class="theme-light plm-page font-sans antialiased overflow-x-hidden has-plm-subnav" data-nav-theme="light" data-nav-active="products" data-nav-base="../">
 
-  <header class="fixed top-0 left-0 right-0 z-50 p-2 md:top-4">
-    <nav class="light-nav max-w-6xl mx-auto flex items-center justify-between px-4 py-2 border rounded-sm md:px-2 gap-2">
-      <a href="../index.html" class="flex items-center gap-2 px-2 cursor-pointer shrink-0">
-        <div class="w-7 h-7 rounded-md bg-black flex items-center justify-center font-display font-bold text-xs text-white">SQ</div>
-        <span class="font-display font-semibold text-sm tracking-tight hidden sm:inline">SQ Product Team</span>
-      </a>
-      <div class="hidden lg:flex items-center gap-0.5 overflow-x-auto">
-        <a href="#capabilities" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">Capabilities</a>
-        <a href="#in-action" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">In action</a>
-        <a href="#demo" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">Tutorial</a>
-        <a href="#architecture" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">Architecture</a>
-        <a href="#documents" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">Docs</a>
-        <a href="../product.html?id=pre-plm-agent" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">Portfolio entry</a>
-      </div>
-      <a href="#documents" class="btn-primary-light text-xs px-3 py-1.5 shrink-0">View docs</a>
-    </nav>
-  </header>
+  <header id="site-header"></header>
 
-  <main class="pt-24 md:pt-28">
+  <div class="plm-subnav">
+    <div class="plm-subnav-inner">
+      <a href="#capabilities" class="plm-subnav-link">Capabilities</a>
+      <a href="#in-action" class="plm-subnav-link">In action</a>
+      <a href="#demo" class="plm-subnav-link">Tutorial</a>
+      <a href="#architecture" class="plm-subnav-link">Architecture</a>
+      <a href="#documents" class="plm-subnav-link">Docs</a>
+      <a href="../product.html?id=pre-plm-agent" class="plm-subnav-link">Portfolio entry</a>
+    </div>
+  </div>
+
+  <main>
 
     <!-- Hero -->
     <header class="plm-hero">
@@ -296,17 +291,9 @@
 
   </main>
 
-  <footer class="light-footer py-12 px-4">
-    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <a href="../index.html" class="font-display font-semibold text-sm cursor-pointer">SQ Product Team</a>
-      <div class="flex gap-6 text-sm">
-        <a href="../products.html" class="cursor-pointer">Products</a>
-        <a href="../blog.html" class="cursor-pointer">News</a>
-        <a href="../team.html" class="cursor-pointer">About</a>
-      </div>
-      <p class="text-sm text-black/40">Pre-PLM Agent · 2026</p>
-    </div>
-  </footer>
+  <footer id="site-footer"></footer>
+
+  <script src="../site-nav.js"></script>
 
 </body>
 </html>
