@@ -6,21 +6,17 @@
 
   let activeFilter = 'all';
 
-  function migrationProgress(m) {
+  function migrationTag(m) {
     if (!m) return '';
-    const progress = Math.max(0, Math.min(100, m.progress ?? 0));
-    const phaseLabel =
+    const map = {
+      completed: 'bg-emerald-50 text-emerald-700 border-emerald-200',
+      uat: 'bg-teal-50 text-teal-700 border-teal-200',
+      'in-progress': 'bg-blue-50 text-blue-700 border-blue-200',
+      'not-started': 'bg-orange-50 text-orange-700 border-orange-200',
+    };
+    const label =
       m.phase === 'completed' ? 'Completed' : m.phase === 'uat' ? 'In UAT' : m.phase === 'not-started' ? 'Not started' : 'In progress';
-    return `
-              <div class="mt-4 pt-4 border-t border-black/5">
-                <div class="flex items-center justify-between text-[10px] font-mono uppercase tracking-wide text-black/40 mb-1.5">
-                  <span>Migration · ${phaseLabel}</span>
-                  <span>${progress}%</span>
-                </div>
-                <div class="h-1 rounded-full bg-black/[0.06] overflow-hidden">
-                  <div class="h-full rounded-full bg-blue-500" style="width:${progress}%"></div>
-                </div>
-              </div>`;
+    return `<span class="inline-flex px-2 py-0.5 text-[10px] font-mono uppercase tracking-wide border rounded-sm ${map[m.phase] || map['in-progress']}">${label}</span>`;
   }
 
   function statusBadgeLight(status) {
@@ -76,13 +72,15 @@
             .map(
               (p) => `
             <a href="product.html?id=${p.id}" class="light-card rounded-sm p-5 flex flex-col cursor-pointer group h-full">
-              <div class="flex items-center justify-between mb-3">
-                ${statusBadgeLight(p.status)}
+              <div class="flex items-center justify-between mb-3 gap-2 flex-wrap">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  ${statusBadgeLight(p.status)}
+                  ${migrationTag(p.migration)}
+                </div>
                 <svg class="w-4 h-4 text-black/20 group-hover:text-black/60 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
               </div>
               <h3 class="font-display font-medium text-black mb-2 group-hover:underline">${p.name}</h3>
               <p class="text-sm text-black/60 leading-relaxed flex-1">${p.summary}</p>
-              ${migrationProgress(p.migration)}
               <div class="mt-4 pt-4 border-t border-black/5 flex flex-wrap gap-2">
                 ${p.resources.landingPage ? '<span class="text-[10px] font-mono text-black/40 uppercase">Page</span>' : ''}
                 ${p.resources.prd ? '<span class="text-[10px] font-mono text-black/40 uppercase">PRD</span>' : ''}

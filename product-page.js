@@ -32,49 +32,32 @@
   function migrationSection(m) {
     if (!m) return '';
     const phaseMap = {
-      completed: { label: 'Completed', badge: 'bg-emerald-50 text-emerald-700 border-emerald-200', bar: 'bg-emerald-500' },
-      uat: { label: 'In UAT', badge: 'bg-teal-50 text-teal-700 border-teal-200', bar: 'bg-teal-500' },
-      'in-progress': { label: 'In Progress', badge: 'bg-blue-50 text-blue-700 border-blue-200', bar: 'bg-blue-500' },
-      'not-started': { label: 'Not Started', badge: 'bg-orange-50 text-orange-700 border-orange-200', bar: 'bg-orange-400' },
+      completed: { label: 'Completed', badge: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
+      uat: { label: 'In UAT', badge: 'bg-teal-50 text-teal-700 border-teal-200' },
+      'in-progress': { label: 'In Progress', badge: 'bg-blue-50 text-blue-700 border-blue-200' },
+      'not-started': { label: 'Not Started', badge: 'bg-orange-50 text-orange-700 border-orange-200' },
     };
     const phase = phaseMap[m.phase] || phaseMap['in-progress'];
-    const progress = Math.max(0, Math.min(100, m.progress ?? 0));
     const trackerName = m.trackerName || product.name;
 
     return `
     <section class="px-4 pb-16">
       <div class="max-w-4xl mx-auto light-card rounded-sm p-6 md:p-8 border border-black/10">
-        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
+        <div class="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-4">
           <div>
-            <p class="text-label text-black/40 mb-2">System migration tracker · ${m.lastUpdated || '2026'}</p>
+            <p class="text-label text-black/40 mb-2">System migration · ${m.lastUpdated || '2026'}</p>
             <h2 class="font-display text-xl font-medium text-black">${trackerName}</h2>
           </div>
           <span class="inline-flex self-start px-2.5 py-1 text-xs font-mono uppercase tracking-wide border rounded-sm ${phase.badge}">${phase.label}</span>
         </div>
-        <div class="mb-2 flex items-center justify-between text-sm">
-          <span class="text-black/50">Migration progress</span>
-          <span class="font-mono font-medium text-black">${progress}%</span>
-        </div>
-        <div class="h-2 rounded-full bg-black/[0.06] overflow-hidden mb-6">
-          <div class="h-full rounded-full ${phase.bar} transition-all" style="width:${progress}%"></div>
-        </div>
-        <div class="grid sm:grid-cols-2 gap-4 text-sm">
-          ${
-            m.targetUat
-              ? `<div>
-            <p class="text-label text-black/40 mb-1">Target UAT</p>
-            <p class="text-black/80 font-medium">${m.targetUat}, 2026</p>
-          </div>`
-              : ''
-          }
-          <div>
-            <p class="text-label text-black/40 mb-1">Portfolio status</p>
-            <p class="text-black/80 font-medium">${statusLabel}</p>
-          </div>
-        </div>
+        ${
+          m.targetUat
+            ? `<p class="text-sm text-black/50 mb-4">Target UAT · <span class="text-black/80 font-medium">${m.targetUat}, 2026</span></p>`
+            : ''
+        }
         ${
           m.update
-            ? `<div class="mt-6 pt-6 border-t border-black/5">
+            ? `<div class="${m.targetUat ? '' : 'mt-2'}">
           <p class="text-label text-black/40 mb-2">Latest update</p>
           <p class="text-sm text-black/70 leading-relaxed">${m.update}</p>
         </div>`

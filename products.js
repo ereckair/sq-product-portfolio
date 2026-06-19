@@ -35,7 +35,7 @@ const PORTFOLIO = {
         description:
           'Daedalus is Ashley’s agentic transformation program. Our roadmap embeds AI agents and automation into existing workflows — chat-first sampling, BOM-driven compliance, price negotiation alerts, and proactive data-quality reminders — so agents augment the systems teams already use.',
         highlights: [
-          'Pre-PLM Agent — Feishu chat for sampling and structured product entry',
+          'Pre-PLM Agent — chatbot for sampling and structured product entry (Feishu, Slack, Teams, etc.)',
           'Planned: price negotiation agent, Simple Review voice-fill, Teams/Feishu data-missing bots',
           'MCP tools and Open API exposure for supply chain agents',
         ],
@@ -55,18 +55,18 @@ const PORTFOLIO = {
           name: 'Pre-PLM Agent',
           subtitle: 'Sample Management Agent',
           status: 'live',
-          summary: 'Feishu AI agent for sampling — entry, edits, queries, images, and PPT reports, all from chat.',
+          summary: 'Sampling chatbot — entry, edits, queries, images, and PPT reports, all from chat. Integrates with Feishu, Slack, Teams, and similar tools.',
           description:
-            'The Pre-PLM Agent sits ahead of formal PLM, capturing sampling intelligence inside Feishu. Teams chat product data into shape — free-form entry, image sorting, fuzzy placeholders, and four PPT report types — with confirmation cards and optimistic-lock protection on every write.',
+            'The Pre-PLM Agent sits ahead of formal PLM, capturing sampling intelligence through a chatbot interface. Deployable on Feishu, Slack, Teams, or other messaging platforms — teams chat product data into shape with free-form entry, image sorting, fuzzy placeholders, and four PPT report types, with confirmation cards and optimistic-lock protection on every write.',
           contribution:
-            'Introduced chat-first sampling before formal PLM. Product marketing story: developers talk in Feishu instead of filling forms — saves time, improves data quality entering POM/PLM.',
+            'Introduced chat-first sampling before formal PLM. Product marketing story: developers talk to a chatbot instead of filling forms — saves time, improves data quality entering POM/PLM.',
           beforeAfter: {
             before:
               'Sampling data lived in conversations, spreadsheets, and ad-hoc notes. No structured handoff into product development systems.',
             after:
               'Structured product records created from chat — entry, edits, images, and PPT reports — ready to flow into POM and downstream compliance/cost systems.',
           },
-          integrations: ['Feishu', 'POM / PLM', 'Product development workflow'],
+          integrations: ['Chat platforms (Feishu, Slack, Teams, etc.)', 'POM / PLM', 'Product development workflow'],
           roadmap: [
             'Expand to Vietnam product development teams',
             'H5 editable record view outside chat',
@@ -83,7 +83,7 @@ const PORTFOLIO = {
             landingPage: { url: 'pre-plm-agent/', label: 'Full product page' },
             prd: { url: 'pre-plm-agent/docs/PRD_EN.pdf', label: 'PRD (EN)' },
             demoVideo: { url: 'pre-plm-agent/tutorial.mp4', label: 'Tutorial video' },
-            liveLink: { url: '#', label: 'Feishu bot (internal)' },
+            liveLink: { url: '#', label: 'Chatbot (internal)' },
             github: { url: '#', repo: 'org/sample-management-agent' },
             documents: [
               { url: 'pre-plm-agent/docs/PRD_EN.pdf', label: 'PRD (EN)', meta: 'Product requirements document' },
@@ -99,7 +99,7 @@ const PORTFOLIO = {
             ],
           },
           feedback: [
-            { quote: 'Stop filling forms and start shipping reports — the team just talks in Feishu.', author: 'Sampling Team Lead' },
+            { quote: 'Stop filling forms and start shipping reports — the team just talks to the chatbot.', author: 'Sampling Team Lead' },
             { quote: 'Every entry previews first, so a misread never silently changes our data.', author: 'Product Developer' },
           ],
         },
