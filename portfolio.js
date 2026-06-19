@@ -83,7 +83,7 @@
           </div>
           ${item.tagline ? `<p class="text-sm text-accent/90 italic mb-3">${item.tagline}</p>` : ''}
           <p class="text-sm text-zinc-400 leading-relaxed mb-4">${item.description}</p>
-          <ul class="space-y-2">${item.highlights.map((h) => `<li class="text-xs text-zinc-500 flex gap-2"><span class="text-accent shrink-0">—</span>${h}</li>`).join('')}</ul>
+          ${item.highlights?.length ? `<ul class="space-y-2">${item.highlights.map((h) => `<li class="text-xs text-zinc-500 flex gap-2"><span class="text-accent shrink-0">—</span>${h}</li>`).join('')}</ul>` : ''}
         </div>`
         )
         .join('');

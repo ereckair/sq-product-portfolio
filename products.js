@@ -35,12 +35,7 @@ const PORTFOLIO = {
         tag: 'AFI Technology · Execution',
         tagline: 'Dissolving systems in waves, not in phases.',
         description:
-          'Ashley’s agentic transformation program — dissolving legacy systems into an agentic enterprise in waves, not waterfall phases. Business units flow through on their own cadence; Daedalus is the core track building the substrate, the agents, and the merge.',
-        highlights: [
-          'Wave model — Unit 01 Supply Chain Planning kick-off May 2026; Finance and Customer Care follow',
-          'Four parallel tracks authorized together: FDE, Maintain, Daedalus core, and Hardware & Edge',
-          'Our portfolio agents — Pre-PLM chatbot, price negotiation, data-missing bots, MCP tools — embed on this substrate',
-        ],
+          'Ashley’s agentic transformation program. We map every legacy system and process as-is, rebuild workflows on a modern substrate, then layer in automation and AI agents — so teams move from scattered tools to connected, agent-ready operations.',
       },
     ],
   },
