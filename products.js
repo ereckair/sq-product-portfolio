@@ -107,6 +107,13 @@ const PORTFOLIO = {
           id: 'plm',
           name: 'Product Lifecycle Management',
           status: 'live',
+          migration: {
+            phase: 'uat',
+            progress: 100,
+            targetUat: 'Apr 30',
+            update: 'NPIS accessory completed; multipack Spec in testing.',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Dynamic product lifecycle hub — specs evolve through development until confirmed into PIM.',
           description:
             'PLM manages the changing product record during development. Unlike PIM (final confirmed data pushed to corporate PK/AS400), PLM holds the in-flight BOM, specs, and workflow state that feeds compliance, costing, and quality.',
@@ -143,6 +150,13 @@ const PORTFOLIO = {
           id: 'pim',
           name: 'Product Information Management',
           status: 'live',
+          migration: {
+            phase: 'in-progress',
+            progress: 65,
+            targetUat: 'Jun 30',
+            update: 'Packing BOM, AIS, and CTN ready for UAT; RPDF in testing. Meeting scheduled for SKU Spec approval workflow.',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'The BOM engine — detailed product attributes that power compliance, cost, and quality downstream.',
           description:
             'PIM is the core product data engine. Its BOM captures materials, hardware, electrical, sponge, and dimensions at sample stage with enough detail for cost models and compliance protocols to run automatically. Confirmed data pushes to corporate PK for AS400, manufacturing, and ecommerce (Ashley.com).',
@@ -188,6 +202,42 @@ const PORTFOLIO = {
           ],
         },
         {
+          id: 'cpms',
+          name: 'Color Panel Management System',
+          status: 'building',
+          migration: {
+            trackerName: 'Color Panel Management System (CPMS)',
+            phase: 'in-progress',
+            progress: 21,
+            targetUat: 'Jul 30',
+            update: 'Color Panel Request and Review functions are in testing; Distribution module is configuring.',
+            lastUpdated: 'Jun 2026',
+          },
+          summary: 'Manage color panel requests, reviews, and distribution across product development.',
+          description:
+            'CPMS coordinates color panel workflows — from request and review through distribution to factories and downstream systems. Replaces ad-hoc color swatch tracking with a structured pipeline tied to product development.',
+          contribution:
+            'Centralizes color panel lifecycle so developers, compliance, and factories work from the same approved swatch record instead of email chains and local spreadsheets.',
+          beforeAfter: {
+            before: 'Color panel requests and approvals tracked manually; distribution to factories inconsistent and hard to audit.',
+            after: 'Electronic request → review → distribution workflow with testing underway on core modules.',
+          },
+          integrations: ['PIM (BOM)', 'PLM', 'Compliance Management System'],
+          roadmap: [
+            'Complete Distribution module configuration',
+            'Link approved panels to PIM color attributes',
+            'Factory portal access for panel confirmation',
+          ],
+          resources: {
+            prd: { url: '#', label: 'CPMS PRD v0.8' },
+            demoVideo: null,
+            liveLink: null,
+            github: { url: '#', repo: 'org/color-panel-mgmt' },
+            mcpTools: [],
+          },
+          feedback: [],
+        },
+        {
           id: 'dpcs',
           name: 'Dynamic Product Costing System',
           status: 'building',
@@ -220,7 +270,13 @@ const PORTFOLIO = {
         {
           id: 'eco',
           name: 'ECO Workflow',
-          status: 'live',
+          status: 'building',
+          migration: {
+            phase: 'not-started',
+            progress: 50,
+            targetUat: 'Aug 31',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Electronic engineering change orders with automatic compliance, cost, and spec impact feedback.',
           description:
             'ECO connects changes to BOM/PIM and the raw material library. When materials, dimensions, structure, color swatches, or suppliers change, the system surfaces impacts on compliance tests, file tests, and cost — instead of relying on Excel text descriptions and manual memory.',
@@ -287,6 +343,13 @@ const PORTFOLIO = {
           id: 'cms',
           name: 'Compliance Management System',
           status: 'live',
+          migration: {
+            trackerName: 'Compliance Test Management System (CTMS)',
+            phase: 'in-progress',
+            progress: 70,
+            targetUat: 'Jul 4',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Compliance workflow hub — BOM-driven question lists and test coordination (Lois team).',
           description:
             'CMS (Lois\'s compliance system) uses PIM BOM data and question checklists to generate regulatory requirements. Previously compliance engineers manually inspected products, looked at photos, and asked factories — now BOM triggers the workflow.',
@@ -314,7 +377,13 @@ const PORTFOLIO = {
         {
           id: 'compliance-test',
           name: 'Compliance Test Create',
-          status: 'live',
+          status: 'building',
+          migration: {
+            phase: 'in-progress',
+            progress: 20,
+            targetUat: 'Jul 6',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Auto-generates required compliance tests from BOM materials and protocol rules.',
           description:
             'When a product BOM is complete, the system maps each material to protocol rules (e.g. sponge → physical, chemical, flammability tests) and tells the team exactly which tests to run — replacing manual protocol lookup by compliance engineers.',
@@ -342,6 +411,13 @@ const PORTFOLIO = {
           id: 'law-label',
           name: 'Law Label Systems',
           status: 'live',
+          migration: {
+            trackerName: 'Law Label System',
+            phase: 'completed',
+            progress: 100,
+            targetUat: 'Jun 5',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Law label generation from structured product and material data.',
           description:
             'Generates jurisdiction-correct law labels from product composition in PIM/SMMS — part of the compliance ecosystem triggered by accurate BOM and material attributes. Non-compliance means recalls, blocked shipments, and legal cost — labels must match what the BOM actually contains.',
@@ -365,6 +441,12 @@ const PORTFOLIO = {
           id: 'law-license',
           name: 'Law License System',
           status: 'live',
+          migration: {
+            phase: 'in-progress',
+            progress: 80,
+            targetUat: 'Jul 27',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Track product licenses, registrations, and renewal deadlines by jurisdiction.',
           description:
             'Manages license applications, renewals, and document storage for products requiring government registration. Works alongside CMS and law labels as part of the compliance stack — a missing license blocks sales the same way a failed test does.',
@@ -384,6 +466,13 @@ const PORTFOLIO = {
           id: 'chain-of-custody',
           name: 'Chain of Custody',
           status: 'building',
+          migration: {
+            phase: 'in-progress',
+            progress: 60,
+            targetUat: 'Aug 3',
+            update: 'Chain of Custody and Guarantee Letters both in progress.',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Trace material and product provenance from supplier to finished goods.',
           description:
             'Records custody transfers, batch linkage, and audit trails for regulated materials and sustainability claims (FSC, recycled content). Extends the SMMS material master and PIM BOM into provenance — required when compliance or customers ask "where did this material come from?"',
@@ -410,7 +499,13 @@ const PORTFOLIO = {
         {
           id: 'gls',
           name: 'Global Laboratory System',
-          status: 'live',
+          status: 'building',
+          migration: {
+            phase: 'in-progress',
+            progress: 10,
+            targetUat: 'Sep 11',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Lab scheduling and results — receives test plans from auto-generated compliance workflows.',
           description:
             'GLS coordinates internal and third-party labs. Works downstream of Compliance Test Create — when BOM triggers required tests (e.g. sponge → physical, chemical, flammability), results flow back into CMS compliance status instead of siloed spreadsheets.',
@@ -503,6 +598,14 @@ const PORTFOLIO = {
           id: 'ashley-purchase',
           name: 'Ashley Purchase System',
           status: 'live',
+          migration: {
+            trackerName: 'Ashley Purchase System (APS)',
+            phase: 'in-progress',
+            progress: 65,
+            targetUat: 'Jul 31',
+            update: 'Need to change the quoting workflow for FAC and FOB.',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Enterprise PO and procurement — with planned AI price intelligence from raw material cost feeds.',
           description:
             'APS manages purchase orders, approvals, and supplier communication. Unlike Automation/Feel teams who still quote via email and phone, APS provides systematic PO management. Planned: auto price-drop alerts when SMMS raw material costs fall, and order-level savings calculations for Gavin\'s KPI.',
@@ -531,6 +634,36 @@ const PORTFOLIO = {
             { quote: 'Automation/Feel teams still quote via email and phone — APS is the contrast case for systematic procurement.', author: 'Product leadership (Jun 2026 walkthrough)' },
             { quote: 'Import PO tracking is finally as good as domestic.', author: 'Import Sourcing Lead' },
           ],
+        },
+        {
+          id: 'vendor-trademark',
+          name: 'Vendor Trade Mark Authorized System',
+          status: 'live',
+          migration: {
+            phase: 'completed',
+            progress: 100,
+            targetUat: 'Apr 18',
+            update: 'Live in production.',
+            lastUpdated: 'Jun 2026',
+          },
+          summary: 'Authorized supplier trademark registry and verification for sourcing compliance.',
+          description:
+            'Tracks authorized vendor trademarks and supplier authorization status — ensuring sourcing and product teams use approved suppliers and trademark-compliant materials.',
+          contribution:
+            'Went live Apr 2026 as part of the sourcing & compliance migration wave; eliminates manual trademark authorization lookups.',
+          beforeAfter: {
+            before: 'Vendor trademark authorization tracked manually with no single system of record.',
+            after: 'Centralized authorized vendor trademark registry live in production.',
+          },
+          integrations: ['SMMS (Supplier Trade Center)', 'Ashley Purchase System'],
+          resources: {
+            prd: { url: '#', label: 'Vendor Trade Mark PRD v1.0' },
+            demoVideo: null,
+            liveLink: { url: '#', label: 'Open Vendor Trade Mark' },
+            github: { url: '#', repo: 'org/vendor-trademark' },
+            mcpTools: [],
+          },
+          feedback: [],
         },
         {
           id: 'vendor-profile',
@@ -563,6 +696,14 @@ const PORTFOLIO = {
           id: 'smms',
           name: 'Supplier Material Management System',
           status: 'live',
+          migration: {
+            trackerName: 'Supplier Material Management (SMM)',
+            phase: 'in-progress',
+            progress: 76,
+            targetUat: 'Sep 30',
+            update: 'Launched Proposal for Supplier; Quotation module is configuring. Vendor Trade Mark Authorized System is live.',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Raw material master database, supplier portal, and price management — foundation for accurate costing.',
           description:
             'SMMS is the raw material and supplier master system. Manages material categories (wood/panel, hardware, fabric, electrical, packaging), attributes, price management with cost formulas, supplier self-registration, audits, performance scoring, and monthly shipment declarations. Material engineers maintain their assigned categories with role-based access.',
@@ -615,6 +756,13 @@ const PORTFOLIO = {
           id: 'hrs',
           name: 'HRS',
           status: 'live',
+          migration: {
+            trackerName: 'Human Resource System (HRS)',
+            phase: 'uat',
+            progress: 100,
+            targetUat: 'May 22',
+            lastUpdated: 'Jun 2026',
+          },
           summary: 'Human Resources System for the sourcing, quality, and compliance organization.',
           description:
             'HRS covers employee records, org structure, time-off, and role management for sourcing, QA, compliance, and material engineering teams worldwide. Supports the ~50+ authorized supplier relationships and multi-country operations described across SMMS, PLM, and quality systems.',

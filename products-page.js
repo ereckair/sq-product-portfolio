@@ -6,6 +6,23 @@
 
   let activeFilter = 'all';
 
+  function migrationProgress(m) {
+    if (!m) return '';
+    const progress = Math.max(0, Math.min(100, m.progress ?? 0));
+    const phaseLabel =
+      m.phase === 'completed' ? 'Completed' : m.phase === 'uat' ? 'In UAT' : m.phase === 'not-started' ? 'Not started' : 'In progress';
+    return `
+              <div class="mt-4 pt-4 border-t border-black/5">
+                <div class="flex items-center justify-between text-[10px] font-mono uppercase tracking-wide text-black/40 mb-1.5">
+                  <span>Migration · ${phaseLabel}</span>
+                  <span>${progress}%</span>
+                </div>
+                <div class="h-1 rounded-full bg-black/[0.06] overflow-hidden">
+                  <div class="h-full rounded-full bg-blue-500" style="width:${progress}%"></div>
+                </div>
+              </div>`;
+  }
+
   function statusBadgeLight(status) {
     const map = {
       live: 'bg-emerald-50 text-emerald-700 border-emerald-200',
@@ -65,6 +82,7 @@
               </div>
               <h3 class="font-display font-medium text-black mb-2 group-hover:underline">${p.name}</h3>
               <p class="text-sm text-black/60 leading-relaxed flex-1">${p.summary}</p>
+              ${migrationProgress(p.migration)}
               <div class="mt-4 pt-4 border-t border-black/5 flex flex-wrap gap-2">
                 ${p.resources.landingPage ? '<span class="text-[10px] font-mono text-black/40 uppercase">Page</span>' : ''}
                 ${p.resources.prd ? '<span class="text-[10px] font-mono text-black/40 uppercase">PRD</span>' : ''}
