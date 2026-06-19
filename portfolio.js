@@ -34,7 +34,7 @@
   buildMarqueeTrack(document.getElementById('category-marquee'), productNames);
 
   const categoryNames = PORTFOLIO.categories.map((c) => c.name);
-  buildMarqueeTrack(document.getElementById('category-marquee-reverse'), [...categoryNames, 'OneAshley', 'Project Daedalus'], 'logo-item--accent');
+  buildMarqueeTrack(document.getElementById('category-marquee-reverse'), [...categoryNames, 'One Ashley Portal', 'Project Daedalus'], 'logo-item--accent');
 
   // Category cards
   const cardsEl = document.getElementById('category-cards');
@@ -70,7 +70,7 @@
     const summaryEl = document.getElementById('initiatives-summary');
     const cardsEl = document.getElementById('initiatives-cards');
     if (labelEl) labelEl.textContent = initiatives.headline;
-    if (headlineEl) headlineEl.textContent = 'OneAshley & Daedalus';
+    if (headlineEl) headlineEl.textContent = 'One Ashley & Daedalus';
     if (summaryEl) summaryEl.textContent = initiatives.summary;
     if (cardsEl && initiatives.items) {
       cardsEl.innerHTML = initiatives.items

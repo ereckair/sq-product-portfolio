@@ -14,18 +14,19 @@ const PORTFOLIO = {
   initiatives: {
     headline: 'Company alignment',
     summary:
-      'This portfolio supports OneAshley standards and Project Daedalus — connected systems that dissolve into an agentic enterprise in waves, not waterfall phases.',
+      'This portfolio supports the One Ashley Portal and Project Daedalus — connected systems that dissolve into an agentic enterprise in waves, not waterfall phases.',
     items: [
       {
         id: 'oneashley',
-        name: 'OneAshley Framework',
-        tag: 'Standards & integration',
+        name: 'One Ashley Portal',
+        tag: 'Enterprise portal',
         description:
-          'We align product design, data models, and system handoffs with the OneAshley framework — one source of truth for product and supplier data, consistent workflows across sourcing and quality, and systems that connect rather than duplicate.',
+          'One Ashley is building a unified enterprise portal — One Ashley Portal — designed to consolidate all internal systems under a single, centralized access layer. The portal provides a unified user interface with centralized menu management, role-based access control, permissions enforcement, and a notification hub.',
         highlights: [
-          'Shared product data from SMMS through PIM to downstream compliance and cost',
-          'Standardized supplier and material master data across regions',
-          'Portfolio structured around connected domains, not siloed apps',
+          'Single access layer for internal systems across the enterprise',
+          'Unified UI with centralized menu management',
+          'Role-based access control and permissions enforcement',
+          'Notification hub for cross-system alerts and updates',
         ],
       },
       {
