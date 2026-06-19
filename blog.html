@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Products — SQ Product Team</title>
-  <meta name="description" content="Full product portfolio: PLM, compliance, quality, sourcing, and HR systems." />
+  <title>News & Blog — SQ Product Team</title>
+  <meta name="description" content="Updates, releases, and product thinking from the Sourcing & Quality Product Team." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -20,8 +20,8 @@
         <span class="font-display font-semibold text-sm tracking-tight hidden sm:inline">SQ Product Team</span>
       </a>
       <div class="hidden md:flex items-center gap-0.5">
-        <a href="products.html" class="light-nav-link active px-3 py-1.5 text-sm rounded-sm cursor-pointer">Products</a>
-        <a href="blog.html" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">News</a>
+        <a href="products.html" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">Products</a>
+        <a href="blog.html" class="light-nav-link active px-3 py-1.5 text-sm rounded-sm cursor-pointer">News</a>
         <a href="team.html" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">About</a>
         <a href="index.html" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">Home</a>
       </div>
@@ -32,21 +32,20 @@
   <main class="pt-24 md:pt-28">
     <section class="px-4 pb-12 text-center">
       <div class="max-w-3xl mx-auto">
-        <h1 class="text-display-light text-black mb-4">Product Portfolio</h1>
+        <p class="text-label text-black/40 mb-4">News & updates</p>
+        <h1 class="text-display-light text-black mb-4">From the product team</h1>
         <p class="text-lg text-black/60 leading-relaxed">
-          Every system we've built or are building — organized by domain. Click any product for PRDs, demos, live links, repos, and feedback.
+          Releases, roadmap notes, and longer write-ups on the systems we build — SMMS, PIM, agents, quality, and more.
         </p>
       </div>
     </section>
 
-    <!-- Filter tabs -->
     <section class="px-4 pb-8 sticky top-[72px] z-40 bg-white/90 backdrop-blur-sm border-b border-black/5">
-      <div class="max-w-6xl mx-auto flex gap-2 overflow-x-auto py-3" id="category-filters" role="tablist"></div>
+      <div class="max-w-3xl mx-auto flex gap-2 overflow-x-auto py-3" id="blog-filters" role="tablist"></div>
     </section>
 
-    <!-- Product catalog -->
     <section class="px-4 pb-24">
-      <div class="max-w-6xl mx-auto space-y-20" id="product-catalog"></div>
+      <div class="max-w-3xl mx-auto space-y-6" id="blog-list"></div>
     </section>
   </main>
 
@@ -62,7 +61,7 @@
     </div>
   </footer>
 
-  <script src="products.js"></script>
-  <script src="products-page.js"></script>
+  <script src="blog.js"></script>
+  <script src="blog-page.js"></script>
 </body>
 </html>
