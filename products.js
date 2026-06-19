@@ -14,7 +14,7 @@ const PORTFOLIO = {
   initiatives: {
     headline: 'Company alignment',
     summary:
-      'This portfolio is built to support Ashley’s enterprise standards and agentic transformation — not as standalone tools, but as connected systems that scale globally.',
+      'This portfolio supports OneAshley standards and Project Daedalus — connected systems that dissolve into an agentic enterprise in waves, not waterfall phases.',
     items: [
       {
         id: 'oneashley',
@@ -30,14 +30,22 @@ const PORTFOLIO = {
       },
       {
         id: 'daedalus',
-        name: 'Daedalus',
-        tag: 'Agentic transformation',
+        name: 'Project Daedalus',
+        tag: 'AFI Technology · Execution',
+        tagline: 'Dissolving systems in waves, not in phases.',
         description:
-          'Daedalus is Ashley’s agentic transformation program. Our roadmap embeds AI agents and automation into existing workflows — chat-first sampling, BOM-driven compliance, price negotiation alerts, and proactive data-quality reminders — so agents augment the systems teams already use.',
+          'Ashley’s agentic transformation program. The strategy is three-phase dissolution — Map, Rebuild, Agents — but execution is a wave: business units flow through the phases on their own cadence, starting with Supply Chain Planning as the template-builder. Daedalus is the core track — the substrate, the agents, and the merge — absorbing forward-deployed engineering at Phase 2 and maintenance engineering by Phase 3.',
+        phases: [
+          { num: '01', name: 'Map & Inventory', detail: '45 days per unit — process atlas, agentic readiness scores, conceptual data model, tribal knowledge, TCO baseline' },
+          { num: '1.5', name: 'Sketch future state', detail: 'Per-unit pulse — review Phase 1 artifacts, draft agentic-native future state, align with the business' },
+          { num: '02', name: 'Rebuild substrate', detail: 'Semantic layer, master data, streaming substrate, reusable agent services — built once, consumed by every unit' },
+          { num: '2.5', name: 'Org realignment', detail: 'Tech-side — team sized and reskilled for Phase 3 agent delivery' },
+          { num: '03', name: 'Agents, not systems', detail: 'Planning Data Fabric · Action Surface · binary build/buy fork per capability' },
+        ],
         highlights: [
-          'Pre-PLM Agent — chatbot for sampling and structured product entry (Feishu, Slack, Teams, etc.)',
-          'Planned: price negotiation agent, Simple Review voice-fill, Teams/Feishu data-missing bots',
-          'MCP tools and Open API exposure for supply chain agents',
+          'Wave model — Unit 01 Supply Chain Planning kick-off May 2026; Finance and Customer Care follow',
+          'Four parallel tracks authorized together: FDE, Maintain, Daedalus core, and Hardware & Edge',
+          'Our portfolio agents — Pre-PLM chatbot, price negotiation, data-missing bots, MCP tools — embed on this substrate',
         ],
       },
     ],
