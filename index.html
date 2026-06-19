@@ -51,35 +51,55 @@
     <!-- Hero -->
     <section class="relative pt-32 pb-16 px-4 overflow-hidden">
       <div class="hero-grid absolute inset-0 pointer-events-none"></div>
-      <div class="hero-glow absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] pointer-events-none" style="background: radial-gradient(ellipse, rgba(59,130,246,0.1) 0%, transparent 70%)"></div>
+      <div class="hero-glow hero-glow-pulse absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] pointer-events-none" style="background: radial-gradient(ellipse, rgba(59,130,246,0.1) 0%, transparent 70%)"></div>
+      <div class="hero-orb hero-orb-1 pointer-events-none"></div>
+      <div class="hero-orb hero-orb-2 pointer-events-none"></div>
       <div class="relative max-w-5xl mx-auto text-center">
-        <p class="text-label-dark text-zinc-500 mb-6 tracking-widest uppercase text-xs">Sourcing & Quality Product Team</p>
-        <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-medium tracking-tight leading-[1.05] mb-6">
+        <p class="text-label-dark text-zinc-500 mb-6 tracking-widest uppercase text-xs animate-hero-in" style="--delay: 0">Sourcing & Quality Product Team</p>
+        <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-medium tracking-tight leading-[1.05] mb-6 animate-hero-in" style="--delay: 1">
           The products we build<br />
           <span class="text-zinc-500">power global operations.</span>
         </h1>
-        <p class="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+        <p class="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed animate-hero-in" style="--delay: 2">
           SMMS → PIM BOM engine → compliance, cost, quality, and procurement — one connected ecosystem, documented as a living portfolio.
         </p>
-        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate-hero-in" style="--delay: 3">
           <a href="products.html" class="inline-flex px-7 py-3.5 text-sm font-semibold bg-white text-black rounded-full hover:bg-zinc-200 transition-colors cursor-pointer">Explore all products</a>
           <a href="team.html" class="inline-flex px-7 py-3.5 text-sm text-zinc-300 border border-surface-border rounded-full hover:border-zinc-600 hover:text-white transition-colors cursor-pointer">Meet the team</a>
         </div>
+        <div class="flex flex-wrap items-center justify-center gap-2 mt-8 animate-hero-in" style="--delay: 4" id="hero-initiatives"></div>
       </div>
     </section>
 
     <!-- Stats -->
-    <section class="px-4 pb-20">
-      <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4" id="home-stats"></div>
+    <section class="px-4 pb-12">
+      <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4" id="home-stats" data-animate="fade-up"></div>
+    </section>
+
+    <!-- OneAshley & Daedalus -->
+    <section class="px-4 pb-20" data-animate="fade-up">
+      <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-10">
+          <p class="text-xs uppercase tracking-widest text-zinc-500 mb-3" id="initiatives-label">Company alignment</p>
+          <h2 class="font-display text-2xl sm:text-3xl font-medium tracking-tight mb-3" id="initiatives-headline"></h2>
+          <p class="text-sm text-zinc-500 max-w-2xl mx-auto leading-relaxed" id="initiatives-summary"></p>
+        </div>
+        <div class="grid md:grid-cols-2 gap-4" id="initiatives-cards"></div>
+      </div>
     </section>
 
     <!-- Category marquee -->
-    <section class="py-8 border-y border-surface-border overflow-hidden">
-      <div class="flex animate-marquee shrink-0" id="category-marquee"></div>
+    <section class="marquee-section py-6 border-y border-surface-border overflow-hidden" data-animate="fade-up">
+      <div class="marquee-row">
+        <div class="marquee-track" id="category-marquee"></div>
+      </div>
+      <div class="marquee-row marquee-row--reverse mt-3">
+        <div class="marquee-track marquee-track--slow" id="category-marquee-reverse"></div>
+      </div>
     </section>
 
     <!-- Categories grid -->
-    <section class="py-24 px-4">
+    <section class="py-24 px-4" data-animate="fade-up">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-14">
           <p class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Portfolio</p>
@@ -90,7 +110,7 @@
     </section>
 
     <!-- Ecosystem -->
-    <section class="py-24 px-4 border-t border-surface-border">
+    <section class="py-24 px-4 border-t border-surface-border" data-animate="fade-up">
       <div class="max-w-7xl mx-auto">
         <div class="text-center mb-14">
           <p class="text-xs uppercase tracking-widest text-zinc-500 mb-3">How it connects</p>
@@ -103,7 +123,7 @@
     </section>
 
     <!-- Featured products -->
-    <section class="py-24 px-4 border-t border-surface-border">
+    <section class="py-24 px-4 border-t border-surface-border" data-animate="fade-up">
       <div class="max-w-7xl mx-auto">
         <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
@@ -127,7 +147,7 @@
           <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-tight mb-4">Everything in one place</h2>
           <p class="text-zinc-400 max-w-xl mx-auto">Each product page links to PRDs, demo videos, live environments, GitHub repos, MCP tools, and user feedback.</p>
         </div>
-        <div class="demo-container rounded-2xl border border-surface-border bg-surface-raised overflow-hidden max-w-4xl mx-auto">
+        <div class="demo-container demo-container-glow rounded-2xl border border-surface-border bg-surface-raised overflow-hidden max-w-4xl mx-auto">
           <div class="grid md:grid-cols-5 min-h-[280px]">
             <div class="md:col-span-2 border-b md:border-b-0 md:border-r border-surface-border p-5">
               <div class="text-xs text-zinc-500 mb-3 uppercase tracking-wider">Supplier Material Management</div>
@@ -176,5 +196,6 @@
 
   <script src="products.js"></script>
   <script src="portfolio.js"></script>
+  <script src="home-animations.js"></script>
 </body>
 </html>

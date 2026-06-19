@@ -11,6 +11,38 @@ const PORTFOLIO = {
       'We design and ship internal products that connect sourcing, quality control, compliance, and HR operations — from concept through production. Our systems form an integrated ecosystem: SMMS raw materials → PIM BOM engine → compliance, cost, quality, and procurement.',
   },
 
+  initiatives: {
+    headline: 'Company alignment',
+    summary:
+      'This portfolio is built to support Ashley’s enterprise standards and agentic transformation — not as standalone tools, but as connected systems that scale globally.',
+    items: [
+      {
+        id: 'oneashley',
+        name: 'OneAshley Framework',
+        tag: 'Standards & integration',
+        description:
+          'We align product design, data models, and system handoffs with the OneAshley framework — one source of truth for product and supplier data, consistent workflows across sourcing and quality, and systems that connect rather than duplicate.',
+        highlights: [
+          'Shared product data from SMMS through PIM to downstream compliance and cost',
+          'Standardized supplier and material master data across regions',
+          'Portfolio structured around connected domains, not siloed apps',
+        ],
+      },
+      {
+        id: 'daedalus',
+        name: 'Daedalus',
+        tag: 'Agentic transformation',
+        description:
+          'Daedalus is Ashley’s agentic transformation program. Our roadmap embeds AI agents and automation into existing workflows — chat-first sampling, BOM-driven compliance, price negotiation alerts, and proactive data-quality reminders — so agents augment the systems teams already use.',
+        highlights: [
+          'Pre-PLM Agent — Feishu chat for sampling and structured product entry',
+          'Planned: price negotiation agent, Simple Review voice-fill, Teams/Feishu data-missing bots',
+          'MCP tools and Open API exposure for supply chain agents',
+        ],
+      },
+    ],
+  },
+
   categories: [
     {
       id: 'plm',
