@@ -38,7 +38,7 @@
       mcp: '<svg class="w-5 h-5 text-black/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>',
     };
     const inner = href
-      ? `<a href="${href}" class="text-sm text-black hover:underline cursor-pointer" target="_blank" rel="noopener">${content}</a>`
+      ? `<a href="${href}" class="text-sm text-black hover:underline cursor-pointer" ${/^https?:\/\//i.test(href) ? 'target="_blank" rel="noopener noreferrer"' : ''}>${content}</a>`
       : `<span class="text-sm text-black/40">${content || 'Not available yet'}</span>`;
     return `
       <div class="light-card rounded-sm p-5">
@@ -154,7 +154,7 @@
         }
         ${
           r.landingPage
-            ? `<div class="mt-8"><a href="${r.landingPage.url}" class="btn-primary-light">${r.landingPage.label || 'Open product page'}</a></div>`
+            ? `<div class="mt-8"><a href="${r.landingPage.url}" class="btn-primary-light"${/^https?:\/\//i.test(r.landingPage.url) ? ' target="_blank" rel="noopener noreferrer"' : ''}>${r.landingPage.label || 'Open product page'}</a></div>`
             : ''
         }
       </div>

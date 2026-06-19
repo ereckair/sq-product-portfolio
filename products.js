@@ -445,34 +445,50 @@ const PORTFOLIO = {
         {
           id: 'quality-workbench',
           name: 'Quality Work Bench',
-          status: 'live',
-          summary: 'QC inspection workspace — product attributes from PIM drive quality test requirements.',
+          subtitle: 'Quality Intelligence · One Ashley',
+          status: 'building',
+          summary: 'Quality decision cockpit — recurrence watchtower, approval queue, and Quantum QA narratives with One Ashley agent assistance.',
           description:
-            'Quality Work Bench uses product attributes from the PIM BOM engine to determine relevant quality tests (Peter: product specs affect testing protocols). Vietnam team built a Teams QA bot for similar push notifications.',
+            'A business-user dashboard for the Quality office (not frontline QIE entry). One Ashley helps query quality data, surface recurrence risk, draft QIS project proposals, and generate narrative reports — with human approval before any write to production systems.',
           contribution:
-            'Connected quality testing to structured product data instead of isolated inspection forms — part of the BOM-driven ecosystem spanning compliance and quality.',
+            'Shifts quality from reactive ticket-chasing to a command center: first-glance recurrence signals, AI-drafted corrective proposals in an approval cockpit, and Quantum QA reports linked to drill-through narratives. Frontline QC continues in Checklist; engineers and QM leads work here.',
           beforeAfter: {
-            before: 'Quality testing planned separately from product BOM; inspectors used multiple disconnected apps.',
-            after: 'Product attributes from PIM inform quality protocols; mobile inspection with CAPA workflows.',
+            before:
+              'Recurrence patterns buried in QIE/Project history; corrective actions reopened without clear signals; quality reporting split across spreadsheets and static dashboards.',
+            after:
+              'Recurrence Watchtower surfaces vendor × item combos; Approval Cockpit gates QIS writes with validate → dry-run → execute → readback → audit; Quantum QA narratives jump-filter into live reports.',
           },
-          integrations: ['PIM (BOM)', 'Compliance protocols', 'Teams QA bot (Vietnam)'],
+          highlights: [
+            'Recurrence Watchtower — first-glance vendor × item recurrence overview',
+            'Approval Cockpit — AI-drafted QIS proposals await QM Lead sign-off',
+            'Quantum QA reports + narrative summaries in one place',
+            'One Ashley Copilot with quality investigator & narrative writer skills',
+          ],
+          integrations: ['Checklist / QIE Mart', 'One Ashley (Daedalus)', 'Quantum QA', 'PIM (BOM attributes)'],
           roadmap: [
-            'Teams/Feishu bot for daily critical-data reminders',
-            'Tighter BOM attribute → quality test auto-mapping',
+            'Live Checklist data feed with ~15-minute refresh cadence',
+            'Automated vendor follow-up emails for overdue projects (E04)',
+            'Scheduled weekly/monthly narrative digests',
+            'Teams/Feishu push for critical recurrence alerts',
           ],
           resources: {
-            prd: { url: '#', label: 'Quality Work Bench PRD v2.2' },
+            landingPage: {
+              url: 'https://fuse2d06006a4bb644969e8.blob.core.windows.net/x-private/replicas/adf6d506ac4a41721f382fe7d815398b.html?sv=2025-07-05&st=2026-06-04T06%3A50%3A29Z&se=2126-05-11T06%3A50%3A29Z&sr=c&sp=r&sig=5DpDNEBmWxHkFMvOP7dyrqzX3OEt5PHY7Wyd57nDVa4%3D',
+              label: 'Open prototype mockup',
+            },
+            prd: { url: '#', label: 'Quality Intelligence Brief' },
             demoVideo: { url: '#', label: 'Inspector workflow demo' },
-            liveLink: { url: '#', label: 'Open Quality Work Bench' },
+            liveLink: null,
             github: { url: '#', repo: 'org/quality-workbench' },
             mcpTools: [
               { name: 'qw_log_defect', description: 'Log inspection defect' },
               { name: 'qw_get_open_capa', description: 'List open corrective actions' },
+              { name: 'qw_investigate_recurrence', description: 'Deep-dive vendor × item recurrence row' },
             ],
           },
           feedback: [
-            { quote: 'Inspectors finally have one app instead of five.', author: 'Regional QC Lead' },
-            { quote: 'CAPA visibility improved our supplier scorecards dramatically.', author: 'Supplier Quality Manager' },
+            { quote: 'The mockup makes recurrence visible in one screen — that is the story Peter needs.', author: 'Quality office (prototype review)' },
+            { quote: 'Write actions only after approval — that discipline is non-negotiable for QIS.', author: 'QM Lead persona (P3)' },
           ],
         },
       ],
