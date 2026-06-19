@@ -93,6 +93,11 @@
             )
             .join('')}
         </div>
+        ${
+          cat.owner
+            ? `<p class="mt-6 pt-4 border-t border-black/5 text-sm text-black/50"><span class="text-[10px] font-mono uppercase tracking-wide text-black/40 mr-2">Owner</span>${cat.owner}</p>`
+            : ''
+        }
       </div>`
       )
       .join('');

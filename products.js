@@ -50,6 +50,7 @@ const PORTFOLIO = {
       name: 'Product Lifecycle Management',
       description: 'End-to-end tools for product data, costing, engineering change, and market intelligence. PIM is the BOM engine — without it, compliance, cost, and quality stagnate.',
       color: '#3b82f6',
+      owner: 'Sara',
       products: [
         {
           id: 'pre-plm-agent',
@@ -339,6 +340,7 @@ const PORTFOLIO = {
       name: 'Global Compliance',
       description: 'Regulatory compliance, testing, labeling, licensing, and chain-of-custody — connected to PIM BOM so engineers confirm tests instead of rediscovering materials.',
       color: '#8b5cf6',
+      owner: 'Lois',
       products: [
         {
           id: 'cms',
@@ -537,6 +539,7 @@ const PORTFOLIO = {
       name: 'Global Quality Control Center',
       description: 'Operational quality tools for inspection, defect tracking, and supplier quality.',
       color: '#10b981',
+      owner: 'Ted & Hugh',
       products: [
         {
           id: 'quality-workbench',
@@ -594,6 +597,7 @@ const PORTFOLIO = {
       name: 'Sourcing Systems',
       description: 'Purchase operations and supplier material management — from raw material master data to PO execution and price intelligence.',
       color: '#f59e0b',
+      owner: 'Zoey',
       products: [
         {
           id: 'ashley-purchase',
