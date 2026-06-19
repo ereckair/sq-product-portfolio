@@ -75,40 +75,16 @@
     if (cardsEl && initiatives.items) {
       cardsEl.innerHTML = initiatives.items
         .map(
-          (item, i) => {
-            const isDaedalus = item.id === 'daedalus';
-            const colClass = isDaedalus ? 'lg:col-span-3' : 'lg:col-span-2';
-            const phasesBlock =
-              item.phases?.length > 0
-                ? `<div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-2 mb-5">
-            ${item.phases
-              .map(
-                (p) => `
-              <div class="p-3 rounded-lg border border-surface-border bg-surface-card/60">
-                <span class="text-[10px] font-mono uppercase tracking-wider text-accent">Phase ${p.num}</span>
-                <p class="text-xs font-medium text-zinc-200 mt-1 mb-0.5">${p.name}</p>
-                <p class="text-[11px] text-zinc-500 leading-relaxed">${p.detail}</p>
-              </div>`
-              )
-              .join('')}
-          </div>`
-                : '';
-
-            return `
-        <div class="p-6 rounded-xl border border-surface-border bg-surface-raised ${colClass}" data-animate-child style="--i: ${i}">
+          (item, i) => `
+        <div class="p-6 rounded-xl border border-surface-border bg-surface-raised" data-animate-child style="--i: ${i}">
           <div class="flex items-start justify-between gap-3 mb-3">
-            <div>
-              <p class="text-[10px] font-mono uppercase tracking-wider text-zinc-600 mb-1">${isDaedalus ? 'Project' : ''}</p>
-              <h3 class="font-display text-lg font-medium">${item.name}</h3>
-            </div>
+            <h3 class="font-display text-lg font-medium">${item.name}</h3>
             <span class="shrink-0 text-[10px] uppercase tracking-wider text-zinc-500 border border-surface-border px-2 py-1 rounded-full">${item.tag}</span>
           </div>
           ${item.tagline ? `<p class="text-sm text-accent/90 italic mb-3">${item.tagline}</p>` : ''}
           <p class="text-sm text-zinc-400 leading-relaxed mb-4">${item.description}</p>
-          ${phasesBlock}
           <ul class="space-y-2">${item.highlights.map((h) => `<li class="text-xs text-zinc-500 flex gap-2"><span class="text-accent shrink-0">—</span>${h}</li>`).join('')}</ul>
-        </div>`;
-          }
+        </div>`
         )
         .join('');
     }

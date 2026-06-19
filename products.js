@@ -34,14 +34,7 @@ const PORTFOLIO = {
         tag: 'AFI Technology · Execution',
         tagline: 'Dissolving systems in waves, not in phases.',
         description:
-          'Ashley’s agentic transformation program. The strategy is three-phase dissolution — Map, Rebuild, Agents — but execution is a wave: business units flow through the phases on their own cadence, starting with Supply Chain Planning as the template-builder. Daedalus is the core track — the substrate, the agents, and the merge — absorbing forward-deployed engineering at Phase 2 and maintenance engineering by Phase 3.',
-        phases: [
-          { num: '01', name: 'Map & Inventory', detail: '45 days per unit — process atlas, agentic readiness scores, conceptual data model, tribal knowledge, TCO baseline' },
-          { num: '1.5', name: 'Sketch future state', detail: 'Per-unit pulse — review Phase 1 artifacts, draft agentic-native future state, align with the business' },
-          { num: '02', name: 'Rebuild substrate', detail: 'Semantic layer, master data, streaming substrate, reusable agent services — built once, consumed by every unit' },
-          { num: '2.5', name: 'Org realignment', detail: 'Tech-side — team sized and reskilled for Phase 3 agent delivery' },
-          { num: '03', name: 'Agents, not systems', detail: 'Planning Data Fabric · Action Surface · binary build/buy fork per capability' },
-        ],
+          'Ashley’s agentic transformation program — dissolving legacy systems into an agentic enterprise in waves, not waterfall phases. Business units flow through on their own cadence; Daedalus is the core track building the substrate, the agents, and the merge.',
         highlights: [
           'Wave model — Unit 01 Supply Chain Planning kick-off May 2026; Finance and Customer Care follow',
           'Four parallel tracks authorized together: FDE, Maintain, Daedalus core, and Hardware & Edge',
