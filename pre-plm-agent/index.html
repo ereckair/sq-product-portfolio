@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sample Management Agent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#ffffff;
+    --bg-soft:#fafafa;
+    --ink:#0a0a0a;
+    --ink-soft:#5c5c5c;
+    --ink-faint:#8a8a8a;
+    --line:#e8e8e8;
+    --line-2:#dcdcdc;
+    --blue:#3b6ef0;          /* eyebrow / mono accent */
+    --blue-soft:#eef3ff;
+    --panel:#ffffff;
+    --panel-soft:#f7f7f8;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;font-size:16px;overflow-x:hidden}
+  .mono{font-family:'JetBrains Mono',monospace}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 32px}
+
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:9px;font-weight:500}
+  .eyebrow .sq{width:7px;height:7px;background:var(--blue);border-radius:1px}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.82);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+  .brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:1.05rem;letter-spacing:-.01em}
+  .brand .logo{width:28px;height:28px;border-radius:7px;background:var(--ink);display:flex;align-items:center;justify-content:center;font-size:.95rem}
+  .brand .pill-tag{font-family:'JetBrains Mono',monospace;font-size:.6rem;letter-spacing:.1em;border:1px solid var(--line-2);border-radius:5px;padding:3px 7px;color:var(--blue);margin-left:2px}
+  .nav-links{display:flex;gap:30px}
+  .nav-links a{color:var(--ink);text-decoration:none;font-family:'JetBrains Mono',monospace;letter-spacing:.04em;text-transform:uppercase;font-size:.72rem;font-weight:500;transition:color .15s}
+  .nav-links a:hover{color:var(--blue)}
+  .nav-cta{background:var(--ink);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:10px 16px;border-radius:7px;text-decoration:none;transition:transform .12s}
+  .nav-cta:hover{transform:translateY(-1px)}
+  @media(max-width:780px){.nav-links{display:none}}
+
+  /* ---------- HERO (blue gradient band) ---------- */
+  .hero{position:relative;padding:104px 0 116px;text-align:center;overflow:hidden;
+    background:
+      radial-gradient(60% 80% at 18% 30%, #d7ecff 0%, transparent 60%),
+      radial-gradient(55% 75% at 82% 25%, #cfe6ff 0%, transparent 60%),
+      radial-gradient(70% 90% at 50% 80%, #bcd8ff 0%, transparent 65%),
+      linear-gradient(180deg,#e9f3ff 0%,#d4e8ff 45%,#c3ddff 100%);
+  }
+  .hero::after{content:"";position:absolute;inset:0;opacity:.4;
+    background-image:linear-gradient(rgba(120,150,210,.18) 1px,transparent 1px),linear-gradient(90deg,rgba(120,150,210,.18) 1px,transparent 1px);
+    background-size:46px 46px;
+    mask-image:radial-gradient(80% 80% at 50% 50%,#000 30%,transparent 85%);
+    -webkit-mask-image:radial-gradient(80% 80% at 50% 50%,#000 30%,transparent 85%);}
+  .hero .wrap{position:relative;z-index:1}
+  .hero h1{font-size:clamp(2.6rem,7vw,5rem);font-weight:700;line-height:1.04;letter-spacing:-.03em;color:var(--ink);display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:.28em;margin-bottom:8px}
+  .hero h1 .word-pill{display:inline-flex;align-items:center;gap:.4em;background:#fff;border-radius:14px;padding:.1em .4em;box-shadow:0 6px 26px -8px rgba(40,80,180,.35);font-family:'JetBrains Mono',monospace;font-weight:700;letter-spacing:-.01em}
+  .hero h1 .word-pill .ic{font-size:.85em}
+  .hero p.sub{font-size:1.08rem;color:#27406b;max-width:48ch;margin:22px auto 0;line-height:1.6}
+  .hero .cta-row{margin-top:34px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+  .btn-primary{background:var(--ink);color:#fff;font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:15px 26px;border-radius:9px;text-decoration:none;transition:transform .12s,box-shadow .2s}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -10px rgba(0,0,0,.4)}
+  .btn-ghost{background:rgba(255,255,255,.7);border:1px solid rgba(40,80,180,.25);color:var(--ink);font-family:'JetBrains Mono',monospace;font-size:.78rem;font-weight:500;letter-spacing:.05em;text-transform:uppercase;padding:15px 26px;border-radius:9px;text-decoration:none;transition:background .15s}
+  .btn-ghost:hover{background:#fff}
+
+  /* ---------- SECTION SHELL ---------- */
+  section.band{padding:92px 0;border-top:1px solid var(--line)}
+  .sec-top{margin-bottom:44px}
+  .sec-top h2{font-size:clamp(1.9rem,4vw,3rem);font-weight:700;letter-spacing:-.025em;line-height:1.06;margin-top:16px;max-width:20ch}
+  .sec-top p{color:var(--ink-soft);font-size:1.05rem;margin-top:14px;max-width:60ch;line-height:1.6}
+
+  /* ---------- "Agent working" task card (signature) ---------- */
+  .split{display:grid;grid-template-columns:.95fr 1.05fr;gap:56px;align-items:center}
+  .split .copy h2{font-size:clamp(1.9rem,3.6vw,2.7rem);font-weight:700;letter-spacing:-.025em;line-height:1.08;margin-top:14px}
+  .split .copy p{color:var(--ink-soft);font-size:1.02rem;margin-top:16px;line-height:1.6}
+  .inline-chips{display:flex;align-items:center;gap:9px;flex-wrap:wrap;margin-top:22px;font-size:.92rem;color:var(--ink-soft)}
+  .ichip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line-2);border-radius:7px;padding:5px 10px;font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.04em;background:#fff}
+
+  .taskcard{background:var(--panel);border:1px solid var(--line);border-radius:18px;box-shadow:0 20px 50px -28px rgba(30,50,90,.25);overflow:hidden}
+  .tc-head{display:flex;align-items:center;justify-content:space-between;padding:15px 20px;border-bottom:1px solid var(--line)}
+  .tc-head .tc-l{display:flex;align-items:center;gap:9px;font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-faint)}
+  .tc-head .tc-r{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ink-faint)}
+  .tc-row{display:flex;align-items:center;gap:14px;padding:15px 20px;border-bottom:1px solid var(--line);transition:background .15s}
+  .tc-row:last-child{border-bottom:none}
+  .tc-row:hover{background:var(--panel-soft)}
+  .tc-row .rdot{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--line-2);flex-shrink:0}
+  .tc-row.active .rdot{border-color:var(--blue);background:radial-gradient(circle,var(--blue) 42%,transparent 46%)}
+  .tc-row .logos{display:flex;flex-shrink:0}
+  .tc-row .logos .lg{width:26px;height:26px;border-radius:7px;background:var(--panel-soft);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.82rem;margin-left:-7px}
+  .tc-row .logos .lg:first-child{margin-left:0}
+  .tc-row .rtext{font-size:.94rem;color:var(--ink);flex:1}
+  .tc-row .rtag{font-family:'JetBrains Mono',monospace;font-size:.62rem;color:var(--blue);letter-spacing:.06em}
+
+  /* feature cards */
+  .fgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+  .fcard{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;transition:border-color .2s,transform .2s,box-shadow .2s}
+  .fcard:hover{border-color:var(--line-2);transform:translateY(-3px);box-shadow:0 16px 34px -22px rgba(30,50,90,.3)}
+  .fcard .fnum{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--blue);letter-spacing:.1em}
+  .fcard h3{font-size:1.16rem;font-weight:700;margin:14px 0 8px;letter-spacing:-.01em}
+  .fcard p{font-size:.92rem;color:var(--ink-soft);line-height:1.55}
+
+  /* stats */
+  .statwrap{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .stat{background:var(--panel-soft);border:1px solid var(--line);border-radius:16px;padding:30px 26px}
+  .stat .sn{font-size:2.7rem;font-weight:700;letter-spacing:-.03em;font-family:'JetBrains Mono',monospace;color:var(--ink)}
+  .stat .sl{font-size:.86rem;color:var(--ink-soft);margin-top:10px;line-height:1.5}
+
+  /* architecture layers */
+  .arch-layers{display:flex;flex-direction:column;gap:12px}
+  .alayer{display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 24px;position:relative;overflow:hidden}
+  .alayer .tagn{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--ink-faint);border:1px solid var(--line-2);padding:6px 12px;border-radius:8px;white-space:nowrap}
+  .alayer h4{font-size:1.1rem;font-weight:700;letter-spacing:-.01em}
+  .alayer p{font-size:.9rem;color:var(--ink-soft);margin-top:3px}
+  .alayer .flow{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--ink-faint);margin-top:6px}
+  .alayer::after{content:"";position:absolute;left:0;top:0;bottom:0;width:3px}
+  .alayer.a1::after{background:#3b6ef0}
+  .alayer.a2::after{background:#36b6c9}
+  .alayer.a3::after{background:#8b7cf6}
+
+  /* reports */
+  .repgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .repcard{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:22px}
+  .repcard .rk{font-family:'JetBrains Mono',monospace;font-size:.74rem;color:var(--blue)}
+  .repcard h4{font-size:1rem;font-weight:700;margin:10px 0 5px}
+  .repcard p{font-size:.84rem;color:var(--ink-soft);line-height:1.5}
+
+  /* status */
+  .statuscols{display:grid;grid-template-columns:1.4fr 1fr;gap:24px}
+  .scol{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:28px}
+  .scol h3{font-size:1.05rem;font-weight:700;margin-bottom:14px}
+  .scol ul{list-style:none}
+  .scol li{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid var(--line);font-size:.92rem;color:var(--ink-soft);align-items:flex-start}
+  .scol li:last-child{border-bottom:none}
+  .scol .ck{flex-shrink:0;width:19px;height:19px;border-radius:50%;background:var(--blue-soft);border:1px solid rgba(59,110,240,.35);color:var(--blue);display:flex;align-items:center;justify-content:center;font-size:.62rem;margin-top:2px}
+  .scol .pend{flex-shrink:0;width:19px;height:19px;border-radius:50%;border:1.5px dashed var(--ink-faint);margin-top:2px}
+  .pri{font-family:'JetBrains Mono',monospace;font-size:.66rem;color:var(--blue);border:1px solid rgba(59,110,240,.3);padding:1px 7px;border-radius:5px;margin-left:4px}
+
+  /* documents */
+  .docgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+  .doccard{display:flex;align-items:center;gap:16px;background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px;text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s,box-shadow .2s}
+  .doccard:hover{border-color:var(--line-2);transform:translateY(-2px);box-shadow:0 14px 30px -22px rgba(30,50,90,.3)}
+  .doccard .fi{width:42px;height:52px;border-radius:6px;flex-shrink:0;display:flex;align-items:flex-end;justify-content:center;padding-bottom:6px;background:#fbe9e7;border:1px solid #f3c9c3}
+  .doccard .fi::after{content:"PDF";font-family:'JetBrains Mono',monospace;font-size:.6rem;font-weight:700;color:#d24726}
+  .doccard .fi.vid::after{content:"MOV";color:#3b6ef0}
+  .doccard .ftext{flex:1;min-width:0}
+  .doccard .fname{font-size:1rem;font-weight:600}
+  .doccard .fmeta{font-size:.8rem;color:var(--ink-faint);margin-top:3px}
+  .doccard .fopen{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--ink-faint)}
+  .upload-note{grid-column:1/-1;border:1px dashed var(--line-2);border-radius:14px;padding:22px;text-align:center;color:var(--ink-faint);font-size:.88rem}
+
+  /* final CTA */
+  .finalcta{text-align:center;padding:110px 0;border-top:1px solid var(--line);position:relative;overflow:hidden;
+    background:radial-gradient(60% 120% at 50% 100%, #dcebff 0%, transparent 62%),linear-gradient(180deg,#fff 0%,#eef5ff 100%)}
+  .finalcta h2{font-size:clamp(2.1rem,4.8vw,3.4rem);font-weight:700;letter-spacing:-.03em;line-height:1.06;max-width:22ch;margin:16px auto 0}
+  .finalcta .cta-row{margin-top:32px;display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+
+  footer{border-top:1px solid var(--line);padding:38px 0;color:var(--ink-faint);font-size:.82rem;background:var(--bg-soft)}
+  footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px}
+  footer .mono{font-size:.74rem}
+
+  @media(max-width:980px){
+    .fgrid,.statwrap,.repgrid{grid-template-columns:repeat(2,1fr)}
+    .split,.statuscols,.docgrid{grid-template-columns:1fr}
+    .split .taskcard{order:-1}
+  }
+  @media(max-width:620px){
+    .wrap{padding:0 20px}
+    .fgrid,.statwrap,.repgrid,.docgrid{grid-template-columns:1fr}
+    .alayer{grid-template-columns:1fr}
+    .hero h1{font-size:2.4rem}
+  }
+  @media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="wrap">
+    <div class="brand"><span class="logo">&#129302;</span> Sample Agent <span class="pill-tag">PRE-PLM</span></div>
+    <div class="nav-links">
+      <a href="#capabilities">Capabilities</a>
+      <a href="#in-action">In Action</a>
+      <a href="#demo">Tutorial</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#documents">Docs</a>
+    </div>
+    <a class="nav-cta" href="../product.html?id=pre-plm-agent" style="margin-right:8px;background:transparent;color:var(--ink);border:1px solid var(--line-2)">Portfolio</a>
+    <a class="nav-cta" href="#documents">View Docs</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap">
+    <h1>Make your <span class="word-pill"><span class="ic">&#129302;</span>SAMPLING</span> do more</h1>
+    <p class="sub">Skip the heavy lifting by chatting your product data into shape. Stop filling forms and start shipping reports.</p>
+    <div class="cta-row">
+      <a class="btn-primary" href="#documents">View Documentation</a>
+      <a class="btn-ghost" href="#demo">Watch Tutorial</a>
+    </div>
+  </div>
+</header>
+
+<!-- NEVER LEAVE THE CHAT / task card -->
+<section class="band" id="in-action">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="eyebrow"><span class="sq"></span>Stop typing. Start shipping.</span>
+      <h2>Never leave the chat</h2>
+      <p>The agent plugs into your sampling data right inside Feishu &mdash; entry, edits, queries, images, and reports, all from the same conversation.</p>
+      <div class="inline-chips">
+        All <span class="ichip">&#129302; THE TEAM</span> needed was <span class="ichip">&#128172; THE AGENT</span>
+      </div>
+    </div>
+    <div class="taskcard">
+      <div class="tc-head"><div class="tc-l">&#9889; Agent working</div><div class="tc-r">00 / 06</div></div>
+      <div class="tc-row active">
+        <span class="rdot"></span>
+        <div class="logos"><span class="lg">&#128172;</span><span class="lg">&#128230;</span></div>
+        <span class="rtext">UE0890, Nordic sofa, FOB 385, cube 17.9</span>
+        <span class="rtag">ENTRY</span>
+      </div>
+      <div class="tc-row">
+        <span class="rdot"></span>
+        <div class="logos"><span class="lg">&#9999;</span></div>
+        <span class="rtext">Change UE0890's FOB to 400</span>
+        <span class="rtag">MODIFY</span>
+      </div>
+      <div class="tc-row">
+        <span class="rdot"></span>
+        <div class="logos"><span class="lg">&#128269;</span></div>
+        <span class="rtext">How is AB6076? Pull its full record</span>
+        <span class="rtag">QUERY</span>
+      </div>
+      <div class="tc-row">
+        <span class="rdot"></span>
+        <div class="logos"><span class="lg">&#128247;</span><span class="lg">&#128444;</span></div>
+        <span class="rtext">Show UE0890's material images</span>
+        <span class="rtag">IMAGES</span>
+      </div>
+      <div class="tc-row">
+        <span class="rdot"></span>
+        <div class="logos"><span class="lg">&#128228;</span><span class="lg">&#128202;</span></div>
+        <span class="rtext">Generate today's sampling PPT</span>
+        <span class="rtag">REPORT</span>
+      </div>
+      <div class="tc-row">
+        <span class="rdot"></span>
+        <div class="logos"><span class="lg">&#129534;</span></div>
+        <span class="rtext">Longwei sofa &mdash; assign a number later</span>
+        <span class="rtag">FUZZY</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="eyebrow"><span class="sq"></span>By the numbers</span>
+      <h2>Fast, and cheap to run</h2>
+    </div>
+    <div class="statwrap">
+      <div class="stat"><div class="sn">~80%</div><div class="sl">Lower token cost vs. a single-model design</div></div>
+      <div class="stat"><div class="sn">9</div><div class="sl">Intent types understood automatically</div></div>
+      <div class="stat"><div class="sn">4</div><div class="sl">PPT report versions on demand</div></div>
+      <div class="stat"><div class="sn">0</div><div class="sl">New apps to deploy or train on</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPABILITIES -->
+<section class="band" id="capabilities">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="eyebrow"><span class="sq"></span>Capabilities</span>
+      <h2>Everything it does, live today</h2>
+      <p>Six capabilities shipped and in use &mdash; not roadmap promises.</p>
+    </div>
+    <div class="fgrid">
+      <div class="fcard"><div class="fnum">01</div><h3>Product entry</h3><p>Recognizes intent and auto-extracts fields from free-form text, with or without a series number.</p></div>
+      <div class="fcard"><div class="fnum">02</div><h3>Image processing</h3><p>Sorts uploaded photos into five types &mdash; product, note, material, rendering, problem &mdash; automatically.</p></div>
+      <div class="fcard"><div class="fnum">03</div><h3>Report generation</h3><p>Four PPT versions on demand, including bilingual CN/EN factory rectification reports.</p></div>
+      <div class="fcard"><div class="fnum">04</div><h3>Query &amp; search</h3><p>Pull a single product's details or search a range &mdash; "what did Longwei do," "what was recorded today."</p></div>
+      <div class="fcard"><div class="fnum">05</div><h3>Image management</h3><p>View, delete, and store images in the cloud, all from the chat.</p></div>
+      <div class="fcard"><div class="fnum">06</div><h3>Fuzzy entry</h3><p>No number yet? The system generates a placeholder and lets you assign the real one later.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- SOURCE OF TRUTH split -->
+<section class="band">
+  <div class="wrap split">
+    <div class="copy">
+      <span class="eyebrow"><span class="sq"></span>Nothing slips</span>
+      <h2>One source of truth, with a safety net</h2>
+      <p>Every entry, price, dimension, and photo lands in one structured record the moment it's mentioned &mdash; no re-keying, no lost details. And every write previews first, so a misread never silently changes your data.</p>
+      <div class="inline-chips" style="flex-direction:column;align-items:flex-start;gap:10px;margin-top:20px">
+        <span><span class="ck" style="display:inline-flex;width:18px;height:18px;border-radius:50%;background:var(--blue-soft);border:1px solid rgba(59,110,240,.35);color:var(--blue);align-items:center;justify-content:center;font-size:.6rem;margin-right:8px;vertical-align:middle">&#10003;</span>Confirmation card on every entry and edit</span>
+        <span><span class="ck" style="display:inline-flex;width:18px;height:18px;border-radius:50%;background:var(--blue-soft);border:1px solid rgba(59,110,240,.35);color:var(--blue);align-items:center;justify-content:center;font-size:.6rem;margin-right:8px;vertical-align:middle">&#10003;</span>Understands "it" and "this one" across the chat</span>
+        <span><span class="ck" style="display:inline-flex;width:18px;height:18px;border-radius:50%;background:var(--blue-soft);border:1px solid rgba(59,110,240,.35);color:var(--blue);align-items:center;justify-content:center;font-size:.6rem;margin-right:8px;vertical-align:middle">&#10003;</span>Optimistic-lock protection on conflicting edits</span>
+      </div>
+    </div>
+    <div class="taskcard">
+      <div class="tc-head"><div class="tc-l">&#9635; Confirmation card</div><div class="tc-r">UE0890</div></div>
+      <div style="padding:20px">
+        <div style="background:var(--blue-soft);border:1px solid rgba(59,110,240,.25);color:#1c3a7a;border-radius:11px 11px 3px 11px;padding:10px 14px;font-size:.9rem;display:inline-block;margin-bottom:14px">UE0890, Nordic sofa, FOB 385, cube 17.9</div>
+        <div style="display:flex;justify-content:space-between;font-size:.88rem;padding:6px 0;border-bottom:1px dashed var(--line)"><span class="mono" style="color:var(--ink-faint);font-size:.78rem">series_no</span><b>UE0890</b></div>
+        <div style="display:flex;justify-content:space-between;font-size:.88rem;padding:6px 0;border-bottom:1px dashed var(--line)"><span class="mono" style="color:var(--ink-faint);font-size:.78rem">product_name</span><b>Nordic Sofa</b></div>
+        <div style="display:flex;justify-content:space-between;font-size:.88rem;padding:6px 0;border-bottom:1px dashed var(--line)"><span class="mono" style="color:var(--ink-faint);font-size:.78rem">fob</span><b>385</b></div>
+        <div style="display:flex;justify-content:space-between;font-size:.88rem;padding:6px 0"><span class="mono" style="color:var(--ink-faint);font-size:.78rem">image_type</span><b>Note (auto)</b></div>
+        <div class="mono" style="font-size:.82rem;color:var(--blue);margin-top:14px;display:flex;gap:7px;align-items:center">&#10003; Confirm to save &middot; Cancel to abort</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARCHITECTURE -->
+<section class="band" id="architecture">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="eyebrow"><span class="sq"></span>The technical edge</span>
+      <h2>Three layers, routed intelligently</h2>
+      <p>Rather than sending every message to a large model, the agent routes by complexity. That's where the speed and the ~80% cost saving come from.</p>
+    </div>
+    <div class="arch-layers">
+      <div class="alayer a1"><span class="tagn">LAYER 1</span><div><h4>Rule hard-routing</h4><p>High-frequency commands answer in milliseconds without touching an LLM.</p><div class="flow">/userlist &middot; generate PPT &middot; view images</div></div></div>
+      <div class="alayer a2"><span class="tagn">LAYER 2</span><div><h4>Model routing</h4><p>Simple intents go to a small, cheap model; only complex reasoning reaches the main model.</p><div class="flow">simple &rarr; mini (70%) &middot; complex &rarr; main (30%)</div></div></div>
+      <div class="alayer a3"><span class="tagn">LAYER 3</span><div><h4>LLM agent + tools</h4><p>Full intent recognition and tool-calling across nine intent categories for everything else.</p><div class="flow">tool calling &middot; 9 intent categories</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REPORTS -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="eyebrow"><span class="sq"></span>Outputs</span>
+      <h2>Four reports, four audiences</h2>
+    </div>
+    <div class="repgrid">
+      <div class="repcard"><div class="rk">go_apply</div><h4>Application</h4><p>Move a product into the formal application stage.</p></div>
+      <div class="repcard"><div class="rk">trip_note</div><h4>Trip report</h4><p>Captures a sampling trip, ready to circulate.</p></div>
+      <div class="repcard"><div class="rk">factory</div><h4>Factory fix</h4><p>Bilingual CN/EN &mdash; share corrections with the factory.</p></div>
+      <div class="repcard"><div class="rk">all</div><h4>Complete</h4><p>The full record in one document.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- STATUS -->
+<section class="band">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="eyebrow"><span class="sq"></span>Where it stands</span>
+      <h2>Shipped and stable</h2>
+    </div>
+    <div class="statuscols">
+      <div class="scol">
+        <h3>Live today</h3>
+        <ul>
+          <li><span class="ck">&#10003;</span>Product entry &amp; modification &mdash; text, image, and file</li>
+          <li><span class="ck">&#10003;</span>Nine intent types recognized automatically</li>
+          <li><span class="ck">&#10003;</span>Four PPT report versions</li>
+          <li><span class="ck">&#10003;</span>Five image types managed end-to-end</li>
+          <li><span class="ck">&#10003;</span>Context memory &amp; pronoun resolution</li>
+          <li><span class="ck">&#10003;</span>Optimistic-lock concurrency protection</li>
+          <li><span class="ck">&#10003;</span>Dual-model routing for the ~80% cost saving</li>
+        </ul>
+      </div>
+      <div class="scol">
+        <h3>Next up</h3>
+        <ul>
+          <li><span class="pend"></span>Editable H5 page &mdash; web view to review records outside chat <span class="pri">P2</span></li>
+          <li><span class="pend"></span>Image selection refinements <span class="pri">P3</span></li>
+        </ul>
+        <p style="color:var(--ink-soft);font-size:.9rem;margin-top:18px;line-height:1.6">The agent sits <b style="color:var(--ink)">ahead of PLM</b> &mdash; capturing sampling intelligence early, so data is clean and structured before it reaches the formal lifecycle system.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DEMO VIDEO -->
+<section class="band" id="demo">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="eyebrow"><span class="sq"></span>Tutorial</span>
+      <h2>Watch the agent in action</h2>
+      <p>Full walkthrough of sampling entry, edits, queries, and report generation in Feishu.</p>
+    </div>
+    <div style="max-width:960px;margin:0 auto;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000;box-shadow:0 20px 50px -28px rgba(30,50,90,.25)">
+      <video controls playsinline preload="metadata" style="width:100%;display:block;max-height:70vh" poster="">
+        <source src="tutorial.mov" type="video/quicktime">
+        <source src="tutorial.mov" type="video/mp4">
+        Your browser does not support video playback. <a href="tutorial.mov" style="color:var(--blue)">Download tutorial.mov</a>
+      </video>
+    </div>
+  </div>
+</section>
+
+<!-- DOCUMENTS -->
+<section class="band" id="documents">
+  <div class="wrap">
+    <div class="sec-top">
+      <span class="eyebrow"><span class="sq"></span>Documents</span>
+      <h2>Everything in one place</h2>
+      <p>All relevant documentation for the Sample Management Agent. Click any file to open it.</p>
+    </div>
+    <div class="docgrid">
+      <a class="doccard" href="docs/PRD_EN.pdf" target="_blank" rel="noopener">
+        <div class="fi"></div>
+        <div class="ftext"><div class="fname">PRD (EN)</div><div class="fmeta">Product requirements document</div></div>
+        <div class="fopen">OPEN &#8599;</div>
+      </a>
+      <a class="doccard" href="docs/User_guide_EN.pdf" target="_blank" rel="noopener">
+        <div class="fi"></div>
+        <div class="ftext"><div class="fname">User Guide (EN)</div><div class="fmeta">How to chat with the bot, commands &amp; field reference</div></div>
+        <div class="fopen">OPEN &#8599;</div>
+      </a>
+      <a class="doccard" href="docs/Technical_EN.pdf" target="_blank" rel="noopener">
+        <div class="fi"></div>
+        <div class="ftext"><div class="fname">Technical Doc (EN)</div><div class="fmeta">Architecture, routing layers &amp; implementation details</div></div>
+        <div class="fopen">OPEN &#8599;</div>
+      </a>
+      <a class="doccard" href="docs/Project_summary_EN.pdf" target="_blank" rel="noopener">
+        <div class="fi"></div>
+        <div class="ftext"><div class="fname">Project Summary (EN)</div><div class="fmeta">Goals, milestones, architecture &amp; lessons learned</div></div>
+        <div class="fopen">OPEN &#8599;</div>
+      </a>
+      <a class="doccard" href="#demo">
+        <div class="fi vid" style="background:#e8f0fe;border-color:#c5d9f7"></div>
+        <div class="ftext"><div class="fname">Tutorial Video</div><div class="fmeta">Full agent walkthrough (.mov)</div></div>
+        <div class="fopen">OPEN &#8599;</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="finalcta">
+  <div class="wrap">
+    <span class="eyebrow" style="justify-content:center"><span class="sq"></span>Pre-PLM AI Agent</span>
+    <h2>Your team talks. The agent does the filing.</h2>
+    <div class="cta-row">
+      <a class="btn-primary" href="#documents">View Documentation</a>
+      <a class="btn-ghost" href="#demo">Watch Tutorial</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>Ashley Sample Management Agent</div>
+    <div class="mono">FEISHU BOT + AI AGENT &middot; PROJECT SUMMARY &middot; 2026-06-17</div>
+  </div>
+</footer>
+
+</body>
+</html>

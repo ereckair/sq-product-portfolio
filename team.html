@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Team — SQ Product Team</title>
+  <meta name="description" content="The Sourcing & Quality Product Team — building internal systems for global operations." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="theme-light font-sans antialiased overflow-x-hidden">
+
+  <header class="fixed top-0 left-0 right-0 z-50 p-2 md:top-4">
+    <nav class="light-nav max-w-6xl mx-auto flex items-center justify-between px-4 py-2 border rounded-sm md:px-2">
+      <a href="index.html" class="flex items-center gap-2 px-2 cursor-pointer">
+        <div class="w-7 h-7 rounded-md bg-black flex items-center justify-center font-display font-bold text-xs text-white">SQ</div>
+        <span class="font-display font-semibold text-sm tracking-tight hidden sm:inline">SQ Product Team</span>
+      </a>
+      <div class="hidden md:flex items-center gap-0.5">
+        <a href="products.html" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">Products</a>
+        <a href="team.html" class="light-nav-link active px-3 py-1.5 text-sm rounded-sm cursor-pointer">Team</a>
+        <a href="index.html" class="light-nav-link px-3 py-1.5 text-sm rounded-sm cursor-pointer">Home</a>
+      </div>
+      <a href="products.html" class="btn-primary-light text-xs px-3 py-1.5">View products</a>
+    </nav>
+  </header>
+
+  <main class="pt-24 md:pt-28">
+    <section class="px-4 pb-20 text-center">
+      <div class="max-w-3xl mx-auto">
+        <h1 class="text-display-light text-black mb-6">Sourcing & Quality<br />Product Team</h1>
+        <p class="text-lg text-black/60 leading-relaxed" id="team-tagline"></p>
+      </div>
+    </section>
+
+    <section class="px-4 pb-24 light-divider pt-8">
+      <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-4 gap-4" id="team-stats"></div>
+    </section>
+
+    <section class="px-4 py-24 light-divider">
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-h1-light text-black mb-6">What we do</h2>
+        <p class="text-black/70 leading-relaxed text-lg mb-8" id="team-description"></p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="light-card rounded-sm p-6">
+            <h3 class="font-display font-medium text-black mb-2">Product discovery</h3>
+            <p class="text-sm text-black/60 leading-relaxed">Partner with sourcing, QA, compliance, and HR stakeholders to identify high-impact problems.</p>
+          </div>
+          <div class="light-card rounded-sm p-6">
+            <h3 class="font-display font-medium text-black mb-2">Build & ship</h3>
+            <p class="text-sm text-black/60 leading-relaxed">Design, develop, and deploy internal tools — from PLM platforms to factory-floor QC apps.</p>
+          </div>
+          <div class="light-card rounded-sm p-6">
+            <h3 class="font-display font-medium text-black mb-2">Document everything</h3>
+            <p class="text-sm text-black/60 leading-relaxed">PRDs, demos, live links, repos, and MCP tools — all catalogued in this portfolio for transparency.</p>
+          </div>
+          <div class="light-card rounded-sm p-6">
+            <h3 class="font-display font-medium text-black mb-2">Measure impact</h3>
+            <p class="text-sm text-black/60 leading-relaxed">Track adoption, cycle-time improvements, and user feedback to prioritize what matters next.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-24 light-divider">
+      <div class="max-w-6xl mx-auto">
+        <h2 class="text-h1-light text-black text-center mb-12">Domains we own</h2>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="team-domains"></div>
+      </div>
+    </section>
+
+    <section class="cta-band-dark py-24 px-4">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-tight mb-4">Explore our work</h2>
+        <p class="text-white/60 mb-8">17 products across lifecycle, compliance, quality, sourcing, and HR.</p>
+        <a href="products.html" class="inline-flex px-6 py-3 bg-white text-black font-mono text-sm hover:bg-white/90 transition-colors cursor-pointer">Browse the portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="light-footer py-12 px-4">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <a href="index.html" class="font-display font-semibold text-sm cursor-pointer">SQ Product Team</a>
+      <p class="text-sm text-black/40">&copy; 2026</p>
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script>
+    document.getElementById('team-tagline').textContent = PORTFOLIO.team.tagline;
+    document.getElementById('team-description').textContent = PORTFOLIO.team.description;
+    const stats = getPortfolioStats();
+    document.getElementById('team-stats').innerHTML = [
+      { v: stats.totalProducts, l: 'Products shipped or in flight' },
+      { v: stats.totalCategories, l: 'Product domains' },
+      { v: stats.live, l: 'Live in production' },
+      { v: stats.building, l: 'Actively building' },
+    ].map(s => `
+      <div class="light-card rounded-sm p-6 text-center">
+        <div class="font-display text-3xl font-semibold text-black mb-1">${s.v}</div>
+        <div class="text-xs text-black/50">${s.l}</div>
+      </div>`).join('');
+    document.getElementById('team-domains').innerHTML = PORTFOLIO.categories.map(cat => `
+      <a href="products.html#${cat.id}" class="light-card rounded-sm p-5 cursor-pointer block group">
+        <div class="w-2 h-2 rounded-full mb-3" style="background:${cat.color}"></div>
+        <h3 class="font-display font-medium text-black mb-1 group-hover:underline">${cat.name}</h3>
+        <p class="text-xs text-black/50">${cat.products.length} products</p>
+      </a>`).join('');
+  </script>
+</body>
+</html>

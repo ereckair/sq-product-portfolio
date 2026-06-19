@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sourcing & Quality Product Team</title>
+  <meta name="description" content="Product portfolio showcasing systems for lifecycle management, global compliance, quality control, sourcing, and HR." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['DM Sans', 'system-ui', 'sans-serif'],
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+          },
+          colors: {
+            surface: { DEFAULT: '#0a0a0a', raised: '#111', card: '#161616', border: '#222', hover: '#1a1a1a' },
+            accent: { DEFAULT: '#3b82f6', muted: '#2563eb', glow: 'rgba(59, 130, 246, 0.15)' },
+          },
+        },
+      },
+    };
+  </script>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-surface text-white font-sans antialiased overflow-x-hidden">
+
+  <header class="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+    <nav class="max-w-7xl mx-auto flex items-center justify-between px-5 py-3 rounded-2xl border border-surface-border bg-surface/80 backdrop-blur-xl">
+      <a href="index.html" class="flex items-center gap-2.5 cursor-pointer">
+        <div class="w-8 h-8 rounded-lg bg-accent flex items-center justify-center font-display font-bold text-sm text-white">SQ</div>
+        <span class="font-display font-semibold text-base tracking-tight hidden sm:inline">SQ Product Team</span>
+      </a>
+      <div class="hidden lg:flex items-center gap-1">
+        <a href="products.html" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">Products</a>
+        <a href="products.html#plm" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">PLM</a>
+        <a href="products.html#compliance" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">Compliance</a>
+        <a href="products.html#quality" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">Quality</a>
+        <a href="products.html#sourcing" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">Sourcing</a>
+        <a href="team.html" class="nav-link px-3 py-2 text-sm text-zinc-400 hover:text-white transition-colors cursor-pointer rounded-lg hover:bg-surface-hover">Team</a>
+      </div>
+      <a href="products.html" class="inline-flex items-center px-4 py-2 text-sm font-medium bg-white text-black rounded-full hover:bg-zinc-200 transition-colors cursor-pointer">Browse portfolio</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="relative pt-32 pb-16 px-4 overflow-hidden">
+      <div class="hero-grid absolute inset-0 pointer-events-none"></div>
+      <div class="hero-glow absolute top-1/4 left-1/2 -translate-x-1/2 w-[700px] h-[350px] pointer-events-none" style="background: radial-gradient(ellipse, rgba(59,130,246,0.1) 0%, transparent 70%)"></div>
+      <div class="relative max-w-5xl mx-auto text-center">
+        <p class="text-label-dark text-zinc-500 mb-6 tracking-widest uppercase text-xs">Sourcing & Quality Product Team</p>
+        <h1 class="font-display text-5xl sm:text-6xl md:text-7xl font-medium tracking-tight leading-[1.05] mb-6">
+          The products we build<br />
+          <span class="text-zinc-500">power global operations.</span>
+        </h1>
+        <p class="text-lg text-zinc-400 max-w-2xl mx-auto mb-10 leading-relaxed">
+          SMMS → PIM BOM engine → compliance, cost, quality, and procurement — one connected ecosystem, documented as a living portfolio.
+        </p>
+        <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="products.html" class="inline-flex px-7 py-3.5 text-sm font-semibold bg-white text-black rounded-full hover:bg-zinc-200 transition-colors cursor-pointer">Explore all products</a>
+          <a href="team.html" class="inline-flex px-7 py-3.5 text-sm text-zinc-300 border border-surface-border rounded-full hover:border-zinc-600 hover:text-white transition-colors cursor-pointer">Meet the team</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="px-4 pb-20">
+      <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-4" id="home-stats"></div>
+    </section>
+
+    <!-- Category marquee -->
+    <section class="py-8 border-y border-surface-border overflow-hidden">
+      <div class="flex animate-marquee shrink-0" id="category-marquee"></div>
+    </section>
+
+    <!-- Categories grid -->
+    <section class="py-24 px-4">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+          <p class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Portfolio</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-tight">Five domains.<br /><span class="text-zinc-500">Seventeen products.</span></h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4" id="category-cards"></div>
+      </div>
+    </section>
+
+    <!-- Ecosystem -->
+    <section class="py-24 px-4 border-t border-surface-border">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-14">
+          <p class="text-xs uppercase tracking-widest text-zinc-500 mb-3">How it connects</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-tight mb-4" id="ecosystem-headline">One connected ecosystem</h2>
+          <p class="text-zinc-400 max-w-2xl mx-auto leading-relaxed" id="ecosystem-summary"></p>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-5 gap-3 mb-10" id="ecosystem-flow"></div>
+        <div class="grid sm:grid-cols-3 gap-4 max-w-4xl mx-auto" id="ecosystem-metrics"></div>
+      </div>
+    </section>
+
+    <!-- Featured products -->
+    <section class="py-24 px-4 border-t border-surface-border">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
+          <div>
+            <p class="text-xs uppercase tracking-widest text-zinc-500 mb-2">Highlighted work</p>
+            <h2 class="font-display text-3xl font-medium tracking-tight">Featured products</h2>
+          </div>
+          <a href="products.html" class="text-sm text-accent hover:text-accent-muted transition-colors cursor-pointer inline-flex items-center gap-1">
+            View all
+            <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+        </div>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="featured-products"></div>
+      </div>
+    </section>
+
+    <!-- Detail preview mock -->
+    <section class="py-24 px-4 border-t border-surface-border">
+      <div class="max-w-7xl mx-auto">
+        <div class="text-center mb-12">
+          <p class="text-xs uppercase tracking-widest text-zinc-500 mb-3">Deep dives</p>
+          <h2 class="font-display text-3xl sm:text-4xl font-medium tracking-tight mb-4">Everything in one place</h2>
+          <p class="text-zinc-400 max-w-xl mx-auto">Each product page links to PRDs, demo videos, live environments, GitHub repos, MCP tools, and user feedback.</p>
+        </div>
+        <div class="demo-container rounded-2xl border border-surface-border bg-surface-raised overflow-hidden max-w-4xl mx-auto">
+          <div class="grid md:grid-cols-5 min-h-[280px]">
+            <div class="md:col-span-2 border-b md:border-b-0 md:border-r border-surface-border p-5">
+              <div class="text-xs text-zinc-500 mb-3 uppercase tracking-wider">Supplier Material Management</div>
+              <p class="text-sm text-zinc-300 mb-4 leading-relaxed">Raw material master DB, supplier portal, and price management — the foundation for accurate BOM costing.</p>
+              <span class="status-badge status-live">Live</span>
+            </div>
+            <div class="md:col-span-3 p-5 space-y-2 font-mono text-xs">
+              <div class="resource-row"><span class="text-zinc-500 w-16">Before</span><span class="text-sm text-zinc-400 font-sans">Excel + PDF catalogs; bone cost estimated</span></div>
+              <div class="resource-row"><span class="text-zinc-500 w-16">After</span><span class="text-sm text-zinc-300 font-sans">Structured materials + price formulas</span></div>
+              <div class="resource-row"><span class="text-zinc-500 w-16">Roadmap</span><span class="text-sm text-accent font-sans">Price negotiation agent</span></div>
+              <div class="resource-row"><span class="text-zinc-500 w-16">Feeds</span><span class="text-sm text-zinc-400 font-sans">PIM · DPCS · APS</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-8">
+          <a href="product.html?id=smms" class="text-sm text-accent hover:underline cursor-pointer">See SMMS detail page →</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="py-32 px-4 border-t border-surface-border relative overflow-hidden">
+      <div class="hero-glow absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[250px] pointer-events-none opacity-40" style="background: radial-gradient(ellipse, rgba(59,130,246,0.12) 0%, transparent 70%)"></div>
+      <div class="relative max-w-3xl mx-auto text-center">
+        <h2 class="font-display text-4xl sm:text-5xl font-medium tracking-tight mb-4">
+          Built by the team.<br /><span class="text-zinc-500">Documented for everyone.</span>
+        </h2>
+        <a href="products.html" class="inline-flex mt-8 px-7 py-3.5 text-sm font-semibold bg-white text-black rounded-full hover:bg-zinc-200 transition-colors cursor-pointer">Browse the full portfolio</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-surface-border py-12 px-4">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+      <div class="flex items-center gap-2">
+        <div class="w-7 h-7 rounded-md bg-accent flex items-center justify-center font-display font-bold text-xs">SQ</div>
+        <span class="font-display font-semibold text-sm">Sourcing & Quality Product Team</span>
+      </div>
+      <div class="flex flex-wrap justify-center gap-6 text-sm text-zinc-500">
+        <a href="products.html" class="hover:text-white transition-colors cursor-pointer">Products</a>
+        <a href="team.html" class="hover:text-white transition-colors cursor-pointer">Team</a>
+      </div>
+      <p class="text-sm text-zinc-600">&copy; 2026 SQ Product Team</p>
+    </div>
+  </footer>
+
+  <script src="products.js"></script>
+  <script src="portfolio.js"></script>
+</body>
+</html>
