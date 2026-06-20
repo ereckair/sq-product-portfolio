@@ -133,6 +133,33 @@
       .join('');
   }
 
+  // Latest news on homepage
+  const newsEl = document.getElementById('home-news');
+  if (newsEl && typeof getAllPosts === 'function') {
+    const posts = getAllPosts().slice(0, 4);
+    if (!posts.length) {
+      newsEl.innerHTML = '<p class="text-sm text-zinc-500 text-center py-8">No updates yet.</p>';
+    } else {
+      const typeLabels = { news: 'News', blog: 'Blog', roadmap: 'Roadmap' };
+      newsEl.innerHTML = posts
+        .map(
+          (p, i) => `
+        <article class="home-news-card p-5 md:p-6 rounded-xl border border-surface-border bg-surface-raised hover:border-zinc-600 transition-colors group" data-animate-child style="--i: ${i}">
+          <div class="flex flex-wrap items-center gap-3 mb-3">
+            <span class="home-news-type home-news-type--${p.type}">${typeLabels[p.type] || p.type}</span>
+            <time class="text-xs text-zinc-500 font-mono" datetime="${p.date}">${formatPostDate(p.date)}</time>
+          </div>
+          <h3 class="font-display text-lg font-medium mb-2 group-hover:text-accent transition-colors">
+            <a href="post.html?slug=${p.slug}" class="cursor-pointer">${p.title}</a>
+          </h3>
+          <p class="text-sm text-zinc-400 leading-relaxed mb-4 line-clamp-2">${p.excerpt}</p>
+          <a href="post.html?slug=${p.slug}" class="text-sm text-accent hover:underline cursor-pointer">Read more →</a>
+        </article>`
+        )
+        .join('');
+    }
+  }
+
   function statusBadge(status) {
     const cls = status === 'live' ? 'status-live' : status === 'building' ? 'status-building' : 'status-planned';
     const label = status === 'live' ? 'Live' : status === 'building' ? 'Building' : 'Planned';
