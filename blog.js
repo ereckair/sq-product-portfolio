@@ -5,6 +5,84 @@
 const BLOG = {
   posts: [
     {
+      slug: 'edw-data-landscape',
+      type: 'blog',
+      title: 'EDW data landscape — from operational systems to Quantum QA, and what the map exposed',
+      excerpt:
+        'Ashley’s analytics backbone is a four-layer SQL Server warehouse — source systems, External Schema, Power BI Custom Schema, and reports. No unified API, known metric warnings, and the gaps we pinned in Phase 1.',
+      date: '2026-06-25',
+      author: 'SQ Product Team',
+      tags: ['EDW', 'Data', 'Architecture', 'Quantum QA'],
+      layout: 'wide',
+      assets: ['edw-flow-diagrams.css', 'edw-flow-diagrams.js'],
+      init: 'edwFlow',
+      body: `
+<p>Our <a href="post.html?slug=sourcing-end-to-end-process">Sourcing</a>, <a href="post.html?slug=quality-end-to-end-process">Quality</a>, and <a href="post.html?slug=compliance-end-to-end-process">Compliance</a> maps describe how work flows through operational systems. This post covers the <strong>data layer underneath</strong> — how those transactions become the analytics leadership actually reads.</p>
+<p><strong>EDW</strong> (Enterprise Data Warehouse, SQL Server) has run for years as Ashley’s central analytics store. It is stable, team-familiar, and deeply integrated with Power BI. It is also fragmented at the semantic layer — and that fragmentation is exactly what Project Daedalus Phase 1 forced us to document.</p>
+
+<div class="ew-diagram" id="ew-layer-stack"></div>
+
+<h2>Four layers — click to explore</h2>
+<p>The stack is straightforward in diagram form and messy in practice:</p>
+<ol>
+  <li><strong>Operational source systems</strong> — QIS, Dominator, GLS, CTMS, VVS, COC, Checklist, and more</li>
+  <li><strong>EDW External Schema</strong> — ADF pipelines replicate source tables with minimal transformation (QS_*, GLS_*, CTMS_* prefixes)</li>
+  <li><strong>Power BI Custom Schema</strong> — business-maintained views and stored procedures (Dustin, Santosh, Bruce, Lawrie; code in <code>afi-internal/edw</code>)</li>
+  <li><strong>Consumption</strong> — Quantum QA, Vendor Scorecard, weekly/monthly reports, and future Daedalus agents</li>
+</ol>
+
+<h2>What lands in External Schema</h2>
+<p>Prefix naming is the informal lineage system. There is no authoritative catalog of which ADF job feeds which table.</p>
+
+<div class="ew-diagram" id="ew-sources"></div>
+
+<h2>Data flows — animated</h2>
+<p>Batch sync, not streaming. Select a path to see how data moves through the warehouse.</p>
+
+<div class="ew-diagram" id="ew-data-flow"></div>
+
+<h2>Quantum QA — the star schema on top</h2>
+<p>Quantum QA is US-only and is the flagship quality analytics product today — 9 fact tables and 6–7 dimensions maintained in Custom Schema, powering the dashboards Peter’s team uses (and the narrative reports they want agents to generate).</p>
+
+<div class="ew-diagram" id="ew-quantum-model"></div>
+
+<h2>Metric formulas carry warnings</h2>
+<p>These are not secrets — they are documented in our EDW analysis. Leadership accepts them to keep reporting moving; agents must not treat these numbers as ground truth without caveats.</p>
+
+<div class="ew-diagram" id="ew-metric-warnings"></div>
+
+<h2>Governance — fix upstream, not in views</h2>
+<p>The agreed principle: <strong>govern at the source</strong>, not by patching analysis-layer SQL. Path B (EDW patches) exists only when operational fixes cannot meet a deadline.</p>
+
+<div class="ew-diagram" id="ew-governance"></div>
+
+<h2>VOC Activation and the road ahead</h2>
+<p>VOC Activation Phase 1 treats EDW as the <strong>authoritative source</strong> for master data — DimDate, DimItem, DimVendor_Master sync weekly to a new platform Gold Layer. Week -2 → Week 0 prerequisites block Phase 1 until master data is stable.</p>
+<p>Longer term, the technology stack is undecided — Neo4j was raised early; Microsoft Fabric was recommended from ecosystem fit; Margaret’s team is the new data counterpart (replacing Mike Ward). OneAshley’s unified data API is the north star for cross-system queries that EDW views cannot cleanly serve today.</p>
+
+<h2>Gap pins from the landscape map</h2>
+
+<div class="ew-diagram" id="ew-gaps"></div>
+
+<p>Four implications for Daedalus and agent work:</p>
+<ul>
+  <li><strong>Read federation is mandatory</strong> — agents querying “quality status” must know which Custom Schema view to hit, not assume one API</li>
+  <li><strong>Writes stay in operational systems</strong> — EDW is read-only for agents; QIS writes go through Approval Cockpit, not the warehouse</li>
+  <li><strong>Master data blocks everything</strong> — DimItem/Vendor drift is the VOC Phase 1 gate, not a nice-to-have cleanup</li>
+  <li><strong>Narrative &gt; dashboard</strong> — Peter wants story-built-in reports with monthly archives; Quantum’s known flaws are tolerated to start that shift now</li>
+</ul>
+
+<div class="ew-related">
+  <p><strong>Process maps:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing</a> · <a href="post.html?slug=quality-end-to-end-process">Quality</a> · <a href="post.html?slug=compliance-end-to-end-process">Compliance</a> · <a href="post.html?slug=sq-team-daedalus-execution">Daedalus execution</a></p>
+</div>
+
+<p class="mt-8">
+  <a href="product.html?id=quality-workbench">Explore Quality Workbench →</a><br />
+  <a href="products.html">Browse the full product portfolio →</a>
+</p>
+      `.trim(),
+    },
+    {
       slug: 'compliance-end-to-end-process',
       type: 'blog',
       title: 'Compliance end to end — from BOM to CBP filing, and why no single system holds the answer',
@@ -67,7 +145,7 @@ const BLOG = {
 <div class="cf-diagram" id="cf-systems-owned"></div>
 
 <div class="cf-related">
-  <p><strong>Read the full trilogy:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> · <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a></p>
+  <p><strong>Read the full trilogy + data layer:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> · <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=edw-data-landscape">EDW data landscape</a> · <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a></p>
 </div>
 
 <p class="mt-8">
@@ -137,7 +215,7 @@ const BLOG = {
 <div class="qf-diagram" id="qf-systems-owned"></div>
 
 <div class="qf-related">
-  <p><strong>Read together:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> covers the product launch path; this post covers the quality layer. <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a> maps regulations, labs, and CBP filing. <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a> explains how we mapped all three.</p>
+  <p><strong>Read together:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> covers the product launch path; this post covers the quality layer. <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a> maps regulations and CBP filing. <a href="post.html?slug=edw-data-landscape">EDW data landscape</a> explains the analytics layer beneath. <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a> explains how we mapped all of it.</p>
 </div>
 
 <p class="mt-8">
@@ -201,7 +279,7 @@ const BLOG = {
 <div class="sf-diagram" id="sf-systems-owned"></div>
 
 <div class="sf-coming-soon">
-  <p><strong>Companion posts:</strong> <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a></p>
+  <p><strong>Companion posts:</strong> <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a> · <a href="post.html?slug=edw-data-landscape">EDW data landscape</a></p>
 </div>
 
 <p class="mt-8">

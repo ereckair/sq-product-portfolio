@@ -106,6 +106,8 @@
             initQualityFlowDiagrams();
           } else if (post.init === 'complianceFlow' && typeof initComplianceFlowDiagrams === 'function') {
             initComplianceFlowDiagrams();
+          } else if (post.init === 'edwFlow' && typeof initEdwFlowDiagrams === 'function') {
+            initEdwFlowDiagrams();
           }
         };
         document.body.appendChild(script);
