@@ -303,7 +303,7 @@
 
 .sf-packet {
   fill: #000000;
-  filter: none;
+  pointer-events: none;
 }
 
 .sf-flow-controls {

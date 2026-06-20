@@ -1,5 +1,73 @@
 /** Interactive diagrams for the Sourcing end-to-end blog post */
 (function () {
+  /** Reliable packet animation along SVG paths (replaces animateMotion) */
+  function createPacketAnimator(svg) {
+    let frameIds = [];
+    let layer = svg.querySelector('#sf-packet-layer');
+
+    function ensureLayer() {
+      if (!layer) {
+        layer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+        layer.setAttribute('id', 'sf-packet-layer');
+        svg.appendChild(layer);
+      }
+      return layer;
+    }
+
+    function stop() {
+      frameIds.forEach((id) => cancelAnimationFrame(id));
+      frameIds = [];
+      if (layer) layer.innerHTML = '';
+    }
+
+    function run(pathIds) {
+      stop();
+      const g = ensureLayer();
+      const duration = 2400;
+      const stagger = 0.4;
+
+      pathIds.forEach((pathId, index) => {
+        const path = svg.getElementById(pathId);
+        if (!path) return;
+
+        const len = path.getTotalLength();
+        const pad = Math.min(14, len * 0.06);
+        const travel = Math.max(len - pad * 2, 1);
+
+        const dot = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+        dot.setAttribute('r', '5');
+        dot.setAttribute('class', 'sf-packet');
+        g.appendChild(dot);
+
+        const delay = index * duration * stagger;
+        let origin = null;
+
+        function tick(now) {
+          if (origin === null) origin = now;
+          const elapsed = now - origin - delay;
+
+          if (elapsed < 0) {
+            dot.setAttribute('opacity', '0');
+            frameIds.push(requestAnimationFrame(tick));
+            return;
+          }
+
+          dot.setAttribute('opacity', '1');
+          const progress = (elapsed % duration) / duration;
+          const at = pad + progress * travel;
+          const pt = path.getPointAtLength(at);
+          dot.setAttribute('cx', String(pt.x));
+          dot.setAttribute('cy', String(pt.y));
+          frameIds.push(requestAnimationFrame(tick));
+        }
+
+        frameIds.push(requestAnimationFrame(tick));
+      });
+    }
+
+    return { run, stop };
+  }
+
   const STAGES = [
     {
       num: 1,
@@ -268,36 +336,36 @@
             </marker>
           </defs>
 
-          <!-- Nodes -->
-          <g class="sf-node" transform="translate(40,60)"><rect width="88" height="40" rx="3"/><text x="44" y="24">SMMS</text></g>
-          <g class="sf-node" transform="translate(200,40)"><rect width="88" height="40" rx="3"/><text x="44" y="24">CLS / PIM</text></g>
-          <g class="sf-node" transform="translate(200,120)"><rect width="88" height="40" rx="3"/><text x="44" y="24">Doc Review</text></g>
-          <g class="sf-node" transform="translate(360,40)"><rect width="88" height="40" rx="3"/><text x="44" y="24">CTMS</text></g>
-          <g class="sf-node" transform="translate(360,120)"><rect width="88" height="40" rx="3"/><text x="44" y="24">GLS</text></g>
-          <g class="sf-node" transform="translate(200,200)"><rect width="88" height="40" rx="3"/><text x="44" y="24">DPCS</text></g>
-          <g class="sf-node" transform="translate(200,280)"><rect width="88" height="40" rx="3"/><text x="44" y="24">ECO</text></g>
-          <g class="sf-node" transform="translate(360,200)"><rect width="88" height="40" rx="3"/><text x="44" y="24">VVS</text></g>
-          <g class="sf-node" transform="translate(520,200)"><rect width="88" height="40" rx="3"/><text x="44" y="24">COC</text></g>
-          <g class="sf-node" transform="translate(620,200)"><rect width="72" height="40" rx="3"/><text x="36" y="24">CBP</text></g>
-          <g class="sf-node" transform="translate(360,280)"><rect width="88" height="40" rx="3"/><text x="44" y="24">AIS/CTN</text></g>
+          <g id="sf-paths">
+            <path id="p-smms-cls" class="sf-flow-line" d="M128,80 L200,60" marker-end="url(#sf-arrow)"/>
+            <path id="p-smms-dpcs" class="sf-flow-line" d="M128,80 C160,80 160,220 200,220" marker-end="url(#sf-arrow)"/>
+            <path id="p-cls-doc" class="sf-flow-line" d="M244,80 L244,120" marker-end="url(#sf-arrow)"/>
+            <path id="p-cls-ais" class="sf-flow-line" d="M288,80 C320,80 320,300 360,300" marker-end="url(#sf-arrow)"/>
+            <path id="p-cls-ctms" class="sf-flow-line" d="M288,60 L360,60" marker-end="url(#sf-arrow)"/>
+            <path id="p-cls-gls" class="sf-flow-line" d="M288,80 C320,80 320,140 360,140" marker-end="url(#sf-arrow)"/>
+            <path id="p-cls-vvs" class="sf-flow-line" d="M288,80 C320,80 320,220 360,220" marker-end="url(#sf-arrow)"/>
+            <path id="p-vvs-coc" class="sf-flow-line" d="M448,220 L520,220" marker-end="url(#sf-arrow)"/>
+            <path id="p-coc-cbp" class="sf-flow-line" d="M608,220 L656,220" marker-end="url(#sf-arrow)"/>
+            <path id="p-eco-cls" class="sf-flow-line" d="M244,280 L244,80" marker-end="url(#sf-arrow)"/>
+            <path id="p-eco-ctms" class="sf-flow-line" d="M288,300 C340,300 340,60 360,60" marker-end="url(#sf-arrow)"/>
+            <path id="p-eco-dpcs" class="sf-flow-line" d="M244,280 L244,220" marker-end="url(#sf-arrow)"/>
+          </g>
 
-          <!-- Paths -->
-          <path id="p-smms-cls" class="sf-flow-line" d="M128,80 L200,60" marker-end="url(#sf-arrow)"/>
-          <path id="p-smms-dpcs" class="sf-flow-line" d="M128,80 C160,80 160,220 200,220" marker-end="url(#sf-arrow)"/>
-          <path id="p-cls-doc" class="sf-flow-line" d="M244,80 L244,120" marker-end="url(#sf-arrow)"/>
-          <path id="p-cls-ais" class="sf-flow-line" d="M288,80 C320,80 320,300 360,300" marker-end="url(#sf-arrow)"/>
-          <path id="p-cls-ctms" class="sf-flow-line" d="M288,60 L360,60" marker-end="url(#sf-arrow)"/>
-          <path id="p-cls-gls" class="sf-flow-line" d="M288,80 C320,80 320,140 360,140" marker-end="url(#sf-arrow)"/>
-          <path id="p-cls-vvs" class="sf-flow-line" d="M288,80 C320,80 320,220 360,220" marker-end="url(#sf-arrow)"/>
-          <path id="p-vvs-coc" class="sf-flow-line" d="M448,220 L520,220" marker-end="url(#sf-arrow)"/>
-          <path id="p-coc-cbp" class="sf-flow-line" d="M608,220 L620,220" marker-end="url(#sf-arrow)"/>
-          <path id="p-eco-cls" class="sf-flow-line" d="M244,280 L244,80" marker-end="url(#sf-arrow)"/>
-          <path id="p-eco-ctms" class="sf-flow-line" d="M288,300 C320,300 320,80 360,80" marker-end="url(#sf-arrow)"/>
-          <path id="p-eco-dpcs" class="sf-flow-line" d="M244,280 L244,220" marker-end="url(#sf-arrow)"/>
+          <g id="sf-nodes">
+            <g class="sf-node" transform="translate(40,60)"><rect width="88" height="40" rx="3"/><text x="44" y="24">SMMS</text></g>
+            <g class="sf-node" transform="translate(200,40)"><rect width="88" height="40" rx="3"/><text x="44" y="24">CLS / PIM</text></g>
+            <g class="sf-node" transform="translate(200,120)"><rect width="88" height="40" rx="3"/><text x="44" y="24">Doc Review</text></g>
+            <g class="sf-node" transform="translate(360,40)"><rect width="88" height="40" rx="3"/><text x="44" y="24">CTMS</text></g>
+            <g class="sf-node" transform="translate(360,120)"><rect width="88" height="40" rx="3"/><text x="44" y="24">GLS</text></g>
+            <g class="sf-node" transform="translate(200,200)"><rect width="88" height="40" rx="3"/><text x="44" y="24">DPCS</text></g>
+            <g class="sf-node" transform="translate(200,280)"><rect width="88" height="40" rx="3"/><text x="44" y="24">ECO</text></g>
+            <g class="sf-node" transform="translate(360,200)"><rect width="88" height="40" rx="3"/><text x="44" y="24">VVS</text></g>
+            <g class="sf-node" transform="translate(520,200)"><rect width="88" height="40" rx="3"/><text x="44" y="24">COC</text></g>
+            <g class="sf-node" transform="translate(620,200)"><rect width="72" height="40" rx="3"/><text x="36" y="24">CBP</text></g>
+            <g class="sf-node" transform="translate(360,280)"><rect width="88" height="40" rx="3"/><text x="44" y="24">AIS/CTN</text></g>
+          </g>
 
-          <circle class="sf-packet" r="4" opacity="0">
-            <animateMotion dur="3s" repeatCount="indefinite" begin="0s"/>
-          </circle>
+          <g id="sf-packet-layer"></g>
         </svg>
       </div>
       <p class="sf-flow-desc sf-diagram-caption"></p>
@@ -308,7 +376,7 @@
     const controls = container.querySelector('.sf-flow-controls');
     const desc = container.querySelector('.sf-flow-desc');
     const svg = container.querySelector('svg');
-    let packet = svg.querySelector('.sf-packet');
+    const animator = createPacketAnimator(svg);
 
     function activate(flow, btn) {
       svg.querySelectorAll('.sf-flow-line').forEach((p) => p.classList.remove('sf-flow-line--active'));
@@ -319,20 +387,7 @@
       controls.querySelectorAll('.sf-flow-btn').forEach((b) => b.classList.remove('is-active'));
       btn.classList.add('is-active');
       desc.textContent = flow.desc;
-
-      const pathEl = svg.getElementById(flow.paths[0]);
-      if (pathEl && packet) {
-        packet.remove();
-        packet = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-        packet.setAttribute('class', 'sf-packet');
-        packet.setAttribute('r', '4');
-        const motion = document.createElementNS('http://www.w3.org/2000/svg', 'animateMotion');
-        motion.setAttribute('dur', '2.5s');
-        motion.setAttribute('repeatCount', 'indefinite');
-        motion.setAttribute('path', pathEl.getAttribute('d'));
-        packet.appendChild(motion);
-        svg.appendChild(packet);
-      }
+      animator.run(flow.paths);
     }
 
     DATA_FLOWS.forEach((flow, i) => {

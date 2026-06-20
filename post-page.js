@@ -102,6 +102,10 @@
           if (typeof post.init === 'function') post.init();
           else if (post.init === 'sourcingFlow' && typeof initSourcingFlowDiagrams === 'function') {
             initSourcingFlowDiagrams();
+          } else if (post.init === 'qualityFlow' && typeof initQualityFlowDiagrams === 'function') {
+            initQualityFlowDiagrams();
+          } else if (post.init === 'complianceFlow' && typeof initComplianceFlowDiagrams === 'function') {
+            initComplianceFlowDiagrams();
           }
         };
         document.body.appendChild(script);

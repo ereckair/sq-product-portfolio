@@ -5,6 +5,148 @@
 const BLOG = {
   posts: [
     {
+      slug: 'compliance-end-to-end-process',
+      type: 'blog',
+      title: 'Compliance end to end — from BOM to CBP filing, and why no single system holds the answer',
+      excerpt:
+        'Compliance is embedded in Sourcing and Quality, not a standalone department. Four sub-processes, federated data across CTMS + CLS + GLS, and animated flows to CBP — plus the E-Filing gap that has been open for years.',
+      date: '2026-06-24',
+      author: 'SQ Product Team',
+      tags: ['Compliance', 'Process', 'Architecture', 'CTMS'],
+      layout: 'wide',
+      assets: ['compliance-flow-diagrams.css', 'compliance-flow-diagrams.js'],
+      init: 'complianceFlow',
+      body: `
+<p>This completes the trilogy alongside our <a href="post.html?slug=sourcing-end-to-end-process">Sourcing</a> and <a href="post.html?slug=quality-end-to-end-process">Quality</a> maps. Compliance at Ashley is <strong>not a standalone department</strong> — it is a set of functions embedded inside Sourcing and Quality. The ultimate deliverable is electronic filing with <strong>CBP</strong> (US Customs and Border Protection) when regulated product enters the country.</p>
+<p>The hardest compliance problem is not running tests — it is answering one question for any product: <em>“Which regulations apply, and are they all satisfied right now?”</em> No single system can answer that today.</p>
+
+<div class="cf-diagram" id="cf-subprocesses"></div>
+
+<h2>Four core sub-processes</h2>
+<p>We mapped compliance as four connected threads — click each card above for detail:</p>
+<ul>
+  <li><strong>Regulatory testing</strong> — BOM drives CMS/CTMS requirements; Compliance Test Create generates plans; GLS labs execute</li>
+  <li><strong>Material declaration</strong> — VVS supplier declarations, chain of custody, guarantee letters</li>
+  <li><strong>Labeling &amp; licensing</strong> — Law Label, Law License, RAMS attribute maintenance, BOM rollup</li>
+  <li><strong>Customs filing &amp; COC</strong> — Certificate of Compliance to CBP; Global Trade Department submission</li>
+</ul>
+
+<h2>Why CPSC eFiling forces federation</h2>
+<p>For CPSC-regulated consumer goods, CBP requires importers to electronically submit a Certificate of Compliance <em>at entry</em> — not just keep records for audit. That means systems must support a <strong>product × regulation</strong> query: for product X, list every applicable rule and whether valid test evidence exists, is expired, or missing.</p>
+
+<div class="cf-diagram" id="cf-federation"></div>
+
+<p>That dashboard — E-Filing on the Asia CTMS side, Regulatory Dashboard on the US side — has been scoped for years and not delivered. Until it exists, engineers and compliance teams federate queries manually.</p>
+
+<h2>Lab network — New GLS vs. Old GLS</h2>
+<p>Test execution spans Asia and US labs under GLS. The CPSC Project is consolidating CTMS + Old GLS into New GLS as the US filing source — but migration is incomplete.</p>
+
+<div class="cf-diagram" id="cf-labs"></div>
+
+<h2>Data flows — animated</h2>
+<p>Select a flow to trace how compliance data moves — solid lines are integrated paths; dashed lines are manual side pulls we flagged as gap pins.</p>
+
+<div class="cf-diagram" id="cf-data-flow"></div>
+
+<p>Five implications for anyone building on this stack:</p>
+<ul>
+  <li><strong>Never assume one API returns “compliance status”</strong> — federate CTMS + CLS job tests + GLS (and Old GLS during transition)</li>
+  <li><strong>BOM is the unlock</strong> — same substrate as Sourcing and Quality; without it, tests are guessed and VVS declarations are wrong</li>
+  <li><strong>VVS data quality drives filing errors</strong> — stale fields and Power BI side pulls at filing time are root causes we documented</li>
+  <li><strong>ECO changes ripple into compliance</strong> — material swaps trigger retests, label regeneration, and rollup recalculation</li>
+  <li><strong>Agents must read before they write</strong> — filing actions need human confirmation; wrong CBP data has legal consequences</li>
+</ul>
+
+<h2>The E-Filing gap — today vs. target</h2>
+
+<div class="cf-diagram" id="cf-efiling"></div>
+
+<h2>Systems in our compliance portfolio</h2>
+<p>We also support US-transferred regulatory systems — RAMS, BOM Regulatory Rollup, Regulatory Dashboard — that sit alongside the Asia-built CMS/CTMS/GLS stack.</p>
+
+<div class="cf-diagram" id="cf-systems-owned"></div>
+
+<div class="cf-related">
+  <p><strong>Read the full trilogy:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> · <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a></p>
+</div>
+
+<p class="mt-8">
+  <a href="product.html?id=cms">Explore Compliance Management System →</a><br />
+  <a href="products.html">Browse the full product portfolio →</a>
+</p>
+      `.trim(),
+    },
+    {
+      slug: 'quality-end-to-end-process',
+      type: 'blog',
+      title: 'Quality end to end — L1 to L2, data sources, and where the cost actually lands',
+      excerpt:
+        'Quality runs on a two-layer model: L1 captures issues, L2 drives corrective projects. Three divisions, nine L1 sources, animated data flows into QIS 2.0, Scorecard, and Quantum QA.',
+      date: '2026-06-23',
+      author: 'SQ Product Team',
+      tags: ['Quality', 'Process', 'Architecture', 'QIS'],
+      layout: 'wide',
+      assets: ['quality-flow-diagrams.css', 'quality-flow-diagrams.js'],
+      init: 'qualityFlow',
+      body: `
+<p>This is the companion to our <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end-to-end map</a>. Where Sourcing asks <em>“how do we get product to market?”</em>, Quality asks <em>“did it meet the bar — and if not, what do we fix?”</em></p>
+<p>Ashley’s quality abstraction is consistent across three operating divisions: <strong>L1 collects issues, L2 runs corrective projects</strong>. The tools differ by region; the concept does not. This post maps that model with interactive charts and animated data flows.</p>
+
+<div class="qf-diagram" id="qf-l1l2-model"></div>
+
+<h2>The L1 → L2 model</h2>
+<p><strong>L1 (issue capture)</strong> is where defects, audit findings, lab failures, and customer signals enter the system — QIE and Dominator on the sourcing side, Product Quality and US QIS in US manufacturing, Quality Alert System in Vietnam.</p>
+<p><strong>L2 (corrective projects)</strong> is where structured remediation happens — QIS 2.0 template projects with photos and approvals at every step, or the US equivalent on the same templates.</p>
+<p>Both layers feed downstream outcomes: <strong>Vendor Scorecard</strong> and <strong>Vendor Chargeback</strong> (Sourcing-owned, Quality-fed), plus <strong>EDW → Power BI → Quantum QA</strong> for US analytics.</p>
+
+<h2>What feeds L1 — nine source threads</h2>
+<p>Quality data does not start in QIS. It starts in factories, labs, warehouses, and customer service channels — often days before anyone opens a corrective project. Click each source below.</p>
+
+<div class="qf-diagram" id="qf-l1-sources"></div>
+
+<p>Two gaps we pinned in Phase 1 mapping: <strong>Salesforce B2C tickets are not integrated</strong> (Quality sees B2B via Quality Email only), and <strong>Vietnam L2 tooling is unclear</strong> outside SOP Compliance.</p>
+
+<h2>QIS 2.0 — the L2 engine</h2>
+<p>On the sourcing side, QIS 2.0 drives corrective work. Projects are template-driven: typically 8–9 steps, each requiring photos and sign-off before advancing. Three project categories cover leadership-directed work, vendor-managed projects, and recurrence-driven corrections — the “solution don’t stick” problem our Quality Workbench prototype targets first.</p>
+
+<div class="qf-diagram" id="qf-qis-pipeline"></div>
+
+<h2>Data flows — animated</h2>
+<p>Quality data crosses more systems than any single team owns. Select a flow to trace direction.</p>
+
+<div class="qf-diagram" id="qf-data-flow"></div>
+
+<p>Four patterns to remember:</p>
+<ul>
+  <li><strong>L1 is fragmented</strong> — the same vendor × item defect may appear in QIE, a lab result, a CLS first-shipment flag, and a retail return before anyone connects them</li>
+  <li><strong>L2 → Scorecard/Chargeback is the money loop</strong> — verified supplier responsibility becomes financial consequence; Scorecard and Chargeback sit with Sourcing, not Quality</li>
+  <li><strong>EDW is the analytics backbone</strong> — QIS, Dominator, GLS, CTMS sync to External Schema; business teams maintain Power BI Custom Schema views on top</li>
+  <li><strong>Quantum QA is US-only</strong> — the sourcing-side equivalent for item-level post-delivery signals lives in QIE/QIS, not Quantum’s shipment/return/open-box granularity</li>
+</ul>
+
+<h2>Where quality cost actually lands</h2>
+<p>Leadership sees one number — quality total cost — but it aggregates six very different buckets. The bars animate on load.</p>
+
+<div class="qf-diagram" id="qf-cost-structure"></div>
+
+<p>The formulas carry known warnings from our EDW analysis: retail return cost hardcoded at $86/event, technician visits at $80/event, and post-delivery issue counts that can triple-count one physical defect (return + tech + parts). Peter’s team accepts these imperfections to “start now” rather than wait for perfect data.</p>
+
+<h2>Systems Quality owns — and what it does not</h2>
+<p>ECO, CLS, Vendor Scorecard, Vendor Chargeback, and VAMS belong to Sourcing / Engineering. Quality consumes their outputs. Any consolidation plan that moves Scorecard under Quality misstates ownership.</p>
+
+<div class="qf-diagram" id="qf-systems-owned"></div>
+
+<div class="qf-related">
+  <p><strong>Read together:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> covers the product launch path; this post covers the quality layer. <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a> maps regulations, labs, and CBP filing. <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a> explains how we mapped all three.</p>
+</div>
+
+<p class="mt-8">
+  <a href="product.html?id=quality-workbench">Explore Quality Workbench →</a><br />
+  <a href="products.html">Browse the full product portfolio →</a>
+</p>
+      `.trim(),
+    },
+    {
       slug: 'sourcing-end-to-end-process',
       type: 'blog',
       title: 'Sourcing end to end — six stages, two threads, and the data that connects them',
@@ -59,7 +201,7 @@ const BLOG = {
 <div class="sf-diagram" id="sf-systems-owned"></div>
 
 <div class="sf-coming-soon">
-  <p><strong>Coming next:</strong> Quality end to end — the L1 → L2 model, QIS 2.0 corrective projects, inspection threads at first shipment, and how quality cost flows into EDW and Vendor Scorecard.</p>
+  <p><strong>Companion posts:</strong> <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a></p>
 </div>
 
 <p class="mt-8">
