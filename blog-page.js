@@ -1,66 +1,37 @@
-/** Blog listing page */
+/** Blog listing page — three sections: Blog, News, Roadmap */
 (function () {
-  const listEl = document.getElementById('blog-list');
-  const filtersEl = document.getElementById('blog-filters');
-  if (!listEl || !filtersEl) return;
+  const sectionsEl = document.getElementById('blog-sections');
+  const navEl = document.getElementById('blog-section-nav');
+  if (!sectionsEl || !navEl) return;
 
-  let activeFilter = 'all';
+  const SECTIONS = [
+    {
+      id: 'blog',
+      label: 'Blog',
+      type: 'blog',
+      description: 'Longer write-ups on process maps, architecture, and how we execute Project Daedalus.',
+    },
+    {
+      id: 'news',
+      label: 'News',
+      type: 'news',
+      description: 'Product releases, prototype launches, and short updates from the team.',
+    },
+    {
+      id: 'roadmap',
+      label: 'Roadmap',
+      type: 'roadmap',
+      description: 'Planned capabilities and direction — what comes next on the portfolio.',
+    },
+  ];
 
-  const typeLabels = {
-    all: 'All',
-    news: 'News',
-    blog: 'Blog',
-    roadmap: 'Roadmap',
-  };
-
-  function typeBadge(type) {
-    const map = {
-      news: 'bg-blue-50 text-blue-700 border-blue-200',
-      blog: 'bg-violet-50 text-violet-700 border-violet-200',
-      roadmap: 'bg-amber-50 text-amber-700 border-amber-200',
-    };
-    const label = typeLabels[type] || type;
-    return `<span class="inline-flex px-2 py-0.5 text-[10px] font-mono uppercase tracking-wide border rounded-sm ${map[type] || 'bg-zinc-100 text-zinc-600 border-zinc-200'}">${label}</span>`;
-  }
-
-  function renderFilters() {
-    const tabs = Object.keys(typeLabels).map((id) => ({ id, name: typeLabels[id] }));
-    filtersEl.innerHTML = tabs
-      .map(
-        (t) =>
-          `<button class="usecase-tab ${t.id === activeFilter ? 'active' : ''}" data-filter="${t.id}" role="tab">${t.name}</button>`
-      )
-      .join('');
-
-    filtersEl.querySelectorAll('[data-filter]').forEach((btn) => {
-      btn.addEventListener('click', () => {
-        activeFilter = btn.dataset.filter;
-        renderFilters();
-        renderList();
-        const hash = activeFilter === 'all' ? '' : `#${activeFilter}`;
-        history.replaceState(null, '', `blog.html${hash}`);
-      });
-    });
-  }
-
-  function renderList() {
-    const posts = getPostsByType(activeFilter);
-    if (!posts.length) {
-      listEl.innerHTML = '<p class="text-black/50 text-center py-12">No posts in this category yet.</p>';
-      return;
-    }
-
-    listEl.innerHTML = posts
-      .map(
-        (p) => `
+  function renderCard(p) {
+    return `
       <article class="light-card rounded-sm p-6 md:p-8 group">
-        <div class="flex flex-wrap items-center gap-3 mb-4">
-          ${typeBadge(p.type)}
-          <time class="text-xs text-black/40 font-mono" datetime="${p.date}">${formatPostDate(p.date)}</time>
-        </div>
-        <h2 class="font-display text-xl md:text-2xl font-medium text-black mb-3 group-hover:underline">
+        <time class="text-xs text-black/40 font-mono block mb-4" datetime="${p.date}">${formatPostDate(p.date)}</time>
+        <h3 class="font-display text-xl md:text-2xl font-medium text-black mb-3 group-hover:underline">
           <a href="post.html?slug=${p.slug}" class="cursor-pointer">${p.title}</a>
-        </h2>
+        </h3>
         <p class="text-black/60 leading-relaxed mb-5">${p.excerpt}</p>
         <div class="flex flex-wrap items-center justify-between gap-3">
           <span class="text-sm text-black/40">${p.author}</span>
@@ -71,14 +42,79 @@
             ? `<div class="flex flex-wrap gap-2 mt-4 pt-4 border-t border-black/5">${p.tags.map((t) => `<span class="text-[10px] font-mono text-black/35 uppercase tracking-wide">${t}</span>`).join('')}</div>`
             : ''
         }
-      </article>`
-      )
-      .join('');
+      </article>`;
   }
 
-  const hash = location.hash.replace('#', '');
-  if (hash && typeLabels[hash]) activeFilter = hash;
+  function renderSection(section) {
+    const posts = getPostsByType(section.type);
+    const cards = posts.length
+      ? `<div class="news-section-list space-y-6">${posts.map(renderCard).join('')}</div>`
+      : `<p class="news-section-empty">No ${section.label.toLowerCase()} posts yet.</p>`;
 
-  renderFilters();
-  renderList();
+    return `
+      <section class="news-section" id="${section.id}" aria-labelledby="${section.id}-heading">
+        <header class="news-section-header">
+          <h2 class="news-section-title" id="${section.id}-heading">${section.label}</h2>
+          <p class="news-section-desc">${section.description}</p>
+          <span class="news-section-count">${posts.length} ${posts.length === 1 ? 'post' : 'posts'}</span>
+        </header>
+        ${cards}
+      </section>`;
+  }
+
+  function renderNav() {
+    navEl.innerHTML = SECTIONS.map(
+      (s) =>
+        `<a href="#${s.id}" class="usecase-tab news-section-link" data-section="${s.id}">${s.label}</a>`
+    ).join('');
+
+    navEl.querySelectorAll('.news-section-link').forEach((link) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.getElementById(link.dataset.section);
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.replaceState(null, '', `blog.html#${link.dataset.section}`);
+          setActiveNav(link.dataset.section);
+        }
+      });
+    });
+  }
+
+  function setActiveNav(id) {
+    navEl.querySelectorAll('.news-section-link').forEach((link) => {
+      link.classList.toggle('active', link.dataset.section === id);
+    });
+  }
+
+  function initScrollSpy() {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveNav(entry.target.id);
+        });
+      },
+      { rootMargin: '-30% 0px -55% 0px', threshold: 0 }
+    );
+
+    SECTIONS.forEach((s) => {
+      const el = document.getElementById(s.id);
+      if (el) observer.observe(el);
+    });
+  }
+
+  sectionsEl.innerHTML = SECTIONS.map(renderSection).join('');
+  renderNav();
+
+  const hash = location.hash.replace('#', '');
+  if (hash && SECTIONS.some((s) => s.id === hash)) {
+    requestAnimationFrame(() => {
+      document.getElementById(hash)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      setActiveNav(hash);
+    });
+  } else {
+    setActiveNav(SECTIONS[0].id);
+  }
+
+  initScrollSpy();
 })();

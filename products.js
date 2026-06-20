@@ -9,6 +9,10 @@ const PORTFOLIO = {
     tagline: 'Building the systems that power product lifecycle, compliance, quality, and sourcing.',
     description:
       'We design and ship internal products that connect sourcing, quality control, compliance, and HR operations — from concept through production. Our systems form an integrated ecosystem: SMMS raw materials → PIM BOM engine → compliance, cost, quality, and procurement.',
+    coreTeam: [
+      ['Erika', 'Lawrie'],
+      ['Sara', 'Lois', 'Ted', 'Hugh', 'Zoey'],
+    ],
   },
 
   initiatives: {

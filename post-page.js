@@ -108,6 +108,8 @@
             initComplianceFlowDiagrams();
           } else if (post.init === 'edwFlow' && typeof initEdwFlowDiagrams === 'function') {
             initEdwFlowDiagrams();
+          } else if (post.init === 'qualityProblemsFlow' && typeof initQualityProblemsDiagrams === 'function') {
+            initQualityProblemsDiagrams();
           }
         };
         document.body.appendChild(script);

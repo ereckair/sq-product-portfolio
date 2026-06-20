@@ -5,6 +5,95 @@
 const BLOG = {
   posts: [
     {
+      slug: 'quality-problems-and-actions',
+      type: 'blog',
+      title: 'Quality problems, needs & actions — from 20+ system gaps to the agent MVP',
+      excerpt:
+        'Part V of the landscape map: four problem categories, 20 AI initiatives, 2030 eight-dimension vision, and the Solution Don\'t Stick MVP — five-step QIS write-back loop plus dual-track Quantum/QIS roadmap.',
+      date: '2026-06-26',
+      author: 'SQ Product Team',
+      tags: ['Quality', 'Strategy', 'Agents', 'OneAshley'],
+      layout: 'wide',
+      assets: ['quality-problems-diagrams.css', 'quality-problems-diagrams.js'],
+      init: 'qualityProblemsFlow',
+      body: `
+<p>Our <a href="post.html?slug=quality-end-to-end-process">Quality end-to-end map</a> shows how work flows through L1 and L2. Our <a href="post.html?slug=edw-data-landscape">EDW landscape</a> shows where analytics breaks. This post is <strong>Part V</strong> — the problems those maps exposed, the strategic response, and what we are building first.</p>
+<p>Sources: Peter Fynboh's <em>Zero-Defect Quality Strategic Roadmap</em> (62 pp), Phase 1 landscape gap pins, EDW exploration, and §14 MVP progress through 2026-05-29.</p>
+
+<h2>Why this section exists</h2>
+<p>Phase 1 mapping was not documentation for its own sake. It produced a merged problem inventory — strategic initiative Problem Statements plus Known Gaps from walkthroughs — and a prioritized action stack. The strategic roadmap already reframed every pain point as a named Initiative with metrics and dependencies. Our job is to execute against that list, one initiative at a time.</p>
+
+<div class="qp-diagram" id="qp-problems"></div>
+
+<h2>Four problem categories</h2>
+<p>§12.7 consolidates dozens of gaps into four dimensions:</p>
+<ul>
+  <li><strong>A · Data &amp; systems</strong> — fragmented data across 20+ apps, federation gaps (eFiling, GLS migration), integration black holes, and Quantum as dashboard-not-narrative</li>
+  <li><strong>B · Process &amp; execution</strong> — manual L1→L2 prioritization, static AQL rules, complaints disconnected from 50K weekly SOP audits</li>
+  <li><strong>C · Organization &amp; accountability</strong> — Quality vs Logistics claim boundary (46.5% / 53.5%), leader bottlenecks, vendor program scale limits</li>
+  <li><strong>D · Commercial loss</strong> — first-shipment launch killers, CLS discipline risk, negotiation premium left on the table</li>
+</ul>
+<p>Two items tagged <strong>MVP</strong> in the diagram — <em>Solution Don't Stick</em> and narrative reporting — are where agent work starts.</p>
+
+<h2>Strategic framework</h2>
+<p>The roadmap defines five AI-First pillars, 20 Quality AI initiatives, five Regulatory/Compliance initiatives, and an eight-dimension 2030 Quality Perfection vision. Click each pillar below.</p>
+
+<div class="qp-diagram" id="qp-pillars"></div>
+
+<h2>Twenty initiatives — tier view</h2>
+<p>Each initiative in the source document carries Problem Statement, Strategic Objective, Key Metrics, Risks, and Dependencies (§13–§33). Where the source table is image-only, the tier lists below synthesize initiative themes directly from §12.7 gaps.</p>
+
+<div class="qp-diagram" id="qp-initiatives"></div>
+
+<h2>AI priority overlay</h2>
+<p>§12.5 adds a Landscape AI Opportunity Map ranking on top of the initiative list — recurrence detection and narrative reporting lead because they unlock both insight and action.</p>
+
+<div class="qp-diagram" id="qp-priorities"></div>
+
+<h2>2030 Quality Perfection</h2>
+<p>Eight dimensions plus a foundation layer — Simply Perfect Instructions and Customer Experience / End-to-End Quality / Regulatory Health spanning all of them.</p>
+
+<div class="qp-diagram" id="qp-dimensions"></div>
+
+<h2>§14 — Quality AI Agent platform</h2>
+<p>The platform sits above QIS, QIE, Checklist (and eventually Quantum, EDW, Track Audit). One workbench where business users see recurrence, leadership reviews team progress, and agents drive read + write with human approval.</p>
+
+<h3>MVP scenario: Solution Don't Stick</h3>
+<p>Why this scenario first: it exercises the full loop — read cross-system data, reason about recurrence, draft a corrective project, write to QIS with approval, read back and verify. Staging data validated with Main G, Shane, Mark, and others.</p>
+
+<div class="qp-diagram" id="qp-mvp-pipeline"></div>
+
+<h3>Dual-track roadmap</h3>
+<p>2026-05-29 consensus: run two tracks in parallel rather than waiting for a perfect data foundation.</p>
+
+<div class="qp-diagram" id="qp-tracks"></div>
+
+<h3>Report paradigm shift</h3>
+<p>Peter's non-negotiable requirement: reports must carry the story built in — company → financial division → primary series → point of supply → active projects and outcomes. Archived monthly (June 2026, July 2026, …), photo-rich from QIE's millions of images, pushable directly to vendors for corrective commitment. Two uses: <strong>Activation</strong> (internal action) and <strong>Communication</strong> (vendor push). Quantum's known metric issues are accepted — "do more improvement" beats "do nothing while waiting for perfect."</p>
+
+<h2>Action flows — animated</h2>
+<p>Three paths from problem to outcome. Select a flow to animate.</p>
+
+<div class="qp-diagram" id="qp-action-flow"></div>
+
+<h2>What we are not doing</h2>
+<ul>
+  <li>Connecting every system on day one — roadmap advances one business initiative at a time to keep loop cycle short</li>
+  <li>Blocking agents on EDW P0 fixes — Track A uses Quantum as-is while governance proceeds in parallel</li>
+  <li>Duplicating India's Quality Hub — Dustin team's insight generation + our write-back differentiation; integrate best practices</li>
+</ul>
+
+<div class="qp-related">
+  <p><strong>Series:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing</a> · <a href="post.html?slug=quality-end-to-end-process">Quality process</a> · <a href="post.html?slug=compliance-end-to-end-process">Compliance</a> · <a href="post.html?slug=edw-data-landscape">EDW data</a> · <a href="post.html?slug=sq-team-daedalus-execution">Daedalus execution</a></p>
+</div>
+
+<p class="mt-8">
+  <a href="product.html?id=quality-workbench">Explore Quality Workbench →</a><br />
+  <a href="products.html">Browse the full product portfolio →</a>
+</p>
+      `.trim(),
+    },
+    {
       slug: 'edw-data-landscape',
       type: 'blog',
       title: 'EDW data landscape — from operational systems to Quantum QA, and what the map exposed',
@@ -73,7 +162,7 @@ const BLOG = {
 </ul>
 
 <div class="ew-related">
-  <p><strong>Process maps:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing</a> · <a href="post.html?slug=quality-end-to-end-process">Quality</a> · <a href="post.html?slug=compliance-end-to-end-process">Compliance</a> · <a href="post.html?slug=sq-team-daedalus-execution">Daedalus execution</a></p>
+  <p><strong>Process maps:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing</a> · <a href="post.html?slug=quality-end-to-end-process">Quality</a> · <a href="post.html?slug=compliance-end-to-end-process">Compliance</a> · <a href="post.html?slug=quality-problems-and-actions">Quality problems &amp; actions</a> · <a href="post.html?slug=sq-team-daedalus-execution">Daedalus execution</a></p>
 </div>
 
 <p class="mt-8">
@@ -145,7 +234,7 @@ const BLOG = {
 <div class="cf-diagram" id="cf-systems-owned"></div>
 
 <div class="cf-related">
-  <p><strong>Read the full trilogy + data layer:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> · <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=edw-data-landscape">EDW data landscape</a> · <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a></p>
+  <p><strong>Read the full trilogy + data layer:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> · <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=edw-data-landscape">EDW data landscape</a> · <a href="post.html?slug=quality-problems-and-actions">Quality problems &amp; actions</a> · <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a></p>
 </div>
 
 <p class="mt-8">
@@ -215,7 +304,7 @@ const BLOG = {
 <div class="qf-diagram" id="qf-systems-owned"></div>
 
 <div class="qf-related">
-  <p><strong>Read together:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> covers the product launch path; this post covers the quality layer. <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a> maps regulations and CBP filing. <a href="post.html?slug=edw-data-landscape">EDW data landscape</a> explains the analytics layer beneath. <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a> explains how we mapped all of it.</p>
+  <p><strong>Read together:</strong> <a href="post.html?slug=sourcing-end-to-end-process">Sourcing end to end</a> covers the product launch path; this post covers the quality layer. <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a> maps regulations and CBP filing. <a href="post.html?slug=edw-data-landscape">EDW data landscape</a> explains the analytics layer beneath. <a href="post.html?slug=quality-problems-and-actions">Quality problems &amp; actions</a> covers the strategic response and agent MVP. <a href="post.html?slug=sq-team-daedalus-execution">Project Daedalus execution</a> explains how we mapped all of it.</p>
 </div>
 
 <p class="mt-8">
@@ -279,7 +368,7 @@ const BLOG = {
 <div class="sf-diagram" id="sf-systems-owned"></div>
 
 <div class="sf-coming-soon">
-  <p><strong>Companion posts:</strong> <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a> · <a href="post.html?slug=edw-data-landscape">EDW data landscape</a></p>
+  <p><strong>Companion posts:</strong> <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> · <a href="post.html?slug=compliance-end-to-end-process">Compliance end to end</a> · <a href="post.html?slug=edw-data-landscape">EDW data landscape</a> · <a href="post.html?slug=quality-problems-and-actions">Quality problems &amp; actions</a></p>
 </div>
 
 <p class="mt-8">
