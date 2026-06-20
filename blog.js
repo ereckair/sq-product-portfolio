@@ -57,7 +57,7 @@ const BLOG = {
       type: 'blog',
       title: 'How the Sourcing & Quality product team is executing Project Daedalus',
       excerpt:
-        'When the US team handed us the systems, the documentation did not come with them. Phase 1 for us meant mapping every process, every subsystem, and every gap — then deciding where agents belong.',
+        'We already owned SMMS, PIM, PLM, and the sourcing stack — but not the full company-wide picture of Quality and Compliance. Phase 1 meant mapping that landscape end to end, including systems the US team transferred into our scope.',
       date: '2026-06-21',
       author: 'SQ Product Team',
       tags: ['Daedalus', 'Strategy', 'Sourcing', 'Quality', 'OneAshley'],
@@ -65,16 +65,17 @@ const BLOG = {
 <p>Project Daedalus is Ashley’s company-wide push to dissolve legacy systems in <strong>waves</strong> — Map, Rebuild, Agents — not in a single waterfall. Supply Chain Planning is Unit 01, the template-builder. Inside that wave, the <strong>Sourcing &amp; Quality Product Team</strong> owns a large slice of the landscape: product lifecycle, raw materials, compliance, quality, and procurement.</p>
 <p>This post is our honest account of what Daedalus means for us, what we have done in Phase 1, and how we are thinking about agentic execution next.</p>
 
-<h2>What we inherited — and what was missing</h2>
-<p>When responsibility for these systems moved to the China product team, we did not inherit a neat architecture diagram. We inherited <strong>live production systems</strong> — SMMS, PIM, PLM, CTMS, QIS, APS, and more — with processes that lived in people’s heads, scattered spreadsheets, and years of tribal knowledge.</p>
-<p>Nobody had a single document that answered basic questions:</p>
+<h2>What we already owned — and what was missing</h2>
+<p>Let us be precise: the Sourcing &amp; Quality product team did not wake up one day owning unfamiliar systems. We have long built and run <strong>SMMS, PIM, PLM, CTMS, APS</strong>, and the sourcing and product-lifecycle stack around them. We know how those applications work, who uses them, and what data they hold.</p>
+<p>What we did <em>not</em> have was a <strong>complete picture</strong> — the end-to-end landscape of how Sourcing, Quality, and Compliance connect across Ashley, not just inside our own portfolio. Nobody had one document that answered basic questions:</p>
 <ul>
-  <li>What are the end-to-end Sourcing stages from concept through sustained operations?</li>
-  <li>Which system owns which step — and where do Quality and Compliance plug in?</li>
-  <li>What data flows from supplier material master → BOM → compliance tests → purchase orders?</li>
-  <li>Where are the gaps, duplications, and manual handoffs?</li>
+  <li>What are the full Sourcing stages from concept through sustained operations — and where does Quality enter each stage?</li>
+  <li>How do compliance attributes roll up from components to end items, and which systems feed CPSC filings and lab workflows?</li>
+  <li>What data flows from supplier material master → BOM → compliance tests → purchase orders — across teams and regions?</li>
+  <li>Where are the gaps, duplications, and manual handoffs between systems we run and systems we did not yet own?</li>
 </ul>
-<p>Daedalus Phase 1 calls this <strong>Map &amp; Inventory</strong>: forensic mapping of every process, every system, every data asset — jointly with the business. For Sourcing &amp; Quality, that work had to start from zero.</p>
+<p>That gap became sharper when the US Product Systems team transferred additional <strong>Quality &amp; Regulatory</strong> applications into our scope — systems we had not built but now support: <strong>Global Laboratory System (GLS)</strong>, Regulatory Maintenance (RAMS), BOM Regulatory Rollup, Track Audit System, Product Quality (QIS US), Regulatory Dashboard, and Spectro Mobile, among others. Each came with its own users, integrations, and history — but not with a map of how they fit next to CTMS, CLS, QIS Asia, and the rest of the ecosystem.</p>
+<p>Daedalus Phase 1 calls this <strong>Map &amp; Inventory</strong>: forensic mapping of every process, every system, every data asset — jointly with the business. For us, that meant assembling the full puzzle — our systems, the ones newly in our care, and the business processes that tie them together.</p>
 
 <h2>Step one: mapping the business — not just the apps</h2>
 <p>We did not begin with code. We began with the <strong>business landscape</strong>.</p>
@@ -125,7 +126,7 @@ const BLOG = {
 
 <h2>The point of Daedalus for us</h2>
 <p>Daedalus is not an IT rebranding exercise. For the SQ Product Team, it is a mandate to stop accepting undocumented systems, manual handoffs, and “figure it out in Excel” as normal.</p>
-<p>We mapped the labyrinth because nobody else had. We are building the wings — automation, agents, and connected data — so the next team does not have to start from tribal knowledge again.</p>
+<p>We mapped the full landscape because the company needed one shared picture — not because our own systems were unknown. We are building the wings — automation, agents, and connected data — on top of that map.</p>
 <p>
   <a href="products.html">Browse our product portfolio →</a><br />
   <a href="index.html#initiatives-cards">Read about One Ashley &amp; Daedalus alignment →</a>
