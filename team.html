@@ -53,14 +53,6 @@
     </section>
 
     <section class="px-4 py-24 light-divider">
-      <div class="max-w-4xl mx-auto">
-        <h2 class="text-h1-light text-black mb-3">Our core team</h2>
-        <p class="text-black/55 mb-10 max-w-2xl">Product, engineering, and delivery — building the Sourcing &amp; Quality portfolio together.</p>
-        <div class="core-team" id="core-team"></div>
-      </div>
-    </section>
-
-    <section class="px-4 py-24 light-divider">
       <div class="max-w-6xl mx-auto">
         <h2 class="text-h1-light text-black text-center mb-12">Domains we own</h2>
         <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4" id="team-domains"></div>
@@ -100,18 +92,6 @@
         <h3 class="font-display font-medium text-black mb-1 group-hover:underline">${cat.name}</h3>
         <p class="text-xs text-black/50">${cat.products.length} products</p>
       </a>`).join('');
-
-    const coreTeamEl = document.getElementById('core-team');
-    if (coreTeamEl && PORTFOLIO.team.coreTeam) {
-      coreTeamEl.innerHTML = PORTFOLIO.team.coreTeam
-        .map(
-          (row) => `
-        <div class="core-team-row">
-          ${row.map((name) => `<div class="core-team-member"><span class="core-team-name">${name}</span></div>`).join('')}
-        </div>`
-        )
-        .join('');
-    }
   </script>
 </body>
 </html>
