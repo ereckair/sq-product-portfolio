@@ -5,6 +5,54 @@
 const BLOG = {
   posts: [
     {
+      slug: 'pre-plm-agent-chat-first-sampling',
+      type: 'blog',
+      title: 'Stop filling forms. Start shipping samples.',
+      excerpt:
+        'The Pre-PLM Agent turns everyday chat into structured product records — entry, edits, images, and PPT reports without opening another app.',
+      date: '2026-06-20',
+      author: 'SQ Product Team',
+      tags: ['Pre-PLM', 'Sampling', 'Agents'],
+      relatedProduct: 'pre-plm-agent',
+      body: `
+<p>Sampling used to mean scattered notes, slow handoffs, and forms that never quite matched how developers actually work. <strong>Pre-PLM Agent</strong> changes that — it meets your team where they already are, in chat, and turns conversation into clean product data ready for PLM.</p>
+
+<h2>The problem we heard every week</h2>
+<p>During R&amp;D sampling, product information lived everywhere at once: messages, spreadsheets, photos, and memory. Entering data was rigid. Finding a record meant hunting through threads. Reports were manual. By the time information reached formal systems, details were already stale or missing.</p>
+<p>We built something simpler: a <strong>chatbot assistant</strong> that works inside the messaging tools your team already uses — Feishu, Slack, Teams, and similar platforms — so sampling never breaks out of the conversation.</p>
+
+<h2>What you can do today — just by talking</h2>
+<ul>
+  <li><strong>Enter products in plain language</strong> — type or paste specs; the agent extracts fields automatically, with or without a series number yet</li>
+  <li><strong>Edit on the fly</strong> — say “change UE0890’s FOB to 400” or “update its size to 30×20”; it understands “it” and “this one” from context</li>
+  <li><strong>Ask anything</strong> — “How is UE0890?” or “What did Longwei record today?” — single-product lookup or range search</li>
+  <li><strong>Drop photos, get order</strong> — uploads are sorted into product, note, material, rendering, and problem images without manual tagging</li>
+  <li><strong>Generate reports instantly</strong> — four PPT versions on demand: application, trip note, factory fix (bilingual CN/EN), or the complete record</li>
+  <li><strong>No number yet? No problem</strong> — fuzzy entry creates a placeholder so work continues; assign the real series number when you have it</li>
+</ul>
+
+<h2>Built for trust, not surprises</h2>
+<p>Every save shows a <strong>confirmation card</strong> first — you see exactly what the agent understood before anything hits the database. That one habit eliminated the fear of “the bot misread me and silently changed our data.”</p>
+<p>When two people edit at once, <strong>optimistic-lock protection</strong> keeps records safe. You stay in control; the agent does the tedious typing.</p>
+
+<h2>Why teams actually use it</h2>
+<p>Developers told us the same story: they do not want another system to learn. They want to <em>talk</em>, attach images, and move on. Pre-PLM Agent is deliberately low-barrier — no new app to deploy, no training deck required. High-frequency actions like generating a PPT or pulling up images respond in seconds.</p>
+<p>Behind the scenes, smart routing keeps the agent fast and efficient to run (~80% lower token cost vs. a single-model design). For you, that means a responsive assistant that stays practical at scale.</p>
+
+<h2>Where it sits in your workflow</h2>
+<p>Pre-PLM Agent lives <strong>ahead of formal PLM</strong> — it captures sampling intelligence early, while specs are still forming. Structured records flow into POM and downstream compliance, cost, and quality systems instead of arriving late and incomplete.</p>
+<p>That is the point: better data in, fewer re-entries later, less friction between “we saw it at the factory” and “it is in the system.”</p>
+
+<h2>Try it yourself</h2>
+<p>Watch the tutorial, browse the user guide, or open the full product page for PRDs and technical docs.</p>
+<p>
+  <a href="pre-plm-agent/">Explore the Pre-PLM Agent →</a><br />
+  <a href="pre-plm-agent/#demo">Watch the tutorial video →</a><br />
+  <a href="product.html?id=pre-plm-agent">View the portfolio entry →</a>
+</p>
+      `.trim(),
+    },
+    {
       slug: 'quality-workbench-prototype-live',
       type: 'news',
       title: 'Quality Workbench prototype is live in the portfolio',
