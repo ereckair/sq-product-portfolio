@@ -53,6 +53,86 @@ const BLOG = {
       `.trim(),
     },
     {
+      slug: 'sq-team-daedalus-execution',
+      type: 'blog',
+      title: 'How the Sourcing & Quality product team is executing Project Daedalus',
+      excerpt:
+        'When the US team handed us the systems, the documentation did not come with them. Phase 1 for us meant mapping every process, every subsystem, and every gap — then deciding where agents belong.',
+      date: '2026-06-21',
+      author: 'SQ Product Team',
+      tags: ['Daedalus', 'Strategy', 'Sourcing', 'Quality', 'OneAshley'],
+      body: `
+<p>Project Daedalus is Ashley’s company-wide push to dissolve legacy systems in <strong>waves</strong> — Map, Rebuild, Agents — not in a single waterfall. Supply Chain Planning is Unit 01, the template-builder. Inside that wave, the <strong>Sourcing &amp; Quality Product Team</strong> owns a large slice of the landscape: product lifecycle, raw materials, compliance, quality, and procurement.</p>
+<p>This post is our honest account of what Daedalus means for us, what we have done in Phase 1, and how we are thinking about agentic execution next.</p>
+
+<h2>What we inherited — and what was missing</h2>
+<p>When responsibility for these systems moved to the China product team, we did not inherit a neat architecture diagram. We inherited <strong>live production systems</strong> — SMMS, PIM, PLM, CTMS, QIS, APS, and more — with processes that lived in people’s heads, scattered spreadsheets, and years of tribal knowledge.</p>
+<p>Nobody had a single document that answered basic questions:</p>
+<ul>
+  <li>What are the end-to-end Sourcing stages from concept through sustained operations?</li>
+  <li>Which system owns which step — and where do Quality and Compliance plug in?</li>
+  <li>What data flows from supplier material master → BOM → compliance tests → purchase orders?</li>
+  <li>Where are the gaps, duplications, and manual handoffs?</li>
+</ul>
+<p>Daedalus Phase 1 calls this <strong>Map &amp; Inventory</strong>: forensic mapping of every process, every system, every data asset — jointly with the business. For Sourcing &amp; Quality, that work had to start from zero.</p>
+
+<h2>Step one: mapping the business — not just the apps</h2>
+<p>We did not begin with code. We began with the <strong>business landscape</strong>.</p>
+<p>Sourcing, we documented, is not “placing purchase orders.” It is the full chain of getting external suppliers to produce Ashley-standard product and move it compliantly into the US market. That chain has six stages — concept, sample development, market feasibility, pre-production (PPR), first shipment, and sustained operations — and it runs through systems like CLS, CTMS, GLS, ECO, QIS, and APS in parallel threads.</p>
+<p>Quality runs on a shared <strong>L1 → L2 model</strong> across divisions: L1 captures issues (QIE, Dominator); L2 drives corrective projects (QIS 2.0). Compliance is embedded inside Sourcing and Quality — CTMS, VVS, COC, law labels, and lab results — with data that must federate across multiple systems because no single database holds “product compliance status.”</p>
+<p>We mapped <strong>five product domains</strong> and the systems inside each:</p>
+<ul>
+  <li><strong>Product Lifecycle</strong> — Pre-PLM Agent, PLM, PIM, DPCS, ECO, CPMS, market research</li>
+  <li><strong>Global Compliance</strong> — CMS, Compliance Test Create, law labels, law licenses, chain of custody, GLS</li>
+  <li><strong>Quality</strong> — Quality Workbench and the QIS / Checklist / Quantum QA stack</li>
+  <li><strong>Sourcing</strong> — SMMS, APS, vendor profiles, vendor trademark</li>
+  <li><strong>HR</strong> — the people layer behind material engineers, compliance engineers, and QC inspectors</li>
+</ul>
+<p>We also captured what Daedalus calls <strong>gap pins</strong>: places where data stops, systems duplicate each other, or teams manually re-enter the same material. Examples we documented include compliance status scattered across CTMS + CLS + GLS (old and new), BOM shared between engineering and compliance with no single owner, and quality cost metrics built on hardcoded assumptions in EDW views.</p>
+<p>This portfolio site — the product pages, ecosystem narrative, and migration tracker — is part of that map. It is the living artifact of Phase 1 for our team.</p>
+
+<h2>Step two: scoring agentic readiness</h2>
+<p>Mapping alone is not enough. Daedalus asks an honest question for every system: <strong>can this carry agentic load?</strong> That means API surface, data authority, latency, idempotence — and whether an agent can read and write without breaking production.</p>
+<p>For each product in our portfolio, we evaluated:</p>
+<ul>
+  <li><strong>Where is the system in migration?</strong> — live, in UAT, in progress, or not yet started (see our system migration tracker on each product page)</li>
+  <li><strong>Where is the data model strong enough</strong> for downstream automation? — e.g. PIM BOM as the engine for compliance test generation and costing</li>
+  <li><strong>Where are agents already shipping?</strong> — Pre-PLM Agent is live: chat-first sampling before formal PLM</li>
+  <li><strong>Where are agents planned next?</strong> — price negotiation on SMMS, data-missing reminders, Simple Review voice-fill, Quality Workbench recurrence detection</li>
+</ul>
+<p>The pattern we see: agents work best when they sit on <strong>structured substrate</strong> — a BOM, a material library, a protocol rule set — not when they have to rediscover materials from photos and memory every time.</p>
+
+<h2>Step three: sketching the agentic future (Phase 1.5)</h2>
+<p>Daedalus Phase 1.5 is a short pulse per business unit: review Phase 1 artifacts, draft what agentic-native looks like, align with the business. For Sourcing &amp; Quality, our sketch looks like this:</p>
+<ul>
+  <li><strong>One connected ecosystem</strong> — SMMS raw materials → PIM BOM → compliance, cost, quality, and procurement; not seventeen siloed logins</li>
+  <li><strong>One Ashley Portal</strong> — unified access layer with role-based permissions and a notification hub across internal systems</li>
+  <li><strong>Agents augment workflows teams already use</strong> — chat for sampling, BOM-driven compliance tests, negotiation alerts when material prices move, recurrence watchtowers for quality</li>
+  <li><strong>Human approval before writes</strong> — agents propose; people confirm (Pre-PLM confirmation cards, Quality Workbench Approval Cockpit)</li>
+</ul>
+<p>We are not building agents beside the business. We are building them <em>into</em> the flows product developers, compliance engineers, material engineers, and QC teams already run.</p>
+
+<h2>What comes next — substrate, then agents at scale</h2>
+<p>Phase 2 rebuilds the substrate: semantic layer, master data, reusable agent services — built once, consumed by every unit in the wave. Phase 3 is the operating model: <strong>agents, not systems</strong> — Planning Data Fabric, Action Surface, and a binary build/buy fork per capability.</p>
+<p>For our team, the sequence is deliberate:</p>
+<ol>
+  <li><strong>Finish the map</strong> — keep migration tracker and portfolio docs current as systems move through UAT</li>
+  <li><strong>Harden the BOM engine</strong> — PIM is the unlock for compliance automation, accurate costing, and quality protocols</li>
+  <li><strong>Ship agents on real substrate</strong> — Pre-PLM is live; Quality Workbench prototype shows recurrence + approval; SMMS price intelligence is next</li>
+  <li><strong>Expose MCP tools and APIs</strong> — so supply chain agents on the Daedalus core can call SMMS, PIM, and compliance services safely</li>
+</ol>
+<p>Unit 01 (Supply Chain Planning) builds the template every other unit inherits. Our job is to make sure when the wave reaches Sourcing &amp; Quality in full, the map is done, the gaps are pinned, and the first agents are already proving value on real data.</p>
+
+<h2>The point of Daedalus for us</h2>
+<p>Daedalus is not an IT rebranding exercise. For the SQ Product Team, it is a mandate to stop accepting undocumented systems, manual handoffs, and “figure it out in Excel” as normal.</p>
+<p>We mapped the labyrinth because nobody else had. We are building the wings — automation, agents, and connected data — so the next team does not have to start from tribal knowledge again.</p>
+<p>
+  <a href="products.html">Browse our product portfolio →</a><br />
+  <a href="index.html#initiatives-cards">Read about One Ashley &amp; Daedalus alignment →</a>
+</p>
+      `.trim(),
+    },
+    {
       slug: 'quality-workbench-prototype-live',
       type: 'news',
       title: 'Quality Workbench prototype is live in the portfolio',
