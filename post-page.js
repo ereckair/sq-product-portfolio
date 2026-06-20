@@ -30,9 +30,11 @@
       ? getProductById(post.relatedProduct)
       : null;
 
+  const wide = post.layout === 'wide';
+
   main.innerHTML = `
     <article class="px-4 pb-16">
-      <div class="max-w-2xl mx-auto">
+      <div class="${wide ? 'max-w-5xl' : 'max-w-2xl'} mx-auto">
         <a href="blog.html" class="text-sm text-black/50 hover:text-black transition-colors cursor-pointer inline-flex items-center gap-1 mb-8">
           News & blog
         </a>
@@ -62,7 +64,7 @@
     </article>
 
     <section class="px-4 py-16 light-divider">
-      <div class="max-w-2xl mx-auto">
+      <div class="${wide ? 'max-w-5xl' : 'max-w-2xl'} mx-auto">
         <h2 class="font-display text-lg font-medium text-black mb-6">More posts</h2>
         <div class="space-y-4" id="related-posts"></div>
       </div>
@@ -81,5 +83,29 @@
       </a>`
       )
       .join('');
+  }
+
+  if (post.assets?.length) {
+    post.assets.forEach((href) => {
+      if (href.endsWith('.css')) {
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+      }
+    });
+    post.assets.forEach((href) => {
+      if (href.endsWith('.js')) {
+        const script = document.createElement('script');
+        script.src = href;
+        script.onload = () => {
+          if (typeof post.init === 'function') post.init();
+          else if (post.init === 'sourcingFlow' && typeof initSourcingFlowDiagrams === 'function') {
+            initSourcingFlowDiagrams();
+          }
+        };
+        document.body.appendChild(script);
+      }
+    });
   }
 })();

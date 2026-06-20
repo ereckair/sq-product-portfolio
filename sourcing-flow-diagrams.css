@@ -1,0 +1,486 @@
+/* Sourcing end-to-end flow — blog diagram components */
+
+.sf-diagram {
+  margin: 2rem 0 2.5rem;
+  padding: 1.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  background: #fafafa;
+  overflow-x: auto;
+}
+
+.sf-diagram-label {
+  font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace;
+  font-size: 0.625rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 1rem;
+}
+
+.sf-diagram-caption {
+  font-size: 0.8125rem;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 1rem;
+  line-height: 1.5;
+}
+
+/* ─── Six-stage timeline ─── */
+
+.sf-stages {
+  display: flex;
+  gap: 0;
+  min-width: 640px;
+  position: relative;
+}
+
+.sf-stages::before {
+  content: '';
+  position: absolute;
+  top: 1.125rem;
+  left: 2rem;
+  right: 2rem;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.08);
+  z-index: 0;
+}
+
+.sf-stage {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.375rem;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  font: inherit;
+  color: inherit;
+  transition: transform 0.2s ease;
+}
+
+.sf-stage:hover {
+  transform: translateY(-2px);
+}
+
+.sf-stage-dot {
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.45);
+  position: relative;
+  z-index: 1;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+}
+
+.sf-stage.is-active .sf-stage-dot,
+.sf-stage:hover .sf-stage-dot {
+  border-color: #000000;
+  background: #000000;
+  color: #ffffff;
+}
+
+.sf-stage-num {
+  line-height: 1;
+}
+
+.sf-stage-short {
+  margin-top: 0.625rem;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.2;
+}
+
+.sf-stage.is-active .sf-stage-short {
+  color: #000000;
+}
+
+.sf-stage-systems {
+  margin-top: 0.375rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  justify-content: center;
+}
+
+.sf-sys-tag {
+  font-family: ui-monospace, monospace;
+  font-size: 0.5625rem;
+  padding: 0.125rem 0.375rem;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.55);
+}
+
+.sf-stage-detail {
+  margin-top: 1.25rem;
+  padding: 1.25rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  background: #ffffff;
+  text-align: left;
+  animation: sf-fade-in 0.25s ease;
+}
+
+@keyframes sf-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.sf-stage-detail-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 0.5rem;
+}
+
+.sf-stage-detail-desc {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+}
+
+.sf-stage-detail-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.375rem;
+}
+
+.sf-stage-detail-list li {
+  font-size: 0.8125rem;
+  color: rgba(0, 0, 0, 0.65);
+  padding-left: 1rem;
+  position: relative;
+}
+
+.sf-stage-detail-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* ─── Thread A vertical flow ─── */
+
+.sf-thread {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.sf-thread-step {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 1rem;
+  position: relative;
+}
+
+.sf-thread-step:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  left: 1.1875rem;
+  top: 2.5rem;
+  bottom: -0.5rem;
+  width: 2px;
+  background: rgba(0, 0, 0, 0.08);
+}
+
+.sf-thread-marker {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 4px;
+  background: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 1;
+}
+
+.sf-thread-body {
+  padding-bottom: 1.5rem;
+}
+
+.sf-thread-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 0.25rem;
+}
+
+.sf-thread-systems {
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  color: rgba(0, 0, 0, 0.45);
+  margin-bottom: 0.375rem;
+}
+
+.sf-thread-desc {
+  font-size: 0.8125rem;
+  color: rgba(0, 0, 0, 0.6);
+  line-height: 1.55;
+}
+
+/* ─── Animated data flow SVG ─── */
+
+.sf-data-flow {
+  padding: 1rem 0.5rem 1.5rem;
+  background: #ffffff;
+}
+
+.sf-data-flow svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 420px;
+}
+
+.sf-node rect {
+  fill: #ffffff;
+  stroke: rgba(0, 0, 0, 0.12);
+  stroke-width: 1;
+}
+
+.sf-node text {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  fill: #000000;
+  text-anchor: middle;
+}
+
+.sf-node-sub text {
+  font-family: ui-monospace, monospace;
+  font-size: 8px;
+  fill: rgba(0, 0, 0, 0.45);
+  text-anchor: middle;
+}
+
+.sf-flow-line {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.15);
+  stroke-width: 1.5;
+  stroke-linecap: round;
+}
+
+.sf-flow-line--active {
+  stroke: rgba(0, 0, 0, 0.35);
+  stroke-dasharray: 6 6;
+  animation: sf-flow-dash 0.8s linear infinite;
+}
+
+@keyframes sf-flow-dash {
+  to { stroke-dashoffset: -24; }
+}
+
+.sf-packet {
+  fill: #000000;
+  filter: none;
+}
+
+.sf-flow-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.sf-flow-btn {
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  padding: 0.375rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 2px;
+  background: #ffffff;
+  color: rgba(0, 0, 0, 0.65);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.sf-flow-btn:hover {
+  border-color: rgba(0, 0, 0, 0.25);
+  color: #000000;
+}
+
+.sf-flow-btn.is-active {
+  background: #000000;
+  border-color: #000000;
+  color: #ffffff;
+}
+
+.sf-flow-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.sf-flow-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.sf-flow-legend-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #000000;
+}
+
+/* ─── Sales channels ─── */
+
+.sf-channels {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+}
+
+@media (min-width: 640px) {
+  .sf-channels {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.sf-channel {
+  padding: 1rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.sf-channel-name {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #000000;
+  margin-bottom: 0.25rem;
+}
+
+.sf-channel-stat {
+  font-family: ui-monospace, monospace;
+  font-size: 0.625rem;
+  color: rgba(0, 0, 0, 0.4);
+  margin-bottom: 0.5rem;
+}
+
+.sf-channel-note {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.45;
+}
+
+.sf-channel--highlight {
+  border-color: #000000;
+}
+
+.sf-channel--highlight .sf-channel-name::after {
+  content: ' · highest bar';
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.4);
+  font-size: 0.6875rem;
+}
+
+/* ─── Systems grid ─── */
+
+.sf-systems-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.625rem;
+}
+
+@media (min-width: 640px) {
+  .sf-systems-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.sf-system-card {
+  padding: 0.875rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  background: #ffffff;
+}
+
+.sf-system-card abbr {
+  font-family: ui-monospace, monospace;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: #000000;
+  text-decoration: none;
+}
+
+.sf-system-card p {
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.55);
+  margin: 0.25rem 0 0;
+  line-height: 1.4;
+}
+
+.sf-coming-soon {
+  margin-top: 2.5rem;
+  padding: 1.25rem 1.5rem;
+  border-left: 3px solid #000000;
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.sf-coming-soon p {
+  margin: 0;
+  font-size: 0.9375rem;
+  color: rgba(0, 0, 0, 0.65);
+}
+
+.sf-coming-soon strong {
+  color: #000000;
+}
+
+.blog-prose .sf-diagram {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.blog-prose .sf-diagram-caption {
+  margin-bottom: 0;
+}
+
+.blog-prose .sf-system-card p {
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sf-flow-line--active,
+  .sf-packet,
+  .sf-stage-detail {
+    animation: none;
+  }
+}

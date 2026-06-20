@@ -5,6 +5,70 @@
 const BLOG = {
   posts: [
     {
+      slug: 'sourcing-end-to-end-process',
+      type: 'blog',
+      title: 'Sourcing end to end — six stages, two threads, and the data that connects them',
+      excerpt:
+        'Sourcing is not placing a purchase order. It is the full chain from concept through sustained operations — mapped here with interactive stage charts and animated data-flow diagrams. Quality deep-dive coming next.',
+      date: '2026-06-22',
+      author: 'SQ Product Team',
+      tags: ['Sourcing', 'Process', 'Architecture', 'OneAshley'],
+      layout: 'wide',
+      assets: ['sourcing-flow-diagrams.css', 'sourcing-flow-diagrams.js'],
+      init: 'sourcingFlow',
+      body: `
+<p>When we mapped Ashley’s Sourcing landscape for Project Daedalus, one framing kept coming back: <strong>Sourcing is not “placing a purchase order.”</strong> It is the entire chain of getting external suppliers to produce Ashley-standard product and move it safely, compliantly, and profitably into the US market.</p>
+<p>That chain has <strong>six stages</strong>, runs on <strong>two parallel threads</strong>, and depends on data moving between systems that were never designed as one product. This post documents the Sourcing half — interactive charts included. A dedicated Quality post follows.</p>
+
+<div class="sf-diagram" id="sf-stage-timeline"></div>
+
+<h2>What “Sourcing end to end” actually means</h2>
+<p>From concept to sustained operations, every stage has a different owner emphasis — but the same outcome: a product a customer can buy, built by a supplier Ashley trusts, with documentation that clears US customs and quality bars that match the sales channel.</p>
+<p>The six stages are not a waterfall. They loop — an ECO during sustained ops sends you back to engineering change; a failed first shipment sends you back to PPR. The diagram above is the happy path; the closed loop in our internal map includes quality and compliance gates at every handoff.</p>
+
+<h2>Thread A — the product launch path</h2>
+<p>Sourcing’s primary thread is <strong>getting a new product to market</strong>. Engineering, Design, and Sourcing Engineers pull it together. The system anchors are CLS (product lifecycle hub), Doc Review (drawing approvals), and ECO (engineering changes).</p>
+<p>CLS plays the PIM role for confirmed product attributes — especially the BOM — that downstream compliance, cost, and procurement systems consume. SKU Workflow (spec assembly) is retiring: the sample segment has migrated to OneAshley and the PIM segment is evaluating In River.</p>
+
+<div class="sf-diagram" id="sf-thread-a"></div>
+
+<h2>Thread B — where Quality and Compliance plug in</h2>
+<p>The second thread runs supplier quality and regulatory compliance in parallel — driven by Quality, Compliance, and factory QC teams. At sample development, GLS lab tests and CTMS regulatory tests start from the same BOM. At PPR, VVS material declarations and COC certificates prepare for US entry. At first shipment and sustained ops, inspection and corrective workflows take over.</p>
+<p>We touch those systems here because Sourcing cannot be understood in isolation — but the <strong>L1 → L2 quality model</strong>, QIS 2.0 corrective projects, Vendor Scorecard mechanics, and compliance federation across CTMS + CLS + GLS deserve their own post. That is next.</p>
+
+<h2>Data flows — animated</h2>
+<p>The hardest part of Daedalus Phase 1 was not listing systems — it was drawing the <strong>data lines</strong>. Select a flow below to see direction and read what moves.</p>
+
+<div class="sf-diagram" id="sf-data-flow"></div>
+
+<p>Three patterns worth remembering:</p>
+<ul>
+  <li><strong>SMMS → CLS/PIM → everything</strong> — structured material master and BOM is the substrate; without it, compliance tests are guessed and bone cost stays wrong</li>
+  <li><strong>Compliance is federated</strong> — no single database holds “product compliance status”; CTMS, CLS job tests, and GLS lab results must be queried together (plus Old GLS during migration)</li>
+  <li><strong>ECO ripples</strong> — a material change triggers BOM updates, compliance retests, and DPCS cost recalculation; manual handoffs here are where errors compound</li>
+</ul>
+
+<h2>Sales channels reverse-constrain sourcing</h2>
+<p>Sourcing never talks to end customers — but four sales channels set the quality and packaging bar that must land in supplier specs at CLS initiation and PPR.</p>
+
+<div class="sf-diagram" id="sf-channels"></div>
+
+<h2>Systems the Sourcing product team owns</h2>
+<p>ECO, CLS, Vendor Scorecard, Vendor Chargeback, and VAMS sit with Sourcing / Engineering — not Quality. Quality consumes their outputs; consolidation plans should not re-home them under Quality.</p>
+
+<div class="sf-diagram" id="sf-systems-owned"></div>
+
+<div class="sf-coming-soon">
+  <p><strong>Coming next:</strong> Quality end to end — the L1 → L2 model, QIS 2.0 corrective projects, inspection threads at first shipment, and how quality cost flows into EDW and Vendor Scorecard.</p>
+</div>
+
+<p class="mt-8">
+  <a href="post.html?slug=sq-team-daedalus-execution">How we mapped this for Project Daedalus →</a><br />
+  <a href="products.html">Browse the full product portfolio →</a>
+</p>
+      `.trim(),
+    },
+    {
       slug: 'pre-plm-agent-chat-first-sampling',
       type: 'blog',
       title: 'Stop filling forms. Start shipping samples.',
@@ -66,7 +130,7 @@ const BLOG = {
 <p>This post is our honest account of what Daedalus means for us, what we have done in Phase 1, and how we are thinking about agentic execution next.</p>
 
 <h2>What we already owned — and what was missing</h2>
-<p>Let us be precise: the Sourcing &amp; Quality product team did not wake up one day owning unfamiliar systems. We have long built and run <strong>SMMS, PIM, PLM, CTMS, APS</strong>, and the sourcing and product-lifecycle stack around them. We know how those applications work, who uses them, and what data they hold.</p>
+<p>Let us be precise: the Sourcing &amp; Quality product team did not wake up one day owning unfamiliar systems. We have long built and run <strong>CLS, QIS, CTMS, APS</strong>, and the sourcing and product-lifecycle stack around them. We know how those applications work, who uses them, and what data they hold.</p>
 <p>What we did <em>not</em> have was a <strong>complete picture</strong> — the end-to-end landscape of how Sourcing, Quality, and Compliance connect across Ashley, not just inside our own portfolio. Nobody had one document that answered basic questions:</p>
 <ul>
   <li>What are the full Sourcing stages from concept through sustained operations — and where does Quality enter each stage?</li>
