@@ -1,4 +1,4 @@
-/** Blog listing page — three columns: Blog, News, Roadmap */
+/** Blog listing page — three rows: Blog, News, Roadmap (horizontal scroll per row) */
 (function () {
   const sectionsEl = document.getElementById('blog-sections');
   if (!sectionsEl) return;
@@ -26,13 +26,13 @@
 
   function renderCard(p) {
     return `
-      <article class="news-col-card group">
-        <time class="news-col-date" datetime="${p.date}">${formatPostDate(p.date)}</time>
-        <h3 class="news-col-title">
+      <article class="news-row-card group">
+        <time class="news-row-date" datetime="${p.date}">${formatPostDate(p.date)}</time>
+        <h3 class="news-row-title">
           <a href="post.html?slug=${p.slug}" class="cursor-pointer">${p.title}</a>
         </h3>
-        <p class="news-col-excerpt">${p.excerpt}</p>
-        <a href="post.html?slug=${p.slug}" class="news-col-link cursor-pointer">Read more →</a>
+        <p class="news-row-excerpt">${p.excerpt}</p>
+        <a href="post.html?slug=${p.slug}" class="news-row-link cursor-pointer">Read more →</a>
       </article>`;
   }
 
@@ -40,16 +40,18 @@
     const posts = getPostsByType(section.type);
     const cards = posts.length
       ? posts.map(renderCard).join('')
-      : `<p class="news-section-empty">No ${section.label.toLowerCase()} posts yet.</p>`;
+      : `<p class="news-row-empty">No ${section.label.toLowerCase()} posts yet.</p>`;
 
     return `
-      <section class="news-column" id="${section.id}" aria-labelledby="${section.id}-heading">
-        <header class="news-column-header">
-          <h2 class="news-column-title" id="${section.id}-heading">${section.label}</h2>
-          <p class="news-column-desc">${section.description}</p>
-          <span class="news-column-count">${posts.length}</span>
+      <section class="news-row" id="${section.id}" aria-labelledby="${section.id}-heading">
+        <header class="news-row-header">
+          <div class="news-row-heading">
+            <h2 class="news-row-label" id="${section.id}-heading">${section.label}</h2>
+            <span class="news-row-count">${posts.length}</span>
+          </div>
+          <p class="news-row-desc">${section.description}</p>
         </header>
-        <div class="news-column-body">${cards}</div>
+        <div class="news-row-track" tabindex="0" aria-label="${section.label} posts">${cards}</div>
       </section>`;
   }
 
