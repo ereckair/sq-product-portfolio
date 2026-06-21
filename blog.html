@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="styles.css?v=20260626" />
+  <link rel="stylesheet" href="styles.css?v=20260627" />
 </head>
 <body class="theme-light font-sans antialiased overflow-x-hidden" data-nav-theme="light" data-nav-active="news">
 
@@ -17,17 +17,15 @@
 
   <main class="pt-24 md:pt-28">
     <section class="px-4 pb-6 text-center">
-      <div class="max-w-3xl mx-auto">
+      <div class="max-w-3xl mx-auto" id="blog-page-hero">
         <p class="text-label text-black/40 mb-3">News & updates</p>
         <h1 class="text-display-light text-black mb-3">From the product team</h1>
-        <p class="text-base text-black/60 leading-relaxed">
-          Blog, news, and roadmap — three lanes below.
-        </p>
+        <p class="text-base text-black/60 leading-relaxed">News, blog, and roadmap — pick a lane to read more.</p>
       </div>
     </section>
 
     <section class="px-4 pb-20">
-      <div class="max-w-7xl mx-auto news-rows" id="blog-sections"></div>
+      <div id="blog-sections" class="max-w-3xl mx-auto news-blocks"></div>
     </section>
   </main>
 
@@ -35,6 +33,6 @@
 
   <script src="site-nav.js"></script>
   <script src="blog.js"></script>
-  <script src="blog-page.js?v=20260626"></script>
+  <script src="blog-page.js?v=20260627"></script>
 </body>
 </html>
