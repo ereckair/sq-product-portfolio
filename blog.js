@@ -3,7 +3,133 @@
  * Add entries here as you publish; slug is used in post.html?slug=
  */
 const BLOG = {
+  /** Always shown first on the homepage Latest updates row */
+  pinnedSlugs: ['sq-team-daedalus-execution', 'pre-plm-tutorial-on-netlify'],
   posts: [
+    {
+      slug: 'smms-roadmap-2026',
+      type: 'roadmap',
+      title: 'SMMS roadmap 2026 — modules, go-live dates, and AI/agent scenarios',
+      excerpt:
+        'Material, supplier, and price management through 2026 Q4 — what is live today, what is configuring, and where AI agents embed next (quotation alerts, delivery audit, performance scoring, FX simulation).',
+      date: '2026-06-27',
+      author: 'SQ Product Team',
+      tags: ['SMMS', 'Roadmap', 'Agents', 'Sourcing'],
+      relatedProduct: 'smms',
+      body: `
+<p>This roadmap covers <strong>Supplier Material Management System (SMMS)</strong> through 2026 — module go-live dates, current status, and planned <strong>AI / agent</strong> scenarios embedded in each workflow. It complements our <a href="product.html?id=smms">SMMS product page</a> and the earlier <a href="post.html?slug=smms-price-negotiation-roadmap">price negotiation roadmap</a>.</p>
+<p><a href="docs/smms/SMMS-Roadmap.pdf" target="_blank" rel="noopener">Download SMMS Roadmap (PDF) →</a></p>
+
+<h2>Material Management</h2>
+<table>
+  <thead>
+    <tr><th>Sub-module</th><th>Go-live</th><th>Status</th><th>AI / agent scenarios</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Category &amp; Material</strong></td>
+      <td>2026 Q1</td>
+      <td>Launched</td>
+      <td>Material substitution recommendations; flag long-no-PO and multi-supplier discontinuation candidates; optional alerts + alternative suggestions for designated material categories</td>
+    </tr>
+    <tr>
+      <td><strong>New Material Submission</strong></td>
+      <td>2026 Q2</td>
+      <td>Not started</td>
+      <td>Similarity dedup — new material vs existing library; in-use material vs supplier supply overlap (reuse vs duplicate development); extract spec parameters from free text / spec sheets into structured fields</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Supplier Management</h2>
+<table>
+  <thead>
+    <tr><th>Sub-module</th><th>Go-live</th><th>Status</th><th>AI / agent scenarios</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Supplier Onboarding</strong></td>
+      <td>2026 Q1</td>
+      <td>Launched</td>
+      <td>OCR + structured extraction of business license and certificate data into master fields</td>
+    </tr>
+    <tr>
+      <td><strong>Supplier Audit</strong></td>
+      <td>2026 Q2</td>
+      <td>Launched</td>
+      <td>Generate strengths, weaknesses, risks, and corrective follow-up points from audit item results</td>
+    </tr>
+    <tr>
+      <td><strong>Supplier Quotation</strong></td>
+      <td>2026 M7</td>
+      <td>Configuring</td>
+      <td>Quote vs system reference price — anomaly spread alerts; track and analyze supplier price increase patterns</td>
+    </tr>
+    <tr>
+      <td><strong>Proposal for Supplier</strong></td>
+      <td>2026 Q2</td>
+      <td>Launched</td>
+      <td>Generate proposal documents directly from templates</td>
+    </tr>
+    <tr>
+      <td><strong>Supplier Delivery Report</strong></td>
+      <td>2026 Q2</td>
+      <td>Launched</td>
+      <td>Predict peak-season delivery risk from historical POs; auto-audit declared shipment volume vs factory PO-BOM usage — exceptions raise tickets/email <em>(requires factory PO + BOM integration)</em></td>
+    </tr>
+    <tr>
+      <td><strong>Supplier Performance</strong></td>
+      <td>2026 Q4</td>
+      <td>Not started</td>
+      <td>Auto-generate quarterly performance reports and summaries (delivery, quality, price stability); anomaly dimension root-cause briefs with Authorized-status decision recommendations</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Price Management</h2>
+<table>
+  <thead>
+    <tr><th>Sub-module</th><th>Go-live</th><th>Status</th><th>AI / agent scenarios</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Material Reference Price</strong></td>
+      <td>2026 Q1 / M8</td>
+      <td>Launched (specialist import)</td>
+      <td>Material-category price increase anomaly and trend analysis; automatic email alerts to decision makers</td>
+    </tr>
+    <tr>
+      <td><strong>Currency Exchange Rate</strong></td>
+      <td>2026 M8</td>
+      <td>Not started</td>
+      <td>When FX moves sharply, simulate cost impact on quotes pending activation</td>
+    </tr>
+    <tr>
+      <td><strong>Supplier Quota</strong></td>
+      <td>2026 Q4</td>
+      <td>Not started</td>
+      <td>Quota vs supplier capacity overrun alerts; recommend alternate suppliers or substitute materials <em>(requires factory PO + BOM integration)</em></td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Integration dependencies</h2>
+<p>Two roadmap threads depend on data we do not yet federate inside SMMS alone:</p>
+<ul>
+  <li><strong>Factory purchase orders</strong> — needed for delivery-volume vs BOM usage audit and supplier quota capacity checks</li>
+  <li><strong>BOM tables</strong> — same threads; ties SMMS material master to what factories actually consume on PO lines</li>
+</ul>
+<p>Until those land, Delivery Report AI scenarios and Supplier Quota run on partial data or stay manual side pulls — the roadmap marks them explicitly so Daedalus agent work does not over-promise closed-loop automation.</p>
+
+<h2>How this connects to Daedalus</h2>
+<p>SMMS is the substrate for sourcing agents: structured materials, supplier master, reference prices, and quotation workflows. The AI column in the roadmap is not a separate product — it is where agents embed into modules already live (onboarding OCR, audit summaries, reference price alerts) and where the next money stories sit (quotation anomaly detection, FX simulation, performance-driven Authorized decisions).</p>
+
+<p class="mt-8">
+  <a href="product.html?id=smms">Explore SMMS on the portfolio →</a><br />
+  <a href="post.html?slug=smms-price-negotiation-roadmap">SMMS price negotiation roadmap →</a>
+</p>
+      `.trim(),
+    },
     {
       slug: 'quality-problems-and-actions',
       type: 'blog',
@@ -238,7 +364,7 @@ const BLOG = {
 </div>
 
 <p class="mt-8">
-  <a href="product.html?id=cms">Explore Compliance Management System →</a><br />
+  <a href="product.html?id=cms">Explore Compliance Test Management System →</a><br />
   <a href="products.html">Browse the full product portfolio →</a>
 </p>
       `.trim(),
@@ -656,6 +782,18 @@ function getPostsByType(type) {
   return getAllPosts().filter((p) => p.type === type);
 }
 
+function getHomePosts(limit = 6) {
+  const pinnedSlugs = BLOG.pinnedSlugs || [];
+  const pinnedSet = new Set(pinnedSlugs);
+  const pinned = pinnedSlugs.map((slug) => getPostBySlug(slug)).filter(Boolean);
+  const rest = getAllPosts().filter((p) => !pinnedSet.has(p.slug));
+  return [...pinned, ...rest].slice(0, limit);
+}
+
+function isPinnedPost(slug) {
+  return (BLOG.pinnedSlugs || []).includes(slug);
+}
+
 function formatPostDate(iso) {
   return new Date(iso + 'T12:00:00').toLocaleDateString('en-US', {
     year: 'numeric',
@@ -664,4 +802,4 @@ function formatPostDate(iso) {
   });
 }
 
-if (typeof module !== 'undefined') module.exports = { BLOG, getAllPosts, getPostBySlug, getPostsByType, formatPostDate };
+if (typeof module !== 'undefined') module.exports = { BLOG, getAllPosts, getPostBySlug, getPostsByType, getHomePosts, isPinnedPost, formatPostDate };

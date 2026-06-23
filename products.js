@@ -219,7 +219,7 @@ const PORTFOLIO = {
             before: 'Color panel requests and approvals tracked manually; distribution to factories inconsistent and hard to audit.',
             after: 'Electronic request → review → distribution workflow with testing underway on core modules.',
           },
-          integrations: ['PIM (BOM)', 'PLM', 'Compliance Management System'],
+          integrations: ['PIM (BOM)', 'PLM', 'Compliance Test Management System'],
           roadmap: [
             'Complete Distribution module configuration',
             'Link approved panels to PIM color attributes',
@@ -338,7 +338,7 @@ const PORTFOLIO = {
       products: [
         {
           id: 'cms',
-          name: 'Compliance Management System',
+          name: 'Compliance Test Management System',
           status: 'live',
           migration: {
             trackerName: 'Compliance Test Management System (CTMS)',
@@ -390,7 +390,7 @@ const PORTFOLIO = {
             before: 'Compliance engineers manually determined tests by inspecting product materials — time-consuming, incomplete, thousands of protocols to remember.',
             after: 'BOM + material-to-protocol mapping auto-generates test list; releases after PIM module testing and approval flow configuration.',
           },
-          integrations: ['PIM (BOM)', 'Compliance Management System', 'Global Laboratory System'],
+          integrations: ['PIM (BOM)', 'Compliance Test Management System', 'Global Laboratory System'],
           roadmap: [
             'Full release after PIM approval workflow go-live',
             'Auto-create lab requests in GLS from generated test plans',
@@ -424,7 +424,7 @@ const PORTFOLIO = {
             before: 'Label content assembled manually from scattered product specs; easy to mismatch actual materials used in production.',
             after: 'Labels generated from confirmed BOM material attributes — same source of truth as compliance and costing.',
           },
-          integrations: ['PIM (BOM)', 'SMMS', 'Compliance Management System'],
+          integrations: ['PIM (BOM)', 'SMMS', 'Compliance Test Management System'],
           resources: {
             prd: { url: '#', label: 'Law Label PRD v1.3' },
             demoVideo: { url: '#', label: 'Label generation demo' },
@@ -449,7 +449,7 @@ const PORTFOLIO = {
             'Manages license applications, renewals, and document storage for products requiring government registration. Works alongside CMS and law labels as part of the compliance stack — a missing license blocks sales the same way a failed test does.',
           contribution:
             'Consolidated 200+ licenses in one system with zero missed renewals since launch; part of the connected compliance ecosystem fed by product data.',
-          integrations: ['Compliance Management System', 'PIM (BOM)', 'Law Label Systems'],
+          integrations: ['Compliance Test Management System', 'PIM (BOM)', 'Law Label Systems'],
           resources: {
             prd: { url: '#', label: 'Law License PRD v1.0' },
             demoVideo: { url: '#', label: 'License tracking demo' },
@@ -462,7 +462,7 @@ const PORTFOLIO = {
         {
           id: 'chain-of-custody',
           name: 'Chain of Custody',
-          status: 'building',
+          status: 'live',
           migration: {
             phase: 'in-progress',
             progress: 60,
@@ -479,7 +479,7 @@ const PORTFOLIO = {
             before: 'Sustainability and regulated-material claims supported by scattered supplier documents with no linked audit trail.',
             after: 'Planned: batch-level custody chain from raw material through finished goods, queryable for audits.',
           },
-          integrations: ['SMMS (materials)', 'PIM (BOM)', 'Compliance Management System'],
+          integrations: ['SMMS (materials)', 'PIM (BOM)', 'Compliance Test Management System'],
           roadmap: [
             'Expand pilot beyond 3 supplier tiers',
             'Link custody records to law label and compliance test results',
@@ -496,7 +496,7 @@ const PORTFOLIO = {
         {
           id: 'gls',
           name: 'Global Laboratory System',
-          status: 'building',
+          status: 'live',
           migration: {
             phase: 'in-progress',
             progress: 10,
@@ -512,7 +512,7 @@ const PORTFOLIO = {
             before: 'Test scheduling and results tracked separately from compliance workflow; engineers manually matched lab output to SKUs.',
             after: 'Test plans generated from BOM feed GLS; results return to compliance status automatically.',
           },
-          integrations: ['Compliance Test Create', 'Compliance Management System', 'PIM (BOM)'],
+          integrations: ['Compliance Test Create', 'Compliance Test Management System', 'PIM (BOM)'],
           roadmap: [
             'Auto-create lab requests directly from Compliance Test Create output',
             'Link electrical certification reports from quality dept system',
@@ -692,47 +692,192 @@ const PORTFOLIO = {
         {
           id: 'smms',
           name: 'Supplier Material Management System',
+          subtitle: 'SMMS · Unified supply chain platform',
           status: 'live',
           migration: {
             trackerName: 'Supplier Material Management (SMM)',
             phase: 'in-progress',
             progress: 76,
             targetUat: 'Sep 30',
-            update: 'Launched Proposal for Supplier; Quotation module is configuring. Vendor Trade Mark Authorized System is live.',
+            update: 'Material Management and core Supplier Management modules live (M1–M6). Supplier Performance and Quotation modules in progress.',
             lastUpdated: 'Jun 2026',
           },
-          summary: 'Raw material master database, supplier portal, and price management — foundation for accurate costing.',
+          summary:
+            'Ashley Group\'s unified supply chain platform — material master data, supplier lifecycle, and price management in one traceable system.',
           description:
-            'SMMS is the raw material and supplier master system. Manages material categories (wood/panel, hardware, fabric, electrical, packaging), attributes, price management with cost formulas, supplier self-registration, audits, performance scoring, and monthly shipment declarations. Material engineers maintain their assigned categories with role-based access.',
+            'SMMS (Supplier Material Management System) covers material master data, supplier lifecycle management, and material price management. It turns fragmented supply chain information scattered across WeChat, email, and Excel into traceable, analyzable strategic data — targeting 50–70% reduction in the sourcing team\'s transactional workload.',
           contribution:
             'Transformed raw material management from Excel + scattered PDF catalogs to an electronic master DB. Fixed the root cause of inaccurate "bone" costing — previously all MDF specs lump-priced because materials weren\'t structured. Flagship product for product marketing: quantify savings from price negotiation (potentially millions annually across ~50 authorized suppliers).',
           beforeAfter: {
             before:
-              'Excel and PDF catalogs per supplier; no batch import; no electronic specs; engineers hunted documents; bone cost estimated with average prices; no visibility into whether authorized suppliers were actually used.',
+              'Supplier, material, and pricing data isolated in Excel and chat tools — no closed loop, no rule-based processes, knowledge lost when staff leave.',
             after:
-              'Structured material library with classification, attributes, per-supplier pricing, cost formulas (Milan cost model); supplier portal for self-registration, price submission, shipment reports, and new material proposals; audit and performance workflows.',
+              'One material one code; unified supplier onboarding and audit workflows; system-generated codes and approval chains; certificate expiration alerts and quarterly performance scoring.',
           },
           highlights: [
-            '5 material engineer domains: panel, hardware, fabric, electrical, packaging',
-            'Price Management linked to cost formulas (area, piece, etc.)',
-            'Suppliers self-register and submit prices — no manual entry only',
-            'Supplier audit (annual factory visits) + quarterly performance scoring',
-            'Supply Live Report: suppliers declare monthly shipment volumes',
-            'Supplier Trade Center portal for vendors',
+            '11 main material categories, 180+ sub-categories with two-level classification tree',
+            'Auto-generated material codes: [Sub-category code] + [6-digit sequence] — globally unique, never reused',
+            'Supplier self-registration via QR code with multi-level approval workflows',
+            'Dynamic supplier audit criteria based on supplied categories',
+            'Proposal workflow for Authorized / De-authorization / Blacklisting status changes',
+          ],
+          detailSections: [
+            {
+              title: 'Three core gaps (before SMMS)',
+              type: 'table',
+              columns: ['Issue', 'Manifestation'],
+              rows: [
+                ['No closed-loop data', 'Supplier, material, and pricing data isolated — unable to support rapid decisions.'],
+                ['No rule-based processes', 'Quote follow-ups, delivery tracking, and performance reviews all manual — inefficient and unsustainable.'],
+                ['No knowledge retention', 'When sourcing staff leave, price history, alternative materials, and supplier intelligence walk out the door.'],
+              ],
+            },
+            {
+              title: 'Four objectives',
+              type: 'pairs',
+              items: [
+                { label: 'Get suppliers right', detail: 'Unified onboarding, master data, and performance tracking — full lifecycle traceability.' },
+                { label: 'Get materials & pricing right', detail: 'One material, one code. Single source of truth for price baselines.' },
+                { label: 'Get delivery & risk right', detail: 'Proactive alerts — countdown to due dates, automatic notifications for unauthorized substitutions.' },
+                { label: 'Get knowledge & expertise right', detail: 'Turn individual experience into system rules and data assets — no longer dependent on specific people.' },
+              ],
+            },
+            {
+              title: 'Modules & rollout',
+              type: 'modules',
+              groups: [
+                {
+                  name: 'Material Management',
+                  items: [
+                    {
+                      name: 'Material Category',
+                      description: 'Two-level classification tree and category codes — 11 main categories, 180+ sub-categories.',
+                      status: 'live',
+                      goLive: '2026 M1',
+                      link: { url: 'https://xwork.ashgso.com/app/supplier/jk8z495wnol/tabs/c5w48rlwgzr', label: 'Open Material Category' },
+                    },
+                    {
+                      name: 'Material List',
+                      description: 'Material master data with system-generated unique codes; per-user visible scope configuration.',
+                      status: 'live',
+                      goLive: '2026 M1',
+                      link: { url: 'https://xwork.ashgso.com/app/supplier/y822p2rayuw/tabs/awfr0hmy025', label: 'Open Material List' },
+                    },
+                  ],
+                },
+                {
+                  name: 'Supplier Management',
+                  items: [
+                    {
+                      name: 'Supplier Registration',
+                      description: 'Online self-registration via QR code — company info, contacts, document upload, multi-level approval.',
+                      status: 'live',
+                      goLive: '2026 M3',
+                      link: { url: 'https://xwork.ashgso.com/app/supplier/3lhxp6zktpz/tabs/bz1v1nhd38f', label: 'Internal registration review' },
+                    },
+                    {
+                      name: 'Supplier Onboarding',
+                      description: 'Full qualification documents stored in master record. Approval: Sourcing Specialist → Manager → Senior Manager.',
+                      status: 'live',
+                      goLive: '2026 M3',
+                      link: { url: 'https://xwork.ashgso.com/app/supplier/3lhxp6zktpz/tabs/kxmq4twzf0z', label: 'Internal onboarding review' },
+                    },
+                    {
+                      name: 'Supplier Audit',
+                      description: 'Multi-aspect evaluation with criteria dynamically generated by supplied categories. Digital scoring and approval chain.',
+                      status: 'live',
+                      goLive: '2026 M5',
+                      link: { url: 'https://xwork.ashgso.com/app/supplier/seqg2enq7qp/tabs/gqpgzxhsew9', label: 'Audit records' },
+                    },
+                    {
+                      name: 'Supplier Delivery Report',
+                      description: 'Monthly shipment volume declarations from suppliers.',
+                      status: 'live',
+                      goLive: '2026 M5',
+                    },
+                    {
+                      name: 'Proposal for Supplier',
+                      description: 'Propose audit-qualified suppliers for Authorized status, or underperformers for De-authorization / Blacklisting.',
+                      status: 'live',
+                      goLive: '2026 M6',
+                      link: { url: 'https://xwork.ashgso.com/app/supplier/edoz55xyo59/tabs/ki8l0dohvxw', label: 'Open proposals' },
+                    },
+                    {
+                      name: 'Supplier Performance',
+                      description: 'Automated quarterly scoring and status transitions.',
+                      status: 'planned',
+                      goLive: '2026 M9',
+                    },
+                    {
+                      name: 'Supplier Quotation',
+                      description: 'Structured quote capture and follow-up workflows.',
+                      status: 'building',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Material code rules',
+              type: 'callout',
+              body: 'Code structure: [Sub-category code] + [6-digit sequential number]',
+              bullets: [
+                'System-generated — cannot be manually edited',
+                'Global uniqueness validation — one material, one code',
+                'Retired material codes are permanently invalidated and never reused',
+              ],
+            },
+            {
+              title: 'Approval workflows',
+              type: 'list',
+              items: [
+                'Registration & onboarding: Sourcing Specialist → Sourcing Manager → Senior Sourcing Manager',
+                'Supplier audit: Sourcing Specialist → Sourcing Manager → Senior Sourcing Manager',
+                'Status proposals (Authorized / De-auth / Blacklist): Sourcing Manager → Senior Sourcing Manager → Sourcing Management',
+              ],
+            },
           ],
           integrations: ['PIM (BOM materials)', 'Dynamic Product Costing', 'ECO', 'Milan Cost Model', 'Ashley Purchase System'],
           roadmap: [
-            'Price negotiation agent — FX + commodity price triggers (follow up with Dusty on data)',
-            'Authorized supplier enforcement mechanism (triangle: vendor ↔ supplier ↔ factory)',
-            'Change-of-status proposal workflow to become designated supplier',
-            'Reference price lookup via AI (Alibaba, public data) instead of manual collection',
-            'Annual savings analytics: orders × material price reductions',
+            'Supplier Performance module (2026 M9)',
+            'Supplier Quotation module — configuration in progress',
+            'Price negotiation agent — FX + commodity price triggers',
+            'Authorized supplier enforcement (vendor ↔ supplier ↔ factory triangle)',
+            'Reference price lookup via AI (Alibaba, public data)',
           ],
           resources: {
-            prd: { url: '#', label: 'SMMS PRD v1.8' },
+            prd: { url: 'docs/smms/SMMS-PRD.pdf', label: 'SMMS PRD' },
             demoVideo: { url: '#', label: 'Supplier portal demo' },
-            liveLink: { url: '#', label: 'Open SMMS' },
+            liveLink: { url: 'https://xwork.ashgso.com/app/supplier/y822p2rayuw/tabs/awfr0hmy025', label: 'Open SMMS (Material List)' },
             github: { url: '#', repo: 'org/supplier-material-mgmt' },
+            documents: [
+              {
+                url: 'docs/smms/SMMS-PRD.pdf',
+                label: 'SMMS PRD',
+                meta: 'Product requirements document',
+              },
+              {
+                url: 'docs/smms/SMMS-User-Manual.pdf',
+                label: 'SMMS User Manual',
+                meta: 'End-user guide for Material & Supplier Management modules',
+              },
+              {
+                url: 'docs/smms/SMMS-Supplier-Material-Management-System.pdf',
+                label: 'SMMS System Guide',
+                meta: 'Overview, modules, user guide, and FAQ',
+              },
+              {
+                url: 'docs/smms/SMMS-Roadmap.pdf',
+                label: 'SMMS Roadmap 2026 (PDF)',
+                meta: 'Module go-live dates, status, and AI/agent scenarios',
+              },
+              {
+                url: 'post.html?slug=smms-roadmap-2026',
+                label: 'SMMS roadmap 2026 — blog post',
+                meta: 'Interactive roadmap tables with module status and agent scenarios',
+                type: 'post',
+              },
+            ],
             mcpTools: [{ name: 'smms_get_material_status', description: 'Check material approval status' }],
           },
           feedback: [

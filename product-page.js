@@ -131,6 +131,97 @@
     </section>`
       : '';
 
+  function moduleStatusBadge(status) {
+    const map = {
+      live: 'product-mod-status--live',
+      building: 'product-mod-status--building',
+      planned: 'product-mod-status--planned',
+    };
+    const label = status === 'live' ? 'Live' : status === 'building' ? 'Building' : 'Planned';
+    return `<span class="product-mod-status ${map[status] || map.planned}">${label}</span>`;
+  }
+
+  function detailSectionsHtml(sections) {
+    if (!sections?.length) return '';
+
+    return sections
+      .map((section) => {
+        let body = '';
+
+        if (section.type === 'table' && section.rows?.length) {
+          body = `
+          <div class="product-detail-table-wrap">
+            <table class="product-detail-table">
+              <thead><tr>${section.columns.map((c) => `<th>${c}</th>`).join('')}</tr></thead>
+              <tbody>${section.rows.map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody>
+            </table>
+          </div>`;
+        } else if (section.type === 'pairs' && section.items?.length) {
+          body = `<div class="product-detail-pairs">${section.items
+            .map(
+              (item) => `
+            <div class="product-detail-pair">
+              <h3 class="product-detail-pair-label">${item.label}</h3>
+              <p class="product-detail-pair-text">${item.detail}</p>
+            </div>`
+            )
+            .join('')}</div>`;
+        } else if (section.type === 'modules' && section.groups?.length) {
+          body = section.groups
+            .map(
+              (group) => `
+            <div class="product-mod-group">
+              <h3 class="product-mod-group-name">${group.name}</h3>
+              <div class="product-mod-list">
+                ${group.items
+                  .map(
+                    (item) => `
+                  <div class="product-mod-item">
+                    <div class="product-mod-item-head">
+                      <h4 class="product-mod-item-name">${item.name}</h4>
+                      <div class="product-mod-item-meta">
+                        ${moduleStatusBadge(item.status || 'planned')}
+                        ${item.goLive ? `<span class="product-mod-golive">${item.goLive}</span>` : ''}
+                      </div>
+                    </div>
+                    <p class="product-mod-item-desc">${item.description}</p>
+                    ${
+                      item.link
+                        ? `<a href="${item.link.url}" target="_blank" rel="noopener noreferrer" class="product-mod-link cursor-pointer">${item.link.label} →</a>`
+                        : ''
+                    }
+                  </div>`
+                  )
+                  .join('')}
+              </div>
+            </div>`
+            )
+            .join('');
+        } else if (section.type === 'callout') {
+          body = `
+          <div class="product-detail-callout">
+            ${section.body ? `<p class="product-detail-callout-lead">${section.body}</p>` : ''}
+            ${
+              section.bullets?.length
+                ? `<ul class="product-detail-callout-list">${section.bullets.map((b) => `<li>${b}</li>`).join('')}</ul>`
+                : ''
+            }
+          </div>`;
+        } else if (section.type === 'list' && section.items?.length) {
+          body = `<ul class="product-detail-list">${section.items.map((item) => `<li>${item}</li>`).join('')}</ul>`;
+        }
+
+        return `
+        <section class="px-4 pb-12">
+          <div class="max-w-4xl mx-auto">
+            <h2 class="font-display text-xl font-medium text-black mb-4">${section.title}</h2>
+            ${body}
+          </div>
+        </section>`;
+      })
+      .join('');
+  }
+
   const documentsSection =
     r.documents?.length > 0
       ? `
@@ -138,14 +229,18 @@
       <h3 class="font-display text-lg font-medium text-black mb-4">Documentation</h3>
       <div class="grid sm:grid-cols-2 gap-3">
         ${r.documents
-          .map(
-            (doc) => `
-          <a href="${doc.url}" target="_blank" rel="noopener" class="light-card rounded-sm p-4 flex flex-col cursor-pointer hover:border-black/20 transition-colors">
-            <span class="text-label text-black/40 mb-1">PDF</span>
+          .map((doc) => {
+            const isExternal = /^https?:\/\//i.test(doc.url);
+            const isPost = doc.type === 'post' || doc.url.includes('post.html');
+            const badge = isPost ? 'Blog' : 'PDF';
+            const target = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+            return `
+          <a href="${doc.url}"${target} class="light-card rounded-sm p-4 flex flex-col cursor-pointer hover:border-black/20 transition-colors">
+            <span class="text-label text-black/40 mb-1">${badge}</span>
             <span class="text-sm font-medium text-black mb-1">${doc.label}</span>
             <span class="text-xs text-black/50">${doc.meta || ''}</span>
-          </a>`
-          )
+          </a>`;
+          })
           .join('')}
       </div>
     </div>`
@@ -225,6 +320,8 @@
     </section>`
         : ''
     }
+
+    ${detailSectionsHtml(product.detailSections)}
 
     ${
       product.integrations?.length

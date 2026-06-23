@@ -133,19 +133,22 @@
       .join('');
   }
 
-  // Latest news on homepage
+  // Latest news on homepage — pinned posts first
   const newsEl = document.getElementById('home-news');
-  if (newsEl && typeof getAllPosts === 'function') {
-    const posts = getAllPosts().slice(0, 4);
+  if (newsEl && typeof getHomePosts === 'function') {
+    const posts = getHomePosts(6);
     if (!posts.length) {
       newsEl.innerHTML = '<p class="text-sm text-zinc-500 text-center py-8">No updates yet.</p>';
     } else {
       const typeLabels = { news: 'News', blog: 'Blog', roadmap: 'Roadmap' };
       newsEl.innerHTML = posts
         .map(
-          (p, i) => `
-        <article class="home-news-card shrink-0 p-5 rounded-xl border border-surface-border bg-surface-raised hover:border-zinc-600 transition-colors group" data-animate-child style="--i: ${i}">
-          <div class="flex flex-wrap items-center gap-3 mb-3">
+          (p, i) => {
+            const pinned = typeof isPinnedPost === 'function' && isPinnedPost(p.slug);
+            return `
+        <article class="home-news-card shrink-0 p-5 rounded-xl border border-surface-border bg-surface-raised hover:border-zinc-600 transition-colors group${pinned ? ' home-news-card--pinned' : ''}" data-animate-child style="--i: ${i}">
+          <div class="flex flex-wrap items-center gap-2 mb-3">
+            ${pinned ? '<span class="home-news-pin">Pinned</span>' : ''}
             <span class="home-news-type home-news-type--${p.type}">${typeLabels[p.type] || p.type}</span>
             <time class="text-xs text-zinc-500 font-mono" datetime="${p.date}">${formatPostDate(p.date)}</time>
           </div>
@@ -154,7 +157,8 @@
           </h3>
           <p class="text-sm text-zinc-400 leading-relaxed mb-4 line-clamp-3">${p.excerpt}</p>
           <a href="post.html?slug=${p.slug}" class="text-sm text-accent hover:underline cursor-pointer">Read more →</a>
-        </article>`
+        </article>`;
+          }
         )
         .join('');
     }
