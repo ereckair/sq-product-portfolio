@@ -17,7 +17,7 @@ const BLOG = {
       tags: ['SMMS', 'Roadmap', 'Agents', 'Sourcing'],
       relatedProduct: 'smms',
       body: `
-<p>This roadmap covers <strong>Supplier Material Management System (SMMS)</strong> through 2026 — module go-live dates, current status, and planned <strong>AI / agent</strong> scenarios embedded in each workflow. It complements our <a href="product.html?id=smms">SMMS product page</a> and the earlier <a href="post.html?slug=smms-price-negotiation-roadmap">price negotiation roadmap</a>.</p>
+<p>This roadmap covers <strong>Supplier Material Management System (SMMS)</strong> through 2026 — module go-live dates, current status, and planned <strong>AI / agent</strong> scenarios embedded in each workflow. It complements our <a href="product.html?id=smms">SMMS product page</a>, the standalone <a href="post.html?slug=intelligent-sourcing-agent-roadmap">Intelligent Sourcing Agent roadmap</a>, and the earlier <a href="post.html?slug=smms-price-negotiation-roadmap">price negotiation roadmap</a>.</p>
 <p><a href="docs/smms/SMMS-Roadmap.pdf" target="_blank" rel="noopener">Download SMMS Roadmap (PDF) →</a></p>
 
 <h2>Material Management</h2>
@@ -122,11 +122,116 @@ const BLOG = {
 <p>Until those land, Delivery Report AI scenarios and Supplier Quota run on partial data or stay manual side pulls — the roadmap marks them explicitly so Daedalus agent work does not over-promise closed-loop automation.</p>
 
 <h2>How this connects to Daedalus</h2>
-<p>SMMS is the substrate for sourcing agents: structured materials, supplier master, reference prices, and quotation workflows. The AI column in the roadmap is not a separate product — it is where agents embed into modules already live (onboarding OCR, audit summaries, reference price alerts) and where the next money stories sit (quotation anomaly detection, FX simulation, performance-driven Authorized decisions).</p>
+<p>SMMS is the substrate for sourcing agents: structured materials, supplier master, reference prices, and quotation workflows. The AI column in the roadmap is not a separate product — it is where agents embed into modules already live (onboarding OCR, audit summaries, reference price alerts) and where the next money stories sit (quotation anomaly detection, FX simulation, performance-driven Authorized decisions). For cross-system vendor judgement, see the standalone <a href="post.html?slug=intelligent-sourcing-agent-roadmap">Intelligent Sourcing Agent</a>.</p>
 
 <p class="mt-8">
   <a href="product.html?id=smms">Explore SMMS on the portfolio →</a><br />
   <a href="post.html?slug=smms-price-negotiation-roadmap">SMMS price negotiation roadmap →</a>
+</p>
+      `.trim(),
+    },
+    {
+      slug: 'intelligent-sourcing-agent-roadmap',
+      type: 'roadmap',
+      title: 'Intelligent Sourcing Agent — multi-signal vendor judgement',
+      excerpt:
+        'A standalone Daedalus agent — not part of SMMS — that federates performance, expertise, history, capacity, quality, cost, and communication to recommend who to source from and why.',
+      date: '2026-06-28',
+      author: 'SQ Product Team',
+      tags: ['Agents', 'Sourcing', 'Daedalus', 'Roadmap'],
+      relatedProduct: 'intelligent-sourcing-agent',
+      body: `
+<p>The <strong>Intelligent Sourcing Agent</strong> is its own product under Project Daedalus — a decision agent that sits <em>across</em> sourcing systems, not inside any single module. It reads SMMS supplier and price data, APS purchase history, quality signals, and market inputs, then recommends <strong>who to source from, when to switch, and why</strong> — with evidence sourcing specialists can defend.</p>
+<p><a href="product.html?id=intelligent-sourcing-agent">View product page →</a></p>
+
+<h2>What it is (and is not)</h2>
+<ul>
+  <li><strong>Not</strong> an SMMS sub-module — SMMS supplies master data and module-level AI (OCR, audit summaries, reference price alerts), but this agent is a separate layer</li>
+  <li><strong>Is</strong> a federated judgement engine — weighs many signal types, ranks vendors, and explains trade-offs before a human approves</li>
+  <li><strong>Human-in-the-loop</strong> — the agent proposes; sourcing managers and specialists decide</li>
+</ul>
+
+<h2>Signal dimensions</h2>
+<table>
+  <thead>
+    <tr><th>Dimension</th><th>Sources</th><th>What the agent uses it for</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Performance</strong></td>
+      <td>SMMS audits, delivery reports, quarterly performance</td>
+      <td>Reliability scoring, Authorized / De-auth trend analysis</td>
+    </tr>
+    <tr>
+      <td><strong>Expertise</strong></td>
+      <td>SMMS supplier categories, audit aspect strengths</td>
+      <td>Fit between supplier specialization and material request</td>
+    </tr>
+    <tr>
+      <td><strong>Historical behavior</strong></td>
+      <td>SMMS quotations, APS PO history</td>
+      <td>Price stability, responsiveness, repeat issues, substitution success</td>
+    </tr>
+    <tr>
+      <td><strong>Capacity</strong></td>
+      <td>SMMS quota, APS PO-BOM load</td>
+      <td>Headroom checks, peak-season delivery risk</td>
+    </tr>
+    <tr>
+      <td><strong>Quality</strong></td>
+      <td>Quality Workbench, corrective projects</td>
+      <td>Defect history and quality risk in vendor ranking</td>
+    </tr>
+    <tr>
+      <td><strong>Cost</strong></td>
+      <td>SMMS reference price, market data, FX</td>
+      <td>Quote spread anomalies, cost position vs alternatives</td>
+    </tr>
+    <tr>
+      <td><strong>Communication</strong></td>
+      <td>SMMS onboarding, document workflows</td>
+      <td>Completeness, timeliness, escalation patterns</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Roadmap</h2>
+<table>
+  <thead>
+    <tr><th>Phase</th><th>Target</th><th>Status</th><th>Deliverables</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>Phase 1 — Foundation</strong></td>
+      <td>2026 H2</td>
+      <td>Planned</td>
+      <td>Federate SMMS supplier master, audit scores, quotation and reference-price signals; ranked vendor shortlists with narrative briefs</td>
+    </tr>
+    <tr>
+      <td><strong>Phase 2 — PO &amp; capacity</strong></td>
+      <td>2027 H1</td>
+      <td>Planned</td>
+      <td>APS purchase history, quota utilization, peak-season risk; switch alerts when a better-fit supplier emerges</td>
+    </tr>
+    <tr>
+      <td><strong>Phase 3 — Quality loop</strong></td>
+      <td>2027 H2</td>
+      <td>Planned</td>
+      <td>Quality Workbench and corrective-project signals in ranking; MCP tools for agent-to-system handoff</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Outputs</h2>
+<ul>
+  <li><strong>Ranked shortlists</strong> — top vendors for a material or category with scores per dimension</li>
+  <li><strong>Switch alerts</strong> — when performance, cost, or capacity shifts make another supplier the better choice</li>
+  <li><strong>Trade-off briefs</strong> — plain-language explanation of why vendor A beats vendor B on this request</li>
+</ul>
+
+<p class="mt-8">
+  <a href="product.html?id=intelligent-sourcing-agent">Explore Intelligent Sourcing Agent →</a><br />
+  <a href="post.html?slug=smms-roadmap-2026">SMMS module roadmap (data substrate) →</a>
 </p>
       `.trim(),
     },
@@ -738,6 +843,7 @@ const BLOG = {
 <p>Agents augment workflows teams already use — not greenfield chatbots on the side:</p>
 <ul>
   <li>Pre-PLM Agent — Feishu chat for sampling (live)</li>
+  <li>Intelligent Sourcing Agent — cross-system vendor judgement (planned)</li>
   <li>Price negotiation agent — SMMS + market data (planned)</li>
   <li>Simple Review voice-fill — spec conversations → structured fields (planned)</li>
   <li>Teams/Feishu data-missing reminders (planned)</li>

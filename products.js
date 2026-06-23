@@ -592,6 +592,84 @@ const PORTFOLIO = {
       color: '#f59e0b',
       products: [
         {
+          id: 'intelligent-sourcing-agent',
+          name: 'Intelligent Sourcing Agent',
+          subtitle: 'Vendor decision agent',
+          status: 'building',
+          summary:
+            'Standalone Daedalus agent — federates vendor performance, expertise, history, capacity, quality, cost, and communication to recommend sourcing choices with evidence.',
+          description:
+            'Not part of SMMS. The Intelligent Sourcing Agent is a cross-system decision layer that reads supplier master data, purchase history, quality signals, and market inputs, then ranks vendors and explains trade-offs so sourcing specialists can make sound judgements — not gut-feel calls from scattered spreadsheets and chat threads.',
+          contribution:
+            'Turns fragmented sourcing intelligence into defensible vendor recommendations. Complements SMMS module-level AI (OCR, audit summaries, price alerts) with holistic judgement across every signal type that matters when choosing who to source from.',
+          beforeAfter: {
+            before:
+              'Vendor choice driven by individual memory, WeChat threads, and partial Excel exports — no single view of performance, capacity, quality, and cost together.',
+            after:
+              'Ranked shortlists, switch alerts, and trade-off briefs backed by federated data — human approval before any status or PO change.',
+          },
+          highlights: [
+            'Seven signal dimensions: performance, expertise, history, capacity, quality, cost, communication',
+            'Human-in-the-loop — agent proposes, sourcing managers approve',
+            'Federates SMMS, APS, Quality Workbench, and market data — not locked to one system',
+          ],
+          detailSections: [
+            {
+              title: 'Signal dimensions',
+              type: 'callout',
+              body: 'The agent weighs every type of information sourcing teams actually use — in one ranked view.',
+              bullets: [
+                'Performance — delivery reliability, audit scores, quarterly trends, Authorized / De-auth history',
+                'Expertise — category specialization, audit aspect strengths, material fit',
+                'Historical behavior — price stability, quote responsiveness, repeat issues, substitution success',
+                'Capacity — quota utilization, peak-season delivery risk, PO-BOM load',
+                'Quality — defect and corrective-project signals from quality systems',
+                'Cost — reference price position, quote spreads, FX exposure',
+                'Communication — onboarding completeness, document timeliness, escalation patterns',
+              ],
+            },
+            {
+              title: 'Outputs',
+              type: 'list',
+              items: [
+                'Ranked vendor shortlists with per-dimension scores',
+                'Switch alerts when a better-fit supplier emerges',
+                'Narrative trade-off briefs — why vendor A vs vendor B on this request',
+              ],
+            },
+          ],
+          integrations: [
+            'SMMS (supplier master, audits, quotations, reference price)',
+            'Ashley Purchase System (PO history, capacity)',
+            'Quality Workbench (defect and corrective signals)',
+            'PIM (BOM materials)',
+            'Market data / FX feeds',
+          ],
+          roadmap: [
+            'Phase 1 (2026 H2): SMMS signals — ranked shortlists and trade-off briefs',
+            'Phase 2 (2027 H1): APS PO history and capacity modelling — switch alerts',
+            'Phase 3 (2027 H2): Quality loop + MCP tools for agent handoff',
+          ],
+          resources: {
+            prd: { url: '#', label: 'Intelligent Sourcing Agent PRD (draft)' },
+            demoVideo: null,
+            liveLink: null,
+            github: { url: '#', repo: 'org/intelligent-sourcing-agent' },
+            documents: [
+              {
+                url: 'post.html?slug=intelligent-sourcing-agent-roadmap',
+                label: 'Roadmap blog post',
+                meta: 'Phases, signal dimensions, and integration plan',
+              },
+            ],
+            mcpTools: [
+              { name: 'sourcing_rank_vendors', description: 'Rank vendors for a material or category with evidence brief' },
+              { name: 'sourcing_switch_alert', description: 'Check whether a better-fit supplier has emerged' },
+            ],
+          },
+          feedback: [],
+        },
+        {
           id: 'ashley-purchase',
           name: 'Ashley Purchase System',
           status: 'live',
