@@ -238,9 +238,9 @@ const BLOG = {
     {
       slug: 'quality-agent-platform-tour',
       type: 'blog',
-      title: 'Quality Agent Platform — five problems, three modules, one weekly review',
+      title: 'Quality Agent Platform — from dashboard sprawl to insights, narratives, and action',
       excerpt:
-        'AI-powered quality analytics for furniture sourcing — turn half a day of PowerBI drill-downs into a 30-minute review with contribution-ranked Top N, seasonal SPC, and AI narratives.',
+        'For years we built dozens of PowerBI dashboards — business users still dig for insights. The Quality Agent Platform turns half a day of drill-down into a 30-minute review, with AI narratives and a path to trigger QIS projects from what you find.',
       date: '2026-06-28',
       author: 'SQ Product Team',
       tags: ['Quality', 'Agents', 'Daedalus', 'Analytics'],
@@ -248,9 +248,35 @@ const BLOG = {
       assets: ['quality-agent-tour.css', 'quality-agent-tour.js'],
       init: 'qualityAgentTour',
       body: `
-<p>Our <a href="post.html?slug=quality-problems-and-actions">Quality problems &amp; actions</a> post named the gap: dashboards without narratives, manual drill-downs, and analytics that hide what actually moved total cost. The <strong>Quality Agent Platform</strong> is what we shipped to close that loop — a Daedalus agent layer on top of the same 13 KPIs PowerBI already uses, with better UX, AI interpretation, and a chat interface for ad-hoc questions.</p>
-<p class="qat-lede">Turn a half-day of manual PowerBI drill-downs into a 30-minute review — with AI-generated narratives, contribution-ranked Top N analysis, and seasonal-adjusted SPC.</p>
-<p class="qat-live">Live at <a href="https://quality-agent.ashgso.com/wboc/agent-platform-quality/chat" target="_blank" rel="noopener"><code>quality-agent.ashgso.com/wboc/agent-platform-quality/chat</code></a></p>
+<h2>The dashboard ceiling</h2>
+<p>For years, quality analytics meant building dashboards — and we built a lot of them. The organization now runs on <strong>dozens of PowerBI data dashboards</strong> across wholesale, retail, RDC, vendor performance, defect categories, and touchpoint metrics. Each one answers a slice of the question. None of them answer the whole story.</p>
+<p>Business users — QM leads, sourcing specialists, division managers — spend their weekly review <strong>flipping between reports, right-clicking to drill, cross-checking QIS against QIE, and hunting for the vendor or SKU that actually moved total cost</strong>. They can see numbers. They struggle to get <strong>insights</strong>. They almost never get <strong>narratives</strong> — the plain-language story leadership and vendors need to act. Turning raw data into judgment still takes <strong>hours, sometimes a full half-day every week</strong>. The data was there. The value was buried.</p>
+<p>Our <a href="post.html?slug=quality-problems-and-actions">Quality problems &amp; actions</a> post named this gap formally: Quantum and PowerBI as <em>dashboard-not-narrative</em>, analytics that hide what moved the total, and no closed loop from insight to corrective action. The <strong>Quality Agent Platform</strong> is our answer — not another dashboard, but a Daedalus agent layer that sits on the same trusted 13 KPIs PowerBI already uses and changes what business users get out of them.</p>
+
+<div class="qat-pitch">
+  <p class="qat-pitch-label">What changes</p>
+  <div class="qat-pitch-grid">
+    <div class="qat-pitch-item">
+      <strong>Insights in ~30 minutes</strong>
+      <span>Not half a day of PowerBI drill-down — one-click Top N, 4-level auto drill-down, contribution-ranked priorities</span>
+    </div>
+    <div class="qat-pitch-item">
+      <strong>Narratives, not just charts</strong>
+      <span>AI summaries with trends, root causes, and recommendations — ready for leadership and vendor conversations</span>
+    </div>
+    <div class="qat-pitch-item">
+      <strong>Same data you trust</strong>
+      <span>All 13 KPIs match PowerBI SQL logic — under 5% variance — no new metrics to defend</span>
+    </div>
+    <div class="qat-pitch-item">
+      <strong>Ask anything in chat</strong>
+      <span>Natural-language queries, follow-ups, and PPT generation — powered by LangGraph on live quality data</span>
+    </div>
+  </div>
+</div>
+
+<p class="qat-lede">The shift: from <em>find the number</em> to <em>understand the story</em> — and soon, from <em>understand</em> to <em>act</em>.</p>
+<p class="qat-live">Live now at <a href="https://quality-agent.ashgso.com/wboc/agent-platform-quality/chat" target="_blank" rel="noopener"><code>quality-agent.ashgso.com/wboc/agent-platform-quality/chat</code></a></p>
 
 <div class="qat-tour">
   <nav class="qat-nav" aria-label="Tour sections">
@@ -259,6 +285,7 @@ const BLOG = {
     <a href="#qat-report">Report</a>
     <a href="#qat-narrative">Narrative</a>
     <a href="#qat-chat">Chat</a>
+    <a href="#qat-next">What's next</a>
   </nav>
 
   <div class="qat-notice">
@@ -274,8 +301,8 @@ const BLOG = {
   <section class="qat-section" id="qat-why">
     <div class="qat-sec-head">
       <div class="qat-sec-label">Why we built it</div>
-      <h2>Five problems, solved</h2>
-      <p>The friction this platform removes from weekly quality work.</p>
+      <h2>Five problems the dashboard stack couldn't solve</h2>
+      <p>Each pain point below maps to something business users hit every week across our PowerBI estate — this platform removes that friction directly.</p>
     </div>
     <div class="qat-grid">
       <div class="qat-pain">
@@ -523,6 +550,31 @@ const BLOG = {
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="qat-section" id="qat-next">
+    <div class="qat-sec-head">
+      <div class="qat-sec-label">What's next</div>
+      <h2>From insight to action — trigger quality projects directly</h2>
+      <p>Reading faster is step one. The real payoff is closing the loop: when the agent surfaces a worsening vendor, a recurrence pattern, or a ΔCost spike, the user should not copy numbers into a separate system and start over.</p>
+    </div>
+    <div class="qat-next-grid">
+      <div class="qat-next-step">
+        <span class="qat-next-num">Today</span>
+        <h3>See &amp; understand</h3>
+        <p>Top N ranking, SPC alerts, AI narratives, and chat Q&amp;A — business users get insights and stories in one place instead of across dozens of dashboards.</p>
+      </div>
+      <div class="qat-next-arrow" aria-hidden="true">→</div>
+      <div class="qat-next-step qat-next-step--future">
+        <span class="qat-next-num">Next</span>
+        <h3>Act on what you find</h3>
+        <p>From any insight — a vendor trend, a defect category spike, a narrative recommendation — users will <strong>trigger corrective action in one click</strong>: draft and submit a <strong>QIS quality project</strong> pre-filled with the evidence behind the finding.</p>
+      </div>
+    </div>
+    <div class="qat-info">
+      <h4>How this connects to Quality Workbench</h4>
+      <p>The <a href="product.html?id=quality-workbench">Quality Workbench</a> Approval Cockpit already defines the write-back pattern: AI drafts a QIS proposal, a QM Lead approves, then the system executes with validate → dry-run → readback → audit. The Quality Agent Platform feeds the <em>read</em> side; the next release wires the <em>write</em> side — insight in the report, project in QIS, no re-entry.</p>
     </div>
   </section>
 
