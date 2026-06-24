@@ -236,6 +236,331 @@ const BLOG = {
       `.trim(),
     },
     {
+      slug: 'quality-agent-platform-tour',
+      type: 'blog',
+      title: 'Quality Agent Platform — five problems, three modules, one weekly review',
+      excerpt:
+        'AI-powered quality analytics for furniture sourcing — turn half a day of PowerBI drill-downs into a 30-minute review with contribution-ranked Top N, seasonal SPC, and AI narratives.',
+      date: '2026-06-28',
+      author: 'SQ Product Team',
+      tags: ['Quality', 'Agents', 'Daedalus', 'Analytics'],
+      layout: 'wide',
+      assets: ['quality-agent-tour.css', 'quality-agent-tour.js'],
+      init: 'qualityAgentTour',
+      body: `
+<p>Our <a href="post.html?slug=quality-problems-and-actions">Quality problems &amp; actions</a> post named the gap: dashboards without narratives, manual drill-downs, and analytics that hide what actually moved total cost. The <strong>Quality Agent Platform</strong> is what we shipped to close that loop — a Daedalus agent layer on top of the same 13 KPIs PowerBI already uses, with better UX, AI interpretation, and a chat interface for ad-hoc questions.</p>
+<p class="qat-lede">Turn a half-day of manual PowerBI drill-downs into a 30-minute review — with AI-generated narratives, contribution-ranked Top N analysis, and seasonal-adjusted SPC.</p>
+<p class="qat-live">Live at <a href="https://quality-agent.ashgso.com/wboc/agent-platform-quality/chat" target="_blank" rel="noopener"><code>quality-agent.ashgso.com/wboc/agent-platform-quality/chat</code></a></p>
+
+<div class="qat-tour">
+  <nav class="qat-nav" aria-label="Tour sections">
+    <a href="#qat-why">Why</a>
+    <a href="#qat-overview">Overview</a>
+    <a href="#qat-report">Report</a>
+    <a href="#qat-narrative">Narrative</a>
+    <a href="#qat-chat">Chat</a>
+  </nav>
+
+  <div class="qat-notice">
+    <h3>In active development</h3>
+    <ul>
+      <li>Some features are incomplete or subject to change.</li>
+      <li>Quality event photos (Q7) are unavailable due to permission restrictions.</li>
+      <li>Replacement Parts and Service Tech Order data are not yet implemented.</li>
+      <li>PPT generation requires the deer-flow backend service to be running.</li>
+    </ul>
+  </div>
+
+  <section class="qat-section" id="qat-why">
+    <div class="qat-sec-head">
+      <div class="qat-sec-label">Why we built it</div>
+      <h2>Five problems, solved</h2>
+      <p>The friction this platform removes from weekly quality work.</p>
+    </div>
+    <div class="qat-grid">
+      <div class="qat-pain">
+        <h3>Manual deep-dive workflow</h3>
+        <p class="qat-before"><b>Before:</b> Half a day weekly clicking through PowerBI — selecting divisions, right-clicking to drill, comparing panels across QIS/QIE.</p>
+        <p class="qat-after"><b>Now:</b> One-click Top N with automated 4-level drill-down (Division → Series → Item → Vendor).</p>
+      </div>
+      <div class="qat-pain">
+        <h3>Dashboard ≠ narrative</h3>
+        <p class="qat-before"><b>Before:</b> Ten people read one dashboard and reach ten conclusions; stories were assembled by hand on weekends.</p>
+        <p class="qat-after"><b>Now:</b> AI narratives with summary, trends, root causes, and action items — ready for leadership and vendors.</p>
+      </div>
+      <div class="qat-pain">
+        <h3>Local wins hide global stagnation</h3>
+        <p class="qat-before"><b>Before:</b> Color Variation improved 10× ($50K → $5K) while total cost barely moved — the matrix sorted by absolute value.</p>
+        <p class="qat-after"><b>Now:</b> Top N sorted by ΔCost contribution (Pareto) — see what actually moved the total.</p>
+      </div>
+      <div class="qat-pain">
+        <h3>Seasonal "sawtooth" false alarms</h3>
+        <p class="qat-before"><b>Before:</b> Handling defects spike after Spring Festival and drop before Christmas; SPC on an annual baseline cried wolf.</p>
+        <p class="qat-after"><b>Now:</b> Seasonal-adjusted SPC using same-week history — no alarms for expected patterns.</p>
+      </div>
+      <div class="qat-pain">
+        <h3>Manual report assembly</h3>
+        <p class="qat-before"><b>Before:</b> Vendor corrective requests meant hand-pasting screenshots and QIE photos into emails.</p>
+        <p class="qat-after"><b>Now:</b> Narratives export to PDF with embedded charts — one click from analysis to send.</p>
+      </div>
+      <div class="qat-card qat-value">
+        <span class="qat-tag">Core value</span>
+        <h3>What you get</h3>
+        <ul>
+          <li>4+ hrs → ~30 min weekly review</li>
+          <li>Consistent AI interpretation</li>
+          <li>Contribution-ranked priorities</li>
+          <li>13 KPIs aligned with PowerBI (&lt;5% variance)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="qat-section" id="qat-overview">
+    <div class="qat-sec-head">
+      <div class="qat-sec-label">Overview</div>
+      <h2>Three modules</h2>
+      <p>All 13 KPIs strictly match the existing PowerBI report — no new metrics, just better UX.</p>
+    </div>
+    <div class="qat-grid">
+      <div class="qat-card">
+        <h3>Quality Report</h3>
+        <p>Multi-layer KPI dashboard with drill-down: Layer 0 KPI cards (13, with WoW), Layer 1 Top N + SPC charts, Layer 2 breakdowns (Mode A/B).</p>
+      </div>
+      <div class="qat-card">
+        <h3>Narrative Reports</h3>
+        <p>AI quality summaries with embedded ECharts. Weekly and monthly, in five sections: Summary → Trends → Root Cause → Insights → Recommendations.</p>
+      </div>
+      <div class="qat-card">
+        <h3>Agent Chat</h3>
+        <p>Interactive assistant for quality questions — query data, get insights, explore metrics in natural language, powered by LangGraph.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="qat-section" id="qat-report">
+    <div class="qat-sec-head">
+      <div class="qat-sec-label">Module 1</div>
+      <h2>Quality Report &amp; Dashboard</h2>
+      <p>Path: <code>/quality-report</code> → Report tab</p>
+    </div>
+    <div class="qat-steps">
+      <div class="qat-step">
+        <div class="qat-step-n">1</div>
+        <div>
+          <h4>Set the date range</h4>
+          <p>Choose Weekly, Monthly, or Custom, then pick a span from the Range dropdown.</p>
+          <p class="qat-out">→ All KPIs and charts refresh with Week-over-Week comparisons.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">2</div>
+        <div>
+          <h4>Review Layer 0 KPI cards</h4>
+          <p>The top row shows Wholesale Qty, RDC Qty, RA Defects, Retail Returns, audit costs, and overall Quality Score.</p>
+          <p class="qat-out">→ Each card shows value, WoW change (green up / red down), and trend.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">3</div>
+        <div>
+          <h4>Analyze Top N contributors</h4>
+          <p>The left panel ranks items by ΔCost contribution. Switch grouping by Division, Series, Item SKU, Vendor, or Office.</p>
+          <p class="qat-out">→ Columns: Current, Prior, ΔCost, Contribution %. Click a row to drill down.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">4</div>
+        <div>
+          <h4>Monitor SPC control charts</h4>
+          <p>Four charts track stability: Wholesale Returns, Retail Returns, Service Tech Orders, RP Orders — each with UCL, center line, and LCL.</p>
+          <p class="qat-out">→ Click a chart to open Mode B touchpoint analysis.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">5</div>
+        <div>
+          <h4>Drill down — Mode A (group)</h4>
+          <p>Click a Top N row to open seven panels for that dimension.</p>
+          <p class="qat-out">→ Weekly trend, next-level breakdown, vendor distribution, defect categories, touchpoint split, top defects, root cause.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">6</div>
+        <div>
+          <h4>Drill down — Mode B (metric)</h4>
+          <p>Click an SPC chart to open five panels for that touchpoint metric.</p>
+          <p class="qat-out">→ Weekly trend, division and vendor breakdowns, top SKUs, summary stats.</p>
+        </div>
+      </div>
+    </div>
+    <div class="qat-info">
+      <h4>Data alignment with PowerBI</h4>
+      <p>All 13 KPIs use the same SQL logic as PowerBI — core 8 (Total Quality Cost, Total Post Issues, Wholesale/Retail Return Count, Retail Issue %, Wholesale/RDC/Retail Delivered Qty) plus 5 expandable (RA Cost, Service Tech Cost/Count, RP Cost/Count). Variance target: under 5% for the same date range.</p>
+    </div>
+  </section>
+
+  <section class="qat-section" id="qat-narrative">
+    <div class="qat-sec-head">
+      <div class="qat-sec-label">Module 2</div>
+      <h2>Narrative Reports</h2>
+      <p>Path: <code>/quality-report</code> → Narrative tab</p>
+    </div>
+    <div class="qat-steps">
+      <div class="qat-step">
+        <div class="qat-step-n">1</div>
+        <div>
+          <h4>Filter by type</h4>
+          <p>Switch between All, Weekly, and Monthly — each button shows its count.</p>
+          <p class="qat-out">→ Monthly is comprehensive; Weekly focuses on immediate action.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">2</div>
+        <div>
+          <h4>Open a report</h4>
+          <p>Pick a report from the sidebar to read it in the main panel.</p>
+          <p class="qat-out">→ Five sections: Summary, Trends, Root Cause, Insights, Recommendations.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">3</div>
+        <div>
+          <h4>Read embedded charts</h4>
+          <p>Reports render live ECharts — SPC control, Pareto, and pie charts.</p>
+          <p class="qat-out">→ Interactive tooltips and legends; data follows the report period.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">4</div>
+        <div>
+          <h4>Export to PDF</h4>
+          <p>Use Export PDF (top-right) to convert all content and charts to a printable file.</p>
+          <p class="qat-out">→ Includes tables, charts as images, color-coded metrics, and checklists.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">5</div>
+        <div>
+          <h4>Share</h4>
+          <p>Copy a shareable link or generate an email summary.</p>
+          <p class="qat-out">→ Recipients view in-browser, no platform access required.</p>
+        </div>
+      </div>
+    </div>
+    <div class="qat-info">
+      <h4>Bilingual output</h4>
+      <p>Executive summaries can render in both English and Chinese, so reports go straight to international leadership and local vendor teams without manual translation.</p>
+    </div>
+  </section>
+
+  <section class="qat-section" id="qat-chat">
+    <div class="qat-sec-head">
+      <div class="qat-sec-label">Module 3</div>
+      <h2>Agent Chat</h2>
+      <p>Path: <code>/chat</code></p>
+    </div>
+    <div class="qat-steps">
+      <div class="qat-step">
+        <div class="qat-step-n">1</div>
+        <div>
+          <h4>Ask a question</h4>
+          <p>Type in plain language and press Enter.</p>
+          <p class="qat-out">→ e.g. "What's the RA defect rate this week?" · "Top 5 vendors by quality issues"</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">2</div>
+        <div>
+          <h4>Read the response</h4>
+          <p>Answers come back with data, insights, and visualizations.</p>
+          <p class="qat-out">→ Powered by a LangGraph agent connected to the quality backend in real time.</p>
+        </div>
+      </div>
+      <div class="qat-step">
+        <div class="qat-step-n">3</div>
+        <div>
+          <h4>Follow up</h4>
+          <p>Keep going — the assistant holds context across the thread.</p>
+          <p class="qat-out">→ e.g. "Why is Vendor X higher?" · "Show the last 6 weeks."</p>
+        </div>
+      </div>
+    </div>
+    <div class="qat-info qat-info--plain">
+      <h4>What you can ask</h4>
+      <div class="qat-skills">
+        <div class="qat-skill">
+          <h4>Quality report queries</h4>
+          <div class="qat-chips">
+            <code>Show quality KPIs for this week</code>
+            <code>Which vendor drove the most cost worsening?</code>
+            <code>Top 10 worsening divisions</code>
+            <code>SPC trend for retail returns</code>
+          </div>
+        </div>
+        <div class="qat-skill">
+          <h4>Narrative reports</h4>
+          <div class="qat-chips">
+            <code>Show available narrative reports</code>
+            <code>View June 2026 quality summary</code>
+            <code>Generate a monthly report for Import</code>
+          </div>
+        </div>
+        <div class="qat-skill">
+          <h4>PPT generation</h4>
+          <div class="qat-chips">
+            <code>Create a PPT from June quality report</code>
+            <code>Generate a vendor-review presentation</code>
+            <code>Make slides in glassmorphism style</code>
+          </div>
+          <p class="qat-skill-note">Styles: glassmorphism, dark-premium, keynote, minimal-swiss, 3d-isometric, editorial.</p>
+        </div>
+        <div class="qat-skill">
+          <h4>Deep research</h4>
+          <div class="qat-chips">
+            <code>Research best practices for furniture QA</code>
+            <code>Find industry benchmarks for defect rates</code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="qat-recap">
+    <h2>You're ready to start</h2>
+    <div class="qat-recap-cols">
+      <div>
+        <h4>Quick start</h4>
+        <ul>
+          <li>Open Quality Report to view KPIs</li>
+          <li>Analyze Top N contributors and SPC trends</li>
+          <li>Browse the Narrative tab for AI reports</li>
+          <li>Try Agent Chat for Q&amp;A</li>
+        </ul>
+      </div>
+      <div>
+        <h4>Key paths</h4>
+        <ul>
+          <li>Report — <code>/quality-report</code></li>
+          <li>Narrative — Report → Narrative tab</li>
+          <li>Chat — <code>/chat</code></li>
+        </ul>
+      </div>
+    </div>
+    <a class="qat-launch" href="https://quality-agent.ashgso.com/wboc/agent-platform-quality/chat" target="_blank" rel="noopener">Launch Platform →</a>
+  </div>
+</div>
+
+<p class="mt-8">
+  <strong>Read together:</strong>
+  <a href="post.html?slug=quality-problems-and-actions">Quality problems &amp; actions</a> ·
+  <a href="post.html?slug=quality-end-to-end-process">Quality end to end</a> ·
+  <a href="post.html?slug=edw-data-landscape">EDW data landscape</a> ·
+  <a href="product.html?id=quality-workbench">Quality Workbench</a>
+</p>
+      `.trim(),
+    },
+    {
       slug: 'quality-problems-and-actions',
       type: 'blog',
       title: 'Quality problems, needs & actions — from 20+ system gaps to the agent MVP',
@@ -319,6 +644,7 @@ const BLOG = {
 </div>
 
 <p class="mt-8">
+  <a href="post.html?slug=quality-agent-platform-tour">Quality Agent Platform tour →</a><br />
   <a href="product.html?id=quality-workbench">Explore Quality Workbench →</a><br />
   <a href="products.html">Browse the full product portfolio →</a>
 </p>

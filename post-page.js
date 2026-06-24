@@ -110,6 +110,8 @@
             initEdwFlowDiagrams();
           } else if (post.init === 'qualityProblemsFlow' && typeof initQualityProblemsDiagrams === 'function') {
             initQualityProblemsDiagrams();
+          } else if (post.init === 'qualityAgentTour' && typeof initQualityAgentTour === 'function') {
+            initQualityAgentTour();
           }
         };
         document.body.appendChild(script);
