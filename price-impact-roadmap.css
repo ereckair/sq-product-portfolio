@@ -1,0 +1,297 @@
+/* Price Impact Analysis Agent — roadmap post */
+
+.pia-roadmap {
+  margin-top: 0.5rem;
+}
+
+.pia-kicker {
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ea580c;
+  margin-bottom: 0.5rem;
+}
+
+.pia-tagline {
+  font-size: 1.0625rem;
+  color: rgba(0, 0, 0, 0.72);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  max-width: 46rem;
+}
+
+.pia-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.65rem;
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1d4ed8;
+  background: rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(59, 130, 246, 0.25);
+  border-radius: 999px;
+  margin-left: 0.5rem;
+  vertical-align: middle;
+}
+
+.pia-value {
+  padding: 1.25rem 1.35rem;
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.pia-value strong {
+  display: block;
+  font-size: 0.75rem;
+  font-family: ui-monospace, monospace;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.45);
+  margin-bottom: 0.5rem;
+}
+
+.pia-value p {
+  margin: 0;
+  color: rgba(0, 0, 0, 0.78);
+  line-height: 1.65;
+}
+
+.pia-section-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  color: #000;
+  margin-bottom: 1.25rem;
+}
+
+.pia-phases {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 768px) {
+  .pia-phases {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pia-phase {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.pia-phase-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1.15rem;
+  background: #fafafa;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.pia-phase-num {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 999px;
+  background: #2563eb;
+  color: #fff;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.pia-phase-head h3 {
+  margin: 0;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.pia-phase-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 1rem 1rem;
+}
+
+.pia-phase-list li {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: rgba(0, 0, 0, 0.72);
+}
+
+.pia-phase-list li:last-child {
+  border-bottom: none;
+}
+
+.pia-phase-list strong {
+  display: block;
+  color: #000;
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+}
+
+.pia-icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.4;
+}
+
+.pia-chain-block {
+  margin-bottom: 2rem;
+}
+
+.pia-chain-label {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.55);
+  margin-bottom: 0.65rem;
+}
+
+.pia-chain {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.25rem;
+}
+
+.pia-chain-step {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.45rem 0.75rem;
+  font-size: 0.8125rem;
+  color: rgba(0, 0, 0, 0.78);
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.pia-chain-arrow {
+  color: rgba(0, 0, 0, 0.25);
+  font-size: 0.875rem;
+  padding: 0 0.15rem;
+}
+
+.pia-tools {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.65rem;
+  margin-bottom: 2.5rem;
+}
+
+.pia-tool {
+  padding: 0.85rem 1rem;
+  background: #fafafa;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  border-radius: 6px;
+}
+
+.pia-tool code {
+  display: block;
+  font-family: ui-monospace, monospace;
+  font-size: 0.8125rem;
+  color: #1d4ed8;
+  margin-bottom: 0.35rem;
+}
+
+.pia-tool span {
+  font-size: 0.8125rem;
+  color: rgba(0, 0, 0, 0.58);
+  line-height: 1.45;
+}
+
+.pia-tech {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 900px) {
+  .pia-tech {
+    grid-template-columns: 1fr;
+  }
+}
+
+.pia-tech-col {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  padding: 1rem;
+  background: #fff;
+}
+
+.pia-tech-col h4 {
+  margin: 0 0 0.75rem;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.pia-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pia-tag {
+  font-size: 0.75rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 999px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fafafa;
+  color: rgba(0, 0, 0, 0.68);
+}
+
+.pia-rollout {
+  padding: 1.15rem 1.25rem;
+  background: rgba(59, 130, 246, 0.06);
+  border: 1px solid rgba(59, 130, 246, 0.18);
+  border-radius: 8px;
+}
+
+.pia-rollout h4 {
+  margin: 0 0 0.65rem;
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: #000;
+}
+
+.pia-rollout ul {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.pia-rollout li {
+  font-size: 0.9rem;
+  color: rgba(0, 0, 0, 0.72);
+  line-height: 1.55;
+  margin-bottom: 0.35rem;
+}
+
+.pia-rollout li:last-child {
+  margin-bottom: 0;
+}

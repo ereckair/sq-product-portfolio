@@ -24,9 +24,9 @@ Open [http://localhost:8080](http://localhost:8080)
 
 1. **Product Lifecycle Management** — Pre-PLM Agent, PLM, PIM, DPCS, ECO, Market Research
 2. **Global Compliance** — CMS, Test Create, Law Label, Law License, Chain of Custody, GLS
-3. **Global Quality Control Center** — Quality Work Bench
+3. **Global Quality Control Center** — Quality Agent Platform
 4. **Sourcing Systems** — Ashley Purchase System, SMMS
-5. **Human Resources Center** — HRS
+5. **Human Resources Center** — HRS, XWork Vibe Studio
 
 ## Updating content
 

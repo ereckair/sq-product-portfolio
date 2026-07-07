@@ -2,6 +2,11 @@
 (function () {
   const stats = getPortfolioStats();
 
+  const productCountEl = document.getElementById('home-product-count');
+  if (productCountEl) {
+    productCountEl.textContent = `${stats.totalProducts} products.`;
+  }
+
   // Stats
   const statsEl = document.getElementById('home-stats');
   if (statsEl) {

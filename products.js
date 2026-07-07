@@ -109,7 +109,7 @@ const PORTFOLIO = {
             phase: 'uat',
             progress: 100,
             targetUat: 'Apr 30',
-            update: 'Core sampling modules live; NPIS accessory complete; multipack SKU spec and Product Launch documentation in testing.',
+            update: 'DLM configuration complete (Apr 30); five-round UAT done. Vietnam Strategic Execution training underway — go-live imminent.',
             lastUpdated: 'Jul 2026',
           },
           summary: 'The in-flight product record — from SQE concept release through vendor sampling, show/go selection, and launch documentation.',
@@ -387,7 +387,7 @@ const PORTFOLIO = {
             'Compliance Management',
             'Compliance Test Create',
             'Dynamic Product Costing',
-            'Quality Work Bench',
+            'Quality Agent Platform',
             'Corporate PK / NPIS',
             'Pre-PLM Agent',
           ],
@@ -527,7 +527,7 @@ const PORTFOLIO = {
           roadmap: [
             'Commodity price API integration (public exchange data)',
             'FX rate monitoring with renegotiation triggers',
-            'Price negotiation agent for raw material sourcing',
+            'Price Impact Analysis Agent — commodity + FX feeds into SKU cost alerts',
             'Annual savings report tied to APS order volume',
           ],
           resources: {
@@ -747,46 +747,57 @@ const PORTFOLIO = {
       products: [
         {
           id: 'quality-workbench',
-          name: 'Quality Work Bench',
-          subtitle: 'Quality Intelligence · One Ashley',
+          name: 'Quality Agent Platform',
+          subtitle: 'Agent-led quality analytics · Daedalus',
           status: 'building',
-          summary: 'Quality decision cockpit — recurrence watchtower, approval queue, and Quantum QA narratives with One Ashley agent assistance.',
+          summary: 'From dashboard sprawl to insights, narratives, and action — AI quality reports, Top N drill-down, and agent chat on live data.',
           description:
-            'A business-user dashboard for the Quality office (not frontline QIE entry). One Ashley helps query quality data, surface recurrence risk, draft QIS project proposals, and generate narrative reports — with human approval before any write to production systems.',
+            'The Quality Agent Platform is a Daedalus agent layer on top of trusted PowerBI KPIs — not another dashboard. Business users get contribution-ranked priorities, AI narratives, natural-language Q&A, and a path to trigger QIS projects from what they find. Frontline QC stays in Checklist; QM leads and quality office work here.',
           contribution:
-            'Shifts quality from reactive ticket-chasing to a command center: first-glance recurrence signals, AI-drafted corrective proposals in an approval cockpit, and Quantum QA reports linked to drill-through narratives. Frontline QC continues in Checklist; engineers and QM leads work here.',
+            'Replaces half a day of PowerBI drill-down with ~30-minute reviews: one-click Top N, 4-level auto drill-down, seasonal-adjusted SPC, and AI summaries ready for leadership and vendors. Approval Cockpit gates QIS writes with validate → dry-run → execute → readback → audit.',
           beforeAfter: {
             before:
-              'Recurrence patterns buried in QIE/Project history; corrective actions reopened without clear signals; quality reporting split across spreadsheets and static dashboards.',
+              'Dozens of PowerBI dashboards — business users dig for insights, assemble stories by hand, and rarely close the loop from finding to corrective action.',
             after:
-              'Recurrence Watchtower surfaces vendor × item combos; Approval Cockpit gates QIS writes with validate → dry-run → execute → readback → audit; Quantum QA narratives jump-filter into live reports.',
+              'One agent platform: live KPIs aligned with PowerBI (under 5% variance), AI narratives with embedded charts, agent chat on quality data, and QIS write-back on the roadmap.',
           },
           highlights: [
-            'Recurrence Watchtower — first-glance vendor × item recurrence overview',
-            'Approval Cockpit — AI-drafted QIS proposals await QM Lead sign-off',
-            'Quantum QA reports + narrative summaries in one place',
-            'One Ashley Copilot with quality investigator & narrative writer skills',
+            'Insights in ~30 minutes — not half a day of PowerBI drill-down',
+            'AI narratives with trends, root causes, and recommendations',
+            '13 KPIs match PowerBI SQL logic — under 5% variance',
+            'Agent chat — natural-language queries and PPT generation on live data',
           ],
-          integrations: ['Checklist / QIE Mart', 'One Ashley (Daedalus)', 'Quantum QA', 'PIM (BOM attributes)'],
+          integrations: ['PowerBI / EDW (Quantum QA)', 'Checklist / QIE Mart', 'QIS 2.0', 'PIM (BOM attributes)', 'One Ashley (Daedalus)'],
           roadmap: [
-            'Live Checklist data feed with ~15-minute refresh cadence',
-            'Automated vendor follow-up emails for overdue projects (E04)',
+            'One-click QIS project trigger from any insight (Approval Cockpit write-back)',
+            'Quality event photos (Q7) when permissions allow',
+            'Replacement Parts and Service Tech Order data feeds',
             'Scheduled weekly/monthly narrative digests',
-            'Teams/Feishu push for critical recurrence alerts',
           ],
           resources: {
             landingPage: {
-              url: 'https://fuse2d06006a4bb644969e8.blob.core.windows.net/x-private/replicas/adf6d506ac4a41721f382fe7d815398b.html?sv=2025-07-05&st=2026-06-04T06%3A50%3A29Z&se=2126-05-11T06%3A50%3A29Z&sr=c&sp=r&sig=5DpDNEBmWxHkFMvOP7dyrqzX3OEt5PHY7Wyd57nDVa4%3D',
-              label: 'Open prototype mockup',
+              url: 'https://quality-agent.ashgso.com/wboc/agent-platform-quality/chat',
+              label: 'Open live platform',
             },
-            prd: { url: '#', label: 'Quality Intelligence Brief' },
-            demoVideo: { url: '#', label: 'Inspector workflow demo' },
-            liveLink: null,
-            github: { url: '#', repo: 'org/quality-workbench' },
+            prd: { url: '#', label: 'Quality Agent Platform brief' },
+            demoVideo: null,
+            liveLink: {
+              url: 'https://quality-agent.ashgso.com/wboc/agent-platform-quality/chat',
+              label: 'Open Quality Agent Platform',
+            },
+            github: { url: '#', repo: 'org/quality-agent-platform' },
+            documents: [
+              {
+                url: 'post.html?slug=quality-agent-platform-tour',
+                label: 'Quality Agent Platform — from dashboard sprawl to insights, narratives, and action',
+                meta: 'Full platform tour — modules, workflows, agent chat, and what is live today',
+                type: 'post',
+              },
+            ],
             mcpTools: [
-              { name: 'qw_log_defect', description: 'Log inspection defect' },
-              { name: 'qw_get_open_capa', description: 'List open corrective actions' },
-              { name: 'qw_investigate_recurrence', description: 'Deep-dive vendor × item recurrence row' },
+              { name: 'quality_report_query', description: 'Query KPIs, Top N contributors, and SPC trends' },
+              { name: 'quality_narrative_generate', description: 'Generate weekly or monthly AI narrative report' },
+              { name: 'quality_agent_chat', description: 'Natural-language Q&A on live quality data' },
             ],
           },
           feedback: [
@@ -822,7 +833,7 @@ const PORTFOLIO = {
           highlights: [
             'Seven signal dimensions: performance, expertise, history, capacity, quality, cost, communication',
             'Human-in-the-loop — agent proposes, sourcing managers approve',
-            'Federates SMMS, APS, Quality Workbench, and market data — not locked to one system',
+            'Federates SMMS, APS, Quality Agent Platform, and market data — not locked to one system',
           ],
           detailSections: [
             {
@@ -852,7 +863,7 @@ const PORTFOLIO = {
           integrations: [
             'SMMS (supplier master, audits, quotations, reference price)',
             'Ashley Purchase System (PO history, capacity)',
-            'Quality Workbench (defect and corrective signals)',
+            'Quality Agent Platform (defect and corrective signals)',
             'PIM (BOM materials)',
             'Market data / FX feeds',
           ],
@@ -876,6 +887,102 @@ const PORTFOLIO = {
             mcpTools: [
               { name: 'sourcing_rank_vendors', description: 'Rank vendors for a material or category with evidence brief' },
               { name: 'sourcing_switch_alert', description: 'Check whether a better-fit supplier has emerged' },
+            ],
+          },
+          feedback: [],
+        },
+        {
+          id: 'price-impact-analysis-agent',
+          name: 'Price Impact Analysis Agent',
+          subtitle: 'Material price → SKU cost → sales impact',
+          status: 'planned',
+          summary:
+            'Daedalus agent that detects material, commodity, factory quote, and FX changes — traces impact through PLM and BOM to affected SKUs, then forecasts total sales cost and recommends actions.',
+          description:
+            'When raw material prices move, sourcing teams today discover the impact late — often after factories ask for a requote or costing surprises land at launch. The Price Impact Analysis Agent closes that gap: Phase 1 identifies which SKUs are affected and how much cost shifts, then alerts decision-makers. Phase 2 layers in sales volume and elasticity to forecast total sales cost impact and recommend price adjustments or material substitutions.',
+          contribution:
+            'Turns SMMS price data and PLM material linkage into proactive cost intelligence — not just “time to renegotiate,” but “here is every SKU affected, by how much, and what it means for sales cost.” Complements SMMS reference-price alerts with BOM-level simulation and executive-ready impact reports.',
+          beforeAfter: {
+            before:
+              'Material price changes tracked in spreadsheets or SMMS alone — no automatic link to which finished SKUs use the material, no severity-ranked alerts, no sales-cost forecast.',
+            after:
+              'Scheduled or on-demand agent run: detect change → scan PLM → simulate BOM cost → ticket + notify → forecast sales cost → push decision recommendations to IM/email.',
+          },
+          highlights: [
+            'Phase 1 — minute-level cost impact identification and alerting',
+            'Phase 2 — total sales cost forecasting with YoY/PoP comparison',
+            'Federates SMMS, PLM, BOM, commodity APIs, FX feeds, and sales history',
+            'Human-in-the-loop — agent proposes; sourcing and costing leads decide',
+          ],
+          detailSections: [
+            {
+              title: 'Two-phase analysis',
+              type: 'pairs',
+              items: [
+                {
+                  label: 'Phase 1 — Cost impact & alerting',
+                  detail: 'Detect price/FX changes, scan PLM for affected SKUs, calculate BOM cost impact per SKU, generate alert tickets, and notify decision-makers with structured reports.',
+                },
+                {
+                  label: 'Phase 2 — Sales cost forecasting',
+                  detail: 'Pull sales YoY/PoP data, model volume trends with price elasticity, forecast total sales cost, compare to historical periods, and recommend price or material actions.',
+                },
+              ],
+            },
+            {
+              title: 'Agent outputs',
+              type: 'list',
+              items: [
+                'Severity-ranked alert tickets for affected SKUs',
+                'Per-SKU cost increase amount and percentage from BOM consumption',
+                'Comprehensive impact reports pushed via enterprise IM or email',
+                'Total sales cost forecast with decision recommendations',
+              ],
+            },
+            {
+              title: 'Core tools',
+              type: 'list',
+              items: [
+                'price_monitor — market and FX change detection',
+                'plm_material_search — find all SKUs using a material',
+                'bom_cost_impact — BOM cost simulation engine',
+                'notify_ticket — alert ticket creation and push',
+                'sales_volume_query — sales YoY/PoP extraction',
+                'sales_cost_forecast — aggregate volume × new unit cost',
+              ],
+            },
+          ],
+          integrations: [
+            'SMMS (reference price, material master)',
+            'PLM (in-flight product record)',
+            'PIM / BOM',
+            'Dynamic Product Costing',
+            'Commodity API & exchange rate feeds',
+            'Ashley Purchase System (order history)',
+          ],
+          roadmap: [
+            'Phase 1 (4 weeks): core material alert pipeline — detect, scan, simulate, ticket, notify',
+            'Phase 2 (6 weeks): sales volume and total sales cost forecasting',
+            'Ongoing: expand material categories and automation coverage',
+          ],
+          resources: {
+            prd: { url: '#', label: 'Price Impact Analysis Agent PRD (draft)' },
+            demoVideo: null,
+            liveLink: null,
+            github: { url: '#', repo: 'org/price-impact-analysis-agent' },
+            documents: [
+              {
+                url: 'post.html?slug=price-impact-analysis-agent-roadmap',
+                label: 'Agent roadmap',
+                meta: 'Business flow, tool chains, technical framework, and rollout path',
+                type: 'post',
+              },
+            ],
+            mcpTools: [
+              { name: 'price_monitor', description: 'Monitor market/FX changes and compute percentage deltas' },
+              { name: 'plm_material_search', description: 'Find all PLM SKUs that consume a material' },
+              { name: 'bom_cost_impact', description: 'Simulate per-SKU BOM cost impact' },
+              { name: 'sales_cost_forecast', description: 'Forecast total sales cost from volume × new unit cost' },
             ],
           },
           feedback: [],
@@ -947,33 +1054,6 @@ const PORTFOLIO = {
             demoVideo: null,
             liveLink: { url: '#', label: 'Open Vendor Trade Mark' },
             github: { url: '#', repo: 'org/vendor-trademark' },
-            mcpTools: [],
-          },
-          feedback: [],
-        },
-        {
-          id: 'vendor-profile',
-          name: 'Wonder Profile (Gorge Intelligence)',
-          status: 'building',
-          summary: 'Vendor factory profile system — structured onboarding data for US SCP vendor setup.',
-          description:
-            'Collects new factory visit and vendor onboarding information in a standardized format. Previously Wonder profiles were maintained in Excel with inconsistent formats; data now enters cleanly and, after approval, flows to the US SCP vendor setup team for factory registration, FOB/CIF terms, and payment account setup.',
-          contribution:
-            'Eliminated format errors in vendor onboarding data; serves as the factory archive for registration and profile changes. Placeholder for future VAMS integration — limited scope beyond basic vendor records.',
-          beforeAfter: {
-            before: 'Excel-based Wonder profiles with inconsistent formats; frequent manual cleanup before US could register factories.',
-            after: 'Structured profile capture with approval workflow; approved data sent to US SCP vendor setup team for factory registration.',
-          },
-          integrations: ['SMMS (Supplier Trade Center)', 'US SCP Vendor Setup Team', 'VAMS (planned)'],
-          roadmap: [
-            'Complete when Wonder Profile VAMS migration arrives',
-            'Link approved profiles to SMMS supplier portal records',
-          ],
-          resources: {
-            prd: { url: '#', label: 'Wonder Profile PRD v0.3' },
-            demoVideo: null,
-            liveLink: null,
-            github: { url: '#', repo: 'org/vendor-profile' },
             mcpTools: [],
           },
           feedback: [],
@@ -1130,7 +1210,7 @@ const PORTFOLIO = {
           roadmap: [
             'Supplier Performance module (2026 M9)',
             'Supplier Quotation module — configuration in progress',
-            'Price negotiation agent — FX + commodity price triggers',
+            'Price Impact Analysis Agent — material price → SKU cost → sales cost forecast',
             'Authorized supplier enforcement (vendor ↔ supplier ↔ factory triangle)',
             'Reference price lookup via AI (Alibaba, public data)',
           ],
@@ -1164,6 +1244,12 @@ const PORTFOLIO = {
                 url: 'post.html?slug=smms-roadmap-2026',
                 label: 'SMMS roadmap 2026 — blog post',
                 meta: 'Interactive roadmap tables with module status and agent scenarios',
+                type: 'post',
+              },
+              {
+                url: 'post.html?slug=price-impact-analysis-agent-roadmap',
+                label: 'Price Impact Analysis Agent — roadmap',
+                meta: 'Two-phase agent: cost impact alerts and total sales cost forecasting',
                 type: 'post',
               },
             ],
@@ -1208,6 +1294,109 @@ const PORTFOLIO = {
             mcpTools: [],
           },
           feedback: [],
+        },
+        {
+          id: 'xwork-vibe-studio',
+          name: 'XWork Vibe Studio',
+          subtitle: 'Integrated apps · AI vibe-coding on XWork',
+          status: 'live',
+          summary:
+            'Lets business teams — starting with HR — ship XWork apps in half a day: upload AI-built app packages, map menus in the page editor, and run inside the platform via iframe.',
+          description:
+            'XWork Vibe Studio is the delivered capability for **integrated apps** on our internal low-code platform. Instead of hand-configuring every table, page, and workflow in the visual editor, teams use AI (Claude, Cursor, Copilot, and others) with a formal **skill 四件套** — backend, frontend, testing, package — to produce a standard app zip that XWork uploads, parses, and hosts. HR was the first team enabled to vibe-code their own products on top of HRS.',
+          contribution:
+            'Closed the gap where XWork had no official path to host third-party or AI-generated apps. Delivered platform-side integrated-app management (upload → parse xwork.json → nginx host → iframe render) plus the vibe-coding skill kit so a business user with AI can go from idea to production app in one afternoon.',
+          beforeAfter: {
+            before:
+              'Business apps required manual low-code configuration — slow delivery, weak reuse, no versioning. AI-generated code had nowhere to land inside XWork.',
+            after:
+              'Standard app package contract (xwork.json + frontend/ + backend declarations). Platform admins upload once; page editors bind XWork menus to app menus; business users open integrated-app pages with session and ACL inherited automatically.',
+          },
+          highlights: [
+            'Integrated-app page type — parallel to native low-code pages in the editor',
+            'xwork-app-create scaffold — empty dir to passing test + pack with zero hand edits',
+            'Skill 四件套 published for Claude, Cursor, Augment, and Copilot',
+            'iframe + nginx hosting — app JS isolated from the XWork shell',
+            'HR team first adopter — self-service vibe-coded HR products on XWork',
+          ],
+          detailSections: [
+            {
+              title: 'Why we built it',
+              type: 'callout',
+              body: 'Manual low-code configuration cannot keep pace with AI vibe-coding. We needed both a platform front door and an AI contract so apps are reusable artifacts — not one-off configs.',
+              bullets: [
+                'Upload, parse, and register app packages from a single admin entry',
+                'Map any XWork page to an app menu item (xworkMenu ↔ appMenu)',
+                'Skill kit ensures zip passes platform validation before upload',
+              ],
+            },
+            {
+              title: 'Three roles',
+              type: 'pairs',
+              items: [
+                {
+                  label: 'AI user (app author)',
+                  detail: 'Runs xwork-app-create, vibe-codes in the scaffold, passes xwork-app-testing, packs and hands zip to admin — no XWork internals required.',
+                },
+                {
+                  label: 'Platform admin',
+                  detail: 'Uploads app packages, reviews parsed appMenu list, upgrades or uninstalls apps; configures integrated-app pages in the editor.',
+                },
+                {
+                  label: 'Business user',
+                  detail: 'Opens XWork pages as usual; integrated-app pages load the hosted app in iframe with login and ACL applied transparently.',
+                },
+              ],
+            },
+            {
+              title: 'Skill 四件套',
+              type: 'list',
+              items: [
+                'xwork-app-backend — collections, roles, ACL declarations',
+                'xwork-app-frontend — Vite SPA, API client, iframe postMessage SDK, route table aligned to menus[]',
+                'xwork-app-testing — pre-upload validation aligned to platform F-02 checks',
+                'xwork-app-package — zip assembly for one-shot platform acceptance',
+              ],
+            },
+            {
+              title: 'End-to-end flow',
+              type: 'list',
+              items: [
+                'xwork-app-create <name> → scaffold standard project',
+                'Vibe-code business logic with AI using skill context',
+                'npm run xwork:test → npm run xwork:pack',
+                'Admin uploads zip → platform parses xwork.json → nginx hosts frontend/',
+                'Editor creates integrated-app page → maps menuKey → users access',
+              ],
+            },
+          ],
+          integrations: ['XWork low-code platform', 'HRS (first business adopter)', 'nginx static hosting', 'XWork API manager / ACL'],
+          roadmap: [
+            'Per-app API key isolation — gateway binds key → app → resource (§9.1)',
+            'Server-side workflows deployable as app package entries (§9.2)',
+            'Cross-domain session bridge for apps outside XWork root domain',
+            'Expand skill distribution to additional AI coding platforms',
+          ],
+          resources: {
+            prd: { url: '#', label: 'Integrated Apps & Vibe Studio PRD' },
+            demoVideo: null,
+            liveLink: { url: '#', label: 'Open XWork (Integrated Apps)' },
+            github: { url: '#', repo: 'org/xwork-vibe-studio' },
+            documents: [
+              {
+                url: '#',
+                label: 'xwork.json manifest schema (v1)',
+                meta: 'App package contract — menus, permissions, frontend entry',
+              },
+            ],
+            mcpTools: [],
+          },
+          feedback: [
+            {
+              quote: 'We can finally ship HR tools ourselves — scaffold, vibe-code, upload, done in an afternoon.',
+              author: 'HR team (first adopter)',
+            },
+          ],
         },
       ],
     },

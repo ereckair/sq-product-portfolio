@@ -7,6 +7,45 @@ const BLOG = {
   pinnedSlugs: ['sq-team-daedalus-execution', 'pre-plm-tutorial-on-netlify'],
   posts: [
     {
+      slug: 'pom-go-live-vietnam-training',
+      type: 'news',
+      title: 'POM system approaching go-live — Vietnam Strategic Execution training underway',
+      excerpt:
+        'DLM configuration completed in late April. Five stakeholder groups completed at least two rounds of UAT each; Vietnam Strategic Execution begins a two-week training program before production launch.',
+      date: '2026-07-07',
+      author: 'SQ Product Team',
+      tags: ['POM', 'PLM', 'Release', 'OneAshley'],
+      relatedProduct: 'plm',
+      body: `
+<p><strong>Product Operations Management (POM)</strong> — our formal product lifecycle platform — is approaching production go-live. After months of configuration and cross-functional validation, the system is in its final rollout stage: user training in Vietnam, then launch.</p>
+
+<h2>Where we are</h2>
+<ul>
+  <li><strong>DLM configuration complete</strong> — system setup finished around <strong>30 April 2026</strong>.</li>
+  <li><strong>Five-round UAT complete</strong> — after configuration, SQE, Development, CGI, US Design, and Aaron each ran <strong>at least two rounds</strong> of testing across their workflows.</li>
+  <li><strong>Vietnam training next</strong> — the <strong>Strategic Execution</strong> team in Vietnam begins a <strong>two-week</strong> training program, the last step before go-live.</li>
+</ul>
+
+<h2>Why this launch matters</h2>
+<p>POM is the operational layer for how we manage the <strong>in-flight product record</strong> — from concept and sampling through show selection and launch documentation. As we outlined in our PLM executive overview, the shift is not just a new system — it is how we move from firefighting to control:</p>
+<ul>
+  <li><strong>One shared source of truth</strong> for development-stage data across SQE, Development, Engineering, Quality, Costing, and Compliance — instead of emails, spreadsheets, and local files.</li>
+  <li><strong>Pipeline visibility</strong> — every SKU has a clear stage, owner, and next step; management can see where products are and what is blocking progress.</li>
+  <li><strong>Upstream risk capture</strong> — cost, quality, and compliance issues surface in concept and sampling, not at or after launch.</li>
+  <li><strong>Connected downstream value</strong> — structured BOM, materials, tests, and launch documents feed costing, compliance test packages, and factory hand-off to ERP / corporate PK.</li>
+</ul>
+<p>Go-live means product development teams — starting with Vietnam Strategic Execution — work inside one lifecycle system instead of reconstructing status from scattered tools.</p>
+
+<h2>What happens after training</h2>
+<p>Once the two-week Vietnam program completes, POM moves into production use for the trained cohort. Feedback from Strategic Execution will feed the next wave of rollout refinements as more regions and categories come on board.</p>
+
+<p class="mt-8">
+  <a href="post.html?slug=plm-executive-overview">Read the PLM executive overview — strategy, ROI, and why we built this →</a><br />
+  <a href="product.html?id=plm">Explore PLM / POM on the portfolio →</a>
+</p>
+      `.trim(),
+    },
+    {
       slug: 'plm-executive-overview',
       type: 'blog',
       title: 'Product Lifecycle Management — turning development into a controllable value engine',
@@ -161,7 +200,7 @@ const BLOG = {
       tags: ['SMMS', 'Roadmap', 'Agents', 'Sourcing'],
       relatedProduct: 'smms',
       body: `
-<p>This roadmap covers <strong>Supplier Material Management System (SMMS)</strong> through 2026 — module go-live dates, current status, and planned <strong>AI / agent</strong> scenarios embedded in each workflow. It complements our <a href="product.html?id=smms">SMMS product page</a>, the standalone <a href="post.html?slug=intelligent-sourcing-agent-roadmap">Intelligent Sourcing Agent roadmap</a>, and the earlier <a href="post.html?slug=smms-price-negotiation-roadmap">price negotiation roadmap</a>.</p>
+<p>This roadmap covers <strong>Supplier Material Management System (SMMS)</strong> through 2026 — module go-live dates, current status, and planned <strong>AI / agent</strong> scenarios embedded in each workflow. It complements our <a href="product.html?id=smms">SMMS product page</a>, the standalone <a href="post.html?slug=intelligent-sourcing-agent-roadmap">Intelligent Sourcing Agent roadmap</a>, and the <a href="post.html?slug=price-impact-analysis-agent-roadmap">Price Impact Analysis Agent roadmap</a>.</p>
 <p><a href="docs/smms/SMMS-Roadmap.pdf" target="_blank" rel="noopener">Download SMMS Roadmap (PDF) →</a></p>
 
 <h2>Material Management</h2>
@@ -270,7 +309,7 @@ const BLOG = {
 
 <p class="mt-8">
   <a href="product.html?id=smms">Explore SMMS on the portfolio →</a><br />
-  <a href="post.html?slug=smms-price-negotiation-roadmap">SMMS price negotiation roadmap →</a>
+  <a href="post.html?slug=price-impact-analysis-agent-roadmap">Price Impact Analysis Agent roadmap →</a>
 </p>
       `.trim(),
     },
@@ -388,6 +427,7 @@ const BLOG = {
       date: '2026-06-28',
       author: 'SQ Product Team',
       tags: ['Quality', 'Agents', 'Daedalus', 'Analytics'],
+      relatedProduct: 'quality-workbench',
       layout: 'wide',
       assets: ['quality-agent-tour.css', 'quality-agent-tour.js'],
       init: 'qualityAgentTour',
@@ -1327,25 +1367,185 @@ const BLOG = {
       `.trim(),
     },
     {
-      slug: 'smms-price-negotiation-roadmap',
+      slug: 'price-impact-analysis-agent-roadmap',
       type: 'roadmap',
-      title: 'SMMS next: price negotiation agent and savings analytics',
+      title: 'Price Impact Analysis Agent — from material price shifts to SKU cost and sales impact',
       excerpt:
-        'Raw material library is live — the high-value next step is telling sourcing when to renegotiate, using commodity prices, FX, and historical order volume.',
-      date: '2026-06-17',
+        'Phase 1 identifies and alerts on BOM cost impact when materials, commodities, factory quotes, or FX move. Phase 2 forecasts total sales cost and pushes decision recommendations.',
+      date: '2026-07-07',
       author: 'SQ Product Team',
-      tags: ['SMMS', 'Daedalus', 'Sourcing'],
-      relatedProduct: 'smms',
+      tags: ['SMMS', 'Daedalus', 'Agents', 'Sourcing', 'PLM'],
+      relatedProduct: 'price-impact-analysis-agent',
+      layout: 'wide',
+      assets: ['price-impact-roadmap.css'],
       body: `
-<p>SMMS transformed raw materials from Excel and PDF catalogs into a structured master with supplier portal, price management, and cost formulas. The team identified the <strong>next money story</strong>: proactive price negotiation.</p>
-<h2>Planned capabilities</h2>
-<ul>
-  <li>Commodity + exchange-rate triggers — "time to renegotiate" alerts</li>
-  <li>Reference price lookup via public data instead of manual supplier asks</li>
-  <li>Annual savings report: order volume × material price reductions (Gavin KPI)</li>
-  <li>Follow-up with Dusty on existing commodity data subscription (~$50K/yr)</li>
-</ul>
-<p>Across ~50 authorized suppliers, even modest per-supplier savings add up to a portfolio story leadership can repeat — not "we migrated Excel," but "we saved real money."</p>
+<p>SMMS gave us structured materials and reference prices. The <strong>Price Impact Analysis Agent</strong> is the next layer — closing the loop from market price movement to SKU-level cost impact, alert-driven decisions, and total sales cost forecasting.</p>
+
+<div class="pia-roadmap">
+  <p class="pia-kicker">AI Agent Roadmap</p>
+  <p class="pia-tagline">From market price fluctuations to SKU cost impact and alert-driven decisions, through to total sales cost forecasting — end-to-end closed loop.</p>
+
+  <div class="pia-value">
+    <strong>Core value</strong>
+    <p>Phase 1 delivers minute-level impact identification and alerting; Phase 2 quantifies the financial impact from individual SKU costs to overall sales costs, enabling rapid decision-making.</p>
+  </div>
+
+  <h2 class="pia-section-title">Business flow — two-phase progressive analysis</h2>
+  <div class="pia-phases">
+    <div class="pia-phase">
+      <div class="pia-phase-head">
+        <span class="pia-phase-num">1</span>
+        <h3>Cost impact identification &amp; alerting</h3>
+      </div>
+      <ul class="pia-phase-list">
+        <li>
+          <span class="pia-icon" aria-hidden="true">📊</span>
+          <div><strong>Price change detection</strong>Ingest material quotes, commodity trading prices, factory quotes, and exchange rate fluctuations; automatically calculate percentage change.</div>
+        </li>
+        <li>
+          <span class="pia-icon" aria-hidden="true">🔗</span>
+          <div><strong>PLM material linkage</strong>Scan PLM to identify all SKUs (finished and semi-finished) that use the material.</div>
+        </li>
+        <li>
+          <span class="pia-icon" aria-hidden="true">🧮</span>
+          <div><strong>SKU cost calculation</strong>Based on BOM unit consumption, calculate cost increase amount and percentage for each SKU.</div>
+        </li>
+        <li>
+          <span class="pia-icon" aria-hidden="true">🚨</span>
+          <div><strong>Anomaly alert tickets</strong>Automatically generate alert tickets, flagging affected SKUs and the severity of impact.</div>
+        </li>
+        <li>
+          <span class="pia-icon" aria-hidden="true">📋</span>
+          <div><strong>Analysis report &amp; notification</strong>Generate structured reports and automatically notify decision-makers via IM/email.</div>
+        </li>
+      </ul>
+    </div>
+    <div class="pia-phase">
+      <div class="pia-phase-head">
+        <span class="pia-phase-num">2</span>
+        <h3>Total sales cost forecasting</h3>
+      </div>
+      <ul class="pia-phase-list">
+        <li>
+          <span class="pia-icon" aria-hidden="true">📈</span>
+          <div><strong>Sales data retrieval</strong>Fetch historical sales data for affected SKUs (year-over-year, period-over-period).</div>
+        </li>
+        <li>
+          <span class="pia-icon" aria-hidden="true">🔍</span>
+          <div><strong>Price-volume correlation analysis</strong>Combine price elasticity to forecast sales volume trends.</div>
+        </li>
+        <li>
+          <span class="pia-icon" aria-hidden="true">💰</span>
+          <div><strong>Total sales cost forecast</strong>Aggregate forecasted volume × new unit cost to derive future total sales cost impact.</div>
+        </li>
+        <li>
+          <span class="pia-icon" aria-hidden="true">📉</span>
+          <div><strong>YoY / PoP comparison</strong>Visually present differences between cost impact and the same historical period.</div>
+        </li>
+        <li>
+          <span class="pia-icon" aria-hidden="true">🎯</span>
+          <div><strong>Decision recommendation output</strong>Provide price adjustment or alternative material recommendations based on impact amount and profit margin.</div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="pia-section-title">Agent tool invocation &amp; automation workflow</h2>
+  <p class="pia-tagline" style="margin-bottom:1.25rem">The agent receives natural language commands or scheduled triggers and automatically orchestrates tools to execute Phase 1 and Phase 2.</p>
+
+  <div class="pia-chain-block">
+    <p class="pia-chain-label">Phase 1 invocation chain</p>
+    <div class="pia-chain">
+      <span class="pia-chain-step">Price monitoring (incl. FX)</span>
+      <span class="pia-chain-arrow" aria-hidden="true">→</span>
+      <span class="pia-chain-step">PLM material scan</span>
+      <span class="pia-chain-arrow" aria-hidden="true">→</span>
+      <span class="pia-chain-step">BOM cost simulation</span>
+      <span class="pia-chain-arrow" aria-hidden="true">→</span>
+      <span class="pia-chain-step">Alert ticket generation</span>
+      <span class="pia-chain-arrow" aria-hidden="true">→</span>
+      <span class="pia-chain-step">Notify decision-makers</span>
+    </div>
+  </div>
+
+  <div class="pia-chain-block">
+    <p class="pia-chain-label">Phase 2 invocation chain (based on Phase 1 results)</p>
+    <div class="pia-chain">
+      <span class="pia-chain-step">Sales volume YoY/PoP query</span>
+      <span class="pia-chain-arrow" aria-hidden="true">→</span>
+      <span class="pia-chain-step">Sales volume forecast model</span>
+      <span class="pia-chain-arrow" aria-hidden="true">→</span>
+      <span class="pia-chain-step">Total sales cost calculation</span>
+      <span class="pia-chain-arrow" aria-hidden="true">→</span>
+      <span class="pia-chain-step">Comprehensive impact report</span>
+      <span class="pia-chain-arrow" aria-hidden="true">→</span>
+      <span class="pia-chain-step">Decision recommendation push</span>
+    </div>
+  </div>
+
+  <h2 class="pia-section-title">Core tools &amp; databases</h2>
+  <div class="pia-tools">
+    <div class="pia-tool"><code>price_monitor</code><span>Market price monitoring and change calculation (incl. FX fluctuation)</span></div>
+    <div class="pia-tool"><code>plm_material_search</code><span>Query all SKUs in PLM that use the material</span></div>
+    <div class="pia-tool"><code>bom_cost_impact</code><span>BOM cost simulation engine</span></div>
+    <div class="pia-tool"><code>notify_ticket</code><span>Create notification tickets and push updates</span></div>
+    <div class="pia-tool"><code>sales_volume_query</code><span>Extract sales YoY/PoP data</span></div>
+    <div class="pia-tool"><code>sales_cost_forecast</code><span>Total sales cost forecast model</span></div>
+  </div>
+
+  <h2 class="pia-section-title">Technical support framework</h2>
+  <div class="pia-tech">
+    <div class="pia-tech-col">
+      <h4>📦 Data &amp; integration</h4>
+      <div class="pia-tags">
+        <span class="pia-tag">ERP/PLM integration</span>
+        <span class="pia-tag">Commodity API</span>
+        <span class="pia-tag">Factory quote integration</span>
+        <span class="pia-tag">Exchange rate feed</span>
+        <span class="pia-tag">PostgreSQL</span>
+        <span class="pia-tag">ClickHouse</span>
+        <span class="pia-tag">Airflow scheduling</span>
+      </div>
+    </div>
+    <div class="pia-tech-col">
+      <h4>🤖 Agent &amp; computation</h4>
+      <div class="pia-tags">
+        <span class="pia-tag">LangGraph</span>
+        <span class="pia-tag">Enterprise LLM</span>
+        <span class="pia-tag">Python (Pandas)</span>
+        <span class="pia-tag">FastAPI</span>
+        <span class="pia-tag">Prophet / LightGBM</span>
+        <span class="pia-tag">Tool calling</span>
+      </div>
+    </div>
+    <div class="pia-tech-col">
+      <h4>📬 Notification &amp; visualization</h4>
+      <div class="pia-tags">
+        <span class="pia-tag">Enterprise IM integration</span>
+        <span class="pia-tag">Automated email push</span>
+        <span class="pia-tag">Plotly charts</span>
+        <span class="pia-tag">Ticket system</span>
+        <span class="pia-tag">Decision dashboard</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="pia-rollout">
+    <h4>🚀 Rollout path</h4>
+    <ul>
+      <li><strong>Phase 1:</strong> Complete the core material alert pipeline within 4 weeks.</li>
+      <li><strong>Phase 2:</strong> Integrate sales volume and cost forecasting within 6 weeks.</li>
+      <li><strong>Ongoing:</strong> Continuously expand material categories and automation coverage.</li>
+    </ul>
+  </div>
+</div>
+
+<p class="mt-8">
+  <a href="product.html?id=price-impact-analysis-agent">Price Impact Analysis Agent product page →</a><br />
+  <a href="product.html?id=smms">Explore SMMS on the portfolio →</a><br />
+  <a href="post.html?slug=smms-roadmap-2026">SMMS module roadmap 2026 →</a><br />
+  <a href="product.html?id=plm">PLM — in-flight product record →</a>
+</p>
       `.trim(),
     },
     {
