@@ -80,19 +80,11 @@ const PORTFOLIO = {
             landingPage: { url: 'pre-plm-agent/', label: 'Full product page' },
             prd: { url: 'pre-plm-agent/docs/PRD_EN.pdf', label: 'PRD (EN)' },
             demoVideo: { url: 'pre-plm-agent/tutorial.mp4', label: 'Tutorial video' },
-            liveLink: { url: '#', label: 'Chatbot (internal)' },
-            github: { url: '#', repo: 'org/sample-management-agent' },
             documents: [
               { url: 'pre-plm-agent/docs/PRD_EN.pdf', label: 'PRD (EN)', meta: 'Product requirements document' },
               { url: 'pre-plm-agent/docs/User_guide_EN.pdf', label: 'User Guide (EN)', meta: 'How to chat with the bot, commands & field reference' },
               { url: 'pre-plm-agent/docs/Technical_EN.pdf', label: 'Technical Doc (EN)', meta: 'Architecture, routing layers & implementation' },
               { url: 'pre-plm-agent/docs/Project_summary_EN.pdf', label: 'Project Summary (EN)', meta: 'Goals, milestones & lessons learned' },
-            ],
-            mcpTools: [
-              { name: 'sampling_entry', description: 'Extract and save product fields from free-form chat' },
-              { name: 'sampling_generate_ppt', description: 'Generate sampling PPT (apply, trip, factory, complete)' },
-              { name: 'sampling_query', description: 'Query product record or search by supplier/date' },
-              { name: 'sampling_manage_images', description: 'View, delete, and store sampling images' },
             ],
           },
           feedback: [
@@ -109,7 +101,7 @@ const PORTFOLIO = {
             phase: 'uat',
             progress: 100,
             targetUat: 'Apr 30',
-            update: 'DLM configuration complete (Apr 30); five-round UAT done. Vietnam Strategic Execution training underway — go-live imminent.',
+            update: 'PLM configuration complete (Apr 30); five-round UAT done. Vietnam Strategic Execution training underway — go-live imminent.',
             lastUpdated: 'Jul 2026',
           },
           summary: 'The in-flight product record — from SQE concept release through vendor sampling, show/go selection, and launch documentation.',

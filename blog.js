@@ -7,27 +7,27 @@ const BLOG = {
   pinnedSlugs: ['sq-team-daedalus-execution', 'pre-plm-tutorial-on-netlify'],
   posts: [
     {
-      slug: 'pom-go-live-vietnam-training',
+      slug: 'plm-go-live-vietnam-training',
       type: 'news',
-      title: 'POM system approaching go-live — Vietnam Strategic Execution training underway',
+      title: 'PLM system approaching go-live — Vietnam Strategic Execution training underway',
       excerpt:
-        'DLM configuration completed in late April. Five stakeholder groups completed at least two rounds of UAT each; Vietnam Strategic Execution begins a two-week training program before production launch.',
+        'PLM configuration completed in late April. Five stakeholder groups completed at least two rounds of UAT each; Vietnam Strategic Execution begins a two-week training program before production launch.',
       date: '2026-07-07',
       author: 'SQ Product Team',
-      tags: ['POM', 'PLM', 'Release', 'OneAshley'],
+      tags: ['PLM', 'Release', 'OneAshley'],
       relatedProduct: 'plm',
       body: `
-<p><strong>Product Operations Management (POM)</strong> — our formal product lifecycle platform — is approaching production go-live. After months of configuration and cross-functional validation, the system is in its final rollout stage: user training in Vietnam, then launch.</p>
+<p><strong>Product Lifecycle Management (PLM)</strong> — our formal product lifecycle platform — is approaching production go-live. After months of configuration and cross-functional validation, the system is in its final rollout stage: user training in Vietnam, then launch.</p>
 
 <h2>Where we are</h2>
 <ul>
-  <li><strong>DLM configuration complete</strong> — system setup finished around <strong>30 April 2026</strong>.</li>
+  <li><strong>PLM configuration complete</strong> — system setup finished around <strong>30 April 2026</strong>.</li>
   <li><strong>Five-round UAT complete</strong> — after configuration, SQE, Development, CGI, US Design, and Aaron each ran <strong>at least two rounds</strong> of testing across their workflows.</li>
   <li><strong>Vietnam training next</strong> — the <strong>Strategic Execution</strong> team in Vietnam begins a <strong>two-week</strong> training program, the last step before go-live.</li>
 </ul>
 
 <h2>Why this launch matters</h2>
-<p>POM is the operational layer for how we manage the <strong>in-flight product record</strong> — from concept and sampling through show selection and launch documentation. As we outlined in our PLM executive overview, the shift is not just a new system — it is how we move from firefighting to control:</p>
+<p>PLM is the operational layer for how we manage the <strong>in-flight product record</strong> — from concept and sampling through show selection and launch documentation. As we outlined in our PLM executive overview, the shift is not just a new system — it is how we move from firefighting to control:</p>
 <ul>
   <li><strong>One shared source of truth</strong> for development-stage data across SQE, Development, Engineering, Quality, Costing, and Compliance — instead of emails, spreadsheets, and local files.</li>
   <li><strong>Pipeline visibility</strong> — every SKU has a clear stage, owner, and next step; management can see where products are and what is blocking progress.</li>
@@ -37,11 +37,11 @@ const BLOG = {
 <p>Go-live means product development teams — starting with Vietnam Strategic Execution — work inside one lifecycle system instead of reconstructing status from scattered tools.</p>
 
 <h2>What happens after training</h2>
-<p>Once the two-week Vietnam program completes, POM moves into production use for the trained cohort. Feedback from Strategic Execution will feed the next wave of rollout refinements as more regions and categories come on board.</p>
+<p>Once the two-week Vietnam program completes, PLM moves into production use for the trained cohort. Feedback from Strategic Execution will feed the next wave of rollout refinements as more regions and categories come on board.</p>
 
 <p class="mt-8">
   <a href="post.html?slug=plm-executive-overview">Read the PLM executive overview — strategy, ROI, and why we built this →</a><br />
-  <a href="product.html?id=plm">Explore PLM / POM on the portfolio →</a>
+  <a href="product.html?id=plm">Explore PLM on the portfolio →</a>
 </p>
       `.trim(),
     },
@@ -56,6 +56,7 @@ const BLOG = {
       tags: ['PLM', 'Product Lifecycle', 'OneAshley', 'Strategy'],
       relatedProduct: 'plm',
       layout: 'wide',
+      assets: ['plm-executive-overview.css'],
       body: `
 <p class="text-lg text-black/80 leading-relaxed">Turning product development into a controllable, traceable value engine.</p>
 <p>From first concept to mass production, PLM makes every step visible, accountable and data‑driven — and connects development work directly to cost, risk and execution.</p>
@@ -116,21 +117,65 @@ const BLOG = {
 
 <h2>3. From firefighting to control</h2>
 
-<h3>3.1 Before PLM</h3>
-<ul>
-  <li>Product data scattered across emails, Excel and legacy tools.</li>
-  <li>Late visibility of cost, quality and compliance issues — often at or after launch.</li>
-  <li>No single view of lifecycle status, ownership or blockers for each SKU.</li>
-  <li>Supplier choices driven by partial information and personal experience.</li>
-</ul>
+<div class="plm-compare">
+  <p class="plm-compare-intro">The shift PLM delivers — same product development work, but with visibility and control instead of reactive firefighting.</p>
 
-<h3>3.2 With PLM</h3>
-<ul>
-  <li>One shared source of truth for development‑stage data across Development, Engineering, SQE, Quality, Costing and Compliance.</li>
-  <li>Issues are caught upstream in concept, sampling or show selection — not in production.</li>
-  <li>Each SKU has a clear stage, owner and next step, visible at management level.</li>
-  <li>Supplier evaluation based on objective performance history, not impressions alone.</li>
-</ul>
+  <div class="plm-compare-grid">
+    <div class="plm-compare-panel plm-compare-panel--before">
+      <div class="plm-compare-head">
+        <div class="plm-compare-kicker"><span class="plm-compare-kicker-dot"></span>3.1 Before PLM</div>
+        <h3 class="plm-compare-title">Scattered data, late surprises</h3>
+      </div>
+      <div class="plm-compare-body">
+        <ul class="plm-compare-list">
+          <li class="plm-compare-item">
+            <span class="plm-compare-icon">✉</span>
+            <span>Product data scattered across emails, Excel and legacy tools.</span>
+          </li>
+          <li class="plm-compare-item">
+            <span class="plm-compare-icon">⚠</span>
+            <span>Late visibility of cost, quality and compliance issues — often at or after launch.</span>
+          </li>
+          <li class="plm-compare-item">
+            <span class="plm-compare-icon">?</span>
+            <span>No single view of lifecycle status, ownership or blockers for each SKU.</span>
+          </li>
+          <li class="plm-compare-item">
+            <span class="plm-compare-icon">◎</span>
+            <span>Supplier choices driven by partial information and personal experience.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="plm-compare-panel plm-compare-panel--after">
+      <div class="plm-compare-head">
+        <div class="plm-compare-kicker"><span class="plm-compare-kicker-dot"></span>3.2 With PLM</div>
+        <h3 class="plm-compare-title">One record, upstream control</h3>
+      </div>
+      <div class="plm-compare-body">
+        <ul class="plm-compare-list">
+          <li class="plm-compare-item">
+            <span class="plm-compare-icon">◉</span>
+            <span>One shared source of truth for development‑stage data across Development, Engineering, SQE, Quality, Costing and Compliance.</span>
+          </li>
+          <li class="plm-compare-item">
+            <span class="plm-compare-icon">↑</span>
+            <span>Issues are caught upstream in concept, sampling or show selection — not in production.</span>
+          </li>
+          <li class="plm-compare-item">
+            <span class="plm-compare-icon">▣</span>
+            <span>Each SKU has a clear stage, owner and next step, visible at management level.</span>
+          </li>
+          <li class="plm-compare-item">
+            <span class="plm-compare-icon">▤</span>
+            <span>Supplier evaluation based on objective performance history, not impressions alone.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 <h2>4. Business impact and ROI</h2>
 <p>PLM delivers measurable benefits in time, quality/risk and cost:</p>
