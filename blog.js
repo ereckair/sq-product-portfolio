@@ -140,15 +140,8 @@ const BLOG = {
 <p>After the PLM approval walkthrough, Randy Domack — a key stakeholder in product development — shared this reaction:</p>
 <blockquote style="border-left:4px solid #3b82f6;padding:1rem 1.25rem;margin:1.5rem 0;background:#fafafa;border-radius:0 4px 4px 0">
   <p style="margin-bottom:.75rem">“This looks great! I think I shed a couple tears of joy this morning! 😊”</p>
-  <p style="margin-bottom:.75rem">“Do you have an example of a SKU spec for a 5-pack dining set, or a wall unit as like our new W984 which has more than one SKU to make complete?”</p>
-  <p style="margin-bottom:.75rem">“What will the rest of the SKU spec look like once engineering adds the post-production information?”</p>
   <footer style="font-size:.875rem;color:rgba(0,0,0,.45)">— Randy Domack, Product Development</footer>
 </blockquote>
-<figure style="margin:1.5rem 0">
-  <img src="docs/plm/feedback-randy-domack.png" alt="Email from Randy Domack requesting multi-SKU spec examples for W984 wall unit and 5-pack dining set" style="max-width:320px;width:100%;border-radius:8px;border:1px solid rgba(0,0,0,.08)" loading="lazy" />
-  <figcaption style="font-size:.8125rem;color:rgba(0,0,0,.45);margin-top:.5rem">Original email thread — Randy’s questions point directly at multi-SKU assemblies (W984 wall unit, 5-pack dining sets) and the engineering hand-off into post-production SKU specs.</figcaption>
-</figure>
-<p>These questions validate two design choices baked into PLM: <strong>Master Item structures</strong> that compose multiple samples into one sellable unit, and a <strong>clear lifecycle hand-off</strong> where engineering enriches the same record through PPR and launch — so stakeholders see one evolving SKU spec, not a new form at every stage.</p>
 
 <p class="mt-8">
   <a href="product.html?id=plm">Explore PLM on the portfolio →</a><br />

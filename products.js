@@ -348,8 +348,7 @@ const PORTFOLIO = {
           },
           feedback: [
             {
-              quote:
-                'This looks great! I think I shed a couple tears of joy this morning! Do you have an example of a SKU spec for a 5-pack dining set, or a wall unit like our new W984 which has more than one SKU to make complete?',
+              quote: 'This looks great! I think I shed a couple tears of joy this morning!',
               author: 'Randy Domack, Product Development',
             },
             { quote: 'Finally one place to see where every SKU is in the pipeline.', author: 'Sourcing Manager' },
