@@ -103,43 +103,255 @@ const PORTFOLIO = {
         {
           id: 'plm',
           name: 'Product Lifecycle Management',
+          subtitle: 'Furniture product lifecycle — concept to show to launch',
           status: 'live',
           migration: {
             phase: 'uat',
             progress: 100,
             targetUat: 'Apr 30',
-            update: 'NPIS accessory completed; multipack Spec in testing.',
-            lastUpdated: 'Jun 2026',
+            update: 'Core sampling modules live; NPIS accessory complete; multipack SKU spec and Product Launch documentation in testing.',
+            lastUpdated: 'Jul 2026',
           },
-          summary: 'Dynamic product lifecycle hub — specs evolve through development until confirmed into PIM.',
+          summary: 'The in-flight product record — from SQE concept release through vendor sampling, show/go selection, and launch documentation.',
           description:
-            'PLM manages the changing product record during development. Unlike PIM (final confirmed data pushed to corporate PK/AS400), PLM holds the in-flight BOM, specs, and workflow state that feeds compliance, costing, and quality.',
+            'PLM is the operational system for furniture product development. SQE, Development, and Engineering collaborate on one changing record — Sample Groups, Master Items, materials, review results, and launch documents — before data is confirmed into PIM and corporate PK / AS400. Unlike PIM (final confirmed attributes), PLM owns everything still in motion.',
           contribution:
-            'Rebuilt as the operational layer above the BOM engine — connecting development data to ECO, compliance triggers, and cost feedback in one ecosystem instead of scattered Excel and legacy CS tools.',
+            'Replaced the legacy CS tool with a structured lifecycle platform: concept-to-sample workflows, auto-generated quality checklists from product Category and Function Feature, Master Item composition for multi-SKU sets, and governed Show/Go market-number assignment — connecting development data to APS, compliance, costing, and factory hand-off in one place.',
           beforeAfter: {
             before:
-              'Legacy CS system with hardcoded fields; no detailed BOM requirement in workflow; compliance and cost teams duplicated material data manually.',
+              'Legacy CS with hardcoded fields; sampling data in email and Excel; review questions and field tests assigned manually; no Master Item model for multi-pack or wall-unit assemblies; launch documents tracked outside the product record.',
             after:
-              'Electronic lifecycle with detailed BOM, approval flows configured, and downstream systems (compliance, cost, quality) fed automatically from product attributes.',
+              'Electronic lifecycle from Concept Release to Show/Go; review questions and field tests auto-generated on vendor release; Master Items compose multiple samples into one sellable unit; NPIS, AIS, CTN, RPDF, labels and packing BOM authored with approval flows inside PLM.',
           },
-          integrations: ['PIM', 'ECO', 'Compliance Test Create', 'Dynamic Product Costing', 'Corporate PK', 'NPIS'],
+          highlights: [
+            'Sample Group → Sample List → Master Item — supports multi-SKU assemblies (5-pack dining sets, W984 wall units)',
+            'Auto-generates Sample Review Questions and Field Tests from Category + Function Feature',
+            'Vendor-group sample preparation — appearance, construction, photos, field tests, and follow-up tracking',
+            'Show/Go selection with strict Market Number one-to-one governance',
+            'Product Launch documentation — NPIS, AIS, CTN, RPDF, labels, and packing BOM with approval workflows',
+          ],
+          detailSections: [
+            {
+              title: 'Who uses PLM',
+              type: 'callout',
+              body: 'Built for cross-functional furniture product development — one system from first sketch to launch-ready documentation.',
+              bullets: [
+                'SQE — creates concepts, releases samples to Development, manages materials and finishes',
+                'Development — selects vendors, tracks sample preparation and specifications',
+                'Engineering — enriches specs through PPR and launch; adds post-production detail to the same record',
+                'Quality — sample review questions, field tests, and corrective follow-up anchored to the lifecycle record',
+              ],
+            },
+            {
+              title: 'Four lifecycle phases',
+              type: 'pairs',
+              items: [
+                {
+                  label: 'Concept Release',
+                  detail: 'SQE creates a Sample Group (product concept) with samples, categories, dimensions, materials, and finishes — then releases to Development by market via governed email workflow.',
+                },
+                {
+                  label: 'Sample Development & QC',
+                  detail: 'Development releases to vendor; PLM auto-generates review questions, field tests, and BOM skeletons. Vendor-group preparation captures appearance, construction, photos, tests, and sample specifications.',
+                },
+                {
+                  label: 'Show / Go Selection',
+                  detail: 'Post-show product selection — assign Market Numbers, confirm show items, and update Go/No-Go status with strict one-to-one Sample × Market Number rules.',
+                },
+                {
+                  label: 'Product Launch',
+                  detail: 'Launch-stage documentation — NPIS, AIS, DTop, CTN, labels, packing BOM, and RPDF — each with role-based review and approval before hand-off to ERP / MES and corporate PK.',
+                },
+              ],
+            },
+            {
+              title: 'Core modules',
+              type: 'modules',
+              groups: [
+                {
+                  name: 'Concept & sample setup',
+                  items: [
+                    {
+                      name: 'Concept Release',
+                      description: 'Sample Group, Sample List, Master Item auto-generation, materials, finishes, and market-based release email to Development.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                    {
+                      name: 'Master Item',
+                      description: 'Composes multiple samples into one sellable unit (e.g. BD625-54/57/97). Auto-generates special dimensions and controls assembled-dimension display for multi-pack scenarios.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                    {
+                      name: 'Sample Release Email',
+                      description: 'Market-scoped release to Development with recipient validation, office merge rules, and duplicate-send prevention.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                  ],
+                },
+                {
+                  name: 'Vendor release & preparation',
+                  items: [
+                    {
+                      name: 'Release to Vendor',
+                      description: 'Development assigns vendor, packaging, CAD drawing version, and sample quantities — triggers downstream automation.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                    {
+                      name: 'Sample Review Questions',
+                      description: 'Auto-generated on vendor release from configurable review-question library. Managed per vendor group in Sample Preparation.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                    {
+                      name: 'Field Tests',
+                      description: 'Auto-assigned from Function Feature, Product Category, or combined rules when a vendor is released.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                    {
+                      name: 'Final Sample Preparation',
+                      description: 'Vendor-group QC — appearance/construction review, photos/videos, field test results, sample status, and follow-up tracking with home-page to-do integration.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                    {
+                      name: 'Sample Specification',
+                      description: 'Post-production specs per Vendor Master Item — dimensions, weight, six-view images, finish standards, and function/feature details.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                    {
+                      name: 'APS Quotation',
+                      description: 'Auto-creates APS quotation records when samples are released to vendor.',
+                      status: 'building',
+                      goLive: 'P2',
+                    },
+                    {
+                      name: 'BOM skeleton',
+                      description: 'Auto-creates empty BOM location tables by Product Category on vendor release.',
+                      status: 'building',
+                      goLive: 'P2',
+                    },
+                  ],
+                },
+                {
+                  name: 'Show / Go selection',
+                  items: [
+                    {
+                      name: 'Market Number Correlation',
+                      description: 'Excel import or manual update of Market Numbers with Go-status validation and duplicate prevention.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                    {
+                      name: 'Select for Show / Go',
+                      description: 'Confirm show lineup and update Go/No-Go status; cascades changes when samples or master items are modified after vendor release.',
+                      status: 'live',
+                      goLive: 'P1',
+                    },
+                  ],
+                },
+                {
+                  name: 'Product launch & documentation',
+                  items: [
+                    {
+                      name: 'NPIS',
+                      description: 'New Product Information Sheet — filter-based list generation, designer completion, and filtered download for show items.',
+                      status: 'live',
+                      goLive: 'P2',
+                    },
+                    {
+                      name: 'AIS / DTop / CTN',
+                      description: 'Master Item-level launch documents with role-based review and approval workflows.',
+                      status: 'building',
+                      goLive: 'P2',
+                    },
+                    {
+                      name: 'Labels & Packing BOM',
+                      description: 'Vendor-item-level label upload and packing BOM entry with approval and file generation.',
+                      status: 'building',
+                      goLive: 'P2',
+                    },
+                    {
+                      name: 'RPDF',
+                      description: 'Master Item-level RPDF electronic form — MRP number maintenance, multi-type approval routing, and document generation.',
+                      status: 'building',
+                      goLive: 'P2',
+                    },
+                    {
+                      name: 'Sample Shipment',
+                      description: 'Track sample shipments to US shows — pending → shipped → in transit → received; labels and invoices planned.',
+                      status: 'planned',
+                      goLive: 'P2',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Automated workflows',
+              type: 'list',
+              items: [
+                'Add Sample Group Market — links samples to target markets on entry',
+                'Generate Master Item list from Sample Category groupings',
+                'Generate Master Item Special Dimensions from Category rules',
+                'Generate Sample Review Questions on Release to Vendor',
+                'Add Field Tests based on Product Category + Function Feature',
+                'Add Quotation Workflow → APS (P2)',
+                'Auto Create BOM Location by Product Category (P2)',
+              ],
+            },
+          ],
+          integrations: [
+            'Pre-PLM Agent (upstream sampling capture)',
+            'PIM (confirmed product data)',
+            'APS (vendor quotation)',
+            'Compliance Test Create',
+            'Dynamic Product Costing',
+            'ECO',
+            'Corporate PK / AS400',
+            'NPIS',
+          ],
           roadmap: [
+            'Multipack / multi-SKU spec examples (W984 wall unit, 5-pack dining set)',
+            'APS quotation and BOM skeleton automation (P2)',
+            'Sample Shipment tracking with labels and invoices (P2)',
+            'Sample Preparation and Specification completion reports (P2)',
             'Data-missing enforcement workflow (email → manager → VP escalation)',
-            'AI voice-fill for spec review conversations',
             'CAD dimension export integration for faster BOM capture',
-            'Teams / Feishu reminder bots for critical missing fields',
           ],
           resources: {
-            prd: { url: '#', label: 'PLM PRD v2.1' },
-            demoVideo: { url: '#', label: 'PLM walkthrough demo' },
+            prd: { url: 'docs/plm/PLM.pdf', label: 'PLM PRD' },
             liveLink: { url: '#', label: 'Open PLM' },
             github: { url: '#', repo: 'org/plm-platform' },
             mcpTools: [
               { name: 'plm_get_product', description: 'Fetch product lifecycle state' },
               { name: 'plm_create_eco', description: 'Initiate engineering change order' },
             ],
+            documents: [
+              {
+                url: 'docs/plm/PLM.pdf',
+                label: 'PLM PRD',
+                meta: 'Full product requirements — modules, fields, and workflows',
+              },
+              {
+                url: 'post.html?slug=plm-executive-overview',
+                label: 'Executive overview',
+                meta: 'Strategy, ROI, business impact, and user feedback',
+                type: 'post',
+              },
+            ],
           },
           feedback: [
+            {
+              quote:
+                'This looks great! I think I shed a couple tears of joy this morning! Do you have an example of a SKU spec for a 5-pack dining set, or a wall unit like our new W984 which has more than one SKU to make complete?',
+              author: 'Randy Domack, Product Development',
+            },
             { quote: 'Finally one place to see where every SKU is in the pipeline.', author: 'Sourcing Manager' },
           ],
         },

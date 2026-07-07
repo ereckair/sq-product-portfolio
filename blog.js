@@ -7,6 +7,157 @@ const BLOG = {
   pinnedSlugs: ['sq-team-daedalus-execution', 'pre-plm-tutorial-on-netlify'],
   posts: [
     {
+      slug: 'plm-executive-overview',
+      type: 'blog',
+      title: 'Product Lifecycle Management — turning development into a controllable value engine',
+      excerpt:
+        'From first concept to mass production, PLM makes every step visible, accountable and data-driven — one in-flight product record connecting development work to cost, risk, compliance, and factory hand-off.',
+      date: '2026-07-07',
+      author: 'SQ Product Team',
+      tags: ['PLM', 'Product Lifecycle', 'OneAshley', 'Strategy'],
+      relatedProduct: 'plm',
+      layout: 'wide',
+      body: `
+<p class="text-lg text-black/80 leading-relaxed">Turning product development into a controllable, traceable value engine.</p>
+<p>From first concept to mass production, PLM makes every step visible, accountable and data‑driven — and connects development work directly to cost, risk and execution.</p>
+<div style="display:flex;flex-wrap:wrap;gap:6px;margin:1.25rem 0 2rem">
+  <span style="font-size:.75rem;padding:3px 10px;border-radius:999px;border:1px solid rgba(0,0,0,.12);background:#fafafa;color:rgba(0,0,0,.65)">Concept → Sample → Show → Launch → Production</span>
+  <span style="font-size:.75rem;padding:3px 10px;border-radius:999px;border:1px solid rgba(0,0,0,.12);background:#fafafa;color:rgba(0,0,0,.65)">One in‑flight product record</span>
+  <span style="font-size:.75rem;padding:3px 10px;border-radius:999px;border:1px solid rgba(0,0,0,.12);background:#fafafa;color:rgba(0,0,0,.65)">Driving cost, quality &amp; compliance</span>
+</div>
+
+<h2>1. Why do we need PLM?</h2>
+<p>Our products are getting more complex — more categories, more markets, more regulations and more suppliers. Yet much of our collaboration is still driven by emails, spreadsheets and local files.</p>
+<p>Without a dedicated PLM layer:</p>
+<ul>
+  <li>Critical development‑stage data (concepts, samples, design changes, tests, show decisions) lives outside systems.</li>
+  <li>It is hard to answer basic management questions:
+    <ul>
+      <li>Where is this SKU right now in the pipeline?</li>
+      <li>Who decided what, based on which data?</li>
+      <li>What is the real quality and compliance risk behind a launch?</li>
+    </ul>
+  </li>
+  <li>ERP, PIM and corporate PK / AS400 only see the final confirmed data — not the messy, high‑risk process that leads up to it.</li>
+</ul>
+<p>PLM fills this gap by becoming the single place where we manage the <strong>“in‑flight” product record</strong> before it is confirmed.</p>
+
+<h2>2. PLM as the engine of the product lifecycle</h2>
+<p>At the core, PLM manages the dynamic product record — BOM, materials, functions, tests, decisions and documents while they are still changing. From this engine, data flows into the Group’s key value drivers:</p>
+
+<h3>2.1 Cost and profitability</h3>
+<ul>
+  <li>Structured BOM, material and packaging data feed dynamic costing as soon as concepts are released.</li>
+  <li>Target vs. Actual cost gaps are visible early enough to adjust design, suppliers or configuration.</li>
+</ul>
+
+<h3>2.2 Compliance and risk</h3>
+<ul>
+  <li>Material and feature attributes trigger appropriate regulatory test packages automatically.</li>
+  <li>Regulatory risk is managed before shipment, not after incidents in the field.</li>
+</ul>
+
+<h3>2.3 Quality and test</h3>
+<ul>
+  <li>Product category and function drive standardised review questions and test plans.</li>
+  <li>Every result is anchored to the same PLM lifecycle record for future traceability.</li>
+</ul>
+
+<h3>2.4 Vendor performance</h3>
+<ul>
+  <li>Each sample, test result and corrective action contributes to a long‑term vendor capability profile.</li>
+  <li>Vendor decisions move from impressions to data‑driven evaluation.</li>
+</ul>
+
+<h3>2.5 Production readiness</h3>
+<ul>
+  <li>NPIS, AIS, CTN, RPDF, labels and packing BOMs are authored and approved in PLM.</li>
+  <li>Clean hand‑off to ERP / MES and corporate PK / AS400 closes the loop from concept to factory.</li>
+</ul>
+
+<h2>3. From firefighting to control</h2>
+
+<h3>3.1 Before PLM</h3>
+<ul>
+  <li>Product data scattered across emails, Excel and legacy tools.</li>
+  <li>Late visibility of cost, quality and compliance issues — often at or after launch.</li>
+  <li>No single view of lifecycle status, ownership or blockers for each SKU.</li>
+  <li>Supplier choices driven by partial information and personal experience.</li>
+</ul>
+
+<h3>3.2 With PLM</h3>
+<ul>
+  <li>One shared source of truth for development‑stage data across Development, Engineering, SQE, Quality, Costing and Compliance.</li>
+  <li>Issues are caught upstream in concept, sampling or show selection — not in production.</li>
+  <li>Each SKU has a clear stage, owner and next step, visible at management level.</li>
+  <li>Supplier evaluation based on objective performance history, not impressions alone.</li>
+</ul>
+
+<h2>4. Business impact and ROI</h2>
+<p>PLM delivers measurable benefits in time, quality/risk and cost:</p>
+<table>
+  <thead>
+    <tr><th>Metric</th><th>Impact</th><th>How</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><strong>≈30%</strong> shorter sample development cycle</td>
+      <td>Time</td>
+      <td>End‑to‑end workflow, fewer hand‑offs and less rework.</td>
+    </tr>
+    <tr>
+      <td><strong>≈50%</strong> reduction in manual data entry</td>
+      <td>Efficiency</td>
+      <td>One structured record reused across costing, compliance and launch.</td>
+    </tr>
+    <tr>
+      <td><strong>≈25%</strong> higher first‑time sample pass rate</td>
+      <td>Quality</td>
+      <td>Standardised reviews and test plans generated from PLM.</td>
+    </tr>
+    <tr>
+      <td><strong>≈35%</strong> fewer supplier quality complaints</td>
+      <td>Risk</td>
+      <td>Full visibility and closed‑loop corrective actions.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>5. Strategic significance for the Group</h2>
+<p>PLM elevates us from managing documents to managing the full product lifecycle as a strategic asset:</p>
+<ul>
+  <li>A live portfolio view of all in‑development products across regions and categories.</li>
+  <li>Operational data turned into reusable knowledge and intelligence.</li>
+  <li>A foundation for future AI and analytics — risk prediction, supplier recommendations and design‑to‑cost guidance.</li>
+</ul>
+<p><strong>PLM is not just an IT project. It is the operating system for how we design, decide and deliver products as a group.</strong></p>
+
+<h2>6. PRD</h2>
+<p>The full product requirements document covers the PLM module landscape — Concept Release, Sample Preparation, Show/Go Selection, Sample Specification, and Product Launch workflows — including Sample Groups, Master Items, automated review questions, field tests, and APS quotation integration.</p>
+<p><a href="docs/plm/PLM.pdf" target="_blank" rel="noopener">Download PLM PRD (PDF) →</a></p>
+
+<h2>7. User feedback</h2>
+<p>After the PLM approval walkthrough, Randy Domack — a key stakeholder in product development — shared this reaction:</p>
+<blockquote style="border-left:4px solid #3b82f6;padding:1rem 1.25rem;margin:1.5rem 0;background:#fafafa;border-radius:0 4px 4px 0">
+  <p style="margin-bottom:.75rem">“This looks great! I think I shed a couple tears of joy this morning! 😊”</p>
+  <p style="margin-bottom:.75rem">“Do you have an example of a SKU spec for a 5-pack dining set, or a wall unit as like our new W984 which has more than one SKU to make complete?”</p>
+  <p style="margin-bottom:.75rem">“What will the rest of the SKU spec look like once engineering adds the post-production information?”</p>
+  <footer style="font-size:.875rem;color:rgba(0,0,0,.45)">— Randy Domack, Product Development</footer>
+</blockquote>
+<figure style="margin:1.5rem 0">
+  <img src="docs/plm/feedback-randy-domack.png" alt="Email from Randy Domack requesting multi-SKU spec examples for W984 wall unit and 5-pack dining set" style="max-width:320px;width:100%;border-radius:8px;border:1px solid rgba(0,0,0,.08)" loading="lazy" />
+  <figcaption style="font-size:.8125rem;color:rgba(0,0,0,.45);margin-top:.5rem">Original email thread — Randy’s questions point directly at multi-SKU assemblies (W984 wall unit, 5-pack dining sets) and the engineering hand-off into post-production SKU specs.</figcaption>
+</figure>
+<p>These questions validate two design choices baked into PLM: <strong>Master Item structures</strong> that compose multiple samples into one sellable unit, and a <strong>clear lifecycle hand-off</strong> where engineering enriches the same record through PPR and launch — so stakeholders see one evolving SKU spec, not a new form at every stage.</p>
+
+<p class="mt-8">
+  <a href="product.html?id=plm">Explore PLM on the portfolio →</a><br />
+  <a href="post.html?slug=pre-plm-agent-chat-first-sampling">Pre-PLM Agent — chat-first sampling ahead of formal PLM →</a><br />
+  <a href="post.html?slug=why-pim-is-the-bom-engine">Why PIM is the BOM engine →</a>
+</p>
+      `.trim(),
+    },
+    {
       slug: 'smms-roadmap-2026',
       type: 'roadmap',
       title: 'SMMS roadmap 2026 — modules, go-live dates, and AI/agent scenarios',
