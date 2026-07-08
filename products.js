@@ -331,6 +331,11 @@ const PORTFOLIO = {
                 meta: 'Full product requirements — modules, fields, and workflows',
               },
               {
+                url: 'docs/plm/OneAshley_PIM_PLM_MicroForms_Upgrade_Final_EN.pptx',
+                label: 'OneAshley PLM MicroForms Upgrade',
+                meta: 'Executive presentation — PIM/PLM micro-forms upgrade (EN)',
+              },
+              {
                 url: 'post.html?slug=plm-executive-overview',
                 label: 'Executive overview',
                 meta: 'Strategy, ROI, business impact, and user feedback',
@@ -343,7 +348,10 @@ const PORTFOLIO = {
               quote: 'This looks great! I think I shed a couple tears of joy this morning!',
               author: 'Randy Domack, Product Development',
             },
-            { quote: 'Finally one place to see where every SKU is in the pipeline.', author: 'Sourcing Manager' },
+            {
+              quote: 'This is a very important work. It will fundamentally change how ashley operates',
+              author: 'Peter Fynboh',
+            },
           ],
         },
         {

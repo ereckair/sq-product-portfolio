@@ -216,15 +216,21 @@ const BLOG = {
 </ul>
 <p><strong>PLM is not just an IT project. It is the operating system for how we design, decide and deliver products as a group.</strong></p>
 
-<h2>6. PRD</h2>
+<h2>6. PRD &amp; presentation</h2>
 <p>The full product requirements document covers the PLM module landscape — Concept Release, Sample Preparation, Show/Go Selection, Sample Specification, and Product Launch workflows — including Sample Groups, Master Items, automated review questions, field tests, and APS quotation integration.</p>
 <p><a href="docs/plm/PLM.pdf" target="_blank" rel="noopener">Download PLM PRD (PDF) →</a></p>
+<p>The executive presentation walks through the OneAshley PIM/PLM micro-forms upgrade — strategy, scope, and operational impact.</p>
+<p><a href="docs/plm/OneAshley_PIM_PLM_MicroForms_Upgrade_Final_EN.pptx" target="_blank" rel="noopener">Download presentation slides (PPTX) →</a></p>
 
 <h2>7. User feedback</h2>
-<p>After the PLM approval walkthrough, Randy Domack — a key stakeholder in product development — shared this reaction:</p>
+<p>After the PLM approval walkthrough, stakeholders shared these reactions:</p>
 <blockquote style="border-left:4px solid #3b82f6;padding:1rem 1.25rem;margin:1.5rem 0;background:#fafafa;border-radius:0 4px 4px 0">
   <p style="margin-bottom:.75rem">“This looks great! I think I shed a couple tears of joy this morning! 😊”</p>
   <footer style="font-size:.875rem;color:rgba(0,0,0,.45)">— Randy Domack, Product Development</footer>
+</blockquote>
+<blockquote style="border-left:4px solid #3b82f6;padding:1rem 1.25rem;margin:1.5rem 0;background:#fafafa;border-radius:0 4px 4px 0">
+  <p style="margin-bottom:.75rem">“This is a very important work. It will fundamentally change how ashley operates”</p>
+  <footer style="font-size:.875rem;color:rgba(0,0,0,.45)">— Peter Fynboh</footer>
 </blockquote>
 
 <p class="mt-8">
