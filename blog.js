@@ -4,7 +4,7 @@
  */
 const BLOG = {
   /** Always shown first on the homepage Latest updates row */
-  pinnedSlugs: ['sq-team-daedalus-execution', 'pre-plm-tutorial-on-netlify'],
+  pinnedSlugs: ['sq-team-daedalus-execution', 'plm-executive-overview'],
   posts: [
     {
       slug: 'plm-go-live-vietnam-training',

@@ -990,7 +990,7 @@ const PORTFOLIO = {
         {
           id: 'ashley-purchase',
           name: 'Ashley Purchase System',
-          status: 'live',
+          status: 'building',
           migration: {
             trackerName: 'Ashley Purchase System (APS)',
             phase: 'in-progress',
