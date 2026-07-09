@@ -79,7 +79,7 @@ const PORTFOLIO = {
           resources: {
             landingPage: { url: 'pre-plm-agent/', label: 'Full product page' },
             prd: { url: 'pre-plm-agent/docs/PRD_EN.pdf', label: 'PRD (EN)' },
-            demoVideo: { url: 'pre-plm-agent/tutorial.mp4', label: 'Tutorial video' },
+            demoVideo: { url: '/pre-plm-agent/tutorial.mp4', label: 'Tutorial video' },
             documents: [
               { url: 'pre-plm-agent/docs/PRD_EN.pdf', label: 'PRD (EN)', meta: 'Product requirements document' },
               { url: 'pre-plm-agent/docs/User_guide_EN.pdf', label: 'User Guide (EN)', meta: 'How to chat with the bot, commands & field reference' },
@@ -318,12 +318,7 @@ const PORTFOLIO = {
           ],
           resources: {
             prd: { url: 'docs/plm/PLM.pdf', label: 'PLM PRD' },
-            liveLink: { url: '#', label: 'Open PLM' },
-            github: { url: '#', repo: 'org/plm-platform' },
-            mcpTools: [
-              { name: 'plm_get_product', description: 'Fetch product lifecycle state' },
-              { name: 'plm_create_eco', description: 'Initiate engineering change order' },
-            ],
+            mcpTools: [],
             documents: [
               {
                 url: 'docs/plm/PLM.pdf',
@@ -397,17 +392,8 @@ const PORTFOLIO = {
             'Multi-BOM support for ecommerce vs retail attribute sets',
             'Data-missing escalation with AI phone/SMS reminders',
           ],
-          resources: {
-            prd: { url: '#', label: 'PIM PRD v1.4' },
-            demoVideo: { url: '#', label: 'PIM data model demo' },
-            liveLink: { url: '#', label: 'Open PIM' },
-            github: { url: '#', repo: 'org/pim-service' },
-            mcpTools: [{ name: 'pim_search_products', description: 'Search product catalog by attribute' }],
-          },
-          feedback: [
-            { quote: 'Daniel keeps asking if BOM is ready — compliance for M&A and new categories depends on it.', author: 'Compliance leadership' },
-            { quote: 'We finally have an engine, not just another form collecting data.', author: 'Product development' },
-          ],
+          resources: {},
+          feedback: [],
         },
         {
           id: 'cpms',
@@ -436,13 +422,7 @@ const PORTFOLIO = {
             'Link approved panels to PIM color attributes',
             'Factory portal access for panel confirmation',
           ],
-          resources: {
-            prd: { url: '#', label: 'CPMS PRD v0.8' },
-            demoVideo: null,
-            liveLink: null,
-            github: { url: '#', repo: 'org/color-panel-mgmt' },
-            mcpTools: [],
-          },
+          resources: {},
           feedback: [],
         },
         {
@@ -466,13 +446,7 @@ const PORTFOLIO = {
             'Annual savings calculation when material prices drop (Gavin KPI)',
             'Exchange-rate-triggered renegotiation alerts',
           ],
-          resources: {
-            prd: { url: '#', label: 'DPCS PRD v0.9' },
-            demoVideo: { url: '#', label: 'Cost scenario demo' },
-            liveLink: null,
-            github: { url: '#', repo: 'org/dynamic-costing' },
-            mcpTools: [{ name: 'dpcs_calculate_landed_cost', description: 'Run landed cost calculation' }],
-          },
+          resources: {},
           feedback: [],
         },
         {
@@ -501,13 +475,7 @@ const PORTFOLIO = {
             'Automated diff report: which protocols and tests are affected per ECO',
             'Block downstream release if critical compliance impact unresolved',
           ],
-          resources: {
-            prd: { url: '#', label: 'ECO PRD v1.2' },
-            demoVideo: { url: '#', label: 'ECO approval flow demo' },
-            liveLink: { url: '#', label: 'Open ECO' },
-            github: { url: '#', repo: 'org/eco-workflow' },
-            mcpTools: [{ name: 'eco_submit_change', description: 'Submit new engineering change' }],
-          },
+          resources: {},
           feedback: [{ quote: 'We always know who is blocking an ECO and why.', author: 'Engineering Lead' }],
         },
         {
@@ -530,13 +498,7 @@ const PORTFOLIO = {
             'Price Impact Analysis Agent — commodity + FX feeds into SKU cost alerts',
             'Annual savings report tied to APS order volume',
           ],
-          resources: {
-            prd: { url: '#', label: 'Market Research PRD v0.6' },
-            demoVideo: { url: '#', label: 'Trend dashboard preview' },
-            liveLink: null,
-            github: { url: '#', repo: 'org/market-research' },
-            mcpTools: [{ name: 'trends_get_category_signals', description: 'Fetch trend data by category' }],
-          },
+          resources: {},
           feedback: [],
         },
       ],
@@ -573,13 +535,7 @@ const PORTFOLIO = {
             'Critical-data agent: daily Teams/SMS push for missing fields',
             'Electrical certification reports linked from quality dept system',
           ],
-          resources: {
-            prd: { url: '#', label: 'CMS PRD v2.0' },
-            demoVideo: { url: '#', label: 'Compliance dashboard demo' },
-            liveLink: { url: '#', label: 'Open CMS' },
-            github: { url: '#', repo: 'org/compliance-mgmt' },
-            mcpTools: [{ name: 'cms_check_sku_compliance', description: 'Check SKU compliance status by market' }],
-          },
+          resources: {},
           feedback: [{ quote: 'We catch regulatory gaps before they hit production.', author: 'Compliance Director' }],
         },
         {
@@ -606,13 +562,7 @@ const PORTFOLIO = {
             'Full release after PIM approval workflow go-live',
             'Auto-create lab requests in GLS from generated test plans',
           ],
-          resources: {
-            prd: { url: '#', label: 'Test Create PRD v1.1' },
-            demoVideo: { url: '#', label: 'Test plan creation demo' },
-            liveLink: { url: '#', label: 'Open Test Create' },
-            github: { url: '#', repo: 'org/compliance-test-create' },
-            mcpTools: [{ name: 'test_create_plan', description: 'Generate compliance test plan' }],
-          },
+          resources: {},
           feedback: [{ quote: 'Before we had to manually figure out every test. Now the system tells us what to run based on BOM.', author: 'Compliance engineer' }],
         },
         {
@@ -636,13 +586,7 @@ const PORTFOLIO = {
             after: 'Labels generated from confirmed BOM material attributes — same source of truth as compliance and costing.',
           },
           integrations: ['PIM (BOM)', 'SMMS', 'Compliance Test Management System'],
-          resources: {
-            prd: { url: '#', label: 'Law Label PRD v1.3' },
-            demoVideo: { url: '#', label: 'Label generation demo' },
-            liveLink: { url: '#', label: 'Open Law Labels' },
-            github: { url: '#', repo: 'org/law-label-system' },
-            mcpTools: [{ name: 'label_generate', description: 'Generate law label for SKU' }],
-          },
+          resources: {},
           feedback: [{ quote: 'No more last-minute label reprints before ship.', author: 'Production Planner' }],
         },
         {
@@ -661,13 +605,7 @@ const PORTFOLIO = {
           contribution:
             'Consolidated 200+ licenses in one system with zero missed renewals since launch; part of the connected compliance ecosystem fed by product data.',
           integrations: ['Compliance Test Management System', 'PIM (BOM)', 'Law Label Systems'],
-          resources: {
-            prd: { url: '#', label: 'Law License PRD v1.0' },
-            demoVideo: { url: '#', label: 'License tracking demo' },
-            liveLink: { url: '#', label: 'Open Law License' },
-            github: { url: '#', repo: 'org/law-license-system' },
-            mcpTools: [],
-          },
+          resources: {},
           feedback: [],
         },
         {
@@ -695,13 +633,7 @@ const PORTFOLIO = {
             'Expand pilot beyond 3 supplier tiers',
             'Link custody records to law label and compliance test results',
           ],
-          resources: {
-            prd: { url: '#', label: 'Chain of Custody PRD v0.5' },
-            demoVideo: { url: '#', label: 'Traceability demo' },
-            liveLink: null,
-            github: { url: '#', repo: 'org/chain-of-custody' },
-            mcpTools: [{ name: 'coc_trace_batch', description: 'Trace batch provenance' }],
-          },
+          resources: {},
           feedback: [],
         },
         {
@@ -728,13 +660,7 @@ const PORTFOLIO = {
             'Auto-create lab requests directly from Compliance Test Create output',
             'Link electrical certification reports from quality dept system',
           ],
-          resources: {
-            prd: { url: '#', label: 'GLS PRD v1.5' },
-            demoVideo: { url: '#', label: 'Lab scheduling demo' },
-            liveLink: { url: '#', label: 'Open GLS' },
-            github: { url: '#', repo: 'org/global-lab-system' },
-            mcpTools: [{ name: 'gls_schedule_test', description: 'Schedule lab test' }],
-          },
+          resources: {},
           feedback: [{ quote: 'Lab results flow into CMS automatically now.', author: 'QA Manager' }],
         },
       ],
@@ -785,7 +711,6 @@ const PORTFOLIO = {
               url: 'https://quality-agent.ashgso.com/wboc/agent-platform-quality/chat',
               label: 'Open Quality Agent Platform',
             },
-            github: { url: '#', repo: 'org/quality-agent-platform' },
             documents: [
               {
                 url: 'post.html?slug=quality-agent-platform-tour',
@@ -794,16 +719,9 @@ const PORTFOLIO = {
                 type: 'post',
               },
             ],
-            mcpTools: [
-              { name: 'quality_report_query', description: 'Query KPIs, Top N contributors, and SPC trends' },
-              { name: 'quality_narrative_generate', description: 'Generate weekly or monthly AI narrative report' },
-              { name: 'quality_agent_chat', description: 'Natural-language Q&A on live quality data' },
-            ],
+            mcpTools: [],
           },
-          feedback: [
-            { quote: 'The mockup makes recurrence visible in one screen — that is the story Peter needs.', author: 'Quality office (prototype review)' },
-            { quote: 'Write actions only after approval — that discipline is non-negotiable for QIS.', author: 'QM Lead persona (P3)' },
-          ],
+          feedback: [],
         },
       ],
     },
@@ -873,10 +791,6 @@ const PORTFOLIO = {
             'Phase 3 (2027 H2): Quality loop + MCP tools for agent handoff',
           ],
           resources: {
-            prd: { url: '#', label: 'Intelligent Sourcing Agent PRD (draft)' },
-            demoVideo: null,
-            liveLink: null,
-            github: { url: '#', repo: 'org/intelligent-sourcing-agent' },
             documents: [
               {
                 url: 'post.html?slug=intelligent-sourcing-agent-roadmap',
@@ -884,10 +798,7 @@ const PORTFOLIO = {
                 meta: 'Phases, signal dimensions, and integration plan',
               },
             ],
-            mcpTools: [
-              { name: 'sourcing_rank_vendors', description: 'Rank vendors for a material or category with evidence brief' },
-              { name: 'sourcing_switch_alert', description: 'Check whether a better-fit supplier has emerged' },
-            ],
+            mcpTools: [],
           },
           feedback: [],
         },
@@ -966,10 +877,6 @@ const PORTFOLIO = {
             'Ongoing: expand material categories and automation coverage',
           ],
           resources: {
-            prd: { url: '#', label: 'Price Impact Analysis Agent PRD (draft)' },
-            demoVideo: null,
-            liveLink: null,
-            github: { url: '#', repo: 'org/price-impact-analysis-agent' },
             documents: [
               {
                 url: 'post.html?slug=price-impact-analysis-agent-roadmap',
@@ -978,12 +885,7 @@ const PORTFOLIO = {
                 type: 'post',
               },
             ],
-            mcpTools: [
-              { name: 'price_monitor', description: 'Monitor market/FX changes and compute percentage deltas' },
-              { name: 'plm_material_search', description: 'Find all PLM SKUs that consume a material' },
-              { name: 'bom_cost_impact', description: 'Simulate per-SKU BOM cost impact' },
-              { name: 'sales_cost_forecast', description: 'Forecast total sales cost from volume × new unit cost' },
-            ],
+            mcpTools: [],
           },
           feedback: [],
         },
@@ -1016,13 +918,7 @@ const PORTFOLIO = {
             'Annual savings report: order volume × price reduction opportunities',
             'Open MCP/API for supply chain agents',
           ],
-          resources: {
-            prd: { url: '#', label: 'APS PRD v3.0' },
-            demoVideo: { url: '#', label: 'PO workflow demo' },
-            liveLink: { url: '#', label: 'Open APS' },
-            github: { url: '#', repo: 'org/ashley-purchase-system' },
-            mcpTools: [{ name: 'aps_create_po', description: 'Create purchase order draft' }],
-          },
+          resources: {},
           feedback: [
             { quote: 'Automation/Feel teams still quote via email and phone — APS is the contrast case for systematic procurement.', author: 'Product leadership (Jun 2026 walkthrough)' },
             { quote: 'Import PO tracking is finally as good as domestic.', author: 'Import Sourcing Lead' },
@@ -1049,13 +945,7 @@ const PORTFOLIO = {
             after: 'Centralized authorized vendor trademark registry live in production.',
           },
           integrations: ['SMMS (Supplier Trade Center)', 'Ashley Purchase System'],
-          resources: {
-            prd: { url: '#', label: 'Vendor Trade Mark PRD v1.0' },
-            demoVideo: null,
-            liveLink: { url: '#', label: 'Open Vendor Trade Mark' },
-            github: { url: '#', repo: 'org/vendor-trademark' },
-            mcpTools: [],
-          },
+          resources: {},
           feedback: [],
         },
         {
@@ -1216,9 +1106,7 @@ const PORTFOLIO = {
           ],
           resources: {
             prd: { url: 'docs/smms/SMMS-PRD.pdf', label: 'SMMS PRD' },
-            demoVideo: { url: '#', label: 'Supplier portal demo' },
             liveLink: { url: 'https://xwork.ashgso.com/app/supplier/y822p2rayuw/tabs/awfr0hmy025', label: 'Open SMMS (Material List)' },
-            github: { url: '#', repo: 'org/supplier-material-mgmt' },
             documents: [
               {
                 url: 'docs/smms/SMMS-PRD.pdf',
@@ -1253,7 +1141,7 @@ const PORTFOLIO = {
                 type: 'post',
               },
             ],
-            mcpTools: [{ name: 'smms_get_material_status', description: 'Check material approval status' }],
+            mcpTools: [],
           },
           feedback: [
             { quote: 'Before SMMS we couldn\'t batch import — everything was PDF catalogs with different formats per supplier.', author: 'Material engineering' },
@@ -1286,13 +1174,7 @@ const PORTFOLIO = {
           contribution:
             'Consolidated HR data for 3,000+ team members across 12 countries — the people layer behind material engineers, compliance engineers, and QC inspectors running the connected ecosystem.',
           integrations: ['Global SQ organization', 'Role-based access across SMMS/PLM domains'],
-          resources: {
-            prd: { url: '#', label: 'HRS PRD v1.6' },
-            demoVideo: { url: '#', label: 'HRS overview demo' },
-            liveLink: { url: '#', label: 'Open HRS' },
-            github: { url: '#', repo: 'org/hrs-platform' },
-            mcpTools: [],
-          },
+          resources: {},
           feedback: [],
         },
         {

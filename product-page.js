@@ -24,7 +24,10 @@
   meta.content = product.summary;
   if (!meta.parentNode) document.head.appendChild(meta);
 
-  const r = product.resources;
+  const r = product.resources || {};
+  const isValidUrl = (url) => Boolean(url && url !== '#');
+  const isVideoFile = (url) => Boolean(url && /\.(mov|mp4|webm)$/i.test(url));
+
   const statusLabel = product.status === 'live' ? 'Live' : product.status === 'building' ? 'Building' : 'Planned';
   const statusClass =
     product.status === 'live' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200';
@@ -75,8 +78,9 @@
       github: '<svg class="w-5 h-5 text-black/40" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>',
       mcp: '<svg class="w-5 h-5 text-black/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>',
     };
-    const inner = href
-      ? `<a href="${href}" class="text-sm text-black hover:underline cursor-pointer" ${/^https?:\/\//i.test(href) ? 'target="_blank" rel="noopener noreferrer"' : ''}>${content}</a>`
+    const validHref = isValidUrl(href) ? href : null;
+    const inner = validHref
+      ? `<a href="${validHref}" class="text-sm text-black hover:underline cursor-pointer" ${/^https?:\/\//i.test(validHref) ? 'target="_blank" rel="noopener noreferrer"' : ''}>${content}</a>`
       : `<span class="text-sm text-black/40">${content || 'Not available yet'}</span>`;
     return `
       <div class="light-card rounded-sm p-5">
@@ -88,8 +92,8 @@
       </div>`;
   }
 
-  const mcpSection =
-    r.mcpTools?.length > 0
+  const mcpSection = Array.isArray(r.mcpTools)
+    ? r.mcpTools.length > 0
       ? `
     <div class="light-card rounded-sm p-5">
       <div class="flex items-center gap-2 mb-4">
@@ -108,15 +112,23 @@
           .join('')}
       </div>
     </div>`
-      : '';
+      : `
+    <div class="light-card rounded-sm p-5">
+      <div class="flex items-center gap-2 mb-3">
+        <svg class="w-5 h-5 text-black/40" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        <span class="text-label text-black/40">MCP Tools</span>
+      </div>
+      <span class="text-sm text-black/40">Not available yet</span>
+    </div>`
+    : '';
 
-  const feedbackSection =
-    product.feedback?.length > 0
-      ? `
+  const feedbackSection = `
     <section class="px-4 py-16 light-divider">
       <div class="max-w-4xl mx-auto">
         <h2 class="text-h1-light text-black mb-8">User feedback</h2>
-        <div class="space-y-4">
+        ${
+          product.feedback?.length > 0
+            ? `<div class="space-y-4">
           ${product.feedback
             .map(
               (f) => `
@@ -126,10 +138,11 @@
             </blockquote>`
             )
             .join('')}
-        </div>
+        </div>`
+            : `<p class="text-sm text-black/40">Not available yet</p>`
+        }
       </div>
-    </section>`
-      : '';
+    </section>`;
 
   function moduleStatusBadge(status) {
     const map = {
@@ -222,17 +235,17 @@
       .join('');
   }
 
-  const documentsSection =
-    r.documents?.length > 0
-      ? `
+  const documentsSection = `
     <div class="mt-8">
       <h3 class="font-display text-lg font-medium text-black mb-4">Documentation</h3>
-      <div class="grid sm:grid-cols-2 gap-3">
+      ${
+        r.documents?.length > 0
+          ? `<div class="grid sm:grid-cols-2 gap-3">
         ${r.documents
           .map((doc) => {
             const isExternal = /^https?:\/\//i.test(doc.url);
             const isPost = doc.type === 'post' || doc.url.includes('post.html');
-            const badge = isPost ? 'Blog' : 'PDF';
+            const badge = isPost ? 'Blog' : doc.url.endsWith('.pptx') ? 'Slides' : 'PDF';
             const target = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
             return `
           <a href="${doc.url}"${target} class="light-card rounded-sm p-4 flex flex-col cursor-pointer hover:border-black/20 transition-colors">
@@ -242,22 +255,27 @@
           </a>`;
           })
           .join('')}
-      </div>
-    </div>`
-      : '';
+      </div>`
+          : `<p class="text-sm text-black/40">Not available yet</p>`
+      }
+    </div>`;
 
-  const videoSection =
-    r.demoVideo?.url && /\.(mov|mp4|webm)$/i.test(r.demoVideo.url)
+  const videoUrl = isValidUrl(r.demoVideo?.url) && isVideoFile(r.demoVideo.url) ? r.demoVideo.url : null;
+  const videoSection = videoUrl
       ? (() => {
-          const url = r.demoVideo.url;
+          const url = /^https?:\/\//i.test(videoUrl)
+            ? videoUrl
+            : videoUrl.startsWith('/')
+              ? videoUrl
+              : `/${videoUrl}`;
           const isMp4 = /\.mp4$/i.test(url);
           const isWebm = /\.webm$/i.test(url);
           const sourceType = isWebm ? 'video/webm' : isMp4 ? 'video/mp4' : 'video/quicktime';
           return `
-    <div class="mt-8">
+    <div class="mt-8" id="demo-video">
       <h3 class="font-display text-lg font-medium text-black mb-4">${r.demoVideo.label || 'Demo video'}</h3>
       <div class="rounded-sm overflow-hidden border border-black/10 bg-black">
-        <video controls playsinline preload="metadata" class="w-full max-h-[480px]">
+        <video controls playsinline preload="metadata" class="w-full max-h-[480px]" src="${url}">
           <source src="${url}" type="${sourceType}">
           <a href="${url}" class="text-sm text-white p-4 block">Download video</a>
         </video>
@@ -286,7 +304,7 @@
             : ''
         }
         ${
-          r.landingPage
+          r.landingPage && isValidUrl(r.landingPage.url)
             ? `<div class="mt-8"><a href="${r.landingPage.url}" class="btn-primary-light"${/^https?:\/\//i.test(r.landingPage.url) ? ' target="_blank" rel="noopener noreferrer"' : ''}>${r.landingPage.label || 'Open product page'}</a></div>`
             : ''
         }
@@ -356,11 +374,11 @@
       <div class="max-w-4xl mx-auto">
         <h2 class="text-h1-light text-black mb-8">Resources & links</h2>
         <div class="grid sm:grid-cols-2 gap-4 mb-4">
-          ${r.landingPage ? resourceCard('live', 'Product page', r.landingPage.label, r.landingPage.url) : ''}
-          ${resourceCard('prd', 'PRD / Docs', r.prd?.label, r.prd?.url)}
-          ${resourceCard('demo', 'Demo video', r.demoVideo?.label, r.demoVideo?.url)}
-          ${resourceCard('live', 'Live environment', r.liveLink?.label || 'Open app', r.liveLink?.url)}
-          ${resourceCard('github', 'GitHub', r.github?.repo || r.github?.url, r.github?.url)}
+          ${r.landingPage ? resourceCard('live', 'Product page', r.landingPage.label, isValidUrl(r.landingPage.url) ? r.landingPage.url : null) : ''}
+          ${resourceCard('prd', 'PRD / Docs', r.prd?.label, isValidUrl(r.prd?.url) ? r.prd.url : null)}
+          ${videoUrl ? resourceCard('demo', 'Demo video', r.demoVideo?.label || 'Watch below', null) : resourceCard('demo', 'Demo video', r.demoVideo?.label, isValidUrl(r.demoVideo?.url) ? r.demoVideo.url : null)}
+          ${resourceCard('live', 'Live environment', r.liveLink?.label || 'Open app', isValidUrl(r.liveLink?.url) ? r.liveLink.url : null)}
+          ${resourceCard('github', 'GitHub', r.github?.repo || r.github?.url, isValidUrl(r.github?.url) ? r.github.url : null)}
         </div>
         ${videoSection}
         ${documentsSection}
