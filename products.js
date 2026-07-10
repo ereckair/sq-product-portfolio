@@ -1407,18 +1407,18 @@ const PORTFOLIO = {
       id: 'oneashley-nocode',
       name: 'OneAshley Nocode Platform',
       description:
-        'OneAshley Nocode Platform is XWork — Ashley’s enterprise no-code / low-code substrate for building internal apps, workflows, and AI-enabled tools without traditional custom development.',
+        'OneAshley Nocode Platform is the product formerly known as XWork — Ashley’s enterprise no-code / low-code substrate for building internal apps, workflows, and AI-enabled tools without traditional custom development. Same platform, new name.',
       color: '#0ea5e9',
       products: [
         {
           id: 'xwork-nocode',
           name: 'Nocode Platform',
-          subtitle: 'XWork · Scalability-first no-code',
+          subtitle: 'OneAshley Nocode Platform · formerly XWork',
           status: 'live',
           summary:
-            'XWork no-code core — visual data sources, interface builder, users & permissions, and workflows so teams build enterprise internal apps in days, not months.',
+            'OneAshley Nocode Platform is the same product formerly known as XWork — the scalability-first no-code core for data sources, interface builder, users & permissions, and workflows.',
           description:
-            'Nocode Platform is the foundation of OneAshley Nocode Platform (XWork). Business analysts, operations, and product teams model data, design screens with 155+ components, configure RBAC, and automate approvals on a visual canvas — without waiting on custom development. It is the same XWork substrate that powers apps such as HRS.',
+            'OneAshley Nocode Platform was previously called XWork — it is one platform, not two. This Nocode Platform page is that foundation: business analysts, operations, and product teams model data, design screens with 155+ components, configure RBAC, and automate approvals on a visual canvas — without waiting on custom development. The same substrate powers apps such as HRS.',
           contribution:
             'Gave Ashley a shared no-code platform for internal tools: centralized data management, schema-driven UIs, fine-grained permissions, and visual workflow automation — cutting the IT bottleneck for everyday operational apps.',
           beforeAfter: {
@@ -1428,6 +1428,7 @@ const PORTFOLIO = {
               'Visual no-code configuration: connect data sources, drag-and-drop pages, role-based access, and automated workflows with execution history — business users self-serve.',
           },
           highlights: [
+            'Same platform as XWork — renamed OneAshley Nocode Platform',
             'Four core modules — Data Sources, Interface Builder, Users & Permissions, Workflows',
             '155+ UI components and 11 block types (Table, Form, Kanban, Chart, and more)',
             'RBAC with resource, menu, field, and data-scope controls',
@@ -1436,9 +1437,9 @@ const PORTFOLIO = {
           ],
           detailSections: [
             {
-              title: 'Platform note',
+              title: 'Formerly XWork',
               type: 'callout',
-              body: 'OneAshley Nocode Platform is XWork. This product page covers the no-code foundation — the visual builder and runtime that Open Capabilities extends. XWork Vibe Studio remains listed under Human Resources Center for now.',
+              body: 'OneAshley Nocode Platform = XWork. The name changed; the product did not. This page covers the no-code foundation — the visual builder and runtime that Open Capabilities extends. XWork Vibe Studio remains listed under Human Resources Center for now.',
               bullets: [
                 'Build data models and apps without writing frontend or backend code',
                 'Centralize collections, relationships, and sync across MySQL, Postgres, REST, and spreadsheets',
