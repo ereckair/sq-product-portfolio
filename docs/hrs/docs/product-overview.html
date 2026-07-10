@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HRS Product Overview — HRS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#000; --muted:rgba(0,0,0,.6); --line:rgba(0,0,0,.08); }
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid var(--line); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    hr { border:none; border-top:1px solid var(--line); margin:2rem 0; }
+    blockquote { border-left:3px solid #3b82f6; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=hrs">← Back to HRS product page</a>
+    <h1>HRS Human Resources System — Product Overview</h1>
+<p><strong>Product:</strong> HRS (Human Resources System)  </p>
+<p><strong>Platform:</strong> xWork  </p>
+<p><strong>Audience:</strong> All Employees, HR Administrators, Organization Administrators  </p>
+<p><strong>Version:</strong> V1.0  </p>
+<p><strong>Release Date:</strong> July 2026</p>
+<hr />
+<h2>1. Background</h2>
+<p>Ashley Furniture, as a global leader in furniture manufacturing, operates a large and complex organizational structure with employees distributed worldwide. Previously, HR information was scattered across multiple systems and manual spreadsheets, causing:</p>
+<ul>
+<li><strong>Data silos</strong> — Organizational changes and transfers could not be synchronized in real time</li>
+<li><strong>No version history</strong> — Historical states of organizations and employees could not be traced</li>
+<li><strong>Low collaboration efficiency</strong> — Cross-department reporting-line queries required multiple rounds of communication</li>
+</ul>
+<p>HRS was built to solve these problems — a unified platform to manage organizations, positions, and employees across their full data lifecycle, now enhanced with an AI Assistant for natural language queries and task execution.</p>
+<hr />
+<h2>2. Value Proposition</h2>
+<table>
+<tr><th>Value</th><th>Details</th></tr>
+<tr><td><strong>Single Source of Truth</strong></td><td>Organizations, positions, and employees managed centrally — no more information silos</td></tr>
+<tr><td><strong>Timeline Version History</strong></td><td>Every change is recorded as a versioned entry; any historical state can be reviewed</td></tr>
+<tr><td><strong>Visual Org Chart</strong></td><td>Horizontal and vertical views of reporting hierarchies, with export support</td></tr>
+<tr><td><strong>Drill-down Navigation</strong></td><td>Click any org card to drill into its employees, positions, and job roles</td></tr>
+<tr><td><strong>Dual Reporting Lines</strong></td><td>Clearly records both Operational and Functional reporting relationships</td></tr>
+<tr><td><strong>AI-Powered Queries &amp; Actions</strong></td><td>Ask questions and execute HR tasks in plain English via the AI Assistant</td></tr>
+</table>
+<hr />
+<h2>3. Core Modules</h2>
+<h3>3.1 Organization Management</h3>
+<p>Manage Ashley&#x27;s global organizational structure with multi-level tree support.</p>
+<figure><img src="../screenshots/org_management.png" alt="Organization Management — List View" loading="lazy" /><figcaption>Organization Management — List View</figcaption></figure>
+<p><strong>Layout:</strong> Collapsible org tree on the left (full AFI global hierarchy); organization data table on the right; filter and action buttons at the top.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Organization List</strong> — View all organizations, filterable by date range</li>
+<li><strong>Organization Detail</strong> — Full org info including effective date, expiry date, and organization type</li>
+<li><strong>Timeline Versions</strong> — Visualize the history of an organization; click any node to view version details</li>
+<li><strong>Version Actions</strong> — Add, edit, or delete organization versions</li>
+<li><strong>Org Actions</strong> — Add, deactivate, reactivate, or delete pending org versions</li>
+</ul>
+<figure><img src="../screenshots/org_management_viewRecord.png" alt="Organization Detail &amp; Timeline" loading="lazy" /><figcaption>Organization Detail &amp; Timeline</figcaption></figure>
+<figure><img src="../screenshots/org_management_addRecord.png" alt="Add New Organization" loading="lazy" /><figcaption>Add New Organization</figcaption></figure>
+<p><strong>Table Fields:</strong> Org Name / Org Code / Effective Date / Expiry Date / Org Type</p>
+<hr />
+<h3>3.2 Employee Management</h3>
+<p>Manage all active and inactive employee records, deeply linked to organizations and positions.</p>
+<figure><img src="../screenshots/employee_management.png" alt="Employee Management — List View" loading="lazy" /><figcaption>Employee Management — List View</figcaption></figure>
+<p><strong>Layout:</strong> Org tree on the left for department filtering; employee table on the right; status toggle (Active / Inactive / All), export, and add buttons at the top.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Employee List</strong> — View employees with date-range filter and Active / Inactive / All status toggle</li>
+<li><strong>Employee Detail</strong> — Full employee record including position, department, tenure, and status</li>
+<li><strong>Timeline Versions</strong> — Track transfers, promotions, and department changes</li>
+<li><strong>Version Actions</strong> — Add, edit, or delete employee versions</li>
+<li><strong>Add Employee</strong> — Create a new employee; system auto-creates the first timeline version</li>
+<li><strong>Custom Export</strong> — Export employee data with user-selected fields</li>
+</ul>
+<figure><img src="../screenshots/employee_management_viewRecord.png" alt="Employee Detail &amp; Timeline" loading="lazy" /><figcaption>Employee Detail &amp; Timeline</figcaption></figure>
+<figure><img src="../screenshots/employee_management_addRecord.png" alt="Add New Employee" loading="lazy" /><figcaption>Add New Employee</figcaption></figure>
+<p><strong>Table Fields:</strong> Employee Name / Employee Code / Position / Department / Effective Date / Tenure / Status</p>
+<hr />
+<h3>3.3 Position Management</h3>
+<p>Manage the company-wide position framework, linked to organizations and job levels.</p>
+<figure><img src="../screenshots/position_management.png" alt="Position Management — List View" loading="lazy" /><figcaption>Position Management — List View</figcaption></figure>
+<p><strong>Layout:</strong> Same left-tree + right-table layout; position data includes job level and parent-child hierarchy.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Position List</strong> — View all positions with filtering support</li>
+<li><strong>Position Detail</strong> — Full position info including job level, parent position, and owning org</li>
+<li><strong>Timeline Versions</strong> — Track position history</li>
+<li><strong>Version Actions</strong> — Add, edit, or delete position versions</li>
+<li><strong>Add Position</strong> — Create a new position; system auto-creates the first timeline version</li>
+</ul>
+<figure><img src="../screenshots/position_management_viewRecord.png" alt="Position Detail &amp; Timeline" loading="lazy" /><figcaption>Position Detail &amp; Timeline</figcaption></figure>
+<figure><img src="../screenshots/position_management_addRecord.png" alt="Add New Position" loading="lazy" /><figcaption>Add New Position</figcaption></figure>
+<p><strong>Table Fields:</strong> Position Name / Position Code / Job Level / Parent Position / Org Unit</p>
+<hr />
+<h3>3.4 Employee Reporting Chart</h3>
+<p>Visualize the organizational hierarchy and reporting relationships as an interactive chart.</p>
+<figure><img src="../screenshots/reporting_chart.png" alt="Employee Reporting Chart" loading="lazy" /><figcaption>Employee Reporting Chart</figcaption></figure>
+<p><strong>Layout:</strong> Org tree navigation on the left; interactive org chart cards on the right — each card shows a position&#x27;s dual reporting relationships.</p>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Horizontal / Vertical / Compact Views</strong> — Multiple layout modes for different needs</li>
+<li><strong>Dual Reporting Lines</strong> — Each card shows Operational Leader and Functional Leader</li>
+<li><strong>Drill-down</strong> — Click employee count, position count, or job count on any card to drill in</li>
+<li><strong>Export</strong> — Export the org chart as an image or PDF</li>
+</ul>
+<hr />
+<h3>3.5 AI Assistant</h3>
+<p>A conversational AI sidebar built into HRS, accessible from any module. Enables natural language queries and direct task execution without navigating between pages.</p>
+<figure><img src="../screenshots/ai_assistant.png" alt="AI Assistant Sidebar" loading="lazy" /><figcaption>AI Assistant Sidebar</figcaption></figure>
+<p><strong>Two Core Capabilities:</strong></p>
+<p><strong>Query</strong> — Ask data questions in plain English:</p>
+<ul>
+<li>&quot;How many employees joined this month?&quot;</li>
+<li>&quot;Show me a workforce overview for Asia Sourcing&quot;</li>
+<li>&quot;How many employees left in Q2?&quot;</li>
+</ul>
+<p><strong>Action</strong> — Execute HR tasks via natural language:</p>
+<ul>
+<li>&quot;Add a new employee: John Smith, onboarding July 15&quot;</li>
+<li>&quot;Create a position: HR Specialist under HR Admin, General Staff level&quot;</li>
+<li>&quot;Deactivate org unit: Asia Logistics&quot;</li>
+</ul>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li>Instant data summaries with breakdown by org unit</li>
+<li>Task confirmation before execution</li>
+<li>Full task history log within the session</li>
+<li>Works across all 4 HRS modules</li>
+</ul>
+<hr />
+<h2>4. System Access</h2>
+<table>
+<tr><th>Module</th><th>Path</th></tr>
+<tr><td>Organization Management</td><td>xWork → HRS → Organization Management</td></tr>
+<tr><td>Employee Management</td><td>xWork → HRS → Employee Management</td></tr>
+<tr><td>Position Management</td><td>xWork → HRS → Position Management</td></tr>
+<tr><td>Employee Reporting Chart</td><td>xWork → HRS → Employee Reporting Chart</td></tr>
+<tr><td>AI Assistant</td><td>Click the AI icon in any HRS module (right sidebar)</td></tr>
+</table>
+<hr />
+<h2>5. Integration with Other Systems</h2>
+<p>HRS serves as the authoritative source of HR data and supports:</p>
+<ul>
+<li>Employee onboarding and offboarding workflows</li>
+<li>Performance management systems (reporting line data)</li>
+<li>Permission management (org unit membership)</li>
+<li>Approval workflows (org hierarchy data)</li>
+</ul>
+<hr />
+<blockquote><p>For step-by-step instructions, see the <em>User Guide</em>. For common questions, see the <em>FAQ</em>.</p></blockquote>
+  </div>
+</body>
+</html>

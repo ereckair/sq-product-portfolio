@@ -1160,21 +1160,153 @@ const PORTFOLIO = {
         {
           id: 'hrs',
           name: 'HRS',
+          subtitle: 'Human Resources System · xWork',
           status: 'live',
           migration: {
             trackerName: 'Human Resource System (HRS)',
             phase: 'uat',
             progress: 100,
             targetUat: 'May 22',
-            lastUpdated: 'Jun 2026',
+            update: 'V1.0 live on xWork — Organization, Employee, Position, Reporting Chart, and AI Assistant.',
+            lastUpdated: 'Jul 2026',
           },
-          summary: 'Human Resources System for the sourcing, quality, and compliance organization.',
+          summary:
+            'Unified HR platform on xWork — organizations, positions, and employees with timeline version history, dual reporting lines, and an AI Assistant for natural-language queries and actions.',
           description:
-            'HRS covers employee records, org structure, time-off, and role management for sourcing, QA, compliance, and material engineering teams worldwide. Supports the ~50+ authorized supplier relationships and multi-country operations described across SMMS, PLM, and quality systems.',
+            'HRS replaces scattered HR spreadsheets and siloed systems with a single source of truth for Ashley’s global org structure. HR and org admins manage the full data lifecycle — create, version, deactivate, and reactivate — while employees get a visual org chart with Operational and Functional reporting lines. An in-product AI Assistant answers workforce questions and can execute HR tasks with confirmation.',
           contribution:
-            'Consolidated HR data for 3,000+ team members across 12 countries — the people layer behind material engineers, compliance engineers, and QC inspectors running the connected ecosystem.',
-          integrations: ['Global SQ organization', 'Role-based access across SMMS/PLM domains'],
-          resources: {},
+            'Delivered the people layer for the sourcing and quality organization: one authoritative org/employee/position record with audit-ready timeline history, exportable reporting charts, and AI-assisted HR operations on xWork.',
+          beforeAfter: {
+            before:
+              'HR data scattered across systems and spreadsheets — org changes not synced in real time, no version history, and cross-department reporting-line queries required multiple rounds of communication.',
+            after:
+              'Centralized org, position, and employee management with timeline versions, visual dual-reporting org charts, drill-down navigation, and AI Assistant for queries and task execution.',
+          },
+          highlights: [
+            'Five modules — Organization, Employee, Position, Reporting Chart, AI Assistant',
+            'Timeline version history for every org, employee, and position change',
+            'Dual reporting lines — Operational and Functional leaders on each card',
+            'AI Assistant — plain-English queries and confirmed HR actions across modules',
+            'Custom employee export and org-chart image/PDF export',
+          ],
+          detailSections: [
+            {
+              title: 'Core modules',
+              type: 'modules',
+              groups: [
+                {
+                  name: 'HRS on xWork',
+                  items: [
+                    {
+                      name: 'Organization Management',
+                      description:
+                        'Multi-level AFI org tree, date filters, timeline versions, and add / deactivate / reactivate workflows.',
+                      status: 'live',
+                      goLive: 'V1.0',
+                    },
+                    {
+                      name: 'Employee Management',
+                      description:
+                        'Active / Inactive / All views, department filtering, tenure tracking, timeline for transfers and promotions, custom field export.',
+                      status: 'live',
+                      goLive: 'V1.0',
+                    },
+                    {
+                      name: 'Position Management',
+                      description:
+                        'Company-wide position framework with job levels, parent-child hierarchy, and versioned history.',
+                      status: 'live',
+                      goLive: 'V1.0',
+                    },
+                    {
+                      name: 'Employee Reporting Chart',
+                      description:
+                        'Interactive horizontal / vertical / compact org charts with dual reporting lines, drill-down, and export.',
+                      status: 'live',
+                      goLive: 'V1.0',
+                    },
+                    {
+                      name: 'AI Assistant',
+                      description:
+                        'Sidebar on every HRS module — natural-language workforce queries and confirmed create / deactivate actions.',
+                      status: 'live',
+                      goLive: 'V1.0',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Who uses HRS',
+              type: 'pairs',
+              items: [
+                {
+                  label: 'HR Administrators',
+                  detail: 'Full create, edit, and delete access across organizations, employees, and positions.',
+                },
+                {
+                  label: 'Organization Administrators',
+                  detail: 'Manage data within their org scope — local structure and staffing changes.',
+                },
+                {
+                  label: 'General Employees',
+                  detail: 'Read-only access to the org chart and related reporting information.',
+                },
+              ],
+            },
+          ],
+          integrations: [
+            'xWork platform',
+            'Employee onboarding / offboarding workflows',
+            'Performance management (reporting lines)',
+            'Permission management (org membership)',
+            'Approval workflows (org hierarchy)',
+            'XWork Vibe Studio (HR vibe-coded apps)',
+          ],
+          roadmap: [
+            'Expand AI Assistant action coverage across more HR workflows',
+            'Deeper integration with performance and approval systems',
+            'Continue XWork Vibe Studio apps built on HRS data',
+          ],
+          resources: {
+            prd: { url: 'docs/hrs/docs/product-overview.html', label: 'HRS Product Overview' },
+            demoVideo: { url: '/docs/hrs/demo/hrs-demo.mp4', label: 'HRS demo video' },
+            documents: [
+              {
+                url: 'docs/hrs/docs/product-overview.html',
+                label: 'Product Overview',
+                meta: 'Background, value proposition, and five core modules',
+              },
+              {
+                url: 'docs/hrs/docs/user-guide.html',
+                label: 'User Guide',
+                meta: 'Step-by-step instructions for HR and org administrators',
+              },
+              {
+                url: 'docs/hrs/docs/faq.html',
+                label: 'FAQ',
+                meta: 'Common questions on versions, access, and module behavior',
+              },
+              {
+                url: 'docs/hrs/visuals/hrs-workflow.png',
+                label: 'HRS workflow infographic',
+                meta: 'End-to-end HRS process visual',
+              },
+            ],
+            gallery: [
+              { url: 'docs/hrs/screenshots/org_management.png', label: 'Organization Management' },
+              { url: 'docs/hrs/screenshots/employee_management.png', label: 'Employee Management' },
+              { url: 'docs/hrs/screenshots/position_management.png', label: 'Position Management' },
+              { url: 'docs/hrs/screenshots/reporting_chart.png', label: 'Employee Reporting Chart' },
+              { url: 'docs/hrs/screenshots/ai_assistant.png', label: 'AI Assistant' },
+              { url: 'docs/hrs/visuals/posters/organization-management.png', label: 'Poster — Organization' },
+              { url: 'docs/hrs/visuals/posters/employee-management.png', label: 'Poster — Employees' },
+              { url: 'docs/hrs/visuals/posters/position-management.png', label: 'Poster — Positions' },
+              { url: 'docs/hrs/visuals/posters/org-chart.png', label: 'Poster — Org chart' },
+              { url: 'docs/hrs/visuals/posters/ai-assistant.png', label: 'Poster — AI Assistant' },
+            ],
+            mcpTools: [],
+          },
           feedback: [],
         },
         {

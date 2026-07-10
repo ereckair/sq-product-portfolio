@@ -245,8 +245,20 @@
           .map((doc) => {
             const isExternal = /^https?:\/\//i.test(doc.url);
             const isPost = doc.type === 'post' || doc.url.includes('post.html');
-            const badge = isPost ? 'Blog' : doc.url.endsWith('.pptx') ? 'Slides' : 'PDF';
-            const target = isExternal ? ' target="_blank" rel="noopener noreferrer"' : '';
+            const isHtml = /\.html?$/i.test(doc.url);
+            const isImage = /\.(png|jpe?g|webp|gif)$/i.test(doc.url);
+            const badge = isPost
+              ? 'Blog'
+              : doc.url.endsWith('.pptx')
+                ? 'Slides'
+                : isHtml
+                  ? 'Doc'
+                  : isImage
+                    ? 'Visual'
+                    : doc.url.endsWith('.md')
+                      ? 'Markdown'
+                      : 'PDF';
+            const target = isExternal || isImage ? ' target="_blank" rel="noopener noreferrer"' : '';
             return `
           <a href="${doc.url}"${target} class="light-card rounded-sm p-4 flex flex-col cursor-pointer hover:border-black/20 transition-colors">
             <span class="text-label text-black/40 mb-1">${badge}</span>
@@ -282,6 +294,25 @@
       </div>
     </div>`;
         })()
+      : '';
+
+  const gallerySection =
+    r.gallery?.length > 0
+      ? `
+    <div class="mt-8">
+      <h3 class="font-display text-lg font-medium text-black mb-4">Screenshots & visuals</h3>
+      <div class="product-gallery">
+        ${r.gallery
+          .map(
+            (item) => `
+          <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="product-gallery-item cursor-pointer">
+            <img src="${item.url}" alt="${item.label || ''}" loading="lazy" />
+            <span class="product-gallery-label">${item.label || ''}</span>
+          </a>`
+          )
+          .join('')}
+      </div>
+    </div>`
       : '';
 
   main.innerHTML = `
@@ -381,6 +412,7 @@
           ${resourceCard('github', 'GitHub', r.github?.repo || r.github?.url, isValidUrl(r.github?.url) ? r.github.url : null)}
         </div>
         ${videoSection}
+        ${gallerySection}
         ${documentsSection}
         ${mcpSection}
       </div>

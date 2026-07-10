@@ -911,6 +911,49 @@ button:focus-visible {
   margin-top: 0.375rem;
 }
 
+.product-gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.75rem;
+}
+
+@media (min-width: 768px) {
+  .product-gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.product-gallery-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 2px;
+  overflow: hidden;
+  background: #fafafa;
+  text-decoration: none;
+  transition: border-color 0.2s ease;
+}
+
+.product-gallery-item:hover {
+  border-color: rgba(0, 0, 0, 0.2);
+}
+
+.product-gallery-item img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  background: #fff;
+}
+
+.product-gallery-label {
+  padding: 0.625rem 0.75rem;
+  font-size: 0.75rem;
+  color: rgba(0, 0, 0, 0.55);
+  line-height: 1.35;
+}
+
 /* App integration grid */
 .app-tile {
   display: flex;
