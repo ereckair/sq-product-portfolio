@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XWork FAQ — XWork</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#000; --line:rgba(0,0,0,.08); }
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid var(--line); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    hr { border:none; border-top:1px solid var(--line); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-nocode">← Back to Nocode Platform</a>
+    <h1>X-Work — Frequently Asked Questions</h1>
+<hr />
+<h2>General</h2>
+<p><strong>Q: What is X-Work?</strong></p>
+<p>A: X-Work is a visual, no-code application-building platform for internal enterprise use. It lets teams create, configure, and automate business applications — including data models, custom interfaces, user access control, and automated workflows — without writing code.</p>
+<p><strong>Q: Do I need programming knowledge to use X-Work?</strong></p>
+<p>A: No. The platform is designed so that business users, analysts, and operations staff can build and manage applications entirely through the visual interface. Technical users can optionally extend functionality with JavaScript nodes in workflows or SQL queries.</p>
+<p><strong>Q: Who manages the platform?</strong></p>
+<p>A: X-Work is administered by your IT or Digital Operations team. Day-to-day configuration (building pages, setting up workflows, managing users) can be delegated to designated power users within departments.</p>
+<p><strong>Q: Is my data secure on X-Work?</strong></p>
+<p>A: Yes. X-Work runs on your company&#x27;s own infrastructure. All data stays within your internal environment. Access is controlled via Role-Based Access Control (RBAC), field-level permissions, and optional SSO and MFA authentication.</p>
+<hr />
+<h2>Data Sources</h2>
+<p><strong>Q: What types of data sources can I connect?</strong></p>
+<p>A: You can connect to MySQL and PostgreSQL databases, REST APIs, and spreadsheet imports. The default X-Work internal database (MySQL) is pre-connected and ready to use.</p>
+<p><strong>Q: Can I connect to an external third-party system (e.g. SAP, Salesforce)?</strong></p>
+<p>A: Yes, if the external system provides a REST API. Configure an API data source with the base URL and authentication credentials. For direct database connections, the system must be network-accessible from the X-Work server.</p>
+<p><strong>Q: What field types are supported?</strong></p>
+<p>A: Supported field types include: Single Line Text, Long Text, Number, Percentage, Date &amp; Time, Checkbox, Single Select, Multi-Select, File, Image, Email, URL, JSON, Formula, Auto-Increment, UUID, and relationship types (Has Many, Belongs To, Has One, Many to Many).</p>
+<p><strong>Q: Can I change a field type after creating it?</strong></p>
+<p>A: Some field type changes are supported (e.g. text to long text). Changes that would cause data loss (e.g. number to select) require migrating or clearing the existing data first. Consult your administrator before making such changes in a production environment.</p>
+<p><strong>Q: How do I import existing data?</strong></p>
+<p>A: Use the <strong>Import</strong> action on a Table block to upload an Excel or CSV file. Map the spreadsheet columns to collection fields during the import process.</p>
+<p><strong>Q: Can I sync data from an external source on a schedule?</strong></p>
+<p>A: Yes. Use the <strong>Data Sync</strong> feature under Settings to define a sync task with a cron schedule. You can map fields between source and target collections and run syncs on a recurring basis.</p>
+<hr />
+<h2>Interface Builder</h2>
+<p><strong>Q: How many pages can I create?</strong></p>
+<p>A: There is no fixed limit. You can create as many pages as your application requires, organized in a menu hierarchy.</p>
+<p><strong>Q: Can I control who sees which pages?</strong></p>
+<p>A: Yes. Page visibility is controlled by role-based menu permissions. Configure which roles can access each page under <strong>Settings → Menus</strong>.</p>
+<p><strong>Q: Can I embed one block inside another?</strong></p>
+<p>A: Yes. Use the <strong>Grid</strong> or <strong>Tabs</strong> layout blocks to compose multiple blocks on a single page. You can also open blocks inside popups or drawers triggered by action buttons.</p>
+<p><strong>Q: Can I show data from multiple collections on one page?</strong></p>
+<p>A: Yes. Each block on a page can be independently bound to a different collection. You can have a Table block showing Projects and a Chart block showing their stats on the same page.</p>
+<p><strong>Q: Is the interface mobile-friendly?</strong></p>
+<p>A: Yes. X-Work supports mobile-responsive layouts. There is also a dedicated Mobile UI mode that optimizes the experience for smaller screens.</p>
+<p><strong>Q: Can I customize colors, fonts, or branding?</strong></p>
+<p>A: Yes. Use the <strong>Theme Editor</strong> under Settings to configure global colors, typography, and branding elements such as the logo and primary color palette.</p>
+<p><strong>Q: What is a template and when should I use one?</strong></p>
+<p>A: A template is a saved block or page configuration that you can reuse across different pages. Use templates when you need the same layout pattern (e.g. a standard record detail view) in multiple places — it saves configuration time and ensures consistency.</p>
+<hr />
+<h2>Users &amp; Permissions</h2>
+<p><strong>Q: How do I add a new user?</strong></p>
+<p>A: Go to <strong>Settings → Users &amp; Permissions → Users</strong> and click <strong>+ Invite User</strong>. Enter the user&#x27;s email, assign a role, and send the invitation.</p>
+<p><strong>Q: Can a user have more than one role?</strong></p>
+<p>A: Yes. A user can be assigned multiple roles. Their effective permissions are the union of all assigned roles — they get the most permissive combination.</p>
+<p><strong>Q: What is the difference between a data scope and field-level permission?</strong></p>
+<p>A: Data scope controls <em>which records</em> a role can access (e.g. only records they created). Field-level permission controls <em>which fields within a record</em> they can see or edit. Both can be configured together.</p>
+<p><strong>Q: Can I use our company&#x27;s SSO (e.g. Azure AD) to log in?</strong></p>
+<p>A: Yes. X-Work supports Azure Entra (Azure AD), SAML, and CAS-based SSO. Configure the SSO provider under <strong>Settings → Authentication → SSO</strong>.</p>
+<p><strong>Q: What happens to a user&#x27;s data if I disable their account?</strong></p>
+<p>A: Disabling an account prevents login but does not delete the user or their data. All records created by that user are retained and their history is preserved in audit logs.</p>
+<p><strong>Q: Can I see who changed a record and when?</strong></p>
+<p>A: Yes. Enable <strong>Audit Logs</strong> under Settings. The audit log records every create, update, and delete action along with the user and timestamp.</p>
+<hr />
+<h2>Workflows</h2>
+<p><strong>Q: What can trigger a workflow?</strong></p>
+<p>A: Workflows can be triggered by: a record being created/updated/deleted in a collection, a scheduled time (cron), a manual button click in the UI, a page load event, a request interception, or an external AI tool invocation.</p>
+<p><strong>Q: Can a workflow wait for a human to approve before continuing?</strong></p>
+<p>A: Yes. Use the <strong>Approval</strong> node or <strong>Manual Task</strong> node. The workflow pauses at that node until the assigned approver or task owner acts, then continues accordingly.</p>
+<p><strong>Q: Can one workflow call another?</strong></p>
+<p>A: Yes. Use the <strong>Sub-Workflow</strong> node to invoke another workflow and optionally receive its output as a variable in the calling workflow.</p>
+<p><strong>Q: How do I pass data between workflow steps?</strong></p>
+<p>A: Use variables. Each node&#x27;s output is available as a variable (e.g. <code>{{node_name.results[0].field}}</code>). Type <code>{{</code> in any configuration field to open the variable picker.</p>
+<p><strong>Q: What happens if a workflow step fails?</strong></p>
+<p>A: The execution is marked as <strong>Failed</strong> at the failing node. Subsequent nodes do not run. You can view the error details in the Executions tab. Add a <strong>Condition</strong> node after critical steps to handle errors gracefully with a fallback path.</p>
+<p><strong>Q: Can I run a workflow manually for testing?</strong></p>
+<p>A: Yes. In the workflow canvas, click the <strong>Executions</strong> tab and use <strong>Run Manually</strong>. You can provide test trigger data to simulate a real execution.</p>
+<p><strong>Q: Is there a limit to how many workflows I can create?</strong></p>
+<p>A: There is no set limit on the number of workflows. For performance, avoid creating extremely large workflows with hundreds of nodes — break complex processes into smaller, composable sub-workflows instead.</p>
+<p><strong>Q: Can workflows send emails?</strong></p>
+<p>A: Yes. Use the <strong>Email</strong> node to send emails with dynamic content populated from workflow variables. Configure the SMTP settings under <strong>Settings → Email</strong> if not already set up.</p>
+<hr />
+<h2>Technical &amp; Administration</h2>
+<p><strong>Q: Can I export data from X-Work?</strong></p>
+<p>A: Yes. Use the <strong>Export</strong> action on any Table block to download data as Excel or CSV. For bulk exports, contact your administrator for a database-level export.</p>
+<p><strong>Q: Does X-Work have an API?</strong></p>
+<p>A: Yes. X-Work exposes a REST API for every collection. Administrators can generate API keys under <strong>Settings → API Keys</strong> to allow external systems to read or write data programmatically.</p>
+<p><strong>Q: Where can I get help?</strong></p>
+<p>A: Contact your internal IT or Digital Operations team. For platform documentation, refer to the User Guides in the X-Work documentation portal.</p>
+  </div>
+</body>
+</html>

@@ -1317,7 +1317,7 @@ const PORTFOLIO = {
           summary:
             'Lets business teams — starting with HR — ship XWork apps in half a day: upload AI-built app packages, map menus in the page editor, and run inside the platform via iframe.',
           description:
-            'XWork Vibe Studio is the delivered capability for **integrated apps** on our internal low-code platform. Instead of hand-configuring every table, page, and workflow in the visual editor, teams use AI (Claude, Cursor, Copilot, and others) with a formal **skill 四件套** — backend, frontend, testing, package — to produce a standard app zip that XWork uploads, parses, and hosts. HR was the first team enabled to vibe-code their own products on top of HRS.',
+            'XWork Vibe Studio is the delivered capability for **integrated apps** on our internal low-code platform. Instead of hand-configuring every table, page, and workflow in the visual editor, teams use AI (Claude, Cursor, Copilot, and others) with a formal **four-skill kit** — backend, frontend, testing, package — to produce a standard app zip that XWork uploads, parses, and hosts. HR was the first team enabled to vibe-code their own products on top of HRS.',
           contribution:
             'Closed the gap where XWork had no official path to host third-party or AI-generated apps. Delivered platform-side integrated-app management (upload → parse xwork.json → nginx host → iframe render) plus the vibe-coding skill kit so a business user with AI can go from idea to production app in one afternoon.',
           beforeAfter: {
@@ -1329,7 +1329,7 @@ const PORTFOLIO = {
           highlights: [
             'Integrated-app page type — parallel to native low-code pages in the editor',
             'xwork-app-create scaffold — empty dir to passing test + pack with zero hand edits',
-            'Skill 四件套 published for Claude, Cursor, Augment, and Copilot',
+            'Four-skill kit published for Claude, Cursor, Augment, and Copilot',
             'iframe + nginx hosting — app JS isolated from the XWork shell',
             'HR team first adopter — self-service vibe-coded HR products on XWork',
           ],
@@ -1363,7 +1363,7 @@ const PORTFOLIO = {
               ],
             },
             {
-              title: 'Skill 四件套',
+              title: 'Four-skill kit',
               type: 'list',
               items: [
                 'xwork-app-backend — collections, roles, ACL declarations',
@@ -1392,17 +1392,6 @@ const PORTFOLIO = {
             'Expand skill distribution to additional AI coding platforms',
           ],
           resources: {
-            prd: { url: '#', label: 'Integrated Apps & Vibe Studio PRD' },
-            demoVideo: null,
-            liveLink: { url: '#', label: 'Open XWork (Integrated Apps)' },
-            github: { url: '#', repo: 'org/xwork-vibe-studio' },
-            documents: [
-              {
-                url: '#',
-                label: 'xwork.json manifest schema (v1)',
-                meta: 'App package contract — menus, permissions, frontend entry',
-              },
-            ],
             mcpTools: [],
           },
           feedback: [
@@ -1411,6 +1400,330 @@ const PORTFOLIO = {
               author: 'HR team (first adopter)',
             },
           ],
+        },
+      ],
+    },
+    {
+      id: 'oneashley-nocode',
+      name: 'OneAshley Nocode Platform',
+      description:
+        'OneAshley Nocode Platform is XWork — Ashley’s enterprise no-code / low-code substrate for building internal apps, workflows, and AI-enabled tools without traditional custom development.',
+      color: '#0ea5e9',
+      products: [
+        {
+          id: 'xwork-nocode',
+          name: 'Nocode Platform',
+          subtitle: 'XWork · Scalability-first no-code',
+          status: 'live',
+          summary:
+            'XWork no-code core — visual data sources, interface builder, users & permissions, and workflows so teams build enterprise internal apps in days, not months.',
+          description:
+            'Nocode Platform is the foundation of OneAshley Nocode Platform (XWork). Business analysts, operations, and product teams model data, design screens with 155+ components, configure RBAC, and automate approvals on a visual canvas — without waiting on custom development. It is the same XWork substrate that powers apps such as HRS.',
+          contribution:
+            'Gave Ashley a shared no-code platform for internal tools: centralized data management, schema-driven UIs, fine-grained permissions, and visual workflow automation — cutting the IT bottleneck for everyday operational apps.',
+          beforeAfter: {
+            before:
+              'Internal tools required custom development — weeks for forms and reports, rigid permissions, and manual approval processes that depended on IT for every change.',
+            after:
+              'Visual no-code configuration: connect data sources, drag-and-drop pages, role-based access, and automated workflows with execution history — business users self-serve.',
+          },
+          highlights: [
+            'Four core modules — Data Sources, Interface Builder, Users & Permissions, Workflows',
+            '155+ UI components and 11 block types (Table, Form, Kanban, Chart, and more)',
+            'RBAC with resource, menu, field, and data-scope controls',
+            '20+ workflow node types and 6 trigger types including AI invocation',
+            'SSO (Azure Entra, SAML, CAS), MFA, API keys, and audit logging',
+          ],
+          detailSections: [
+            {
+              title: 'Platform note',
+              type: 'callout',
+              body: 'OneAshley Nocode Platform is XWork. This product page covers the no-code foundation — the visual builder and runtime that Open Capabilities extends. XWork Vibe Studio remains listed under Human Resources Center for now.',
+              bullets: [
+                'Build data models and apps without writing frontend or backend code',
+                'Centralize collections, relationships, and sync across MySQL, Postgres, REST, and spreadsheets',
+                'Automate approvals and integrations on a visual workflow canvas',
+              ],
+            },
+            {
+              title: 'Core modules',
+              type: 'modules',
+              groups: [
+                {
+                  name: 'XWork Nocode',
+                  items: [
+                    {
+                      name: 'Data Sources',
+                      description:
+                        'Connect MySQL, PostgreSQL, REST APIs, and spreadsheets; define collections, field types, validation, relationships, and sync.',
+                      status: 'live',
+                      goLive: 'v1.0',
+                    },
+                    {
+                      name: 'Interface Builder',
+                      description:
+                        'Schema-driven page builder with 155+ components, live data binding, actions, templates, and mobile-responsive layouts.',
+                      status: 'live',
+                      goLive: 'v1.0',
+                    },
+                    {
+                      name: 'Users & Permissions',
+                      description:
+                        'RBAC with resource, menu, field, and data-scope controls; JWT / SSO / MFA and API key management.',
+                      status: 'live',
+                      goLive: 'v1.0',
+                    },
+                    {
+                      name: 'Workflows',
+                      description:
+                        'Visual automation with 6 trigger types, 20+ nodes, branching, variables, execution history, and AI-assisted generation.',
+                      status: 'live',
+                      goLive: 'v1.0',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Who uses it',
+              type: 'pairs',
+              items: [
+                {
+                  label: 'Business Analysts',
+                  detail: 'Build data models and reports without IT dependency.',
+                },
+                {
+                  label: 'Operations Teams',
+                  detail: 'Automate repetitive processes and approval workflows.',
+                },
+                {
+                  label: 'Product Managers',
+                  detail: 'Rapidly prototype and deploy internal tools.',
+                },
+                {
+                  label: 'IT Administrators',
+                  detail: 'Manage users, roles, and system integrations centrally.',
+                },
+              ],
+            },
+          ],
+          integrations: [
+            'MySQL / PostgreSQL',
+            'REST APIs',
+            'Azure Entra / SAML / CAS SSO',
+            'HRS (built on XWork)',
+            'One Ashley Portal',
+          ],
+          roadmap: [
+            'Deepen Open Capabilities adoption across business apps',
+            'Expand AI-assisted workflow and interface generation',
+            'Continue supporting HR Vibe Studio apps built on this substrate',
+          ],
+          resources: {
+            prd: { url: 'docs/xwork-nocode/docs/product-overview.html', label: 'XWork Product Overview' },
+            demoVideo: { url: '/docs/xwork-nocode/demo/introduce.mp4', label: 'Product introduce video' },
+            documents: [
+              {
+                url: 'docs/xwork-nocode/docs/product-overview.html',
+                label: 'Product Overview',
+                meta: 'What XWork is, audiences, and four core modules',
+              },
+              {
+                url: 'docs/xwork-nocode/docs/user-guide-data-sources.html',
+                label: 'User Guide — Data Sources',
+                meta: 'Collections, fields, relationships, and sync',
+              },
+              {
+                url: 'docs/xwork-nocode/docs/user-guide-interface-builder.html',
+                label: 'User Guide — Interface Builder',
+                meta: 'Blocks, actions, templates, and page layout',
+              },
+              {
+                url: 'docs/xwork-nocode/docs/user-guide-users-permissions.html',
+                label: 'User Guide — Users & Permissions',
+                meta: 'Roles, RBAC matrix, and access scopes',
+              },
+              {
+                url: 'docs/xwork-nocode/docs/user-guide-workflows.html',
+                label: 'User Guide — Workflows',
+                meta: 'Triggers, nodes, and execution history',
+              },
+              {
+                url: 'docs/xwork-nocode/docs/faq.html',
+                label: 'FAQ',
+                meta: 'Common questions about the no-code platform',
+              },
+              {
+                url: 'docs/xwork-nocode/docs/release-notes-v1.html',
+                label: 'Release Notes v1.0',
+                meta: 'Initial launch — 2026-07-08',
+              },
+              {
+                url: 'docs/xwork-nocode/demo/tutorial-all-modules.mp4',
+                label: 'Tutorial — all modules',
+                meta: 'Walkthrough video across Data Sources, UI, Permissions, Workflows',
+              },
+              {
+                url: 'docs/xwork-nocode/visuals/nocode-workflow.png',
+                label: 'Nocode workflow infographic',
+                meta: 'End-to-end platform visual',
+              },
+            ],
+            gallery: [
+              { url: 'docs/xwork-nocode/screenshots/platform_overview.png', label: 'Platform overview' },
+              { url: 'docs/xwork-nocode/screenshots/screenshot_data_sources.png', label: 'Data Sources' },
+              { url: 'docs/xwork-nocode/screenshots/screenshot_interface_builder.png', label: 'Interface Builder' },
+              { url: 'docs/xwork-nocode/screenshots/screenshot_users_permissions.png', label: 'Users & Permissions' },
+              { url: 'docs/xwork-nocode/screenshots/screenshot_workflows.png', label: 'Workflows' },
+              { url: 'docs/xwork-nocode/visuals/feature-cards/data-sources.png', label: 'Feature card — Data Sources' },
+              { url: 'docs/xwork-nocode/visuals/feature-cards/interface-builder.png', label: 'Feature card — Interface Builder' },
+              { url: 'docs/xwork-nocode/visuals/feature-cards/permissions.png', label: 'Feature card — Permissions' },
+              { url: 'docs/xwork-nocode/visuals/feature-cards/workflows.png', label: 'Feature card — Workflows' },
+              { url: 'docs/xwork-nocode/visuals/posters/launch-poster.png', label: 'Launch poster' },
+            ],
+            mcpTools: [],
+          },
+          feedback: [],
+        },
+        {
+          id: 'xwork-open-capabilities',
+          name: 'Open Capabilities',
+          subtitle: 'XWork · Open API · MCP · Integration',
+          status: 'live',
+          summary:
+            'Opens XWork to the AI ecosystem — standard REST Open API, no-code MCP servers for agent tools, and upload-and-run hosting for AI-generated apps.',
+          description:
+            'Open Capabilities extends OneAshley Nocode Platform (XWork) beyond closed silos. Teams expose collections and workflows through role-bound API Keys, turn any XWork app into an MCP tool set for Claude / Coze / Dify / n8n, and ship AI vibe-coded packages into XWork navigation and auth — without one-off bridge code.',
+          contribution:
+            'Closed two structural gaps: external systems and AI agents can now read/write XWork data safely via Open API and MCP, and AI-built apps have an official path into the XWork environment via Integration.',
+          beforeAfter: {
+            before:
+              'Accessing XWork data required hard-coded bridges; AI agents had no standard callable tools; AI-generated apps lived outside XWork or needed bespoke integration.',
+            after:
+              'Role-bound REST API Keys, no-code MCP servers with RBAC and logs, and upload-and-run integrated apps authenticated by XWork.',
+          },
+          highlights: [
+            'Open API — Resource:Action REST pattern with role-bound, expirable API Keys',
+            'MCP Service — expose any XWork app as AI-callable tools, prompts, and resources',
+            'XWork Integration — host AI-generated app packages with menu routing and ACL',
+            'Two MCP auth modes — App Bearer Token and User OAuth',
+            'Full MCP request/response audit logs',
+          ],
+          detailSections: [
+            {
+              title: 'Three capabilities',
+              type: 'modules',
+              groups: [
+                {
+                  name: 'Open Capabilities',
+                  items: [
+                    {
+                      name: 'Open API',
+                      description:
+                        'Standard REST CRUD on collections, workflow trigger/tracking, and API Keys bound to XWork roles with configurable expiration.',
+                      status: 'live',
+                      goLive: 'v1',
+                    },
+                    {
+                      name: 'MCP Service',
+                      description:
+                        'No-code MCP server per app — visual tool builder, Bearer/OAuth auth, per-role tool access, and connection configs for AI clients.',
+                      status: 'live',
+                      goLive: 'v1',
+                    },
+                    {
+                      name: 'XWork Integration',
+                      description:
+                        'Upload-and-run path for AI-generated app packages — hosted, routed into XWork menus, and authenticated with platform ACL.',
+                      status: 'live',
+                      goLive: 'v1',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Who benefits',
+              type: 'pairs',
+              items: [
+                {
+                  label: 'Integration & automation',
+                  detail: 'Connect dashboards, pipelines, and external events to XWork data and workflows with standard HTTP.',
+                },
+                {
+                  label: 'AI developers',
+                  detail: 'Give agents structured read/write access via API Keys or MCP tools with clear permission boundaries.',
+                },
+                {
+                  label: 'Platform administrators',
+                  detail: 'Enable MCP per app, manage keys/tokens, configure tool RBAC, and audit every AI-to-XWork call.',
+                },
+                {
+                  label: 'Business teams',
+                  detail: 'Use AI assistants that act inside XWork — query records, submit forms, trigger processes — without leaving chat.',
+                },
+              ],
+            },
+          ],
+          integrations: [
+            'XWork Nocode Platform',
+            'Claude / Coze / Dify / n8n (MCP clients)',
+            'REST consumers & BI pipelines',
+            'Vibe Studio / AI coding tools',
+            'One Ashley Portal',
+          ],
+          roadmap: [
+            'Finalize end-to-end User OAuth MCP flow',
+            'Expand MCP prompts and resources coverage',
+            'Deeper coupling with Vibe Studio app packaging',
+          ],
+          resources: {
+            prd: { url: 'docs/xwork-open-capabilities/docs/product-overview.html', label: 'Open Capabilities Overview' },
+            demoVideo: { url: '/docs/xwork-open-capabilities/demo/product-demo.mp4', label: 'Product demo video' },
+            documents: [
+              {
+                url: 'docs/xwork-open-capabilities/docs/product-overview.html',
+                label: 'Product Overview',
+                meta: 'Open API, MCP Service, and XWork Integration',
+              },
+              {
+                url: 'docs/xwork-open-capabilities/docs/user-guide-open-api.html',
+                label: 'User Guide — Open API',
+                meta: 'API Keys, Resource:Action endpoints, workflow triggers',
+              },
+              {
+                url: 'docs/xwork-open-capabilities/docs/user-guide-mcp-service.html',
+                label: 'User Guide — MCP Service',
+                meta: 'Enable server, auth modes, tool builder, access control',
+              },
+              {
+                url: 'docs/xwork-open-capabilities/docs/user-guide-integration.html',
+                label: 'User Guide — XWork Integration',
+                meta: 'AI app packages into XWork hosting and navigation',
+              },
+              {
+                url: 'docs/xwork-open-capabilities/docs/faq.html',
+                label: 'FAQ',
+                meta: 'API Keys, MCP auth, tools, and integration questions',
+              },
+              {
+                url: 'docs/xwork-open-capabilities/visuals/integration-flow.png',
+                label: 'Integration flow infographic',
+                meta: 'How Open Capabilities connects XWork to AI and external systems',
+              },
+            ],
+            gallery: [
+              { url: 'docs/xwork-open-capabilities/screenshots/mcp_server_browser.png', label: 'MCP Server' },
+              { url: 'docs/xwork-open-capabilities/screenshots/mcp_server_authorization_browser.png', label: 'MCP Authorization' },
+              { url: 'docs/xwork-open-capabilities/screenshots/mcp_server_tools_browser.png', label: 'MCP Tools' },
+              { url: 'docs/xwork-open-capabilities/visuals/feature-cards/open-api.png', label: 'Feature card — Open API' },
+              { url: 'docs/xwork-open-capabilities/visuals/feature-cards/mcp-service.png', label: 'Feature card — MCP Service' },
+              { url: 'docs/xwork-open-capabilities/visuals/feature-cards/xwork-integration.png', label: 'Feature card — Integration' },
+              { url: 'docs/xwork-open-capabilities/visuals/posters/launch-poster.png', label: 'Launch poster' },
+            ],
+            mcpTools: [],
+          },
+          feedback: [],
         },
       ],
     },

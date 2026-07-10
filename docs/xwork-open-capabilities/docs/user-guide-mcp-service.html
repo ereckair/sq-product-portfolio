@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide — MCP Service — XWork Open Capabilities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:#000; background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid rgba(0,0,0,.08); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid rgba(0,0,0,.08); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    pre { background:#0a0a0a; color:#f5f5f5; padding:1rem; border-radius:6px; overflow-x:auto; font-size:.8125rem; line-height:1.5; }
+    pre code { background:transparent; padding:0; color:inherit; }
+    hr { border:none; border-top:1px solid rgba(0,0,0,.08); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-open-capabilities">← Back to Open Capabilities</a>
+    <h1>MCP Service — User Guide</h1>
+<h2>Overview</h2>
+<p>X-Work MCP Service lets you expose any X-Work application as an MCP (Model Context Protocol) server — through a no-code visual interface. AI agents (Claude, Coze, Dify, n8n, and others) can then call your X-Work business logic as MCP Tools, Prompts, and Resources, with full authentication and role-based access control.</p>
+<hr />
+<h2>Prerequisites</h2>
+<ul>
+<li>You are a Platform Administrator or have Manager Permissions in the target X-Work app.</li>
+<li>The X-Work app you want to expose already exists with at least one collection or workflow.</li>
+</ul>
+<hr />
+<h2>Step 1: Enable MCP Service for an App</h2>
+<p>1. Open the target X-Work application.</p>
+<p>2. Navigate to <strong>MCP Service Manager → MCP Server</strong>.</p>
+<p>3. Under <strong>Service Information</strong>, you will see:</p>
+<ul>
+<li><strong>Server endpoint</strong> — the unique MCP URL for this app. Click <strong>Copy</strong> to copy it.</li>
+<li><strong>Service status</strong> — defaults to <code>Disabled</code>.</li>
+</ul>
+<p>4. Click <strong>Enable service</strong>. Confirm in the dialog. The service status changes to <code>Enabled</code>.</p>
+<blockquote><p>To disable: click <strong>Disable service</strong> and confirm. All connected MCP clients will lose access immediately.</p></blockquote>
+<figure><img src="../screenshots/mcp_server_browser.png" alt="MCP Server — Service Information" loading="lazy" /><figcaption>MCP Server — Service Information</figcaption></figure>
+<h3>How to Connect — Quick Reference</h3>
+<p>Click <strong>How to connect to the MCP service?</strong> to open the connection guide drawer. It provides:</p>
+<ul>
+<li><strong>URL</strong>: same as the Server endpoint.</li>
+<li><strong>JSON Config</strong>: a ready-to-paste config block for MCP clients.</li>
+</ul>
+<pre><code class="lang-json">{
+  &quot;mcpServers&quot;: {
+    &quot;{Server name}&quot;: {
+      &quot;url&quot;: &quot;https://xworkdev.ashgso.com/mcp/{app}&quot;,
+      &quot;headers&quot;: {
+        &quot;x-app-authorization&quot;: &quot;YOUR APP KEY&quot;
+      }
+    }
+  }
+}</code></pre>
+<p>Replace <code>YOUR APP KEY</code> with your Bearer token (see Step 2).</p>
+<hr />
+<h2>Step 2: Configure Authorization</h2>
+<p>X-Work MCP supports two authentication modes. Choose one or both.</p>
+<h3>Mode A: App Bearer Token Authentication</h3>
+<p>Best for: machine-to-machine integrations (agents, automation platforms).</p>
+<p>1. Go to <strong>MCP Server → Authorization → App bearer authentication</strong>.</p>
+<p>2. Click <strong>Add new</strong>.</p>
+<p>3. Fill in:</p>
+<table>
+<tr><th>Field</th><th>Notes</th></tr>
+<tr><td>App name</td><td>Human-readable name for this client</td></tr>
+<tr><td>App id</td><td>Auto-filled from App name; letters and underscores only, must start with a letter</td></tr>
+<tr><td>Roles to authorize</td><td>Select which X-Work roles this app inherits permissions from</td></tr>
+<tr><td>Expiration</td><td>Default: 30 days. Options: 7 / 30 / 90 days, 1 year, never</td></tr>
+</table>
+<p>4. Click <strong>Submit</strong>. The Bearer token is generated — <strong>copy it immediately</strong>, it is shown only once.</p>
+<p><strong>Managing existing apps:</strong></p>
+<ul>
+<li><strong>Update key</strong>: Modify expiration only, or refresh the token and set a new expiration.</li>
+<li><strong>Configure</strong>: Edit App name and assigned roles.</li>
+<li><strong>Delete</strong>: Soft-deletes the app; access is revoked immediately.</li>
+</ul>
+<figure><img src="../screenshots/mcp_server_authorization_browser.png" alt="MCP Server — Authorization" loading="lazy" /><figcaption>MCP Server — Authorization</figcaption></figure>
+<hr />
+<h3>Mode B: User OAuth Authentication</h3>
+<p>Best for: user-facing agents where permissions should reflect individual user roles.</p>
+<p>1. Go to <strong>MCP Server → Authorization → User OAuth authentication</strong>.</p>
+<p>2. Click <strong>Add Client</strong>.</p>
+<p>3. Fill in:</p>
+<table>
+<tr><th>Field</th><th>Notes</th></tr>
+<tr><td>Client name</td><td>Human-readable label</td></tr>
+<tr><td>Client id</td><td>Auto-filled; letters and underscores, starts with a letter; must be unique within this app</td></tr>
+<tr><td>Redirect url</td><td>The callback URL of your OAuth client; must be a valid URI</td></tr>
+</table>
+<p>4. Submit. A client secret is generated.</p>
+<p><strong>Managing clients:</strong></p>
+<ul>
+<li><strong>Configure</strong>: Edit Client name and Redirect URL.</li>
+<li><strong>Refresh secret</strong>: Invalidates the old secret; new secret shown once.</li>
+<li><strong>Delete</strong>: Removes the client permanently.</li>
+</ul>
+<hr />
+<h2>Step 3: Edit Service Metadata</h2>
+<p>Go to <strong>MCP Server → Service metadata</strong> to customize how this service appears to MCP clients.</p>
+<table>
+<tr><th>Field</th><th>Default</th><th>Editable</th></tr>
+<tr><td>Server name</td><td>X-Work app name</td><td>No (v1) Fixed to the app name in v1; configurable in a future release.</td></tr>
+<tr><td>Instructions</td><td>X-Work app description</td><td>Yes</td></tr>
+<tr><td>Icon</td><td>X-Work app icon</td><td>Yes</td></tr>
+<tr><td>Website url</td><td>X-Work app URL</td><td>Yes</td></tr>
+<tr><td>Version</td><td>Empty</td><td>Yes</td></tr>
+</table>
+<p>Click <strong>Edit metadata</strong> to update any editable field.</p>
+<hr />
+<p>MCP Service supports three object types:</p>
+<ul>
+<li><strong>Tools</strong> — Executable actions callable by AI agents. Fully configurable in v1.</li>
+<li><strong>Prompts</strong> — Reusable prompt templates. Basic structure available in v1; full configuration UI in progress.</li>
+<li><strong>Resources</strong> — Data sources exposed to agents. Configuration UI pending; not available in v1.</li>
+</ul>
+<h2>Step 4: Create and Configure Tools</h2>
+<p>MCP Tools expose executable actions to AI agents. Each tool is defined as a lightweight workflow canvas with an input schema and a response.</p>
+<h3>4.1 Add a Tool</h3>
+<p>1. Go to <strong>MCP Server → Tools</strong>.</p>
+<p>2. Click <strong>Add new</strong>.</p>
+<table>
+<tr><th>Field</th><th>Notes</th></tr>
+<tr><td>Display name</td><td>Human-readable name shown to users</td></tr>
+<tr><td>Name (identifier)</td><td>Auto-filled; unique within this app&#x27;s tools; letters and underscores only</td></tr>
+<tr><td>Trigger type</td><td><strong>App tool invocation event</strong> (machine callers) or <strong>User tool invocation event</strong> (user-authorized callers)</td></tr>
+<tr><td>Execution mode</td><td>Fixed: Synchronously</td></tr>
+<tr><td>Description</td><td>Optional but recommended — helps the LLM understand when to call this tool</td></tr>
+</table>
+<p>3. Click <strong>Submit</strong>. The tool canvas opens automatically.</p>
+<h3>4.2 Configure the Tool Canvas</h3>
+<p>The canvas has two components:</p>
+<p>#### Trigger (Input Schema)</p>
+<p>Define what inputs this tool accepts using the JSONSchema editor:</p>
+<table>
+<tr><th>Type</th><th>Description</th></tr>
+<tr><td>string</td><td>Text value</td></tr>
+<tr><td>number</td><td>Numeric value</td></tr>
+<tr><td>integer</td><td>Integer value</td></tr>
+<tr><td>boolean</td><td>True/false value</td></tr>
+<tr><td>array</td><td>List of values</td></tr>
+<tr><td>object</td><td>Nested key-value structure</td></tr>
+<tr><td>single-select</td><td>One choice from a predefined list</td></tr>
+<tr><td>multi-select</td><td>Multiple choices from a predefined list</td></tr>
+</table>
+<p>For each property, set: <strong>Property name</strong>, <strong>Required</strong> (checkbox), <strong>Type</strong>, <strong>Description</strong>.</p>
+<p>You can also click <strong>Import JSON</strong> to paste a raw JSON object and have it converted to the schema automatically.</p>
+<blockquote><p>Once a tool version has execution records, the Trigger becomes read-only. Create a new version to edit.</p></blockquote>
+<p>#### MCP Tool Response</p>
+<p>Define what this tool returns to the calling agent.</p>
+<p><strong>On success (<code>isError = false</code>):</strong></p>
+<p>The tool executed without business-level errors.</p>
+<ul>
+<li>Add one or more Result cards (at least one required).</li>
+<li>Each card has a <strong>Content type</strong> (currently <code>text</code>) and a <strong>Text</strong> field where you can reference workflow variables.</li>
+</ul>
+<p><strong>On failure (<code>isError = true</code>):</strong></p>
+<p>Returned when the tool logic encounters a business-level error (e.g., validation failure, resource not found). The MCP client receives isError: true in the response.</p>
+<ul>
+<li>A single JSON text field; you can reference variables from the workflow context.</li>
+</ul>
+<h3>4.3 Test a Tool (Execute manually)</h3>
+<p>Before connecting a client, test the tool directly from the canvas:</p>
+<ul>
+<li><strong>App tool invocation event</strong>: select a client app and optionally provide Tool inputs (JSON).</li>
+<li><strong>User tool invocation event</strong>: select a user and optionally provide Tool inputs (JSON).</li>
+</ul>
+<p>This validates tool logic without involving MCP protocol or authentication layers.</p>
+<h3>4.4 Tool Actions</h3>
+<table>
+<tr><th>Action</th><th>Description</th></tr>
+<tr><td>Configure</td><td>Open the tool canvas</td></tr>
+<tr><td>Edit</td><td>Edit name, status, description, history auto-delete setting</td></tr>
+<tr><td>Duplicate</td><td>Clone the tool with a new name and trigger type</td></tr>
+<tr><td>Delete</td><td>Remove the tool after confirmation</td></tr>
+</table>
+<figure><img src="../screenshots/mcp_server_tools_browser.png" alt="MCP Server — Tools" loading="lazy" /><figcaption>MCP Server — Tools</figcaption></figure>
+<hr />
+<h2>Step 5: Configure MCP Access Control</h2>
+<p>Access control is managed per role. Navigate to <strong>Permissions → Roles → [Role name] → MCP Access Control</strong>.</p>
+<h3>Tool Access</h3>
+<table>
+<tr><th>Scope</th><th>Behavior</th></tr>
+<tr><td>No access (default)</td><td>Role cannot see or call any tools</td></tr>
+<tr><td>Full access</td><td>Role can access all tools</td></tr>
+<tr><td>Partial access</td><td>Shows a tool list — check only the tools this role may access</td></tr>
+</table>
+<blockquote><p><strong>Owner</strong> and <strong>Manager</strong> roles default to Full access and cannot be restricted.</p></blockquote>
+<h3>Prompt Access</h3>
+<p>Same structure as Tool Access, applied to Prompts.</p>
+<hr />
+<h2>Step 6: Monitor with Logs</h2>
+<p>Go to <strong>MCP Server → Logs</strong> to review all MCP client requests and responses.</p>
+<p><strong>Log list fields:</strong></p>
+<table>
+<tr><th>Field</th><th>Description</th></tr>
+<tr><td>Request time</td><td>When the client made the request</td></tr>
+<tr><td>Invoker type</td><td>App or User</td></tr>
+<tr><td>Invoker id</td><td>App id or User id</td></tr>
+<tr><td>Method</td><td>MCP method called (e.g., <code>tools/call</code>)</td></tr>
+<tr><td>Target name</td><td>The tool, prompt, or resource that was called</td></tr>
+<tr><td>Status</td><td>Response status</td></tr>
+</table>
+<p>Click <strong>View</strong> on any log entry to see full detail: basic info, request payload, response content, and (on internal errors) the failure reason.</p>
+<hr />
+<h2>Connection Example: Claude Desktop</h2>
+<p>After completing Steps 1–5, add the following to your Claude Desktop config:</p>
+<pre><code class="lang-json">{
+  &quot;mcpServers&quot;: {
+    &quot;my-xwork-app&quot;: {
+      &quot;url&quot;: &quot;https://xworkdev.ashgso.com/mcp/my-app&quot;,
+      &quot;headers&quot;: {
+        &quot;x-app-authorization&quot;: &quot;YOUR_BEARER_TOKEN&quot;
+      }
+    }
+  }
+}</code></pre>
+<p>Claude will discover all enabled tools and can call them in conversation.</p>
+<hr />
+<h2>Error Reference</h2>
+<table>
+<tr><th>Error type</th><th>Channel</th></tr>
+<tr><td>Invalid input parameters</td><td>JSON-RPC protocol layer error</td></tr>
+<tr><td>Tool name not found</td><td>JSON-RPC protocol layer error</td></tr>
+<tr><td>Tool execution failed</td><td>JSON-RPC protocol layer error</td></tr>
+<tr><td>Business-level error</td><td><code>isError: true</code> in the tool response <code>content</code></td></tr>
+<tr><td>Permission denied</td><td>JSON-RPC protocol layer error</td></tr>
+</table>
+  </div>
+</body>
+</html>

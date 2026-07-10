@@ -247,6 +247,7 @@
             const isPost = doc.type === 'post' || doc.url.includes('post.html');
             const isHtml = /\.html?$/i.test(doc.url);
             const isImage = /\.(png|jpe?g|webp|gif)$/i.test(doc.url);
+            const isVideo = /\.(mp4|webm|mov)$/i.test(doc.url);
             const badge = isPost
               ? 'Blog'
               : doc.url.endsWith('.pptx')
@@ -255,10 +256,12 @@
                   ? 'Doc'
                   : isImage
                     ? 'Visual'
-                    : doc.url.endsWith('.md')
-                      ? 'Markdown'
-                      : 'PDF';
-            const target = isExternal || isImage ? ' target="_blank" rel="noopener noreferrer"' : '';
+                    : isVideo
+                      ? 'Video'
+                      : doc.url.endsWith('.md')
+                        ? 'Markdown'
+                        : 'PDF';
+            const target = isExternal || isImage || isVideo ? ' target="_blank" rel="noopener noreferrer"' : '';
             return `
           <a href="${doc.url}"${target} class="light-card rounded-sm p-4 flex flex-col cursor-pointer hover:border-black/20 transition-colors">
             <span class="text-label text-black/40 mb-1">${badge}</span>

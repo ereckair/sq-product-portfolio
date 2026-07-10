@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide — Interface Builder — XWork</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#000; --line:rgba(0,0,0,.08); }
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid var(--line); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    hr { border:none; border-top:1px solid var(--line); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-nocode">← Back to Nocode Platform</a>
+    <h1>X-Work — User Guide: Interface Builder</h1>
+<h2>Overview</h2>
+<p>The Interface Builder lets you design fully custom application screens using a visual, block-based editor. No frontend coding is required. You drag blocks onto a page canvas, bind them to your data, configure how they look and behave, and publish — your team sees the result immediately.</p>
+<hr />
+<h2>Key Concepts</h2>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td><strong>Page</strong></td><td>A screen in your application, accessed via a route/URL</td></tr>
+<tr><td><strong>Block</strong></td><td>A self-contained UI component placed on a page (table, form, chart, etc.)</td></tr>
+<tr><td><strong>Action</strong></td><td>A button or trigger that performs an operation (save, delete, export, etc.)</td></tr>
+<tr><td><strong>Schema</strong></td><td>The structured definition of a page and its blocks, stored in the database</td></tr>
+<tr><td><strong>Template</strong></td><td>A reusable block or page layout that can be applied across multiple pages</td></tr>
+</table>
+<hr />
+<h2>Step 1: Create a Page</h2>
+<p>1. In the left navigation, click <strong>+</strong> next to <strong>Pages</strong> (or open the page management panel)</p>
+<p>2. Click <strong>Add Page</strong></p>
+<p>3. Enter a <strong>Page Title</strong> and optionally set a URL path</p>
+<p>4. Click <strong>Confirm</strong></p>
+<p>5. The page opens in <strong>Edit Mode</strong> (indicated by the pencil icon in the top-right)</p>
+<hr />
+<h2>Step 2: Add a Block to the Page</h2>
+<p>1. With Edit Mode active, click <strong>+ Add Block</strong> in the center of the canvas or at the top of the page</p>
+<p>2. A block picker panel appears — choose from:</p>
+<h3>Block Types</h3>
+<table>
+<tr><th>Block</th><th>Best For</th></tr>
+<tr><td><strong>Table</strong></td><td>Displaying lists of records with sorting, filtering, pagination</td></tr>
+<tr><td><strong>Form</strong></td><td>Entering or editing a single record</td></tr>
+<tr><td><strong>Details</strong></td><td>Viewing a single record read-only</td></tr>
+<tr><td><strong>Calendar</strong></td><td>Displaying date-based records on a calendar</td></tr>
+<tr><td><strong>Kanban</strong></td><td>Visualizing records by status/category in columns</td></tr>
+<tr><td><strong>Gantt</strong></td><td>Project timeline visualization</td></tr>
+<tr><td><strong>Map</strong></td><td>Geolocation data display</td></tr>
+<tr><td><strong>Chart</strong></td><td>Bar, line, pie, and other data visualizations</td></tr>
+<tr><td><strong>Grid</strong></td><td>Layout container for arranging other blocks side-by-side</td></tr>
+<tr><td><strong>Tabs</strong></td><td>Tabbed layout container</td></tr>
+<tr><td><strong>Markdown</strong></td><td>Static rich-text content</td></tr>
+</table>
+<figure><img src="screenshots/interface_builder_block_picker.png" alt="X-Work Interface Builder — Block Picker" loading="lazy" /><figcaption>X-Work Interface Builder — Block Picker</figcaption></figure>
+<p>3. After selecting a block type, choose the <strong>Collection</strong> (data source) it connects to</p>
+<p>4. Click <strong>Confirm</strong> — the block appears on the canvas</p>
+<hr />
+<h2>Step 3: Configure a Table Block</h2>
+<p>1. Hover over the block and click the <strong>settings icon</strong> (gear/wrench) in the top-right corner of the block</p>
+<p>2. <strong>Configure Columns:</strong></p>
+<ul>
+<li>Click <strong>Configure Columns</strong></li>
+<li>Toggle fields on/off to show or hide them</li>
+<li>Drag fields to reorder columns</li>
+</ul>
+<p>3. <strong>Configure Filters:</strong></p>
+<ul>
+<li>Click <strong>Configure Filters</strong></li>
+<li>Add filter conditions (e.g. <code>Status = Active</code>)</li>
+<li>Set filter visibility: always applied vs. user-selectable</li>
+</ul>
+<p>4. <strong>Configure Sorting:</strong></p>
+<ul>
+<li>Set a default sort field and direction</li>
+</ul>
+<p>5. <strong>Set Page Size:</strong></p>
+<ul>
+<li>Choose how many records appear per page (10, 20, 50, etc.)</li>
+</ul>
+<figure><img src="screenshots/interfaceBuilder_table.png" alt="X-Work Interface Builder — Table Block Canvas" loading="lazy" /><figcaption>X-Work Interface Builder — Table Block Canvas</figcaption></figure>
+<hr />
+<h2>Step 4: Configure a Form Block</h2>
+<p>1. Open block settings → <strong>Configure Fields</strong></p>
+<p>2. Toggle fields on/off, drag to reorder</p>
+<p>3. Set field display options:</p>
+<ul>
+<li><strong>Label</strong>: rename how the field appears in the form</li>
+<li><strong>Required</strong>: mark fields mandatory</li>
+<li><strong>Default value</strong>: pre-populate on open</li>
+<li><strong>Read-only</strong>: display but disallow editing</li>
+</ul>
+<p>4. Configure <strong>Form Layout</strong>: single-column, two-column, or custom grid</p>
+<hr />
+<h2>Step 5: Add Actions</h2>
+<p>Actions are buttons that appear in blocks (table toolbar, form footer, or detail view).</p>
+<p>1. Open block settings → <strong>Configure Actions</strong></p>
+<p>2. Click <strong>+ Add Action</strong> and choose an action type:</p>
+<table>
+<tr><th>Action</th><th>What It Does</th></tr>
+<tr><td><strong>Create</strong></td><td>Opens a form to add a new record</td></tr>
+<tr><td><strong>Edit</strong></td><td>Opens a form to edit the selected record</td></tr>
+<tr><td><strong>Delete</strong></td><td>Deletes the selected record (with confirmation)</td></tr>
+<tr><td><strong>Save</strong></td><td>Saves a form submission</td></tr>
+<tr><td><strong>Submit</strong></td><td>Submits the form (triggers workflow if connected)</td></tr>
+<tr><td><strong>Export</strong></td><td>Exports table data to Excel/CSV</td></tr>
+<tr><td><strong>Import</strong></td><td>Imports records from Excel/CSV</td></tr>
+<tr><td><strong>Bulk Edit</strong></td><td>Edit multiple selected records at once</td></tr>
+<tr><td><strong>Bulk Delete</strong></td><td>Delete multiple selected records at once</td></tr>
+<tr><td><strong>Print</strong></td><td>Prints the current view</td></tr>
+<tr><td><strong>Custom Request</strong></td><td>Calls a custom API endpoint</td></tr>
+<tr><td><strong>Open Popup</strong></td><td>Opens a drawer/dialog with another block inside</td></tr>
+<tr><td><strong>Trigger Workflow</strong></td><td>Manually starts a connected workflow</td></tr>
+</table>
+<p>3. Configure each action:</p>
+<ul>
+<li><strong>Label</strong>: rename the button text</li>
+<li><strong>Type</strong>: choose button style (primary, default, danger)</li>
+<li><strong>Condition</strong>: show/hide based on record state or user role</li>
+</ul>
+<p>4. Drag actions to reorder them in the toolbar</p>
+<figure><img src="screenshots/interfaceBuilder_form.png" alt="X-Work Interface Builder — Form View" loading="lazy" /><figcaption>X-Work Interface Builder — Form View</figcaption></figure>
+<figure><img src="screenshots/interface_builder_actions.png" alt="X-Work Interface Builder — Action Configuration" loading="lazy" /><figcaption>X-Work Interface Builder — Action Configuration</figcaption></figure>
+<hr />
+<h2>Step 6: Use Tabs and Grid Layout</h2>
+<p><strong>Grid (side-by-side blocks):</strong></p>
+<p>1. Add a <strong>Grid</strong> block to the page</p>
+<p>2. Click inside the grid to add sub-blocks into each column</p>
+<p>3. Drag the column divider to adjust widths</p>
+<p><strong>Tabs:</strong></p>
+<p>1. Add a <strong>Tabs</strong> block to the page</p>
+<p>2. Click <strong>+ Add Tab</strong> and name each tab</p>
+<p>3. Add blocks inside each tab panel independently</p>
+<hr />
+<h2>Step 7: Save and Use Templates</h2>
+<p>To save a block as a reusable template:</p>
+<p>1. Hover over the block → open settings → <strong>Save as Template</strong></p>
+<p>2. Enter a template name and category</p>
+<p>3. Click <strong>Save</strong></p>
+<p>To apply a saved template:</p>
+<p>1. Click <strong>+ Add Block</strong> → <strong>From Template</strong></p>
+<p>2. Select the template from the library</p>
+<p>3. Click <strong>Confirm</strong></p>
+<hr />
+<h2>Step 8: Preview and Publish</h2>
+<p>1. Click the <strong>Preview</strong> button (eye icon) to see how the page looks to end users</p>
+<p>2. When satisfied, click <strong>Exit Edit Mode</strong> — changes are saved and live immediately</p>
+<p>3. Share the page URL with your team</p>
+<hr />
+<h2>Tips &amp; Best Practices</h2>
+<ul>
+<li><strong>Start with a Table block</strong> for most use cases — it&#x27;s the fastest way to see and manage your data</li>
+<li><strong>Use Tabs</strong> to group related blocks on a single page without overcrowding</li>
+<li><strong>Set permissions</strong> on pages and actions using the Users &amp; Permissions module to control who sees what</li>
+<li><strong>Use Templates</strong> for repeated layouts (e.g. a standard detail view) to save configuration time</li>
+<li><strong>Test actions</strong> in preview mode before sharing with your team</li>
+</ul>
+<hr />
+<h2>Troubleshooting</h2>
+<table>
+<tr><th>Issue</th><th>Solution</th></tr>
+<tr><td>Block shows no data</td><td>Check the collection binding and ensure the data source has records</td></tr>
+<tr><td>Action button missing</td><td>Confirm the action is toggled on in Configure Actions</td></tr>
+<tr><td>Column not showing</td><td>Check Configure Columns — the field may be toggled off</td></tr>
+<tr><td>Form field not editable</td><td>The field may be set to Read-only; check field settings</td></tr>
+<tr><td>Page not loading</td><td>Verify the page route and user role has access to this page</td></tr>
+</table>
+  </div>
+</body>
+</html>

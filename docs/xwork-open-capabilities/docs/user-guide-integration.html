@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide — XWork Integration — XWork Open Capabilities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:#000; background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid rgba(0,0,0,.08); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid rgba(0,0,0,.08); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    pre { background:#0a0a0a; color:#f5f5f5; padding:1rem; border-radius:6px; overflow-x:auto; font-size:.8125rem; line-height:1.5; }
+    pre code { background:transparent; padding:0; color:inherit; }
+    hr { border:none; border-top:1px solid rgba(0,0,0,.08); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-open-capabilities">← Back to Open Capabilities</a>
+    <h1>X-Work Integration Skill — User Guide</h1>
+<h2>Overview</h2>
+<p>X-Work Integration Skill (<code>xwork-integration</code>) is an AI coding context skill that guides AI assistants (Claude, Cursor, Augment, Copilot, and 14 others) through building, packaging, and deploying embedded applications into X-Work — from a blank project to a live production app.</p>
+<p>The result is a <code>dist.zip</code> that passes X-Work&#x27;s platform validation and integrates seamlessly with X-Work&#x27;s sidebar navigation, authentication, and role system. all without writing integration code from scratch.</p>
+<p><strong>Authentication &amp; Permissions — What You Don&#x27;t Need to Build</strong></p>
+<p>Integrated apps automatically inherit X-Work&#x27;s identity and permission system:</p>
+<ul>
+<li><strong>No SSO implementation needed</strong> — The embedded app shares the same domain as X-Work, so the browser sends the X-Work session cookie automatically. Users never see a separate login screen.</li>
+<li><strong>No user management module needed</strong> — User identities are managed entirely by X-Work. The embedded app accesses data through an API Key bound to a X-Work role.</li>
+<li><strong>No permission module needed</strong> — Access control is enforced by X-Work&#x27;s role system. The app cannot access data beyond what its API Key&#x27;s bound role permits.</li>
+</ul>
+<hr />
+<h2>Prerequisites</h2>
+<p>Before starting, make sure you have:</p>
+<ul>
+<li><strong>Node.js 18.17+</strong> installed</li>
+<li>A X-Work application created, with an <strong>App Code</strong> (the unique machine identifier)</li>
+<li>An <strong>API Key</strong> with developer role (X-Work Console → Settings → API Keys)</li>
+<li>Ashley JFrog npm access — contact the X-Work platform team to request access if needed — or the two offline packages (see Offline Installation)</li>
+</ul>
+<hr />
+<h2>Step 1: Install xwork-cli</h2>
+<pre><code class="lang-bash">npm install -g xwork-cli</code></pre>
+<p><strong>No JFrog access?</strong> Install from a local package:</p>
+<pre><code class="lang-bash">npm install &#x27;/path/to/xwork-integration-skill-x.x.x.tgz&#x27;</code></pre>
+<hr />
+<h2>Step 2: Initialize the Skill into Your AI Platform</h2>
+<pre><code class="lang-bash">npx xwork-cli init --ai &lt;platform&gt;</code></pre>
+<p><strong>Supported platforms (<code>--ai</code> values):</strong></p>
+<table>
+<tr><th>Platform</th><th>Value</th></tr>
+<tr><td>Claude Code</td><td><code>claude</code></td></tr>
+<tr><td>Cursor</td><td><code>cursor</code></td></tr>
+<tr><td>Augment</td><td><code>augment</code></td></tr>
+<tr><td>GitHub Copilot</td><td><code>copilot</code></td></tr>
+<tr><td>Windsurf</td><td><code>windsurf</code></td></tr>
+<tr><td>Codex</td><td><code>codex</code></td></tr>
+<tr><td>Continue</td><td><code>continue</code></td></tr>
+<tr><td>Gemini</td><td><code>gemini</code></td></tr>
+<tr><td>Trae</td><td><code>trae</code></td></tr>
+<tr><td>OpenCode</td><td><code>opencode</code></td></tr>
+<tr><td>Qoder</td><td><code>qoder</code></td></tr>
+<tr><td>RooCode</td><td><code>roocode</code></td></tr>
+<tr><td>KiloCode</td><td><code>kilocode</code></td></tr>
+<tr><td>Droid</td><td><code>droid</code></td></tr>
+<tr><td>Kiro</td><td><code>kiro</code></td></tr>
+<tr><td>Warp</td><td><code>warp</code></td></tr>
+<tr><td>CodeBuddy</td><td><code>codebuddy</code></td></tr>
+<tr><td>Agent</td><td><code>agent</code></td></tr>
+<tr><td>All platforms</td><td><code>all</code></td></tr>
+</table>
+<p>After init, your AI assistant will have access to the <code>xwork-integration</code> skill knowledge base and can read <code>skill.md</code> to begin development.</p>
+<hr />
+<h2>Step 3: Configure Environment Variables</h2>
+<p>Create the file <code>your-project/workspace/.env.local</code>:</p>
+<pre><code class="lang-bash"># X-Work base configuration
+XWORK_BASE_URL=https://xworkdev.ashgso.com   # X-Work instance URL (no trailing /api)
+XWORK_APP_NAME=my-app                         # Your App Code
+XWORK_API_KEY=your_api_key_here               # Developer role API Key
+
+# Offline package configuration (only if no JFrog access)
+USE_LOCAL_PACKAGES=true
+LOCAL_CREATE_INTEGRATED_APP_PATH=/path/to/ashley-xwork-create-integrated-app-x.x.x.tgz
+LOCAL_INTEGRATED_APP_SDK_PATH=/path/to/ashley-xwork-integrated-app-sdk-x.x.x.tgz</code></pre>
+<hr />
+<h2>Step 4: Scaffold a New App</h2>
+<pre><code class="lang-bash">xwork-cli create &lt;app-name&gt; --yes</code></pre>
+<p>This generates a complete project skeleton under <code>workspace/&lt;app-name&gt;/</code>, including:</p>
+<ul>
+<li><code>xwork.manifest.json</code> — the app package entry declaration (routes, code, version)</li>
+<li>Frontend SPA source (<code>src/</code>)</li>
+<li>Backend initialization script (<code>init/bootstrap.ts</code>)</li>
+<li>Environment config files</li>
+</ul>
+<p>The scaffold is immediately compliant with the X-Work app package contract — your AI starts from a correct foundation.</p>
+<hr />
+<h2>Step 5: Develop the App with AI</h2>
+<p>With the skill installed and the scaffold in place, describe your requirements to your AI assistant:</p>
+<p><strong>Example prompt:</strong></p>
+<pre><code class="lang-">Help me use the xwork-integration skill to build a Project Management System.
+
+Features:
+1. Project management
+2. Task management
+3. Gantt chart
+4. Member permission control
+5. Work hours tracking
+6. Dashboard</code></pre>
+<p>The AI will:</p>
+<p>1. Read the skill knowledge base for X-Work-specific constraints</p>
+<p>2. Design the data model (Collections, Fields, relationships)</p>
+<p>3. Generate the backend bootstrap script</p>
+<p>4. Build the frontend using <code>@ashley-xwork/integrated-app-sdk</code> and Ant Design 5.x</p>
+<p>5. Apply three-level ACL (page / action / field)</p>
+<p>6. Validate the build at every step</p>
+<p><strong>Tips:</strong></p>
+<ul>
+<li>You can also specify the data model, API structure, and UI style explicitly.</li>
+<li>If the AI doesn&#x27;t seem to be applying the skill, try: <em>&quot;Use the xwork-integration skill to...&quot;</em></li>
+<li>Claude Code with Opus 4 has the highest first-attempt success rate.</li>
+</ul>
+<hr />
+<h2>Step 6: Start the Development Server</h2>
+<pre><code class="lang-bash">xwork-cli dev</code></pre>
+<p>This starts the local dev server and generates an AI-accessible preview link with session authentication — so your AI assistant can directly open and validate the running app without manual browser steps.</p>
+<p>To generate just the preview link (without starting dev server):</p>
+<pre><code class="lang-bash">npm run ai:preview</code></pre>
+<hr />
+<h2>Step 7: Build and Package</h2>
+<p>When the app is ready:</p>
+<pre><code class="lang-bash">xwork-cli frontend build</code></pre>
+<p>This runs <strong>41 automated self-checks</strong> across:</p>
+<ul>
+<li>Manifest structure and completeness</li>
+<li>Route declarations in <code>xwork.manifest.json</code></li>
+<li>API call safety (no forbidden APIs, no absolute resource paths)</li>
+<li>Bundle size limits</li>
+<li>No <code>init/</code> directory in the output</li>
+<li>No <code>window.top</code> navigation</li>
+</ul>
+<p>Zero failures required. If any check fails, the build will not produce <code>dist.zip</code> — fix the flagged issues and re-run.</p>
+<p>On success: <code>dist.zip</code> is produced in <code>workspace/&lt;app-name&gt;/</code>.</p>
+<hr />
+<h2>Step 8: Upload to X-Work</h2>
+<p>1. Open <strong>X-Work Console → More → Integrated Apps</strong>.</p>
+<p>2. Click <strong>Upload new version</strong> (top right).</p>
+<p>3. Upload <code>dist.zip</code>.</p>
+<ul>
+<li>Platform reads <code>xwork.manifest.json</code> automatically.</li>
+<li><code>code</code> and <code>version</code> are extracted from the manifest.</li>
+<li><code>routes[]</code> are parsed and stored for menu mapping.</li>
+</ul>
+<p>4. Confirm the app appears in the list with status <strong>Active</strong>.</p>
+<hr />
+<h2>Step 9: Map Routes to X-Work Menu</h2>
+<p>1. Open <strong>Console → Designs → Add menu item</strong>.</p>
+<p>2. Set <strong>Page type</strong> to <strong>Integrated app page</strong>.</p>
+<p>3. Fill in:</p>
+<table>
+<tr><th>Field</th><th>Description</th></tr>
+<tr><td>Menu item title</td><td>Label shown in X-Work&#x27;s sidebar</td></tr>
+<tr><td>Icon</td><td>Optional</td></tr>
+<tr><td>App</td><td>Select the uploaded app (<code>&lt;X-Work App&gt; &lt;Title&gt; (&lt;code&gt;@&lt;version&gt;)</code>)</td></tr>
+<tr><td>Route</td><td>Pick one route from the app&#x27;s <code>routes[]</code></td></tr>
+</table>
+<p>4. Save. Repeat for each route you want in the sidebar.</p>
+<hr />
+<h2>Step 10: Set Permissions</h2>
+<p>In <strong>Permissions → Roles</strong>, configure which roles can see each integrated app menu item. Business users will see only the menu items their role permits.</p>
+<hr />
+<h2>Offline Installation</h2>
+<p>If you don&#x27;t have JFrog npm access, obtain these two packages from an internal channel:</p>
+<ul>
+<li><code>ashley-xwork-create-integrated-app-x.x.x.tgz</code></li>
+<li><code>ashley-xwork-integrated-app-sdk-x.x.x.tgz</code></li>
+</ul>
+<p>Set their paths in <code>.env.local</code> (see Step 3). <code>xwork-cli create</code> will install from local paths automatically.</p>
+<p><strong>Re-login to JFrog if your token has expired:</strong></p>
+<pre><code class="lang-bash">npm login --registry=https://ashleyfurniture.jfrog.io/artifactory/api/npm/afi-apac-npm-local/ --auth-type=web</code></pre>
+<hr />
+<h2>CLI Command Reference</h2>
+<table>
+<tr><th>Task</th><th>Command</th></tr>
+<tr><td>Install skill to AI platform</td><td><code>xwork-cli init --ai &lt;platform&gt; --non-interactive</code></td></tr>
+<tr><td>Create new app</td><td><code>xwork-cli create &lt;app-name&gt; --yes</code></td></tr>
+<tr><td>Start dev server + AI preview link</td><td><code>xwork-cli dev</code></td></tr>
+<tr><td>Generate AI preview link only</td><td><code>npm run ai:preview</code></td></tr>
+<tr><td>Create isolated test environment</td><td><code>xwork-cli test create</code></td></tr>
+<tr><td>Check test environment health</td><td><code>xwork-cli test health [app-name]</code></td></tr>
+<tr><td>Search skill knowledge base</td><td><code>xwork-cli search &quot;&lt;query&gt;&quot; --domain &lt;domain&gt; --limit &lt;n&gt;</code></td></tr>
+<tr><td>List all entries in a domain</td><td><code>xwork-cli search &quot;&quot; --domain &lt;domain&gt; --list</code></td></tr>
+<tr><td>Browse backend API catalog</td><td><code>xwork-cli backend api [--category &lt;type&gt;]</code></td></tr>
+<tr><td>View field types</td><td><code>xwork-cli backend field-types</code></td></tr>
+<tr><td>Initialize backend environment</td><td><code>xwork-cli backend init</code></td></tr>
+<tr><td>Test backend connection</td><td><code>xwork-cli backend test</code></td></tr>
+<tr><td>Apply declarative app plan</td><td><code>xwork-cli apply</code></td></tr>
+<tr><td>Generate integration plan</td><td><code>xwork-cli plan --mode &lt;mode&gt;</code></td></tr>
+<tr><td>Generate collection creation code</td><td><code>xwork-cli generate collection &lt;name&gt;</code></td></tr>
+<tr><td>Validate project configuration</td><td><code>xwork-cli validate</code></td></tr>
+<tr><td>Build + package (<code>dist.zip</code>)</td><td><code>xwork-cli frontend build</code></td></tr>
+<tr><td>Uninstall skill</td><td><code>xwork-cli uninstall --ai &lt;platform&gt; --yes</code></td></tr>
+</table>
+<hr />
+<h2>Integration Mode Selection</h2>
+<p>The skill supports four integration architectures. The recommended default is <strong>same-domain iframe</strong>.</p>
+<table>
+<tr><th>Mode</th><th>Best For</th><th>Auth</th></tr>
+<tr><td>Same-domain iframe (default)</td><td>Most X-Work deployments</td><td>Shared cookie, no extra setup</td></tr>
+<tr><td>Same-domain plugin</td><td>Deep UI embedding</td><td>Shared cookie</td></tr>
+<tr><td>Cross-domain</td><td>Separate hosting environments</td><td>Requires explicit auth handling</td></tr>
+<tr><td>Pure backend server-to-server</td><td>No frontend, API-only</td><td>API Key</td></tr>
+</table>
+<p>Run <code>xwork-cli plan --mode &lt;mode&gt;</code> to generate a tailored integration plan.</p>
+  </div>
+</body>
+</html>

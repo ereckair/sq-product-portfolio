@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide — Users &amp; Permissions — XWork</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#000; --line:rgba(0,0,0,.08); }
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid var(--line); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    hr { border:none; border-top:1px solid var(--line); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-nocode">← Back to Nocode Platform</a>
+    <h1>X-Work — User Guide: Users &amp; Permissions</h1>
+<h2>Overview</h2>
+<p>The Users &amp; Permissions module gives administrators precise control over who can access what in X-Work. Using Role-Based Access Control (RBAC), you define roles with specific resource permissions, then assign those roles to users. This ensures every team member sees exactly what they need — and nothing more.</p>
+<hr />
+<h2>Key Concepts</h2>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td><strong>User</strong></td><td>An individual with a login account in X-Work</td></tr>
+<tr><td><strong>Role</strong></td><td>A named set of permissions (e.g. &quot;Manager&quot;, &quot;Read-Only Viewer&quot;)</td></tr>
+<tr><td><strong>Resource</strong></td><td>A collection, page, or system feature that can be accessed</td></tr>
+<tr><td><strong>Action</strong></td><td>An operation on a resource (read, create, update, delete)</td></tr>
+<tr><td><strong>Scope</strong></td><td>A data filter that limits which records a role can see/edit</td></tr>
+<tr><td><strong>Field Permission</strong></td><td>Control visibility of specific fields within a collection</td></tr>
+</table>
+<hr />
+<h2>Step 1: Access Users &amp; Permissions</h2>
+<p>1. Log in with an administrator account</p>
+<p>2. Navigate to <strong>Settings</strong> → <strong>Users &amp; Permissions</strong></p>
+<p>3. You will see two tabs: <strong>Users</strong> and <strong>Roles</strong></p>
+<hr />
+<h2>Step 2: Manage Users</h2>
+<h3>View All Users</h3>
+<p>1. Click the <strong>Users</strong> tab</p>
+<p>2. The list shows all registered users with their roles and status</p>
+<h3>Invite / Add a User</h3>
+<p>1. Click <strong>+ Invite User</strong></p>
+<p>2. Enter the user&#x27;s <strong>email address</strong></p>
+<p>3. Select one or more <strong>roles</strong> to assign</p>
+<p>4. Click <strong>Send Invitation</strong> — the user receives an email with a login link</p>
+<h3>Edit a User</h3>
+<p>1. Click a user&#x27;s name in the list</p>
+<p>2. Update their name, email, or role assignments</p>
+<p>3. Click <strong>Save</strong></p>
+<h3>Deactivate a User</h3>
+<p>1. Click a user&#x27;s name</p>
+<p>2. Toggle <strong>Status</strong> to <strong>Disabled</strong></p>
+<p>3. Click <strong>Save</strong> — the user can no longer log in but their data is retained</p>
+<hr />
+<h2>Step 3: Create a Role</h2>
+<p>1. Click the <strong>Roles</strong> tab</p>
+<p>2. Click <strong>+ Add Role</strong></p>
+<p>3. Enter a <strong>Role Name</strong> (e.g. <code>HR Manager</code>, <code>Read Only</code>, <code>Finance Team</code>)</p>
+<p>4. Optionally add a description</p>
+<p>5. Click <strong>Confirm</strong></p>
+<hr />
+<h2>Step 4: Configure Role Permissions</h2>
+<p>1. Click the role name to open its permission configuration</p>
+<p>2. You will see a list of all collections and system resources</p>
+<h3>Setting Collection Permissions</h3>
+<p>For each collection, you can enable or disable the following actions:</p>
+<table>
+<tr><th>Action</th><th>Description</th></tr>
+<tr><td><strong>View</strong></td><td>Read records in this collection</td></tr>
+<tr><td><strong>Create</strong></td><td>Add new records</td></tr>
+<tr><td><strong>Update</strong></td><td>Edit existing records</td></tr>
+<tr><td><strong>Delete</strong></td><td>Remove records</td></tr>
+<tr><td><strong>Export</strong></td><td>Download data</td></tr>
+<tr><td><strong>Import</strong></td><td>Upload data</td></tr>
+</table>
+<p><strong>To set permissions:</strong></p>
+<p>1. Find the collection in the list</p>
+<p>2. Toggle each action on or off</p>
+<p>3. Click <strong>Save</strong></p>
+<figure><img src="screenshots/permissions_roles.png" alt="X-Work Users &amp; Permissions — Roles List" loading="lazy" /><figcaption>X-Work Users &amp; Permissions — Roles List</figcaption></figure>
+<hr />
+<h3>Setting Data Scope (Record-Level Filtering)</h3>
+<p>Data scope limits which records a role can see or edit, even if the action is permitted.</p>
+<p>1. Next to an action (e.g. View), click <strong>Scope</strong></p>
+<p>2. Choose a scope option:</p>
+<ul>
+<li><strong>All Records</strong>: role can see every record in the collection</li>
+<li><strong>My Records</strong>: role can only see records they created (<code>Created By = current user</code>)</li>
+<li><strong>My Department&#x27;s Records</strong>: role can see records from their department</li>
+<li><strong>Custom Condition</strong>: define a custom filter (e.g. <code>Status = Approved AND Region = Asia</code>)</li>
+</ul>
+<p>3. Build the condition using the filter builder</p>
+<p>4. Click <strong>Save</strong></p>
+<figure><img src="screenshots/permissions_matrix.png" alt="X-Work Users &amp; Permissions — Permission Matrix" loading="lazy" /><figcaption>X-Work Users &amp; Permissions — Permission Matrix</figcaption></figure>
+<hr />
+<h3>Setting Field-Level Permissions</h3>
+<p>For sensitive fields, you can hide or make them read-only per role:</p>
+<p>1. Next to a collection, click <strong>Field Permissions</strong></p>
+<p>2. A matrix shows all fields with columns for View and Edit</p>
+<p>3. Toggle each field:</p>
+<ul>
+<li><strong>View ✓, Edit ✓</strong> — field is visible and editable</li>
+<li><strong>View ✓, Edit ✗</strong> — field is visible but read-only</li>
+<li><strong>View ✗</strong> — field is completely hidden from this role</li>
+</ul>
+<p>4. Click <strong>Save</strong></p>
+<hr />
+<h2>Step 5: Configure Page Permissions</h2>
+<p>Control which roles can access which pages:</p>
+<p>1. Navigate to <strong>Settings</strong> → <strong>Menus</strong></p>
+<p>2. Right-click a page or menu item → <strong>Configure Permissions</strong></p>
+<p>3. Select which roles can see this menu item / access this page</p>
+<p>4. Click <strong>Save</strong></p>
+<hr />
+<h2>Step 6: Assign Roles to Users</h2>
+<p>1. Go to <strong>Settings</strong> → <strong>Users &amp; Permissions</strong> → <strong>Users</strong></p>
+<p>2. Click a user&#x27;s name</p>
+<p>3. In the <strong>Roles</strong> field, click to add or remove roles</p>
+<p>4. Click <strong>Save</strong></p>
+<blockquote><p>A user can have multiple roles. Their effective permissions are the <strong>union</strong> of all assigned roles.</p></blockquote>
+<hr />
+<h2>Step 7: Configure Authentication (Admin Only)</h2>
+<h3>Password Policy</h3>
+<p>1. Navigate to <strong>Settings</strong> → <strong>Authentication</strong> → <strong>Password Policy</strong></p>
+<p>2. Set minimum length, complexity requirements, and expiry period</p>
+<h3>Single Sign-On (SSO)</h3>
+<p>1. Navigate to <strong>Settings</strong> → <strong>Authentication</strong> → <strong>SSO</strong></p>
+<p>2. Select the SSO provider (Azure Entra, SAML, CAS)</p>
+<p>3. Enter the provider&#x27;s configuration details (Tenant ID, Client ID, Client Secret)</p>
+<p>4. Click <strong>Enable</strong> and <strong>Save</strong></p>
+<h3>Multi-Factor Authentication (MFA)</h3>
+<p>1. Navigate to <strong>Settings</strong> → <strong>Authentication</strong> → <strong>MFA</strong></p>
+<p>2. Toggle <strong>Enable MFA</strong> on</p>
+<p>3. Select supported methods (Authenticator App, SMS)</p>
+<p>4. Set whether MFA is required for all users or specific roles</p>
+<hr />
+<h2>Step 8: API Keys</h2>
+<p>For system integrations that need programmatic access:</p>
+<p>1. Navigate to <strong>Settings</strong> → <strong>API Keys</strong></p>
+<p>2. Click <strong>+ Generate API Key</strong></p>
+<p>3. Enter a name and set an expiry date</p>
+<p>4. Copy and securely store the generated key (it is shown only once)</p>
+<p>5. Assign a role to the API key to control its access level</p>
+<hr />
+<h2>Built-in Roles</h2>
+<p>X-Work includes the following default roles:</p>
+<table>
+<tr><th>Role</th><th>Description</th></tr>
+<tr><td><strong>Admin</strong></td><td>Full access to all settings, data, and configuration</td></tr>
+<tr><td><strong>Member</strong></td><td>Standard access — can view and interact with permitted resources</td></tr>
+<tr><td><strong>Read Only</strong></td><td>Can view data but cannot create, edit, or delete</td></tr>
+</table>
+<blockquote><p>You can modify or extend these roles, or create additional roles to match your organization.</p></blockquote>
+<hr />
+<h2>Tips &amp; Best Practices</h2>
+<ul>
+<li><strong>Follow the principle of least privilege</strong> — grant only the minimum permissions needed for each role</li>
+<li><strong>Use data scope</strong> instead of creating separate views — it&#x27;s more maintainable</li>
+<li><strong>Group similar users into roles</strong> rather than configuring permissions per individual</li>
+<li><strong>Audit regularly</strong> — use the audit log (<strong>Settings → Audit Logs</strong>) to review who accessed or changed what</li>
+<li><strong>Disable rather than delete</strong> deactivated users to preserve their data history</li>
+</ul>
+<hr />
+<h2>Troubleshooting</h2>
+<table>
+<tr><th>Issue</th><th>Solution</th></tr>
+<tr><td>User cannot see a page</td><td>Check role&#x27;s menu permission for that page</td></tr>
+<tr><td>User can see records they shouldn&#x27;t</td><td>Review the data scope setting for that role</td></tr>
+<tr><td>Field not appearing in form</td><td>Check field-level permissions — View may be disabled</td></tr>
+<tr><td>SSO login failing</td><td>Verify Tenant ID and Client Secret are correctly entered</td></tr>
+<tr><td>API key returns 403</td><td>Check the role assigned to the API key has the required action permissions</td></tr>
+</table>
+  </div>
+</body>
+</html>

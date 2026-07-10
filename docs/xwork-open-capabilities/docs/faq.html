@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Capabilities FAQ — XWork Open Capabilities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:#000; background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid rgba(0,0,0,.08); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid rgba(0,0,0,.08); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    pre { background:#0a0a0a; color:#f5f5f5; padding:1rem; border-radius:6px; overflow-x:auto; font-size:.8125rem; line-height:1.5; }
+    pre code { background:transparent; padding:0; color:inherit; }
+    hr { border:none; border-top:1px solid rgba(0,0,0,.08); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-open-capabilities">← Back to Open Capabilities</a>
+    <h1>X-Work Open Capabilities — FAQ</h1>
+<h2>Open API</h2>
+<p><strong>Q1: Who can create an API Key?</strong></p>
+<p>Platform administrators create API Keys in X-Work Console → Settings → API Keys. If you need a key, contact your X-Work admin and specify the role you need the key bound to.</p>
+<hr />
+<p><strong>Q2: What permissions does my API Key have?</strong></p>
+<p>Exactly what the bound role allows — nothing more. The platform provides no access outside the role boundary. If you&#x27;re getting 403 errors, check that the bound role has the necessary collection or workflow permissions.</p>
+<hr />
+<p><strong>Q3: I lost my API Key value. Can I recover it?</strong></p>
+<p>No. The key value is shown only once at creation. You must delete the old key and create a new one.</p>
+<hr />
+<p><strong>Q4: Does deleting a role affect existing API Keys bound to it?</strong></p>
+<p>The key remains valid, but permissions reflect the current role configuration. If the role definition is deleted from the platform, calls using that key will be denied.</p>
+<hr />
+<p><strong>Q5: Can one API Key access multiple collections?</strong></p>
+<p>Yes — as long as the bound role has access to those collections. A single key can perform CRUD on any authorized collection in a single request scope.</p>
+<hr />
+<p><strong>Q6: How do I filter records by multiple conditions?</strong></p>
+<p>Use <code>$and</code> / <code>$or</code> operators in the <code>filter</code> parameter. Example — orders that are pending AND over 1000:</p>
+<pre><code class="lang-">filter[$and][0][status][$eq]=pending&amp;filter[$and][1][amount][$gt]=1000</code></pre>
+<hr />
+<p><strong>Q7: Can I trigger a workflow from outside X-Work and get the result synchronously?</strong></p>
+<p>No. Workflow execution is asynchronous. Use <code>POST /api/workflows:execute</code> to trigger, then poll <code>GET /api/executions:get?filterByTk={executionId}</code> for the result.</p>
+<hr />
+<h2>MCP Service</h2>
+<p><strong>Q8: What is the difference between App Bearer and User OAuth authentication?</strong></p>
+<table>
+<tr><th></th><th>App Bearer Token</th><th>User OAuth</th></tr>
+<tr><td>Who calls</td><td>Machine / agent</td><td>Human user (via browser OAuth flow)</td></tr>
+<tr><td>Permissions</td><td>Based on roles assigned to the app</td><td>Based on the authenticated user&#x27;s roles</td></tr>
+<tr><td>Token type</td><td>Static bearer token</td><td>Dynamic access token per user</td></tr>
+<tr><td>Best for</td><td>Automation, AI agents, pipelines</td><td>User-facing AI assistants</td></tr>
+</table>
+<p>Choose App Bearer for headless automation; choose OAuth when the agent acts on behalf of a specific user.</p>
+<hr />
+<p><strong>Q9: Can one X-Work app have both App Bearer and User OAuth clients simultaneously?</strong></p>
+<p>Yes. The two authentication modes are independent. You can have multiple Bearer apps and multiple OAuth clients registered on the same MCP server.</p>
+<hr />
+<p><strong>Q10: Why can&#x27;t I add approval or audit nodes to my MCP Tool workflow?</strong></p>
+<p>MCP Tools must execute synchronously — they return a result within the single request cycle. Human-in-the-loop nodes (manual task, audit, approval) are inherently asynchronous and are therefore not allowed on the tool canvas.</p>
+<hr />
+<p><strong>Q11: How do I control which tools a specific AI agent can call?</strong></p>
+<p>Use MCP Access Control under Permissions → Roles → [Role name] → MCP Access Control. Assign the agent&#x27;s app a role, then configure that role&#x27;s Tool Access scope: No access / Full access / Partial access (with a per-tool checklist).</p>
+<hr />
+<p><strong>Q12: My MCP Client connected successfully but gets &quot;permission denied&quot; when calling a tool.</strong></p>
+<p>Authentication passed, but the calling app&#x27;s role doesn&#x27;t have access to that tool. Go to Permissions → Roles → [Role name] → MCP Access Control → Tool Access, and add the tool to the allowed list or switch to Full access.</p>
+<hr />
+<p><strong>Q13: Where can I see which AI agents have called my MCP service?</strong></p>
+<p>MCP Server → Logs. Every client request is recorded with: request time, invoker type (App/User), invoker ID, method, target name, and status. Click View on any entry for the full request/response payload.</p>
+<hr />
+<p><strong>Q14: What happens to connected MCP clients if I disable the MCP service?</strong></p>
+<p>The service endpoint stops responding immediately. All client connections — Bearer and OAuth — fail until the service is re-enabled.</p>
+<hr />
+<p><strong>Q15: Can I migrate an MCP service configuration to another X-Work environment?</strong></p>
+<p>Yes — MCP Service Manager data (tools, prompts, access control) migrates with the application. However, Authorization configuration (Bearer apps and OAuth clients) does NOT migrate and must be reconfigured in each environment.</p>
+<hr />
+<h2>X-Work Integration Skill</h2>
+<p><strong>Q16: Which AI platforms work with the xwork-integration skill?</strong></p>
+<p>18 platforms are supported: Claude, Cursor, Augment, Copilot, Windsurf, Codex, Continue, Gemini, Trae, OpenCode, Qoder, RooCode, KiloCode, Droid, Kiro, Warp, CodeBuddy, and Agent. Install to all at once with <code>--ai all</code>.</p>
+<hr />
+<p><strong>Q17: The AI doesn&#x27;t seem to be using the xwork-integration skill. What should I do?</strong></p>
+<ul>
+<li>Verify the skill was installed: <code>xwork-cli init --ai &lt;platform&gt;</code> should complete without error.</li>
+<li>Start your prompt with: <em>&quot;Use the xwork-integration skill to...&quot;</em> — explicit invocation helps models that don&#x27;t auto-activate skills.</li>
+<li>Note: Augment&#x27;s native skill support is weaker than Claude Code&#x27;s. Claude Code (especially with Opus 4) has the highest first-attempt success rate.</li>
+</ul>
+<hr />
+<p><strong>Q18: My build fails. What does the 41-item self-check catch?</strong></p>
+<p>The self-check covers:</p>
+<ul>
+<li>Missing or malformed <code>xwork.manifest.json</code></li>
+<li>Empty or invalid <code>routes[]</code></li>
+<li>Forbidden API calls</li>
+<li>Absolute resource paths (must be relative)</li>
+<li>Presence of <code>init/</code> directory in the output bundle</li>
+<li><code>window.top</code> navigation (breaks iframe embedding)</li>
+<li>Bundle size violations</li>
+</ul>
+<p>Read the check output carefully — each failure includes the rule that was violated and a suggested fix.</p>
+<hr />
+<p><strong>Q19: Can I upload a new version of an app without breaking existing menu mappings?</strong></p>
+<p>Yes, but only if the new version&#x27;s <code>routes[]</code> still contains the routes that existing menu items reference. If a route is removed, menu items pointing to it will show a dangling-route warning.</p>
+<hr />
+<p><strong>Q20: How does authentication work in the embedded app? Do users need to log in again?</strong></p>
+<p>No. X-Work and the integrated app share the same domain, so the browser sends the X-Work session cookie automatically. The embedded app calls X-Work APIs using that cookie — no separate login is required. This is the same-domain iframe model.</p>
+<hr />
+<hr />
+<p><strong>Q20a: Do I need to build my own authentication or user management for an integrated app?</strong></p>
+<p>No. Integrated apps automatically inherit X-Work&#x27;s identity and permission system:</p>
+<ul>
+<li><strong>Authentication (SSO)</strong>: The embedded app shares the same domain as X-Work. The browser sends the X-Work session cookie automatically — no separate login is required.</li>
+<li><strong>User management</strong>: User identities are managed entirely by X-Work. The embedded app does not maintain its own user database.</li>
+<li><strong>Permission control</strong>: Access to data is governed by the API Key&#x27;s bound X-Work role. The app cannot access anything beyond that role&#x27;s permissions.</li>
+</ul>
+<p>This means developers can focus entirely on business logic — X-Work handles the security layer.</p>
+<hr />
+<p><strong>Q21: Can the integrated app navigate between its own pages inside X-Work?</strong></p>
+<p>Yes, within the iframe. Use the route system defined in <code>xwork.manifest.json</code>. Do NOT use <code>window.top</code> or <code>window.parent</code> to navigate — this will break out of the X-Work shell and fail the self-check.</p>
+<hr />
+<p><strong>Q22: I don&#x27;t have JFrog npm access. Can I still use the skill?</strong></p>
+<p>Yes. Obtain the two offline packages from an internal channel:</p>
+<ul>
+<li><code>ashley-xwork-create-integrated-app-x.x.x.tgz</code></li>
+<li><code>ashley-xwork-integrated-app-sdk-x.x.x.tgz</code></li>
+</ul>
+<p>Set <code>USE_LOCAL_PACKAGES=true</code> and configure their local paths in <code>.env.local</code>. The CLI will install from local paths automatically.</p>
+<hr />
+<p><strong>Q23: The skill&#x27;s guidance seems outdated or incorrect. How do I report it?</strong></p>
+<p>Run <code>xwork-cli</code> and use its issue-reporting flow, or contact the X-Work platform team directly. You can also ask your AI agent to generate a structured issue report.</p>
+  </div>
+</body>
+</html>

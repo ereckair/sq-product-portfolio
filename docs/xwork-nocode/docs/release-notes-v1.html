@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>XWork Release Notes v1.0 — XWork</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#000; --line:rgba(0,0,0,.08); }
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid var(--line); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    hr { border:none; border-top:1px solid var(--line); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-nocode">← Back to Nocode Platform</a>
+    <h1>X-Work — Release Notes v1.0</h1>
+<p><strong>Release Date:</strong> 2026-07-08</p>
+<p><strong>Version:</strong> 1.0.0</p>
+<hr />
+<h2>Overview</h2>
+<p>This is the initial launch release of <strong>X-Work</strong>, a visual no-code application-building platform for enterprise internal use. This release delivers four core modules: Data Sources, Interface Builder, Users &amp; Permissions, and Workflows — enabling teams to build, manage, and automate internal business applications without writing code.</p>
+<hr />
+<h2>What&#x27;s New</h2>
+<h3>Data Sources</h3>
+<ul>
+<li>Connect to the X-Work internal MySQL database (pre-configured, zero setup)</li>
+<li>Connect to external MySQL and PostgreSQL databases via configuration</li>
+<li>Connect to external REST APIs with support for API key, Bearer token, and OAuth authentication</li>
+<li>Create and manage <strong>Collections</strong> (data tables) with a visual schema editor</li>
+<li>Support for 20+ field types including text, number, date, select, file, image, formula, UUID, and auto-increment</li>
+<li>Define relationships between collections: Has Many, Belongs To, Has One, Many to Many</li>
+<li>Set field validation rules: required, unique, default values, constraints</li>
+<li>Scheduled and real-time <strong>Data Sync</strong> for external source integration</li>
+<li>Graph-based collection relationship visualization</li>
+</ul>
+<h3>Interface Builder</h3>
+<ul>
+<li>Schema-driven, drag-and-drop <strong>Page Builder</strong></li>
+<li>155+ UI components powered by Ant Design 5</li>
+<li>11 block types: Table, Form, Details, Calendar, Kanban, Gantt, Map, Chart, Grid, Tabs, Markdown</li>
+<li>Live data binding: connect any block directly to a collection</li>
+<li><strong>Table Block:</strong> sortable/filterable columns, pagination, configurable columns</li>
+<li><strong>Form Block:</strong> multi-column layouts, field validation, default values</li>
+<li><strong>Action system:</strong> 14 built-in actions including Create, Edit, Delete, Export, Import, Bulk Edit, Custom Request, Trigger Workflow, Open Popup</li>
+<li>Reusable <strong>UI Templates</strong>: save and apply block/page layouts</li>
+<li>Mobile-responsive layouts with dedicated Mobile UI mode</li>
+<li><strong>Theme Editor</strong>: customize colors, typography, and branding globally</li>
+</ul>
+<h3>Users &amp; Permissions</h3>
+<ul>
+<li><strong>Role-Based Access Control (RBAC)</strong>: create unlimited custom roles</li>
+<li>Per-collection action permissions: View, Create, Update, Delete, Export, Import</li>
+<li><strong>Data Scope</strong>: limit records visible to a role by custom filter conditions (all records, my records, my department&#x27;s records, or custom)</li>
+<li><strong>Field-Level Permissions</strong>: hide or make individual fields read-only per role</li>
+<li>Page and menu visibility control by role</li>
+<li>User management: invite, edit, disable users; multi-role assignment</li>
+<li><strong>Authentication options:</strong></li>
+<li>Username/password with configurable password policy</li>
+<li>SSO: Azure Entra (Azure AD), SAML, CAS</li>
+<li>Multi-Factor Authentication (MFA): Authenticator App, SMS</li>
+<li>API Key management for programmatic access</li>
+<li><strong>Audit Logs</strong>: full history of create, update, delete actions with user and timestamp</li>
+</ul>
+<h3>Workflows</h3>
+<ul>
+<li>Visual <strong>Workflow Canvas</strong> with drag-and-drop node editor</li>
+<li><strong>6 trigger types</strong>: Collection Event, Schedule (cron), Manual, Page Load, Request Interception, External AI Invocation</li>
+<li><strong>20+ built-in node types:</strong></li>
+<li>Data: Query, Create, Update, Delete, SQL</li>
+<li>Logic: Condition (branching), Loop, Delay, Jump</li>
+<li>Integration: HTTP Request, JavaScript, Sub-Workflow, MCP Tool</li>
+<li>People: Approval, Manual Task, Email, Task Notification</li>
+<li>File: File Converter</li>
+<li><strong>Variable system</strong>: pass data between nodes with a point-and-click variable picker</li>
+<li>Conditional branching with nested conditions</li>
+<li>Parallel execution paths</li>
+<li>Approval workflows with configurable assignees, modes (any/all/percentage), and timeouts</li>
+<li><strong>Execution history</strong>: step-by-step visualization of every workflow run with job-level input/output inspection</li>
+<li>AI-assisted workflow generation</li>
+</ul>
+<hr />
+<h2>Known Limitations in v1.0</h2>
+<ul>
+<li>Chart blocks support bar, line, and pie chart types; additional chart types (scatter, heatmap) are planned for v1.1</li>
+<li>Workflow loop nodes process items sequentially; parallel loop execution is planned for a future release</li>
+<li>REST API data sources currently support JSON response format; XML support is planned</li>
+<li>Data Sync does not yet support bidirectional sync (source → target only)</li>
+<li>Mobile UI mode is available for viewing; mobile-optimized editing is planned for a future release</li>
+</ul>
+<hr />
+<h2>Upgrade Notes</h2>
+<p>This is the initial release. No migration from a previous version is required.</p>
+<hr />
+<h2>Support</h2>
+<p>For questions or issues, contact your internal IT or Digital Operations team.</p>
+  </div>
+</body>
+</html>

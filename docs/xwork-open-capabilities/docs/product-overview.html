@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Open Capabilities Overview — XWork Open Capabilities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:#000; background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid rgba(0,0,0,.08); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid rgba(0,0,0,.08); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    pre { background:#0a0a0a; color:#f5f5f5; padding:1rem; border-radius:6px; overflow-x:auto; font-size:.8125rem; line-height:1.5; }
+    pre code { background:transparent; padding:0; color:inherit; }
+    hr { border:none; border-top:1px solid rgba(0,0,0,.08); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-open-capabilities">← Back to Open Capabilities</a>
+    <h1>X-Work Open Capabilities — Product Overview</h1>
+<h2>What Is X-Work Open Capabilities?</h2>
+<p>X-Work Open Capabilities is a set of platform extensions that opens X-Work — Ashley&#x27;s internal no-code platform — to the AI ecosystem. It lets teams expose X-Work data and business logic through standard protocols, turn any X-Work app into an AI-callable service, and ship AI-generated applications directly into the X-Work environment — all without writing integration code from scratch.</p>
+<p><strong>Three capabilities. One open platform.</strong></p>
+<hr />
+<h2>Background: Why Now?</h2>
+<p>X-Work is Ashley&#x27;s internal no-code platform, powering core business systems including APS, Customer Complaints, and more. As the volume and diversity of business applications on X-Work grows, two structural gaps have emerged:</p>
+<p><strong>Gap 1 — Closed data silos.</strong> X-Work holds valuable business data, but accessing it from external systems, reporting tools, or AI agents has always required one-off, hard-coded workarounds. There is no standard, secure, and reusable mechanism for an external system to read or write X-Work data.</p>
+<p><strong>Gap 2 — No AI-native integration path.</strong> AI vibe-coding tools (Claude, Cursor, Augment, Copilot) can now generate fully functional business applications from a natural-language prompt. But X-Work has no official mechanism to receive, host, and route these AI-produced applications into its navigation and authentication system. Every AI-generated app either lives outside X-Work or requires manual, bespoke integration work.</p>
+<p>X-Work Open Capabilities resolves both gaps simultaneously, with three purpose-built modules:</p>
+<table>
+<tr><th>Gap</th><th>Module</th><th>How It&#x27;s Solved</th></tr>
+<tr><td>External systems can&#x27;t access X-Work data safely</td><td><strong>Open API</strong></td><td>Standard REST API with role-bound, expirable API Keys</td></tr>
+<tr><td>AI agents need callable X-Work business tools</td><td><strong>MCP Service</strong></td><td>No-code MCP server builder — expose any X-Work app as an AI tool set</td></tr>
+<tr><td>AI-built apps have no path into X-Work</td><td><strong>X-Work Integration</strong></td><td>Upload-and-run: AI-generated app packages hosted, routed, and authenticated by X-Work</td></tr>
+</table>
+<hr />
+<h2>Module 1 — Open API</h2>
+<h3>What It Is</h3>
+<p>X-Work now exposes all platform data and business logic as standard REST APIs. Any external system, automation pipeline, or AI agent can call these APIs using an API Key — with permissions governed entirely by the X-Work role that key is bound to.</p>
+<p>All endpoints follow a unified Resource-Action pattern:</p>
+<pre><code class="lang-">/api/{resource}:{action}</code></pre>
+<h3>Capabilities</h3>
+<p>#### Data Read &amp; Write (CRUD)</p>
+<p>External systems can perform full create, read, update, and delete operations on any authorized X-Work Collection.</p>
+<table>
+<tr><th>Operation</th><th>Endpoint</th></tr>
+<tr><td>List records</td><td><code>GET /api/{resource}:list</code></td></tr>
+<tr><td>Get one record</td><td><code>GET /api/{resource}:get?filterByTk={id}</code></td></tr>
+<tr><td>Create</td><td><code>POST /api/{resource}:create</code></td></tr>
+<tr><td>Update</td><td><code>POST /api/{resource}:update?filterByTk={id}</code></td></tr>
+<tr><td>Delete</td><td><code>POST /api/{resource}:destroy?filterByTk={id}</code></td></tr>
+</table>
+<p>Query support includes: condition filtering (12 operators: <code>$eq</code>, <code>$ne</code>, <code>$gt</code>, <code>$in</code>, <code>$like</code>, <code>$and</code>, <code>$or</code>, etc.), multi-field sorting, pagination, field selection, and relation appending.</p>
+<p>#### Workflow Trigger &amp; Tracking</p>
+<p>External events can initiate X-Work business workflows and track their execution in real time.</p>
+<ul>
+<li>Trigger a workflow: <code>POST /api/workflows:execute</code></li>
+<li>Query execution status: <code>GET /api/executions:get</code></li>
+<li>Submit an approval decision: <code>POST /api/approval_jobs:submit</code></li>
+</ul>
+<p>This enables scenarios like: an external system detects an order anomaly → triggers an X-Work review workflow → submits an approval decision → reads the outcome.</p>
+<p>#### API Key Management</p>
+<p>API Keys are created in <strong>X-Work Console → Settings → API Keys</strong>:</p>
+<ul>
+<li>Each key is bound to a X-Work role at creation time — the role determines the key&#x27;s exact permission scope</li>
+<li>Configurable expiration: 7 days / 30 days / 90 days / 1 year / never expires</li>
+<li>Keys are shown only once — copy at creation; deletion takes effect immediately</li>
+</ul>
+<h3>User Stories</h3>
+<table>
+<tr><th>Role</th><th>Story</th></tr>
+<tr><td>Integration Engineer</td><td>As an integration engineer, I create an API Key bound to a X-Work role and immediately start querying any authorized Collection with standard REST calls — no custom bridge code, no platform changes required.</td></tr>
+<tr><td>Automation Engineer</td><td>As an automation engineer, I trigger a X-Work Workflow from an external event via <code>POST /api/workflows:execute</code>, then poll the execution status and programmatically submit approval decisions — all without touching the X-Work UI.</td></tr>
+<tr><td>AI Developer</td><td>As an AI developer, I give my AI agent a role-bound API Key so it can read and write X-Work business data within a defined permission boundary — without exposing the entire platform.</td></tr>
+<tr><td>Data Analyst</td><td>As a data analyst, I pull live X-Work Collection data into my BI tool or reporting pipeline using <code>GET /api/{resource}:list</code> with filters and pagination — no manual CSV export needed.</td></tr>
+<tr><td>Platform Administrator</td><td>As a platform administrator, I create API Keys with configurable expiration and delete them instantly when no longer needed — access is revoked immediately, with no residual risk.</td></tr>
+</table>
+<h3>Who Benefits</h3>
+<table>
+<tr><th>Audience</th><th>How They Use Open API</th></tr>
+<tr><td>Integration engineers</td><td>Connect internal tools, dashboards, and reporting systems to X-Work data</td></tr>
+<tr><td>Automation teams</td><td>Trigger X-Work workflows from external events (webhooks, scheduled jobs)</td></tr>
+<tr><td>AI developers</td><td>Give AI agents structured read/write access to X-Work business data</td></tr>
+<tr><td>Data analysts</td><td>Pull X-Work data into BI tools or data pipelines without manual export</td></tr>
+</table>
+<h3>What Changes for Users</h3>
+<p>Before Open API, connecting anything to X-Work required a developer to build a custom, non-standard bridge that only worked for one specific use case. Now, any authorized system can connect to X-Work with a single API Key and standard HTTP calls — in minutes.</p>
+<hr />
+<h2>Module 2 — MCP Service</h2>
+<h3>What It Is</h3>
+<p>MCP (Model Context Protocol) is the emerging standard protocol that lets AI agents (large language models) call external tools and data sources in a structured, authenticated way. X-Work MCP Service lets administrators expose any X-Work application as an MCP server — through a no-code visual interface inside X-Work itself, without writing any server code.</p>
+<p>Once enabled, AI agents like Claude, Coze, Dify, and n8n can discover and invoke X-Work business logic as MCP Tools directly in conversation.</p>
+<h3>Architecture</h3>
+<pre><code class="lang-mermaid">flowchart LR
+    subgraph Agents[&quot;AI Agents&quot;]
+        A1[&quot;Claude&quot;]
+        A2[&quot;Coze&quot;]
+        A3[&quot;Dify&quot;]
+        A4[&quot;n8n&quot;]
+    end
+
+    subgraph X-Work[&quot;X-Work MCP Server&quot;]
+        Auth[&quot;Authentication &amp; Authorization&quot;]
+        Auth --&gt; Tools[&quot;Tools&quot;]
+        Auth --&gt; Prompts[&quot;Prompts&quot;]
+        Auth --&gt; Resources[&quot;Resources&quot;]
+        Tools --&gt; Logs[&quot;Logs&quot;]
+        Prompts --&gt; Logs
+        Resources --&gt; Logs
+    end
+
+    Agents --&gt;|&quot;MCP Request&quot;| X-Work
+    X-Work --&gt;|&quot;MCP Response&quot;| Agents</code></pre>
+<h3>Capabilities</h3>
+<p>#### MCP Server Management</p>
+<ul>
+<li>Each X-Work application gets its own unique MCP Server endpoint URL</li>
+<li>Enable or disable the MCP service per application with one click</li>
+<li>Edit service metadata: name, description, icon, website URL, version — as shown to MCP clients</li>
+</ul>
+<p>#### Authentication (Two Modes)</p>
+<p><strong>App Bearer Token</strong> — For machine-to-machine integration (automation agents, pipelines):</p>
+<ul>
+<li>Create a static bearer token per calling application</li>
+<li>Bind the token to one or more X-Work roles (determines tool access)</li>
+<li>Set expiration; update or revoke at any time</li>
+</ul>
+<p><strong>User OAuth (Authorization Code Flow)</strong> — For user-facing AI assistants:</p>
+<ul>
+<li>Create an OAuth client with a redirect URL</li>
+<li>Users authenticate individually; the MCP server serves resources based on that user&#x27;s X-Work role</li>
+<li>Configuration available in v1; end-to-end flow finalizing</li>
+</ul>
+<p>#### No-Code Tool Builder</p>
+<p>The core of MCP Service is a visual tool builder. Each MCP Tool is configured on a workflow-like canvas:</p>
+<p>1. <strong>Trigger</strong> — Define the tool&#x27;s input schema using a JSONSchema editor. Properties can be: string, number, array, object, boolean, integer, single-select, multi-select. Mark fields as required and add descriptions that guide the LLM on how to call the tool.</p>
+<p>2. <strong>Workflow nodes</strong> — Connect synchronous processing steps between the trigger and the response. Standard X-Work workflow nodes are available; human-in-the-loop nodes (approval, audit) are not supported (MCP tools are synchronous).</p>
+<p>3. <strong>MCP Tool Response</strong> — Define what the tool returns to the calling agent:</p>
+<ul>
+<li>On success: one or more text content cards, with variable references to workflow outputs</li>
+<li>On business failure: a structured error response with <code>isError: true</code></li>
+<li>The response conforms to MCP protocol: both <code>content</code> (for LLM reading) and <code>structuredContent</code> (for programmatic parsing) are returned</li>
+</ul>
+<p>Tools can be tested with <strong>Execute Manually</strong> — directly invoke the tool logic from the canvas, without going through MCP protocol or authentication, to verify correctness before connecting a client.</p>
+<p>#### MCP Access Control (RBAC)</p>
+<p>Fine-grained per-role tool access under <strong>Permissions → Roles → MCP Access Control</strong>:</p>
+<table>
+<tr><th>Access Scope</th><th>Behavior</th></tr>
+<tr><td>No access (default for new roles)</td><td>Role cannot see or call any tools</td></tr>
+<tr><td>Full access</td><td>Role can access all tools</td></tr>
+<tr><td>Partial access</td><td>Role can only access the explicitly selected tools</td></tr>
+</table>
+<p>Owner and Manager roles default to Full access and cannot be restricted.</p>
+<p>#### Logs</p>
+<p>Every MCP client request and server response is logged — request time, invoker (App or User), method, target tool/prompt/resource, and response status. Click any entry to see the full request/response payload, useful for security audits and debugging.</p>
+<p>#### Connection (Example — Claude Desktop)</p>
+<pre><code class="lang-json">{
+  &quot;mcpServers&quot;: {
+    &quot;my-xwork-app&quot;: {
+      &quot;url&quot;: &quot;https://xworkdev.ashgso.com/mcp/my-app&quot;,
+      &quot;headers&quot;: {
+        &quot;x-app-authorization&quot;: &quot;YOUR_BEARER_TOKEN&quot;
+      }
+    }
+  }
+}</code></pre>
+<h3>User Stories</h3>
+<table>
+<tr><th>Role</th><th>Story</th></tr>
+<tr><td>Platform Administrator</td><td>As a platform administrator, I enable MCP Service on an existing X-Work app with one click — the platform generates a unique MCP Server endpoint instantly, with no server code to write.</td></tr>
+<tr><td>Platform Administrator</td><td>As a platform administrator, I create a no-code MCP Tool on the visual canvas, define its input schema with the JSONSchema editor, connect it to X-Work workflow nodes, and configure what it returns — all without touching code.</td></tr>
+<tr><td>Platform Administrator</td><td>As a platform administrator, I create an App Bearer Token for a specific AI agent, bind it to a X-Work role, and set its expiration — the agent gets exactly the tool access its role permits, nothing more.</td></tr>
+<tr><td>AI Agent Developer</td><td>As an AI agent developer, I paste the MCP Server URL and Bearer Token into my agent&#x27;s config (Claude Desktop, Coze, Dify, n8n) and my agent immediately discovers and can call all enabled X-Work tools.</td></tr>
+<tr><td>Business User</td><td>As a business user, I interact with an AI assistant that calls X-Work MCP tools on my behalf — submitting forms, querying records, triggering approvals — without me needing to open X-Work directly.</td></tr>
+<tr><td>IT / Security Auditor</td><td>As a security auditor, I review MCP Logs to see every AI-to-X-Work request: who called what tool, when, and what the result was — full traceability with no extra instrumentation needed.</td></tr>
+</table>
+<h3>Who Benefits</h3>
+<table>
+<tr><th>Audience</th><th>How They Use MCP Service</th></tr>
+<tr><td>Platform administrators</td><td>Expose X-Work business logic as AI-callable tools without writing server code</td></tr>
+<tr><td>AI agent developers</td><td>Connect AI workflows (Claude, Coze, Dify, n8n) to live X-Work data and processes</td></tr>
+<tr><td>Business teams</td><td>Enable AI assistants to take real actions inside X-Work on behalf of users</td></tr>
+<tr><td>IT / Security teams</td><td>Audit every AI-to-X-Work interaction through the built-in logs</td></tr>
+</table>
+<h3>What Changes for Users</h3>
+<p>Before MCP Service, making X-Work callable by an AI agent required a developer to build a custom MCP server from scratch — typically days of work. Now, a platform administrator can expose any X-Work app as an AI tool set in minutes, entirely through the X-Work UI. The AI ecosystem treats X-Work as a first-class service.</p>
+<hr />
+<h2>Module 3 — X-Work Integration</h2>
+<h3>What It Is</h3>
+<p>X-Work Integration enables the platform to host and render embedded applications built by AI coding assistants. It consists of two parts that work together:</p>
+<p>1. <strong>Platform-side</strong>: New infrastructure in X-Work Console for uploading, parsing, and managing application packages, plus a new page type (&quot;Integrated app page&quot;) in the page editor for binding app routes to X-Work&#x27;s sidebar navigation.</p>
+<p>2. <strong>Developer-side</strong>: The <code>xwork-integration</code> skill — a comprehensive AI coding context skill and CLI (<code>xwork-cli</code>) that guides AI assistants through the full development lifecycle, from empty project to production-ready <code>dist.zip</code>.</p>
+<h3>The Goal</h3>
+<blockquote><p><strong>A business analyst who knows how to use Claude or Cursor can build, package, and deploy a fully functional X-Work business application in half a day.</strong></p></blockquote>
+<h3>User Stories</h3>
+<table>
+<tr><th>Role</th><th>Story</th></tr>
+<tr><td>AI Developer (App Author)</td><td>As an AI developer, I run the skill&#x27;s scaffold command to get a standard project skeleton that conforms to the platform contract. I then let AI continue vibe-coding within the skill&#x27;s constraints — zero setup barrier from scratch.</td></tr>
+<tr><td>Platform Administrator</td><td>As a platform administrator, I upload a <code>&lt;code&gt;-&lt;version&gt;.zip</code> on the Integrated Apps management page. The platform parses <code>xwork.manifest.json</code> and displays the declared route list (<code>routes[]</code>) — I can see exactly what pages the app exposes.</td></tr>
+<tr><td>Administrator</td><td>As an administrator, when creating a new page in the page editor, I can select the page type &quot;Integrated app page&quot; and map it to a specific app route (by choosing App + Route). Opening that page is equivalent to opening the corresponding app page.</td></tr>
+<tr><td>Business User</td><td>As a business user, I access X-Work pages normally. When a page type is &quot;Integrated app page,&quot; I see the app content seamlessly — login state is shared automatically, and ACL takes effect without any extra steps.</td></tr>
+<tr><td>Platform Administrator</td><td>As a platform administrator, I can view all installed apps — their versions, route lists, and which &quot;Integrated app pages&quot; reference them — and upgrade or uninstall them. When uninstalling, the platform warns me if any routes are still referenced by menu items.</td></tr>
+</table>
+<h3>Authentication &amp; Permissions — What You Don&#x27;t Need to Build</h3>
+<p>Embedded apps automatically inherit X-Work&#x27;s identity and permission system:</p>
+<ul>
+<li><strong>Login state automatically reused</strong> — Integrated apps are deployed on the same domain as X-Work. The browser sends the X-Work session cookie automatically; embedded apps do not need to implement a separate login flow.</li>
+<li><strong>Permission system directly inherited</strong> — Apps access data through an X-Work API Key bound to a user role. ACL is governed entirely by X-Work&#x27;s role system — no separate user management or permission module needed.</li>
+<li><strong>Security boundary enforced by the platform</strong> — All API requests pass through X-Work&#x27;s authentication layer. The embedded app&#x27;s data access is strictly limited to the permissions of its API Key&#x27;s bound role, eliminating privilege escalation risk.</li>
+</ul>
+<h3>Platform Capabilities — Integrated Apps</h3>
+<p>#### App Package Management (More → Integrated Apps)</p>
+<table>
+<tr><th>Feature</th><th>Description</th></tr>
+<tr><td>Upload</td><td>Upload a <code>.zip</code> package; platform auto-reads <code>xwork.manifest.json</code></td></tr>
+<tr><td>Auto-parse</td><td>Extracts <code>code</code>, <code>version</code>, title, and <code>routes[]</code> from the manifest</td></tr>
+<tr><td>List view</td><td>Shows all installed apps with code, version, route count, and active status</td></tr>
+<tr><td>Detail view</td><td>Full app metadata, entry URL, route list (path / title / params)</td></tr>
+<tr><td>Version management</td><td>Upload a new version to update an existing app</td></tr>
+<tr><td>Delete with guard</td><td>Warns when the app is still referenced by menu items</td></tr>
+</table>
+<p>#### Menu ↔ Route Mapping (Designs → Add Menu Item)</p>
+<p>Administrators bind X-Work sidebar menu items to application routes using a new page type: <strong>Integrated app page</strong>.</p>
+<table>
+<tr><th>Field</th><th>Description</th></tr>
+<tr><td>Menu item title</td><td>Label shown in X-Work&#x27;s left sidebar</td></tr>
+<tr><td>App</td><td>The uploaded integrated app (shown as <code>&lt;Title&gt; (&lt;code&gt;@&lt;version&gt;)</code>)</td></tr>
+<tr><td>Route</td><td>One route from the app&#x27;s <code>routes[]</code>, selected from a dropdown</td></tr>
+</table>
+<p>Once saved, business users click the menu item and X-Work loads the app via iframe. Login state is shared automatically through the same-domain cookie — no re-authentication needed, no visible seam.</p>
+<h3>Developer Capabilities — xwork-integration Skill</h3>
+<p>#### What the Skill Covers</p>
+<table>
+<tr><th>Area</th><th>Coverage</th></tr>
+<tr><td>App scaffold</td><td>One-command project skeleton: frontend SPA, backend init script, <code>xwork.manifest.json</code></td></tr>
+<tr><td>Backend guidance</td><td>Collections, Fields, relationships (1:N, M:N), ACL role design, bootstrap script</td></tr>
+<tr><td>Frontend guidance</td><td>SDK integration, X-Work REST API calls, 3-level ACL (page / action / field), Ant Design 5.x</td></tr>
+<tr><td>Integration mode selection</td><td>Decision tree for 4 modes: same-domain iframe (default), same-domain plugin, cross-domain, server-to-server</td></tr>
+<tr><td>AI Debug Preview</td><td>One command starts dev server + generates a session-authenticated preview link for AI verification</td></tr>
+<tr><td>Build &amp; self-check</td><td>41-item automated validation before packaging — zero failures required to produce <code>dist.zip</code></td></tr>
+</table>
+<p>#### 41-Item Self-Check (Selected Rules)</p>
+<table>
+<tr><th>Category</th><th>Example checks</th></tr>
+<tr><td>Manifest</td><td><code>xwork.manifest.json</code> exists; <code>code</code>, <code>version</code>, <code>routes[]</code> present and non-empty</td></tr>
+<tr><td>API safety</td><td>No forbidden API calls; no absolute resource paths</td></tr>
+<tr><td>Package structure</td><td>No <code>init/</code> directory in output; bundle size within limits</td></tr>
+<tr><td>Iframe safety</td><td>No <code>window.top</code> navigation; no double-navigation patterns</td></tr>
+</table>
+<p>#### CLI Command Reference</p>
+<table>
+<tr><th>Task</th><th>Command</th></tr>
+<tr><td>Install skill to AI platform</td><td><code>xwork-cli init --ai &lt;platform&gt; --non-interactive</code></td></tr>
+<tr><td>Create new app</td><td><code>xwork-cli create &lt;app-name&gt; --yes</code></td></tr>
+<tr><td>Start dev server + AI preview link</td><td><code>xwork-cli dev</code></td></tr>
+<tr><td>Generate AI preview link only</td><td><code>npm run ai:preview</code></td></tr>
+<tr><td>Create isolated test environment</td><td><code>xwork-cli test create</code></td></tr>
+<tr><td>Check test environment health</td><td><code>xwork-cli test health [app-name]</code></td></tr>
+<tr><td>Search skill knowledge base</td><td><code>xwork-cli search &quot;&lt;query&gt;&quot; --domain &lt;domain&gt; --limit &lt;n&gt;</code></td></tr>
+<tr><td>List all entries in a domain</td><td><code>xwork-cli search &quot;&quot; --domain &lt;domain&gt; --list</code></td></tr>
+<tr><td>Browse backend API catalog</td><td><code>xwork-cli backend api [--category &lt;type&gt;]</code></td></tr>
+<tr><td>View field types</td><td><code>xwork-cli backend field-types</code></td></tr>
+<tr><td>Initialize backend environment</td><td><code>xwork-cli backend init</code></td></tr>
+<tr><td>Test backend connection</td><td><code>xwork-cli backend test</code></td></tr>
+<tr><td>Apply declarative app plan</td><td><code>xwork-cli apply</code></td></tr>
+<tr><td>Generate integration plan</td><td><code>xwork-cli plan --mode &lt;mode&gt;</code></td></tr>
+<tr><td>Generate collection creation code</td><td><code>xwork-cli generate collection &lt;name&gt;</code></td></tr>
+<tr><td>Validate project configuration</td><td><code>xwork-cli validate</code></td></tr>
+<tr><td>Build + package (<code>dist.zip</code>)</td><td><code>xwork-cli frontend build</code></td></tr>
+<tr><td>Uninstall skill</td><td><code>xwork-cli uninstall --ai &lt;platform&gt; --yes</code></td></tr>
+</table>
+<p>#### AI Platform Support (18 Platforms)</p>
+<p>Claude · Cursor · Augment · Copilot · Windsurf · Codex · Continue · Gemini · Trae · OpenCode · Qoder · RooCode · KiloCode · Droid · Kiro · Warp · CodeBuddy · Agent</p>
+<p>Install to all at once: <code>xwork-cli init --ai all</code></p>
+<p>#### The Development Flow</p>
+<pre><code class="lang-mermaid">flowchart TD
+    A[&quot;① Create X-Work App\nGet App Code&quot;]
+    B[&quot;② Apply for API Key\n(Developer role)&quot;]
+    C[&quot;③ Install xwork-cli\nInit skill to AI platform&quot;]
+    D[&quot;④ Scaffold app\nxwork-cli create&quot;]
+    E[&quot;⑤ AI builds the app\nFrontend + Backend + Manifest&quot;]
+    F[&quot;⑥ Build &amp; package\nxwork-cli frontend build → dist.zip&quot;]
+    G[&quot;⑦ Upload to X-Work\nMore → Integrated Apps&quot;]
+    H[&quot;⑧ Map menu items\nDesigns → Integrated app page&quot;]
+    I[&quot;⑨ Set permissions\nRoles → Menu access&quot;]
+    J[&quot;⑩ Business users access\niframe loads, login shared&quot;]
+
+    A --&gt; B --&gt; C --&gt; D --&gt; E --&gt; F --&gt; G --&gt; H --&gt; I --&gt; J</code></pre>
+<h3>Who Benefits</h3>
+<table>
+<tr><th>Audience</th><th>How They Use X-Work Integration</th></tr>
+<tr><td>AI developers / vibe-coders</td><td>Build full-stack X-Work apps using AI, with clear contracts and automated validation</td></tr>
+<tr><td>Platform administrators</td><td>Accept and manage AI-produced apps with confidence; route them into X-Work&#x27;s menu system</td></tr>
+<tr><td>Business analysts</td><td>Describe a business need to an AI, get a working X-Work app without waiting for IT</td></tr>
+<tr><td>IT teams</td><td>Every uploaded app goes through 41 automated checks before it reaches the platform</td></tr>
+</table>
+<h3>What Changes for Users</h3>
+<p>Before X-Work Integration, AI-generated apps lived outside X-Work or required manual developer effort to wire them in. Now, any AI-built application that passes the self-check can be uploaded, routed, and served through X-Work&#x27;s navigation — with authentication and permissions applied automatically.</p>
+<hr />
+<h2>Benefits Summary</h2>
+<table>
+<tr><th>Benefit</th><th>Open API</th><th>MCP Service</th><th>X-Work Integration</th></tr>
+<tr><td>Eliminates bespoke integration code</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Standard, documented protocol</td><td>REST</td><td>MCP</td><td>xwork.manifest.json</td></tr>
+<tr><td>Role-based access control</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>No new infrastructure to operate</td><td>✓</td><td>✓</td><td>✓</td></tr>
+<tr><td>Works with existing X-Work apps</td><td>✓</td><td>✓</td><td>—</td></tr>
+<tr><td>Supports 18+ AI platforms</td><td>—</td><td>✓ (as client)</td><td>✓ (as builder)</td></tr>
+<tr><td>Enables non-developer delivery</td><td>—</td><td>Partial</td><td>✓</td></tr>
+</table>
+  </div>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide — Open API — XWork Open Capabilities</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:#000; background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid rgba(0,0,0,.08); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid rgba(0,0,0,.08); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    pre { background:#0a0a0a; color:#f5f5f5; padding:1rem; border-radius:6px; overflow-x:auto; font-size:.8125rem; line-height:1.5; }
+    pre code { background:transparent; padding:0; color:inherit; }
+    hr { border:none; border-top:1px solid rgba(0,0,0,.08); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-open-capabilities">← Back to Open Capabilities</a>
+    <h1>Open API — User Guide</h1>
+<h2>Overview</h2>
+<p>X-Work Open API lets external systems read and write X-Work data, trigger workflows, and submit approvals — using standard REST calls authenticated by an API Key. All endpoints follow a unified pattern:</p>
+<pre><code class="lang-">/api/{resource}:{action}</code></pre>
+<hr />
+<h2>Step 1: Apply for an API Key</h2>
+<p>X-Work Console is the administrator backend. Access it by navigating to your X-Work instance URL and signing in with an admin account.</p>
+<p>1. Open <strong>X-Work Console → Settings → API Keys</strong>.</p>
+<p>2. Click <strong>Create API Key</strong>.</p>
+<p>3. Fill in the form:</p>
+<table>
+<tr><th>Field</th><th>Description</th></tr>
+<tr><td>Name</td><td>A human-readable label for this key</td></tr>
+<tr><td>Role</td><td>The X-Work role this key is bound to — determines all permissions</td></tr>
+<tr><td>Expiration</td><td>7 days / 30 days / 90 days / 1 year / Never expires</td></tr>
+</table>
+<p>4. Click <strong>Create</strong>. <strong>Copy the key value immediately</strong> — it is shown only once. If lost, you must create a new key.</p>
+<blockquote><p><strong>Security note:</strong> A key can only access what its bound role permits. The platform provides no access beyond the role boundary. Delete a key the moment it is no longer needed — deletion takes effect immediately.</p></blockquote>
+<hr />
+<h2>Step 2: Authenticate Every Request</h2>
+<p>Include the API Key in the <code>Authorization</code> header of every request:</p>
+<pre><code class="lang-http">Authorization: Bearer {API_KEY}</code></pre>
+<p>Example:</p>
+<pre><code class="lang-http">GET /api/orders:list
+Authorization: Bearer nb_abc123xyz</code></pre>
+<hr />
+<h2>Step 3: Read and Write Data (CRUD)</h2>
+<h3>Five Standard Operations</h3>
+<table>
+<tr><th>Operation</th><th>Request</th><th>Description</th></tr>
+<tr><td>List records</td><td><code>GET /api/{resource}:list</code></td><td>Supports filter, sort, pagination</td></tr>
+<tr><td>Get one record</td><td><code>GET /api/{resource}:get?filterByTk={id}</code></td><td>Fetch by primary key</td></tr>
+<tr><td>Create</td><td><code>POST /api/{resource}:create</code></td><td>Request body: field key-value pairs</td></tr>
+<tr><td>Update</td><td><code>POST /api/{resource}:update?filterByTk={id}</code></td><td>Partial field update</td></tr>
+<tr><td>Delete</td><td><code>POST /api/{resource}:destroy?filterByTk={id}</code></td><td>Delete by primary key</td></tr>
+</table>
+<h3>Query Parameters</h3>
+<table>
+<tr><th>Parameter</th><th>Description</th><th>Example</th></tr>
+<tr><td><code>filter</code></td><td>Condition filtering</td><td><code>filter[status][$eq]=active</code></td></tr>
+<tr><td><code>sort</code></td><td>Sort field; prefix <code>-</code> for descending</td><td><code>sort=-createdAt,name</code></td></tr>
+<tr><td><code>page</code> / <code>pageSize</code></td><td>Pagination; defaults: page 1, 20 per page</td><td><code>page=2&amp;pageSize=50</code></td></tr>
+<tr><td><code>fields</code></td><td>Return only specified fields</td><td><code>fields=id,name,status</code></td></tr>
+<tr><td><code>appends</code></td><td>Load related fields</td><td><code>appends=roles,createdBy</code></td></tr>
+</table>
+<p><strong>Supported filter operators:</strong> <code>$eq</code> <code>$ne</code> <code>$gt</code> <code>$gte</code> <code>$lt</code> <code>$lte</code> <code>$in</code> <code>$notIn</code> <code>$like</code> <code>$iLike</code> <code>$and</code> <code>$or</code></p>
+<h3>Example: List Pending Orders</h3>
+<pre><code class="lang-http">GET /api/orders:list?filter[status][$eq]=pending&amp;sort=-createdAt&amp;page=1&amp;pageSize=20&amp;appends=customer
+Authorization: Bearer nb_abc123xyz</code></pre>
+<hr />
+<h3>Example: Create a Record</h3>
+<pre><code class="lang-http">POST /api/orders:create
+Authorization: Bearer nb_abc123xyz
+Content-Type: application/json
+
+{
+  &quot;customerId&quot;: 42,
+  &quot;amount&quot;: 1500,
+  &quot;status&quot;: &quot;pending&quot;
+}</code></pre>
+<hr />
+<h3>Example: Update a Record</h3>
+<pre><code class="lang-http">POST /api/orders:update?filterByTk=101
+Authorization: Bearer nb_abc123xyz
+Content-Type: application/json
+
+{
+  &quot;status&quot;: &quot;confirmed&quot;
+}</code></pre>
+<hr />
+<h3>Example: Delete a Record</h3>
+<pre><code class="lang-http">POST /api/orders:destroy?filterByTk=101
+Authorization: Bearer nb_abc123xyz</code></pre>
+<hr />
+<h2>Step 4: Trigger a Workflow</h2>
+<p>Use Workflow API when an external event needs to kick off an X-Work business process.</p>
+<h3>Trigger a Workflow Manually</h3>
+<pre><code class="lang-http">POST /api/workflows:execute?filterByTk={workflowId}
+Authorization: Bearer {API_KEY}
+Content-Type: application/json
+
+{
+  &quot;context&quot;: {
+    &quot;data&quot;: {
+      &quot;orderId&quot;: &quot;ORD-001&quot;,
+      &quot;amount&quot;: 1000
+    }
+  }
+}</code></pre>
+<ul>
+<li><code>workflowId</code>: the ID of the target workflow in X-Work.</li>
+<li><code>context.data</code>: arbitrary key-value pairs passed as trigger data into the workflow.</li>
+</ul>
+<pre><code class="lang-json">// Response — extract executionId for status polling
+{
+  &quot;data&quot;: {
+    &quot;id&quot;: 42,
+    &quot;key&quot;: &quot;exec-20260709-001&quot;,
+    &quot;workflowId&quot;: 7,
+    &quot;status&quot;: 0,
+    &quot;createdAt&quot;: &quot;2026-07-09T09:00:00Z&quot;
+  }
+}</code></pre>
+<p>Use the returned <code>id</code> (executionId) in the next step to poll for execution status.</p>
+<h3>Check Execution Status</h3>
+<pre><code class="lang-http">GET /api/executions:get?filterByTk={executionId}&amp;appends=jobs,workflow
+Authorization: Bearer {API_KEY}</code></pre>
+<p>The response includes execution status, individual job results, and the associated workflow metadata.</p>
+<hr />
+<h2>Step 5: Submit an Approval Node</h2>
+<p>When a workflow has a pending approval node, submit the decision via API:</p>
+<pre><code class="lang-http">POST /api/approval_jobs:submit
+Authorization: Bearer {API_KEY}
+Content-Type: application/json
+
+{
+  &quot;jobId&quot;: 789,
+  &quot;actionKey&quot;: &quot;approve&quot;,
+  &quot;formKey&quot;: &quot;approval_form&quot;,
+  &quot;approval_form&quot;: {
+    &quot;comments&quot;: &quot;Approved — looks good.&quot;,
+    &quot;decision&quot;: &quot;approve&quot;
+  }
+}</code></pre>
+<table>
+<tr><th>Field</th><th>Description</th></tr>
+<tr><td><code>jobId</code></td><td>The approval job ID from the execution detail</td></tr>
+<tr><td><code>actionKey</code></td><td><code>approve</code> or <code>reject</code> (as configured in the workflow)</td></tr>
+<tr><td><code>formKey</code></td><td>The form identifier on the approval node</td></tr>
+<tr><td><code>approval_form</code></td><td>Key-value pairs for the approval form fields</td></tr>
+</table>
+<hr />
+<h2>API Key Lifecycle</h2>
+<table>
+<tr><th>Event</th><th>Behavior</th></tr>
+<tr><td>Key deleted</td><td>Access revoked immediately</td></tr>
+<tr><td>Key expired</td><td>Access stops automatically at expiration time</td></tr>
+<tr><td>Role changed</td><td>Key permissions update in real time</td></tr>
+</table>
+<hr />
+<h2>Common Errors</h2>
+<table>
+<tr><th>HTTP Status</th><th>Meaning</th></tr>
+<tr><td><code>401 Unauthorized</code></td><td>Missing or invalid API Key</td></tr>
+<tr><td><code>403 Forbidden</code></td><td>Key&#x27;s bound role lacks permission for this resource. To fix: verify that the bound role has the required collection or workflow permissions configured in X-Work Console → Permissions → Roles.</td></tr>
+<tr><td><code>404 Not Found</code></td><td>Resource or record does not exist</td></tr>
+<tr><td><code>422 Unprocessable Entity</code></td><td>Request body validation failed</td></tr>
+</table>
+<hr />
+<h2>Quick Reference</h2>
+<pre><code class="lang-">List:    GET  /api/{resource}:list
+Get:     GET  /api/{resource}:get?filterByTk={id}
+Create:  POST /api/{resource}:create
+Update:  POST /api/{resource}:update?filterByTk={id}
+Delete:  POST /api/{resource}:destroy?filterByTk={id}
+
+Workflow trigger:  POST /api/workflows:execute?filterByTk={workflowId}
+Execution status:  GET  /api/executions:get?filterByTk={executionId}
+Approval submit:   POST /api/approval_jobs:submit</code></pre>
+<p>All requests require: <code>Authorization: Bearer {API_KEY}</code></p>
+<p>For full parameter details and examples, see Steps 3–5 above.</p>
+  </div>
+</body>
+</html>

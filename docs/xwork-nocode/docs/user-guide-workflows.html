@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>User Guide — Workflows — XWork</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    :root { --ink:#000; --line:rgba(0,0,0,.08); }
+    body { margin:0; font-family:'DM Sans',system-ui,sans-serif; color:var(--ink); background:#fff; line-height:1.65; }
+    .wrap { max-width:48rem; margin:0 auto; padding:2.5rem 1.25rem 4rem; }
+    a.back { font-size:.875rem; color:rgba(0,0,0,.45); text-decoration:none; }
+    a.back:hover { color:#000; }
+    h1,h2,h3 { font-family:'Space Grotesk',system-ui,sans-serif; letter-spacing:-.02em; line-height:1.25; }
+    h1 { font-size:1.75rem; margin:1.5rem 0 1rem; }
+    h2 { font-size:1.25rem; margin:2rem 0 .75rem; }
+    h3 { font-size:1.05rem; margin:1.5rem 0 .5rem; }
+    p,li { color:rgba(0,0,0,.75); }
+    ul { padding-left:1.25rem; }
+    li { margin:.35rem 0; }
+    table { width:100%; border-collapse:collapse; margin:1rem 0 1.5rem; font-size:.875rem; }
+    th,td { border:1px solid var(--line); padding:.65rem .75rem; text-align:left; vertical-align:top; }
+    th { background:#fafafa; font-size:.7rem; text-transform:uppercase; letter-spacing:.04em; color:rgba(0,0,0,.45); }
+    img { max-width:100%; height:auto; border:1px solid var(--line); border-radius:4px; display:block; margin:.75rem 0; }
+    figure { margin:1.25rem 0; }
+    figcaption { font-size:.75rem; color:rgba(0,0,0,.45); margin-top:.4rem; }
+    code { font-family:ui-monospace,monospace; font-size:.875em; background:rgba(0,0,0,.05); padding:.1em .35em; border-radius:2px; }
+    hr { border:none; border-top:1px solid var(--line); margin:2rem 0; }
+    blockquote { border-left:3px solid #0ea5e9; margin:1rem 0; padding:.5rem 1rem; background:#fafafa; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <a class="back" href="../../../product.html?id=xwork-nocode">← Back to Nocode Platform</a>
+    <h1>X-Work — User Guide: Workflows</h1>
+<h2>Overview</h2>
+<p>The Workflows module lets you automate business processes visually — without writing code. Define what triggers a workflow, then chain together nodes (steps) that query data, update records, send emails, request approvals, call APIs, and more. Workflows run reliably in the background, freeing your team from manual, repetitive tasks.</p>
+<hr />
+<h2>Key Concepts</h2>
+<table>
+<tr><th>Term</th><th>Meaning</th></tr>
+<tr><td><strong>Workflow</strong></td><td>A reusable automation template consisting of a trigger and a sequence of nodes</td></tr>
+<tr><td><strong>Trigger</strong></td><td>The event or condition that starts the workflow</td></tr>
+<tr><td><strong>Node</strong></td><td>A single processing step within the workflow (e.g. query data, send email)</td></tr>
+<tr><td><strong>Execution</strong></td><td>One instance of a workflow running from start to finish</td></tr>
+<tr><td><strong>Job</strong></td><td>The result of a single node within an execution</td></tr>
+<tr><td><strong>Variable</strong></td><td>A named value that carries data between nodes</td></tr>
+</table>
+<hr />
+<h2>Step 1: Access Workflows</h2>
+<p>1. Log in to X-Work</p>
+<p>2. In the left navigation, click <strong>Workflows</strong></p>
+<p>3. You will see a list of existing workflows with their status and last execution time</p>
+<hr />
+<h2>Step 2: Create a New Workflow</h2>
+<p>1. Click <strong>+ Add Workflow</strong></p>
+<p>2. Enter a <strong>Workflow Name</strong> (e.g. <code>Leave Request Approval</code>, <code>Daily Report Email</code>)</p>
+<p>3. Click <strong>Confirm</strong> — the workflow canvas opens</p>
+<hr />
+<h2>Step 3: Configure the Trigger</h2>
+<p>The trigger defines when the workflow starts. Click the <strong>Trigger</strong> node at the top of the canvas to configure it.</p>
+<h3>Trigger Types</h3>
+<table>
+<tr><th>Trigger</th><th>When It Fires</th></tr>
+<tr><td><strong>Collection Event</strong></td><td>When a record is created, updated, or deleted in a collection</td></tr>
+<tr><td><strong>Schedule</strong></td><td>At a fixed time or recurring interval (cron-based)</td></tr>
+<tr><td><strong>Manual</strong></td><td>When a user clicks a &quot;Trigger Workflow&quot; button in the UI</td></tr>
+<tr><td><strong>Page Load</strong></td><td>When a specific page is loaded in the application</td></tr>
+<tr><td><strong>Request Interception</strong></td><td>Before an API request completes (allows modification or rejection)</td></tr>
+<tr><td><strong>External AI Invocation</strong></td><td>When an AI tool calls this workflow via MCP</td></tr>
+</table>
+<h3>Example: Collection Event Trigger</h3>
+<p>1. Select <strong>Collection Event</strong></p>
+<p>2. Choose the <strong>Collection</strong> (e.g. <code>leave_requests</code>)</p>
+<p>3. Select the <strong>Event</strong>: Create, Update, or Delete</p>
+<p>4. Optionally set a <strong>Pre-conditions</strong> filter (e.g. only fire when <code>Status = Pending</code>)</p>
+<p>5. Click <strong>Save</strong></p>
+<h3>Example: Schedule Trigger</h3>
+<p>1. Select <strong>Schedule</strong></p>
+<p>2. Choose <strong>Recurring</strong> and enter a cron expression (e.g. <code>0 9 <em> </em> 1</code> = every Monday at 9am)</p>
+<p>   — or choose <strong>Fixed date/time</strong> for a one-off execution</p>
+<p>3. Click <strong>Save</strong></p>
+<hr />
+<h2>Step 4: Add Nodes</h2>
+<p>Click the <strong>+</strong> button below any node on the canvas to add the next step.</p>
+<h3>Node Categories</h3>
+<p>#### Data Nodes</p>
+<table>
+<tr><th>Node</th><th>What It Does</th></tr>
+<tr><td><strong>Query Collection</strong></td><td>Fetch one or multiple records with filters</td></tr>
+<tr><td><strong>Create Record</strong></td><td>Add a new record to a collection</td></tr>
+<tr><td><strong>Update Record</strong></td><td>Modify fields on existing records</td></tr>
+<tr><td><strong>Delete Record</strong></td><td>Remove records from a collection</td></tr>
+<tr><td><strong>SQL</strong></td><td>Execute a raw SQL query</td></tr>
+</table>
+<p>#### Logic Nodes</p>
+<table>
+<tr><th>Node</th><th>What It Does</th></tr>
+<tr><td><strong>Condition</strong></td><td>Branch the workflow: if X then path A, else path B</td></tr>
+<tr><td><strong>Loop</strong></td><td>Repeat a set of nodes for each item in a list</td></tr>
+<tr><td><strong>Delay</strong></td><td>Pause execution for a defined duration</td></tr>
+<tr><td><strong>Jump</strong></td><td>Skip forward or backward in the workflow</td></tr>
+</table>
+<p>#### Integration Nodes</p>
+<table>
+<tr><th>Node</th><th>What It Does</th></tr>
+<tr><td><strong>HTTP Request</strong></td><td>Call any external REST API</td></tr>
+<tr><td><strong>JavaScript</strong></td><td>Run custom logic with a code snippet</td></tr>
+<tr><td><strong>Sub-Workflow</strong></td><td>Call another workflow and receive its result</td></tr>
+<tr><td><strong>MCP Tool</strong></td><td>Invoke an AI tool and use its response</td></tr>
+</table>
+<p>#### People Nodes</p>
+<table>
+<tr><th>Node</th><th>What It Does</th></tr>
+<tr><td><strong>Approval</strong></td><td>Route to one or more approvers; pause until they respond</td></tr>
+<tr><td><strong>Manual Task</strong></td><td>Assign a task to a user and pause until they complete it</td></tr>
+<tr><td><strong>Email</strong></td><td>Send an email with dynamic content</td></tr>
+<tr><td><strong>Task Notification</strong></td><td>Post an in-app notification/task to a user</td></tr>
+</table>
+<p>#### File Nodes</p>
+<table>
+<tr><th>Node</th><th>What It Does</th></tr>
+<tr><td><strong>File Converter</strong></td><td>Convert files between formats (e.g. docx → pdf)</td></tr>
+</table>
+<figure><img src="screenshots/workflow_canvas.png" alt="X-Work Workflows — Visual Canvas with Nodes" loading="lazy" /><figcaption>X-Work Workflows — Visual Canvas with Nodes</figcaption></figure>
+<hr />
+<h2>Step 5: Configure a Node</h2>
+<p>1. Click a node on the canvas to open its configuration panel on the right</p>
+<p>2. Fill in the required fields — each node type has its own settings:</p>
+<h3>Example: Query Collection Node</h3>
+<ul>
+<li><strong>Collection</strong>: select the table to query (e.g. <code>employees</code>)</li>
+<li><strong>Filter</strong>: add conditions (e.g. <code>Department = {{trigger.department_id}}</code>)</li>
+<li><strong>Sort</strong>: choose sort field and direction</li>
+<li><strong>Limit</strong>: max number of records to return</li>
+</ul>
+<h3>Example: Approval Node</h3>
+<ul>
+<li><strong>Assignees</strong>: choose users or roles who must approve</li>
+<li><strong>Mode</strong>: Any one approver / All must approve / Percentage threshold</li>
+<li><strong>Timeout</strong>: optionally auto-reject or auto-approve after a time limit</li>
+<li><strong>On Approve / On Reject</strong>: connect different next steps for each outcome</li>
+</ul>
+<h3>Example: Email Node</h3>
+<ul>
+<li><strong>To</strong>: enter email addresses or use a variable (e.g. <code>{{trigger.applicant_email}}</code>)</li>
+<li><strong>Subject</strong>: static text or dynamic with variables</li>
+<li><strong>Body</strong>: rich-text editor with variable placeholders</li>
+</ul>
+<hr />
+<h2>Step 6: Use Variables</h2>
+<p>Variables let you pass data between nodes throughout the workflow.</p>
+<h3>Variable Sources</h3>
+<ul>
+<li><strong>Trigger variables</strong>: data from the triggering event (e.g. <code>{{trigger.record.id}}</code>)</li>
+<li><strong>Node output variables</strong>: results from previous nodes (e.g. <code>{{query_node.results[0].name}}</code>)</li>
+<li><strong>System variables</strong>: current time, current user, etc.</li>
+</ul>
+<h3>Using Variables in Node Configuration</h3>
+<p>1. In any text field, type <code>{{</code> to open the variable picker</p>
+<p>2. Browse or search for the variable you need</p>
+<p>3. Click to insert — it appears as <code>{{node_name.field_name}}</code></p>
+<hr />
+<h2>Step 7: Add Conditional Branching</h2>
+<p>1. Click <strong>+</strong> → <strong>Condition</strong></p>
+<p>2. In the condition node settings, define the branch condition:</p>
+<ul>
+<li>Select a variable</li>
+<li>Choose a comparator (equals, contains, greater than, is empty, etc.)</li>
+<li>Enter a value</li>
+</ul>
+<p>3. The canvas shows two branches: <strong>Yes</strong> (condition met) and <strong>No</strong> (condition not met)</p>
+<p>4. Add different nodes to each branch</p>
+<p>You can nest multiple conditions for complex routing.</p>
+<hr />
+<h2>Step 8: Enable and Test the Workflow</h2>
+<p>1. When your workflow is configured, click <strong>Enable</strong> (toggle in the top-right of the canvas)</p>
+<p>2. To test manually: go to the <strong>Executions</strong> tab and click <strong>Run Manually</strong></p>
+<p>3. Monitor the result in <strong>Executions</strong> — click any execution to see each node&#x27;s job result and output data</p>
+<hr />
+<h2>Step 9: Monitor Executions</h2>
+<p>1. Click the <strong>Executions</strong> tab on the workflow</p>
+<p>2. Each row shows an execution with status: <strong>Running</strong>, <strong>Resolved</strong>, <strong>Failed</strong>, <strong>Pending</strong></p>
+<p>3. Click an execution to see a step-by-step visualization of the run</p>
+<p>4. Click any job (node step) to see its input, output, and any errors</p>
+<figure><img src="screenshots/workflow_executions.png" alt="X-Work Workflows — Execution History" loading="lazy" /><figcaption>X-Work Workflows — Execution History</figcaption></figure>
+<hr />
+<h2>Common Workflow Examples</h2>
+<h3>Example 1: Leave Request Approval</h3>
+<p>```</p>
+<p>Trigger: Collection Event → leave_requests (on Create)</p>
+<p>→ Send Email: notify manager</p>
+<p>→ Approval: manager must approve or reject</p>
+<p>  → [Approved] Update Record: set Status = Approved</p>
+<p>  → [Rejected] Update Record: set Status = Rejected</p>
+<p>→ Send Email: notify employee of result</p>
+<p>```</p>
+<h3>Example 2: Daily Report Generation</h3>
+<p>```</p>
+<p>Trigger: Schedule → every day at 8:00 AM</p>
+<p>→ Query Collection: fetch yesterday&#x27;s completed tasks</p>
+<p>→ JavaScript: calculate summary statistics</p>
+<p>→ Email: send report to team leads</p>
+<p>```</p>
+<h3>Example 3: New Employee Onboarding</h3>
+<p>```</p>
+<p>Trigger: Collection Event → employees (on Create)</p>
+<p>→ Create Record: generate IT access request</p>
+<p>→ Manual Task: IT team assigns equipment</p>
+<p>→ Email: welcome email to new employee</p>
+<p>→ Task Notification: notify HR to schedule orientation</p>
+<p>```</p>
+<hr />
+<h2>Tips &amp; Best Practices</h2>
+<ul>
+<li><strong>Name nodes clearly</strong> — good names like &quot;Fetch Pending Requests&quot; are easier to debug than &quot;Query 1&quot;</li>
+<li><strong>Use pre-conditions on triggers</strong> to avoid unnecessary executions</li>
+<li><strong>Test with real data</strong> — use &quot;Run Manually&quot; with an actual record ID when possible</li>
+<li><strong>Keep workflows focused</strong> — one workflow per business process; use Sub-Workflow for shared logic</li>
+<li><strong>Handle failures</strong> — add a Condition after critical nodes to route errors to a notification or fallback path</li>
+</ul>
+<hr />
+<h2>Troubleshooting</h2>
+<table>
+<tr><th>Issue</th><th>Solution</th></tr>
+<tr><td>Workflow not triggering</td><td>Check it is Enabled; verify trigger conditions match your test case</td></tr>
+<tr><td>Node showing &quot;Failed&quot;</td><td>Click the job in Executions to see the error message and input data</td></tr>
+<tr><td>Variable showing empty</td><td>Verify the source node succeeded and the variable path is correct</td></tr>
+<tr><td>Approval never resolving</td><td>Check if approver received the notification; verify assignee configuration</td></tr>
+<tr><td>Schedule not firing</td><td>Verify cron expression is correct (use a cron parser tool to validate)</td></tr>
+</table>
+  </div>
+</body>
+</html>

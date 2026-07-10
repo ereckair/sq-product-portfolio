@@ -13,3 +13,15 @@
   [headers.values]
     Content-Type = "video/mp4"
     Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/docs/xwork-nocode/demo/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/docs/xwork-open-capabilities/demo/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800"
