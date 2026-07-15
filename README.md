@@ -27,7 +27,7 @@ Open [http://localhost:8080](http://localhost:8080)
 3. **Global Quality Control Center** — Quality Agent Platform
 4. **Sourcing Systems** — Ashley Purchase System, SMMS
 5. **Human Resources Center** — HRS, XWork Vibe Studio
-6. **OneAshley Nocode Platform** — Nocode Platform, Open Capabilities (XWork)
+6. **OneAshley Nocode Platform** — Nocode Platform, Open Capabilities, XWork Copilot (XWork)
 
 ## Updating content
 

@@ -108,10 +108,10 @@ const PORTFOLIO = {
           description:
             'PLM is the operational system for furniture product development. SQE, Development, and Engineering collaborate on one changing record — Sample Groups, Master Items, materials, review results, and launch documents — before data is confirmed into PIM and corporate PK / AS400. Unlike PIM (final confirmed attributes), PLM owns everything still in motion.',
           contribution:
-            'Replaced the legacy CS tool with a structured lifecycle platform: concept-to-sample workflows, auto-generated quality checklists from product Category and Function Feature, Master Item composition for multi-SKU sets, and governed Show/Go market-number assignment — connecting development data to APS, compliance, costing, and factory hand-off in one place.',
+            'Replaced the legacy CLS (Concept Launch System) with a structured lifecycle platform: concept-to-sample workflows, auto-generated quality checklists from product Category and Function Feature, Master Item composition for multi-SKU sets, and governed Show/Go market-number assignment — connecting development data to APS, compliance, costing, and factory hand-off in one place.',
           beforeAfter: {
             before:
-              'Legacy CS with hardcoded fields; sampling data in email and Excel; review questions and field tests assigned manually; no Master Item model for multi-pack or wall-unit assemblies; launch documents tracked outside the product record.',
+              'Legacy CLS (Concept Launch System) with hardcoded fields; sampling data in email and Excel; review questions and field tests assigned manually; no Master Item model for multi-pack or wall-unit assemblies; launch documents tracked outside the product record.',
             after:
               'Electronic lifecycle from Concept Release to Show/Go; review questions and field tests auto-generated on vendor release; Master Items compose multiple samples into one sellable unit; NPIS, AIS, CTN, RPDF, labels and packing BOM authored with approval flows inside PLM.',
           },
@@ -364,7 +364,7 @@ const PORTFOLIO = {
           description:
             'PIM is the core product data engine. Its BOM captures materials, hardware, electrical, sponge, and dimensions at sample stage with enough detail for cost models and compliance protocols to run automatically. Confirmed data pushes to corporate PK for AS400, manufacturing, and ecommerce (Ashley.com).',
           contribution:
-            'Rebuilt BOM from scratch — the single biggest upgrade vs legacy CS. Enables automatic compliance test generation, accurate costing (vs estimated "bone"), and quality test planning from product attributes instead of manual re-entry.',
+            'Rebuilt BOM from scratch — the single biggest upgrade vs legacy CLS (Concept Launch System). Enables automatic compliance test generation, accurate costing (vs estimated "bone"), and quality test planning from product attributes instead of manual re-entry.',
           beforeAfter: {
             before:
               'No composite BOM / mass item; developers estimated costs; compliance engineers manually inspected samples and re-entered materials; data incomplete and duplicated across teams.',
@@ -1721,6 +1721,149 @@ const PORTFOLIO = {
               { url: 'docs/xwork-open-capabilities/visuals/feature-cards/mcp-service.png', label: 'Feature card — MCP Service' },
               { url: 'docs/xwork-open-capabilities/visuals/feature-cards/xwork-integration.png', label: 'Feature card — Integration' },
               { url: 'docs/xwork-open-capabilities/visuals/posters/launch-poster.png', label: 'Launch poster' },
+            ],
+            mcpTools: [],
+          },
+          feedback: [],
+        },
+        {
+          id: 'xwork-copilot',
+          name: 'XWork Copilot',
+          subtitle: 'Intelligent work partner · Create · Understand · Use',
+          status: 'live',
+          summary:
+            'AI embedded in XWork that turns natural-language business intent into governed Apps, then helps users understand and work those Apps — query, Skills, Insights, and Workflows in one loop.',
+          description:
+            'XWork Copilot is the intelligent interaction layer for OneAshley Nocode Platform (formerly XWork). It is not another chat window: it places AI inside creation, understanding, and execution. Teams describe goals in business language to build Apps, data models, pages, Workflows, and reusable Skills — with confirmation on structural changes — then use the same Copilot to query data, invoke Published Skills, generate chart-based Insights, and trigger follow-up Workflows without memorizing menus.',
+          contribution:
+            'Shortens the path from business need to application delivery and outcome: faster create, contextual understand, and natural-language use — turning individual expertise into Published Skills and consistent Workflow actions under platform governance.',
+          beforeAfter: {
+            before:
+              'Requirements translated through multiple configuration rounds; tables, pages, and processes built separately; users learn menus before finding functions; analysis recreated per person; follow-up is manual; AI sits outside the business system.',
+            after:
+              'Business descriptions become structured creation proposals; App, data, pages, Skills, and Workflows stay coherent; Copilot understands current App context; proven methods reuse as Published Skills; Insights appear as charts/tables; results can trigger Workflows and notifications.',
+          },
+          highlights: [
+            'Three stages — faster create it, better understand it, intelligently use it',
+            'Create Apps, Collections, pages, Workflows, and Skills from business language',
+            'Context-aware — current App, page, data, Skills, and Workflows',
+            'Native Insights — Chart, Table, Raw, plus business conclusions',
+            'Skills Management Center — Draft → Test → Published → version & reuse',
+            'Action loop — analysis results trigger governed Workflows and notifications',
+          ],
+          detailSections: [
+            {
+              title: 'Product positioning',
+              type: 'callout',
+              body: 'XWork Copilot connects business intent to governed applications and completed actions — the orchestration entry point for XWork, not a detached AI assistant.',
+              bullets: [
+                'Business intent → create governed App → understand context → invoke capabilities → Insights → Workflows',
+                'Low-code still needs requirement translation; Copilot starts from business language',
+                'General AI lacks App context; Copilot works inside permissions and platform rules',
+              ],
+            },
+            {
+              title: 'Three lifecycle stages',
+              type: 'pairs',
+              items: [
+                {
+                  label: 'Faster create it',
+                  detail:
+                    'Propose and create Apps, Collections, fields, relations, business pages, Workflows, and Skills — with user confirmation before important structural changes.',
+                },
+                {
+                  label: 'Better understand it',
+                  detail:
+                    'Recognize current App purpose, page, Collections, Published Skills, and enabled Workflows — lower learning effort and less menu searching.',
+                },
+                {
+                  label: 'Intelligently use it',
+                  detail:
+                    'Natural-language query and analysis, invoke Published Skills, generate Insights, and pass outcomes to Workflows for notification or follow-up.',
+                },
+              ],
+            },
+            {
+              title: 'Core capabilities',
+              type: 'modules',
+              groups: [
+                {
+                  name: 'XWork Copilot',
+                  items: [
+                    {
+                      name: 'App & data model creation',
+                      description:
+                        'From a business description: Apps, Collections, fields, relations, validation — propose first, create after confirmation.',
+                      status: 'live',
+                    },
+                    {
+                      name: 'Pages & Workflows',
+                      description:
+                        'Generate lists, forms, detail and status views; build triggers, conditions, branches, notifications, and follow-up actions.',
+                      status: 'live',
+                    },
+                    {
+                      name: 'Skills Management Center',
+                      description:
+                        'Create, test, publish, version, and reuse standardized business capabilities as organizational assets.',
+                      status: 'live',
+                    },
+                    {
+                      name: 'Contextual Insights & action loop',
+                      description:
+                        'Chart / Table / Raw Insights in conversation; pass results to enabled Workflows for assignment, review, or notification.',
+                      status: 'live',
+                    },
+                  ],
+                },
+              ],
+            },
+            {
+              title: 'Executive value',
+              type: 'list',
+              items: [
+                'Shorter delivery cycle from request to usable App',
+                'Greater business autonomy — goals in familiar language, less menu training',
+                'Better return on existing Apps, data, Skills, and Workflows',
+                'From individual Prompts to Published Skills and reusable Workflows',
+                'From answering questions to completing the next business step',
+                'Speed with control — confirmation, test/publish, explicit Workflow rules',
+              ],
+            },
+            {
+              title: 'Principles and boundaries',
+              type: 'list',
+              items: [
+                'Augments people — does not remove business accountability',
+                'Works within App permissions and business rules',
+                'Structural creation is visible and confirmable',
+                'Only Published Skills are treated as stable for broad reuse',
+                'Important actions use explicit Workflow triggers and recipients',
+                'Explains data limitations instead of false certainty',
+              ],
+            },
+          ],
+          integrations: [
+            'OneAshley Nocode Platform (XWork)',
+            'XWork Apps, Collections, and pages',
+            'Skills Management Center',
+            'XWork Workflows',
+            'Open Capabilities (API / MCP for agent ecosystems)',
+          ],
+          roadmap: [
+            'Expand early adoption in high-frequency, high-friction business work',
+            'Deepen Skills and Workflow reuse metrics for executives',
+            'Strengthen coupling with Open Capabilities for external agent clients',
+          ],
+          resources: {
+            prd: { url: 'docs/xwork-copilot/docs/product-overview.html', label: 'XWork Copilot Overview' },
+            demoVideo: { url: '/docs/xwork-copilot/demo/xwork-copilot-product-video.mp4', label: 'Full product video' },
+            documents: [
+              {
+                url: 'docs/xwork-copilot/docs/product-overview.html',
+                label: 'Product Overview',
+                meta: 'Positioning, create / understand / use, Skills, Workflows, and executive value',
+              },
             ],
             mcpTools: [],
           },
