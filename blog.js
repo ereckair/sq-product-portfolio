@@ -235,8 +235,7 @@ const BLOG = {
 
 <p class="mt-8">
   <a href="product.html?id=plm">Explore PLM on the portfolio →</a><br />
-  <a href="post.html?slug=pre-plm-agent-chat-first-sampling">Pre-PLM Agent — chat-first sampling ahead of formal PLM →</a><br />
-  <a href="post.html?slug=why-pim-is-the-bom-engine">Why PIM is the BOM engine →</a>
+  <a href="post.html?slug=pre-plm-agent-chat-first-sampling">Pre-PLM Agent — chat-first sampling ahead of formal PLM →</a>
 </p>
       `.trim(),
     },
@@ -1392,29 +1391,6 @@ const BLOG = {
   <li>Full product landing at <code>/pre-plm-agent/</code></li>
 </ul>
 <p>Next up: expand the agent to Vietnam product development teams using the same chat-first sampling workflow.</p>
-      `.trim(),
-    },
-    {
-      slug: 'why-pim-is-the-bom-engine',
-      type: 'blog',
-      title: 'Why we call PIM the BOM engine',
-      excerpt:
-        'Without a detailed bill of materials, compliance stalls, bone cost stays wrong, and quality protocols are guessed. PIM is the oxygen — not just another form.',
-      date: '2026-06-18',
-      author: 'Sara & Erika',
-      tags: ['PIM', 'Architecture', 'OneAshley'],
-      relatedProduct: 'pim',
-      body: `
-<p>After walking through every system with product leadership, one framing stuck: <strong>PIM is the engine</strong>. PLM holds changing data during development; PIM holds confirmed product attributes — especially the BOM — that downstream systems consume.</p>
-<h2>What the engine powers</h2>
-<p>When BOM is complete and accurate:</p>
-<ul>
-  <li><strong>Compliance Test Create</strong> auto-generates required tests from materials + protocol rules</li>
-  <li><strong>DPCS</strong> can cost from real SMMS prices instead of estimated "bone"</li>
-  <li><strong>ECO</strong> surfaces compliance and cost impacts when materials change</li>
-  <li><strong>Quality Workbench</strong> links product attributes to test requirements</li>
-</ul>
-<p>Before the rebuild, compliance engineers manually inspected samples and re-entered materials. Cost teams lump-priced MDF specs. That is the "stagnant pond" we are replacing with a connected flow: SMMS → PIM → compliance / cost / quality.</p>
       `.trim(),
     },
     {
