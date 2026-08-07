@@ -31,3 +31,9 @@
   [headers.values]
     Content-Type = "video/mp4"
     Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/docs/xwork-copilot/skills-management/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800"

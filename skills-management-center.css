@@ -1,0 +1,180 @@
+/* Skills Management Center — launch blog */
+
+.smc-launch {
+  margin-top: 0.5rem;
+}
+
+.smc-kicker {
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0ea5e9;
+  margin-bottom: 0.5rem;
+}
+
+.smc-lede {
+  font-size: 1.0625rem;
+  color: rgba(0, 0, 0, 0.72);
+  line-height: 1.65;
+  margin-bottom: 1.75rem;
+  max-width: 46rem;
+}
+
+.smc-infographic {
+  margin: 1.5rem 0 2rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0b1220;
+}
+
+.smc-infographic img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.smc-infographic-caption {
+  margin: 0.5rem 0 0;
+  font-size: 0.8125rem;
+  color: rgba(0, 0, 0, 0.45);
+  text-align: center;
+}
+
+.smc-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.75rem 0 2.25rem;
+}
+
+@media (max-width: 900px) {
+  .smc-pillars {
+    grid-template-columns: 1fr;
+  }
+}
+
+.smc-pillar {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  background: #fff;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.smc-pillar-head {
+  padding: 1rem 1.15rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  background: #f8fafc;
+}
+
+.smc-pillar-num {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 999px;
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #0369a1;
+  background: rgba(14, 165, 233, 0.12);
+}
+
+.smc-pillar-title {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  color: #000;
+}
+
+.smc-pillar-body {
+  padding: 1rem 1.15rem 1.25rem;
+  flex: 1;
+}
+
+.smc-pillar-body ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+
+.smc-pillar-body li {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 0.45rem;
+  line-height: 1.5;
+}
+
+.smc-pillar-body strong {
+  color: #000;
+}
+
+.smc-tag {
+  display: inline-flex;
+  align-items: center;
+  font-family: ui-monospace, monospace;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #0369a1;
+  background: rgba(14, 165, 233, 0.1);
+  border: 1px solid rgba(14, 165, 233, 0.2);
+  border-radius: 4px;
+  padding: 0.1rem 0.4rem;
+  margin-right: 0.25rem;
+}
+
+.smc-video {
+  margin: 1.5rem 0 2rem;
+}
+
+.smc-video h3 {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 500;
+  margin: 0 0 0.35rem;
+  color: #000;
+}
+
+.smc-video p {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.55);
+  margin: 0 0 0.75rem;
+}
+
+.smc-video video {
+  width: 100%;
+  max-height: 480px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #000;
+  display: block;
+}
+
+.smc-flow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  margin: 1rem 0 1.5rem;
+}
+
+.smc-flow-step {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  background: #f8fafc;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  color: rgba(0, 0, 0, 0.75);
+}
+
+.smc-flow-arrow {
+  color: rgba(0, 0, 0, 0.3);
+  font-size: 0.875rem;
+}

@@ -7,6 +7,130 @@ const BLOG = {
   pinnedSlugs: ['sq-team-daedalus-execution', 'plm-executive-overview'],
   posts: [
     {
+      slug: 'skills-management-center-launch',
+      type: 'news',
+      title: 'Skills Management Center launches — distill business processes into reusable AI Skills',
+      excerpt:
+        'Governed Skill authoring for XWork Copilot: @Table / @Field / @Tool references, Draft → Published → Archived lifecycle, and consume the same Skills in XWC or any MCP client.',
+      date: '2026-08-07',
+      author: 'SQ Product Team',
+      tags: ['XWork', 'Copilot', 'Skills', 'MCP', 'Release'],
+      relatedProduct: 'xwork-copilot',
+      layout: 'wide',
+      assets: ['skills-management-center.css'],
+      body: `
+<div class="smc-launch">
+  <p class="smc-kicker">OneAshley Nocode Platform · XWork Copilot</p>
+  <p class="smc-lede">We are launching the <strong>Skills Management Center</strong> — the place to distill business processes into Skills and build the foundation for autonomous AI. Write a Skill once; run it in XWork Copilot or expose it to external agents through MCP.</p>
+
+  <figure class="smc-infographic">
+    <img src="docs/xwork-copilot/skills-management/skill-management-center.png" alt="Skills Management Center — Harness &amp; Build, Consume Anywhere, Toward Autonomous AI" />
+  </figure>
+  <p class="smc-infographic-caption">Skills Management Center — three pillars from authoring to autonomous AI operations.</p>
+
+  <h2>Why Skills Management Center</h2>
+  <p>XWork Copilot already helps teams create Apps, understand context, and act through natural language. The missing layer was a governed way to turn proven business expertise into reusable, testable capabilities — instead of one-off prompts that live in private chats.</p>
+  <p>Skills Management Center closes that gap: each App owns its Skills, authors reference real business assets with <span class="smc-tag">@</span> mentions, and published Skills inject into Copilot at runtime — or travel outside XWork via the open MCP standard.</p>
+
+  <h2>Three pillars</h2>
+  <div class="smc-pillars">
+    <div class="smc-pillar">
+      <div class="smc-pillar-head">
+        <div class="smc-pillar-num">01</div>
+        <h3 class="smc-pillar-title">Harness &amp; Build</h3>
+      </div>
+      <div class="smc-pillar-body">
+        <ul>
+          <li><strong>Reference business assets via @</strong></li>
+          <li><span class="smc-tag">@Table</span> Supplier, BOM, QIS, and more</li>
+          <li><span class="smc-tag">@Field</span> Pin exact columns for precise semantics</li>
+          <li><span class="smc-tag">@Tool</span> Invoke inspect / query / workflow actions</li>
+          <li>Lifecycle: Draft → Published → Archived</li>
+          <li>Versioned publish with rollback</li>
+          <li>Runtime injection into the Copilot system prompt</li>
+          <li>App-scoped — each App manages its own Skills</li>
+        </ul>
+      </div>
+    </div>
+    <div class="smc-pillar">
+      <div class="smc-pillar-head">
+        <div class="smc-pillar-num">02</div>
+        <h3 class="smc-pillar-title">Consume Anywhere</h3>
+      </div>
+      <div class="smc-pillar-body">
+        <ul>
+          <li><strong>Published Skills</strong> consumable across platforms</li>
+          <li><strong>XWC</strong> — XWork Copilot built-in panel</li>
+          <li><strong>MS Copilot Studio</strong> — via MCP exposure</li>
+          <li><strong>Augment / Deerflow</strong> — any MCP client</li>
+          <li>Write once, consume everywhere</li>
+          <li>Same Skill powers internal Copilot and external AI agents</li>
+          <li>MCP protocol for governed, auditable access</li>
+          <li>Open standard — no vendor lock-in</li>
+        </ul>
+      </div>
+    </div>
+    <div class="smc-pillar">
+      <div class="smc-pillar-head">
+        <div class="smc-pillar-num">03</div>
+        <h3 class="smc-pillar-title">Toward Autonomous AI</h3>
+      </div>
+      <div class="smc-pillar-body">
+        <ul>
+          <li>Systematic, repeatable AI operations for every business domain</li>
+          <li>Evolution path for maturing capabilities:</li>
+        </ul>
+        <div class="smc-flow">
+          <span class="smc-flow-step">Discovery</span>
+          <span class="smc-flow-arrow">→</span>
+          <span class="smc-flow-step">Eval Gate</span>
+          <span class="smc-flow-arrow">→</span>
+          <span class="smc-flow-step">Draft Suggestion</span>
+          <span class="smc-flow-arrow">→</span>
+          <span class="smc-flow-step">Shared Library</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2>See it in action</h2>
+  <p>Two short walkthroughs — configure Skills in XWork, then run them from Skills Management Center and XWork Copilot.</p>
+
+  <div class="smc-video">
+    <h3>Configure Skills in XWork</h3>
+    <p>Author Skills with business-asset references, lifecycle controls, and versioned publish.</p>
+    <video controls playsinline preload="metadata" src="/docs/xwork-copilot/skills-management/configure-skills.mp4">
+      <source src="/docs/xwork-copilot/skills-management/configure-skills.mp4" type="video/mp4" />
+      <a href="/docs/xwork-copilot/skills-management/configure-skills.mp4">Download configure-skills.mp4</a>
+    </video>
+  </div>
+
+  <div class="smc-video">
+    <h3>Run Skills in MSC and XWork Copilot</h3>
+    <p>Invoke the same Published Skill from Skills Management Center and the XWC panel.</p>
+    <video controls playsinline preload="metadata" src="/docs/xwork-copilot/skills-management/run-skills.mp4">
+      <source src="/docs/xwork-copilot/skills-management/run-skills.mp4" type="video/mp4" />
+      <a href="/docs/xwork-copilot/skills-management/run-skills.mp4">Download run-skills.mp4</a>
+    </video>
+  </div>
+
+  <h2>What this unlocks</h2>
+  <ul>
+    <li><strong>From personal prompts to organizational assets</strong> — test, publish, version, and rollback Skills under App ownership.</li>
+    <li><strong>Precise business semantics</strong> — @Table / @Field / @Tool keep Copilot grounded in real data and actions.</li>
+    <li><strong>One Skill, many clients</strong> — XWork Copilot today; MS Copilot Studio, Augment, Deerflow, and other MCP clients next.</li>
+    <li><strong>A path to autonomous AI</strong> — Discovery → Eval Gate → Draft Suggestion → Shared Library for every domain.</li>
+  </ul>
+
+  <p class="mt-8">
+    <a href="product.html?id=xwork-copilot">Explore XWork Copilot on the portfolio →</a><br />
+    <a href="product.html?id=xwork-open-capabilities">Open Capabilities — Open API &amp; MCP →</a><br />
+    <a href="product.html?id=xwork-nocode">OneAshley Nocode Platform (formerly XWork) →</a>
+  </p>
+</div>
+      `.trim(),
+    },
+    {
       slug: 'plm-go-live-vietnam-training',
       type: 'news',
       title: 'PLM system approaching go-live — Vietnam Strategic Execution training underway',

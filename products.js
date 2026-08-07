@@ -1864,6 +1864,12 @@ const PORTFOLIO = {
                 label: 'Product Overview',
                 meta: 'Positioning, create / understand / use, Skills, Workflows, and executive value',
               },
+              {
+                url: 'post.html?slug=skills-management-center-launch',
+                label: 'Skills Management Center launch',
+                meta: 'Harness & Build, Consume Anywhere, Toward Autonomous AI — with walkthrough videos',
+                type: 'post',
+              },
             ],
             mcpTools: [],
           },
