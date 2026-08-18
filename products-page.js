@@ -15,17 +15,17 @@
       'not-started': 'bg-orange-50 text-orange-700 border-orange-200',
     };
     const label =
-      m.phase === 'completed' ? 'Completed' : m.phase === 'uat' ? 'In UAT' : m.phase === 'not-started' ? 'Not started' : 'In progress';
+      m.phase === 'completed' ? 'Completed' : m.phase === 'uat' || m.phase === 'in-progress' ? 'In UAT' : m.phase === 'not-started' ? 'Not started' : 'In UAT';
     return `<span class="inline-flex px-2 py-0.5 text-[10px] font-mono uppercase tracking-wide border rounded-sm ${map[m.phase] || map['in-progress']}">${label}</span>`;
   }
 
   function statusBadgeLight(status) {
     const map = {
       live: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-      building: 'bg-amber-50 text-amber-700 border-amber-200',
+      building: 'bg-teal-50 text-teal-700 border-teal-200',
       planned: 'bg-zinc-100 text-zinc-600 border-zinc-200',
     };
-    const label = status === 'live' ? 'Live' : status === 'building' ? 'Building' : 'Planned';
+    const label = status === 'live' ? 'Live' : status === 'building' ? 'In UAT' : 'Planned';
     return `<span class="inline-flex px-2 py-0.5 text-[10px] font-mono uppercase tracking-wide border rounded-sm ${map[status] || map.planned}">${label}</span>`;
   }
 

@@ -4,8 +4,77 @@
  */
 const BLOG = {
   /** Always shown first on the homepage Latest updates row */
-  pinnedSlugs: ['sq-team-daedalus-execution', 'plm-executive-overview'],
+  pinnedSlugs: ['quality-agent-m365-copilot', 'sq-team-daedalus-execution', 'plm-executive-overview'],
   posts: [
+    {
+      slug: 'quality-agent-m365-copilot',
+      type: 'news',
+      title: 'Quality Agent in Microsoft 365 Copilot — from supplier risk to supplier action',
+      excerpt:
+        'An AI assistant for Sourcing Quality teams: rank high-risk suppliers from KPI and SPC trends, check QIE/QIS recurrence, then draft the supplier PowerPoint and follow-up email in one flow.',
+      date: '2026-08-19',
+      author: 'SQ Product Team',
+      tags: ['Quality', 'Copilot', 'Microsoft 365', 'Agent', 'Release'],
+      relatedProduct: 'quality-workbench',
+      layout: 'wide',
+      assets: ['quality-agent-m365.css'],
+      body: `
+<div class="qa-m365">
+  <p class="qa-m365-kicker">Sourcing &amp; Quality · Microsoft 365 Copilot</p>
+  <p class="qa-m365-lede"><strong>Quality Agent</strong> is an AI assistant in Microsoft 365 Copilot that helps Sourcing Quality teams find and act on recurring supplier issues — so quality problems move from detection to action in one flow.</p>
+
+  <div class="qa-m365-video">
+    <h3>Watch the walkthrough</h3>
+    <p>English-subtitled overview of how Quality Agent reviews trends, ranks risk, and drafts supplier-facing follow-up.</p>
+    <video controls playsinline preload="metadata" src="/docs/quality-workbench/news/quality-agent-m365.mp4">
+      <source src="/docs/quality-workbench/news/quality-agent-m365.mp4" type="video/mp4" />
+      <a href="/docs/quality-workbench/news/quality-agent-m365.mp4">Download quality-agent-m365.mp4</a>
+    </video>
+  </div>
+
+  <h2>What it does</h2>
+  <p>Instead of stitching Power BI, QIE, and QIS together by hand, Quality Agent runs the review loop inside Copilot:</p>
+  <div class="qa-m365-flow">
+    <div class="qa-m365-step">
+      <div class="qa-m365-step-num">01</div>
+      <h3>Read the signal</h3>
+      <p>Reviews recent KPI and SPC trends to surface where quality is drifting.</p>
+    </div>
+    <div class="qa-m365-step">
+      <div class="qa-m365-step-num">02</div>
+      <h3>Rank the risk</h3>
+      <p>Ranks the highest-risk suppliers, then drills into affected items and cost impact.</p>
+    </div>
+    <div class="qa-m365-step">
+      <div class="qa-m365-step-num">03</div>
+      <h3>Check history</h3>
+      <p>Checks QIE / QIS history for recurrence and weak corrective actions that did not stick.</p>
+    </div>
+    <div class="qa-m365-step">
+      <div class="qa-m365-step-num">04</div>
+      <h3>Draft the action</h3>
+      <p>Drafts a supplier-facing PowerPoint and follow-up email ready for QM review and send.</p>
+    </div>
+  </div>
+
+  <h2>Why this matters</h2>
+  <ul>
+    <li><strong>Detection to action in one place</strong> — teams no longer jump from dashboards to spreadsheets to email to assemble a supplier story.</li>
+    <li><strong>Recurrence gets priority</strong> — QIE volume and QIS history highlight suppliers and items where corrective action was weak or incomplete.</li>
+    <li><strong>Supplier-ready output</strong> — PowerPoint and email drafts give QM leads a starting point for vendor conversations, not a blank page.</li>
+    <li><strong>Works where people already work</strong> — available inside Microsoft 365 Copilot, alongside the tools Sourcing Quality already uses every day.</li>
+  </ul>
+
+  <h2>How it fits the Quality Agent stack</h2>
+  <p>Quality Agent in Microsoft 365 Copilot complements the <a href="product.html?id=quality-workbench">Quality Agent Platform</a> — the deeper analytics workspace for KPI narratives, Top N drill-down, and agent chat on live quality data. Copilot is the assistant path for finding recurrence and packaging supplier follow-up; the platform is where teams go for full quality intelligence reviews.</p>
+
+  <p class="mt-8">
+    <a href="product.html?id=quality-workbench">Open the Quality Agent Platform product page →</a><br />
+    <a href="post.html?slug=quality-agent-platform-tour">Read the Quality Agent Platform tour →</a>
+  </p>
+</div>
+      `.trim(),
+    },
     {
       slug: 'skills-management-center-launch',
       type: 'news',

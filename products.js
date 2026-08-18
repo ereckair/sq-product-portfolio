@@ -318,6 +318,7 @@ const PORTFOLIO = {
           ],
           resources: {
             prd: { url: 'docs/plm/PLM.pdf', label: 'PLM PRD' },
+            demoVideo: { url: '/docs/plm/demo/plm-pim-eco.mp4', label: 'PLM / PIM / ECO overview' },
             mcpTools: [],
             documents: [
               {
@@ -562,7 +563,12 @@ const PORTFOLIO = {
             'Full release after PIM approval workflow go-live',
             'Auto-create lab requests in GLS from generated test plans',
           ],
-          resources: {},
+          resources: {
+            demoVideo: {
+              url: '/docs/compliance-test/demo/compliance-test-create.mp4',
+              label: 'Compliance Test Create demo',
+            },
+          },
           feedback: [{ quote: 'Before we had to manually figure out every test. Now the system tells us what to run based on BOM.', author: 'Compliance engineer' }],
         },
         {
@@ -706,12 +712,21 @@ const PORTFOLIO = {
               label: 'Open live platform',
             },
             prd: { url: '#', label: 'Quality Agent Platform brief' },
-            demoVideo: null,
+            demoVideo: {
+              url: '/docs/quality-workbench/demo/demo-with-audio.mp4',
+              label: 'Quality Agent Platform demo',
+            },
             liveLink: {
               url: 'https://quality-agent.ashgso.com/wboc/agent-platform-quality/chat',
               label: 'Open Quality Agent Platform',
             },
             documents: [
+              {
+                url: 'post.html?slug=quality-agent-m365-copilot',
+                label: 'Quality Agent in Microsoft 365 Copilot',
+                meta: 'From supplier risk to supplier action — walkthrough video',
+                type: 'post',
+              },
               {
                 url: 'post.html?slug=quality-agent-platform-tour',
                 label: 'Quality Agent Platform — from dashboard sprawl to insights, narratives, and action',

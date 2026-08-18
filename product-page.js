@@ -28,16 +28,20 @@
   const isValidUrl = (url) => Boolean(url && url !== '#');
   const isVideoFile = (url) => Boolean(url && /\.(mov|mp4|webm)$/i.test(url));
 
-  const statusLabel = product.status === 'live' ? 'Live' : product.status === 'building' ? 'Building' : 'Planned';
+  const statusLabel = product.status === 'live' ? 'Live' : product.status === 'building' ? 'In UAT' : 'Planned';
   const statusClass =
-    product.status === 'live' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' : 'bg-amber-50 text-amber-700 border-amber-200';
+    product.status === 'live'
+      ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
+      : product.status === 'building'
+        ? 'bg-teal-50 text-teal-700 border-teal-200'
+        : 'bg-amber-50 text-amber-700 border-amber-200';
 
   function migrationSection(m) {
     if (!m) return '';
     const phaseMap = {
       completed: { label: 'Completed', badge: 'bg-emerald-50 text-emerald-700 border-emerald-200' },
       uat: { label: 'In UAT', badge: 'bg-teal-50 text-teal-700 border-teal-200' },
-      'in-progress': { label: 'In Progress', badge: 'bg-blue-50 text-blue-700 border-blue-200' },
+      'in-progress': { label: 'In UAT', badge: 'bg-teal-50 text-teal-700 border-teal-200' },
       'not-started': { label: 'Not Started', badge: 'bg-orange-50 text-orange-700 border-orange-200' },
     };
     const phase = phaseMap[m.phase] || phaseMap['in-progress'];
@@ -150,7 +154,7 @@
       building: 'product-mod-status--building',
       planned: 'product-mod-status--planned',
     };
-    const label = status === 'live' ? 'Live' : status === 'building' ? 'Building' : 'Planned';
+    const label = status === 'live' ? 'Live' : status === 'building' ? 'In UAT' : 'Planned';
     return `<span class="product-mod-status ${map[status] || map.planned}">${label}</span>`;
   }
 

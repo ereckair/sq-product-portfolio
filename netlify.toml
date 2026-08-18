@@ -15,6 +15,30 @@
     Cache-Control = "public, max-age=604800"
 
 [[headers]]
+  for = "/docs/plm/demo/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/docs/compliance-test/demo/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/docs/quality-workbench/demo/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  for = "/docs/quality-workbench/news/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
   for = "/docs/xwork-nocode/demo/*.mp4"
   [headers.values]
     Content-Type = "video/mp4"

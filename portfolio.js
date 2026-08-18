@@ -14,7 +14,7 @@
       { value: stats.totalProducts, label: 'Products' },
       { value: stats.totalCategories, label: 'Categories' },
       { value: stats.live, label: 'Live' },
-      { value: stats.building, label: 'In progress' },
+      { value: stats.building, label: 'In UAT' },
     ];
     statsEl.innerHTML = items
       .map(
@@ -171,7 +171,7 @@
 
   function statusBadge(status) {
     const cls = status === 'live' ? 'status-live' : status === 'building' ? 'status-building' : 'status-planned';
-    const label = status === 'live' ? 'Live' : status === 'building' ? 'Building' : 'Planned';
+    const label = status === 'live' ? 'Live' : status === 'building' ? 'In UAT' : 'Planned';
     return `<span class="status-badge ${cls}">${label}</span>`;
   }
 })();
