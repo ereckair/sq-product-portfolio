@@ -22,10 +22,12 @@
   function statusBadgeLight(status) {
     const map = {
       live: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-      building: 'bg-teal-50 text-teal-700 border-teal-200',
+      uat: 'bg-teal-50 text-teal-700 border-teal-200',
+      building: 'bg-amber-50 text-amber-700 border-amber-200',
       planned: 'bg-zinc-100 text-zinc-600 border-zinc-200',
     };
-    const label = status === 'live' ? 'Live' : status === 'building' ? 'In UAT' : 'Planned';
+    const label =
+      status === 'live' ? 'Live' : status === 'uat' ? 'In UAT' : status === 'building' ? 'Building' : 'Planned';
     return `<span class="inline-flex px-2 py-0.5 text-[10px] font-mono uppercase tracking-wide border rounded-sm ${map[status] || map.planned}">${label}</span>`;
   }
 

@@ -9,6 +9,12 @@
     Cache-Control = "public, max-age=604800"
 
 [[headers]]
+  for = "/docs/pre-plm-agent/news/*.mp4"
+  [headers.values]
+    Content-Type = "video/mp4"
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
   for = "/docs/hrs/demo/hrs-demo.mp4"
   [headers.values]
     Content-Type = "video/mp4"

@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashley Director — Product Guide</title>
+<style>
+  :root{
+    --ink:#101828;
+    --ink-soft:#475467;
+    --line:#e4e7ec;
+    --blue:#1f4bd8;
+    --blue-soft:#eef2ff;
+    --wash:#f7f8fa;
+    --max:760px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:#fff;
+    color:var(--ink);
+    font:400 17px/1.65 "Helvetica Neue",Helvetica,Arial,"PingFang SC","Microsoft YaHei",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:var(--max);margin:0 auto;padding:64px 24px 96px}
+  .eyebrow{color:var(--blue);font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin:0 0 18px}
+  h1{font-size:44px;line-height:1.1;letter-spacing:-.02em;margin:0 0 20px;font-weight:800}
+  .standfirst{font-size:19px;line-height:1.6;color:var(--ink-soft);margin:0 0 28px}
+  .meta{font:400 13px/1.9 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;color:var(--ink-soft);display:flex;flex-wrap:wrap;gap:6px 28px}
+  hr.rule{border:0;border-top:2px solid var(--ink);margin:36px 0 40px}
+
+  nav.toc{background:var(--wash);border:1px solid var(--line);border-radius:10px;padding:24px 26px;margin:0 0 56px}
+  nav.toc h2{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 14px;font-weight:700}
+  nav.toc ol{list-style:none;margin:0;padding:0;columns:2;column-gap:32px}
+  nav.toc li{break-inside:avoid;margin:0 0 8px;font-size:15px}
+  nav.toc a{color:var(--ink);text-decoration:none}
+  nav.toc a:hover{color:var(--blue);text-decoration:underline}
+  nav.toc .n{color:var(--blue);font:600 12px/1 ui-monospace,Menlo,monospace;margin-right:10px}
+
+  section{margin:0 0 52px;scroll-margin-top:24px}
+  h2.sec{font-size:27px;line-height:1.25;letter-spacing:-.01em;margin:0 0 18px;padding-top:14px;border-top:1px solid var(--line);font-weight:750}
+  h2.sec .n{color:var(--blue);font:700 14px/1 ui-monospace,Menlo,monospace;display:block;margin-bottom:10px}
+  h3{font-size:19px;margin:34px 0 10px;font-weight:700}
+  h3 .n{color:var(--blue);font:600 13px/1 ui-monospace,Menlo,monospace;margin-right:8px}
+  p{margin:0 0 16px}
+  ul{margin:0 0 16px;padding-left:22px}
+  li{margin:0 0 9px}
+  strong{font-weight:700}
+
+  .pull{border-left:3px solid var(--blue);background:var(--blue-soft);padding:14px 18px;border-radius:0 8px 8px 0;margin:22px 0;font-size:16px}
+  .payoff{font-weight:600;margin:22px 0 0;color:var(--ink)}
+
+  table{width:100%;border-collapse:collapse;margin:20px 0 24px;font-size:15px}
+  th{text-align:left;font-size:11.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-soft);border-bottom:1.5px solid var(--ink);padding:0 12px 9px 0;font-weight:700;vertical-align:bottom}
+  td{border-bottom:1px solid var(--line);padding:11px 12px 11px 0;vertical-align:top;line-height:1.5}
+  td:first-child{font-weight:600;white-space:nowrap}
+  td.wrap-first:first-child{white-space:normal}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:14px;margin:24px 0}
+  .card{border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .card .ico{font-size:20px;line-height:1;display:block;margin-bottom:8px}
+  .card h4{margin:0 0 6px;font-size:16px}
+  .card p{margin:0;font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:24px 0}
+  .col{border:1px solid var(--line);border-radius:10px;padding:18px 20px}
+  .col.after{border-color:var(--blue);background:var(--blue-soft)}
+  .col h4{margin:0 0 12px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft)}
+  .col.after h4{color:var(--blue)}
+  .col ul{list-style:none;padding:0;margin:0}
+  .col li{font-size:15px;line-height:1.45;margin:0 0 10px}
+
+  .flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px;margin:24px 0}
+  .flow .step{flex:1 1 150px;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+  .flow .step b{display:block;font-size:15px;margin-bottom:5px}
+  .flow .step span{font-size:14px;color:var(--ink-soft);line-height:1.45}
+  .flow .step.last{border-color:var(--blue);background:var(--blue-soft)}
+
+  figure{margin:24px 0;border:1px dashed var(--line);border-radius:10px;background:var(--wash);padding:20px}
+  figure .ph{font:600 11.5px/1 ui-monospace,Menlo,monospace;letter-spacing:.08em;text-transform:uppercase;color:#98a2b3;margin-bottom:9px}
+  figcaption{font-size:14.5px;color:var(--ink-soft);margin:0;line-height:1.5}
+
+  .stages{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin:24px 0}
+  .stage{border:1px solid var(--line);border-top:3px solid var(--blue);border-radius:0 0 10px 10px;padding:14px 16px}
+  .stage .tag{font:700 11px/1 ui-monospace,Menlo,monospace;letter-spacing:.1em;color:var(--blue);display:block;margin-bottom:8px}
+  .stage h4{margin:0 0 6px;font-size:16px}
+  .stage p{margin:0;font-size:14.5px;color:var(--ink-soft);line-height:1.5}
+
+  .principle{border:1px solid var(--line);border-radius:10px;padding:16px 18px}
+  .principle h4{margin:0 0 6px;font-size:16px}
+  .principle p{margin:0;font-size:15px;color:var(--ink-soft);line-height:1.5}
+
+  .hard{margin:22px 0;padding:0 0 0 22px;border-left:2px solid var(--line)}
+  .hard h4{margin:0 0 8px;font-size:17px}
+  .hard h4 .n{color:var(--blue);font:700 13px/1 ui-monospace,Menlo,monospace;margin-right:8px}
+  .hard p{font-size:16px}
+
+  details{border-bottom:1px solid var(--line);padding:14px 0}
+  summary{cursor:pointer;font-weight:650;font-size:16.5px;list-style:none}
+  summary::-webkit-details-marker{display:none}
+  summary::before{content:"+";color:var(--blue);font-weight:700;margin-right:10px}
+  details[open] summary::before{content:"–"}
+  details p{margin:12px 0 0;color:var(--ink-soft);font-size:16px}
+
+  .sources{background:var(--wash);border-radius:10px;padding:22px 24px;margin-top:48px}
+  .sources h2{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-soft);margin:0 0 14px}
+  .sources ol{margin:0;padding-left:20px}
+  .sources li{font-size:14.5px;line-height:1.55;margin-bottom:11px;color:var(--ink-soft)}
+  .sources code{font:400 12.5px/1.4 ui-monospace,Menlo,monospace;color:var(--ink);background:#fff;border:1px solid var(--line);border-radius:4px;padding:1px 5px;word-break:break-all}
+
+  footer{margin-top:44px;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:#98a2b3}
+
+  @media (max-width:640px){
+    .wrap{padding:40px 18px 64px}
+    h1{font-size:32px}
+    h2.sec{font-size:23px}
+    nav.toc ol{columns:1}
+    .cols{grid-template-columns:1fr}
+    table{font-size:14px}
+    td:first-child{white-space:normal}
+  }
+  @media print{
+    body{font-size:11pt}
+    .wrap{max-width:none;padding:0}
+    section{page-break-inside:auto}
+    h2.sec{page-break-after:avoid}
+    details{display:block}
+    details p{display:block !important}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Ashley Furniture · Quality Operations</p>
+  <h1>Ashley Director — Product Guide</h1>
+  <p class="standfirst">A detailed companion to the product-overview presentation: what the app does, the rules behind every screen, and how the data gets there. Written for anyone evaluating, adopting or operating the product — the Quality Director first, and the wider quality team as it scales.</p>
+  <div class="meta">
+    <span>Version 1.0</span><span>September 2026</span><span>Companion to: Product Overview deck</span><span>Classification: Internal</span>
+  </div>
+  <hr class="rule">
+
+  <nav class="toc">
+    <h2>Contents</h2>
+    <ol>
+      <li><a href="#s01"><span class="n">01</span>What is Ashley Director</a></li>
+      <li><a href="#s02"><span class="n">02</span>Who it is for</a></li>
+      <li><a href="#s03"><span class="n">03</span>The problem it solves</a></li>
+      <li><a href="#s04"><span class="n">04</span>How the data gets there</a></li>
+      <li><a href="#s05"><span class="n">05</span>Queue — the daily decision list</a></li>
+      <li><a href="#s06"><span class="n">06</span>Vendors — the supplier directory</a></li>
+      <li><a href="#s07"><span class="n">07</span>Briefings — the factory visit pack</a></li>
+      <li><a href="#s08"><span class="n">08</span>QI — patterns across streams</a></li>
+      <li><a href="#s09"><span class="n">09</span>More — system health &amp; trust</a></li>
+      <li><a href="#s10"><span class="n">10</span>Worked example: case B2721</a></li>
+      <li><a href="#s11"><span class="n">11</span>Product principles</a></li>
+      <li><a href="#s12"><span class="n">12</span>Roadmap</a></li>
+      <li><a href="#s13"><span class="n">13</span>Making it enterprise-grade</a></li>
+      <li><a href="#s14"><span class="n">14</span>Glossary</a></li>
+      <li><a href="#s15"><span class="n">15</span>FAQ</a></li>
+    </ol>
+  </nav>
+
+  <section id="s01">
+    <h2 class="sec"><span class="n">01</span>What is Ashley Director</h2>
+    <p>Ashley Director is a quality-operations copilot for the whole team — hosted on xwork, reachable from any device, no install required. Every morning it reads the overnight flow of rejection emails, consumer complaints and test results, decides what actually needs a human decision today, and puts a short, ranked, evidence-backed queue in front of the reader — what to act on, who to call, and why, in one glance.</p>
+    <p>It is deliberately not a dashboard. Dashboards show everything and settle nothing. Ashley Director is built around a different promise: by the time the reader opens the app, the triage is already done. The day's decisions are on top; everything else waits where it can be found.</p>
+    <div class="pull"><strong>One-line summary:</strong> it doesn't just show data — it tells the team what to do today, ranked, with evidence attached.</div>
+    <div class="grid">
+      <div class="card"><span class="ico">🎯</span><h4>Queue</h4><p>The daily decision list — capped at 7, each entry with a reason, a confidence score and an owner.</p></div>
+      <div class="card"><span class="ico">🏭</span><h4>Vendors</h4><p>150 suppliers with contacts, performance grades and repeat-offender signals.</p></div>
+      <div class="card"><span class="ico">📰</span><h4>Briefings</h4><p>Factory visit packs: audit KPIs, walk-in priorities and monthly R&amp;A spend.</p></div>
+      <div class="card"><span class="ico">🔍</span><h4>QI</h4><p>Cross-stream patterns from quality import data — surfaced across 1,240+ rejection records and 276 fabric tests.</p></div>
+      <div class="card"><span class="ico">⚙️</span><h4>More</h4><p>System health — what the pipeline checked, when, and what it honestly doesn't know yet.</p></div>
+    </div>
+  </section>
+
+  <section id="s02">
+    <h2 class="sec"><span class="n">02</span>Who it is for</h2>
+    <p>The product was proposed by Gab and built around the Quality Director's working day: morning triage, supplier calls, factory visits, and the constant question of "is this number fresh enough to defend?". Every screen is optimized for that first hour.</p>
+    <p>But it is not designed as a one-person tool. The same queue, evidence trail and briefing packs are exactly what a QA lead, a plant quality team, or whoever covers during an absence needs to stay aligned with the Director's view. As the platform matures, today's single view is expected to scale into per-role experiences on the same data foundation — see the Roadmap.</p>
+    <table>
+      <thead><tr><th>Reader</th><th>What they use it for today</th></tr></thead>
+      <tbody>
+        <tr><td>Quality Director</td><td>Morning triage, supplier calls, factory visit prep, the "big picture" without hand-building it.</td></tr>
+        <tr><td>QA leads / team</td><td>Staying aligned with the Director's priorities; picking up cases with full context instead of inbox archaeology.</td></tr>
+        <tr><td>Corporate IT</td><td>Evaluating the rebuild path onto governed infrastructure (see Roadmap).</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="s03">
+    <h2 class="sec"><span class="n">03</span>The problem it solves</h2>
+    <p>Quality signals arrive as 30+ parallel email threads a day, consumer complaints, test results and audit reports — with no ranking, no owner lookup, and no memory. Before Ashley Director, a typical morning looked like the left column below. After, the right.</p>
+    <div class="cols">
+      <div class="col">
+        <h4>Before</h4>
+        <ul>
+          <li>📇 Scan 30+ threads for what might be urgent</li>
+          <li>🔎 Dig for the factory, the owner, the case history</li>
+          <li>📞 Call a number from an old spreadsheet — and hope</li>
+          <li>🧮 Recreate the "big picture" by hand, every time</li>
+        </ul>
+      </div>
+      <div class="col after">
+        <h4>With Ashley Director</h4>
+        <ul>
+          <li>🎯 The day's decisions are ranked and waiting</li>
+          <li>🧾 Vendor, owner and evidence on one screen</li>
+          <li>📞 One tap to the right contact, facts attached</li>
+          <li>📊 Patterns and spend roll up automatically</li>
+        </ul>
+      </div>
+    </div>
+    <p>The morning story behind the deck — case B2721 on top, evidence attached, contacts one tap away — is not a demo. It's a Tuesday. Every screenshot in this guide is from the live app running on production data (August 2026: 419 rejection emails, 321 threads processed end-to-end).</p>
+  </section>
+
+  <section id="s04">
+    <h2 class="sec"><span class="n">04</span>How the data gets there</h2>
+    <p>The app is thin by design; the work happens in the pipeline behind it. Today that pipeline runs on a prototype backend that has processed 400+ real rejection threads. The corporate rebuild (next on the roadmap) replaces the plumbing, not the product.</p>
+    <div class="flow">
+      <div class="step"><b>Sources</b><span>Rejection mailbox, consumer complaints, test results, vendor pricing &amp; rosters</span></div>
+      <div class="step"><b>Pipeline</b><span>Extraction, classification, entity resolution (RP → item → vendor), freshness checks</span></div>
+      <div class="step"><b>Decision engine</b><span>Thresholds, pattern detection, 7-cap triage, confidence scoring</span></div>
+      <div class="step last"><b>Ashley Director</b><span>Five tabs, one queue, full evidence drill-down</span></div>
+    </div>
+    <p>Two properties matter more than the plumbing diagram:</p>
+    <ul>
+      <li><strong>Entity resolution is the hard part.</strong> An email mentions an RP; the queue needs the factory, the QA owner, the vendor contacts and the 30-day history. The pipeline maintains those mappings (RP → item → vendor, with demand-split aware vendor attribution) so the app never asks the reader to join tables in their head.</li>
+      <li><strong>Freshness is a first-class feature.</strong> Every mapping source has an age. If a source is older than 30 days, the app raises a banner on the screens that depend on it — see Section 09.</li>
+    </ul>
+  </section>
+
+  <section id="s05">
+    <h2 class="sec"><span class="n">05</span>Queue — the daily decision list</h2>
+    <p>The Queue is the product's front door. It answers one question: <strong>what deserves a decision today?</strong> — and, just as deliberately, what does not.</p>
+    <figure><div class="ph">Figure 5-1 · screenshot</div><figcaption>The Queue: B2721 (S1 pest infestation) on top, 98% match confidence.</figcaption></figure>
+
+    <h3><span class="n">5.1</span>The cap is the feature</h3>
+    <p>Today holds at most seven items. Anything not ready for a decision waits in Watching until it earns attention; aged items move to Archive with a one-line closure reason. A queue of 40 is a queue of none — the cap mirrors real triage capacity, it is not a technical limit.</p>
+
+    <h3><span class="n">5.2</span>Every entry explains itself</h3>
+    <table>
+      <thead><tr><th>Element</th><th>What it tells you</th><th>Example (B2721)</th></tr></thead>
+      <tbody>
+        <tr><td>Priority flag</td><td>Severity class assigned by the decision engine.</td><td>S1 pest infestation</td></tr>
+        <tr><td>Trigger</td><td>Why this surfaced now — the threshold it crossed.</td><td>4 reports in 30 days, ↑4 vs prior period</td></tr>
+        <tr><td>Confidence</td><td>How strongly the case matched to a vendor/factory.</td><td>98% match → Country Wood Furniture</td></tr>
+        <tr><td>Owner</td><td>Who owns it operationally.</td><td>CVRO QA Team 7</td></tr>
+        <tr><td>Age</td><td>How long the case has been open — nothing silently festers.</td><td>Case age shown on card</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="n">5.3</span>Nothing is silently lost</h3>
+    <p>Archive entries keep their closure reason ("resolved after containment audit", "carrier claim closed") — visible, reversible, never a black hole. If a closed pattern re-escalates, it re-enters the Queue as a new trigger, not as a zombie.</p>
+    <p class="payoff">Business payoff: the team's first hour goes to deciding, not triaging.</p>
+  </section>
+
+  <section id="s06">
+    <h2 class="sec"><span class="n">06</span>Vendors — the supplier directory</h2>
+    <p>The Vendors tab turns "this keeps happening" from a feeling into a fact. It covers 150 suppliers with contacts, performance grades and repeat-offender signals.</p>
+    <figure><div class="ph">Figure 6-1 · screenshot</div><figcaption>Repeat offenders, named: wrong item ×7 in 3 months; 62% fabric fail.</figcaption></figure>
+    <figure><div class="ph">Figure 6-2 · screenshot</div><figcaption>Vendor detail: Shing Mark Vietnam #900529 — CVRO QA Team 1, VC/CI contacts, C grade.</figcaption></figure>
+
+    <h3><span class="n">6.1</span>Contacts resolved automatically</h3>
+    <p>Each vendor card carries the vendor number, office, QA team assignment, and the two people who matter on a call: the Vendor Coordinator (VC) and Corporate Intelligence (CI) contact. The lookup is done by the pipeline — no spreadsheets.</p>
+
+    <h3><span class="n">6.2</span>One tap drafts the email</h3>
+    <p>"Email QA Team about this RP" pre-fills a message with the case context attached — the reader confirms and sends. The grade (A–C, from peer-ranked rejections) and the defect mix are on the same screen, so the conversation starts from facts.</p>
+    <p class="payoff">Business payoff: supplier calls start at the facts, not at the phone book.</p>
+  </section>
+
+  <section id="s07">
+    <h2 class="sec"><span class="n">07</span>Briefings — the factory visit pack</h2>
+    <p>Briefings prepare a 30-minute factory review from one page. Each pack answers three questions before the reader walks in: how is this factory rated, what should I prioritize, and what does it cost?</p>
+    <figure><div class="ph">Figure 7-1 · screenshot</div><figcaption>Briefing pack: "High attention" rating, AQL 96.67%, packing 8.47% failed units, R&amp;A $4,519 (July).</figcaption></figure>
+
+    <h3><span class="n">7.1</span>A rating with its reasons</h3>
+    <p>"High attention" is never a bare label — every rating drills down to <em>why this rating</em>: the audit KPIs behind it (AQL 96.67% passing, finish 88.89%, packing 8.47% failed units for the factory shown).</p>
+
+    <h3><span class="n">7.2</span>Walk-in priorities, numbered</h3>
+    <p>The pack lists which containment to observe first and what proof to demand — photos, re-audit, approved-standard comparison — each priority linked to its evidence.</p>
+
+    <h3><span class="n">7.3</span>Money on the same screen</h3>
+    <p>Monthly Repair &amp; Allowance (R&amp;A) spend — $4,519 in July, $2,849 under June for the example factory — sits next to the rejection rates by item that drive it (e.g. D743-02 at 15%). Quality and cost in the same conversation, whoever leads the review.</p>
+  </section>
+
+  <section id="s08">
+    <h2 class="sec"><span class="n">08</span>QI — patterns across streams</h2>
+    <p>One complaint is an incident; a pattern is a signal. The QI (Quality Import) tab watches every stream — 1,240 parts-rejection records, 276 fabric tests — not just the loudest email.</p>
+    <figure><div class="ph">Figure 8-1 · screenshot</div><figcaption>The same B2721 cluster, now flagged "Up 4" against the prior 30 days.</figcaption></figure>
+    <ul>
+      <li><strong>Rising patterns surface automatically</strong> — clusters that cross their threshold appear with the direction and magnitude of the move ("Up 4 vs prior 30 days").</li>
+      <li><strong>Repeat offenders get named</strong> — the Vendors tab ranks factories by recurring defects, so the pattern becomes a supplier conversation.</li>
+      <li><strong>Every number drills down to its source record</strong> — the original email, the test result, the complaint. No number without provenance.</li>
+    </ul>
+    <div class="pull">Same case, three lenses — Queue for action, QI for patterns, Vendors for accountability. That's how a trend becomes a conversation with the supplier.</div>
+  </section>
+
+  <section id="s09">
+    <h2 class="sec"><span class="n">09</span>More — system health &amp; trust</h2>
+    <p>The More tab is where the app shows its work. Trust in the numbers is a product feature, engineered the same way as the queue itself.</p>
+    <figure><div class="ph">Figure 9-1 · screenshot</div><figcaption>"Partly ready — Codex is checking a factory; 0 more waiting": honest status, not green-washing.</figcaption></figure>
+    <table>
+      <thead><tr><th>Trust rule</th><th>What it means in practice</th></tr></thead>
+      <tbody>
+        <tr><td class="wrap-first">System health is a screen, not a guess</td><td>Pipeline canaries, API read-backs and dispatcher heartbeats, each shown with the observation and the rule it passed (e.g. Director API canary, Mac dispatcher heartbeat).</td></tr>
+        <tr><td class="wrap-first">"Partly ready" is allowed</td><td>When a check is pending, the app says so — green means verified, not vibes. Nothing pretends to be fresher than it is.</td></tr>
+        <tr><td class="wrap-first">Stale data warns before it misleads</td><td>Any mapping source older than 30 days raises a banner on every screen that depends on it (<code>stale_mapping_source_over_30d</code>).</td></tr>
+        <tr><td class="wrap-first">Every decision carries its evidence</td><td>Original report, material updates and the latest request are attached to the case — anyone walks into the call knowing the history; nothing lives only in someone's inbox.</td></tr>
+      </tbody>
+    </table>
+    <p class="payoff">Business payoff: decisions made on this app hold up in the room — everyone knows exactly how fresh the numbers are.</p>
+  </section>
+
+  <section id="s10">
+    <h2 class="sec"><span class="n">10</span>Worked example: case B2721</h2>
+    <p>A real case, end to end, from the live app (August 2026). It shows how the five tabs cooperate around a single decision.</p>
+    <table>
+      <thead><tr><th>Step</th><th>Screen</th><th>What happened</th></tr></thead>
+      <tbody>
+        <tr><td class="wrap-first">8:02 AM — the trigger</td><td>Queue</td><td>Overnight, consumer complaints about bed set B2721 crossed the threshold: 4 reports in 30 days, rising. The app already knows the factory (Country Wood Furniture), the QA owner (CVRO QA Team 7), and that no resolution signal has appeared in the latest messages.</td></tr>
+        <tr><td class="wrap-first">Reading the story</td><td>Evidence detail</td><td>Before dialing, three labeled excerpts: the original report (verbatim, dated), material updates (what the quality team already traced — inventory receipt, shipment history), and the latest request (event report, invoices, claimant contact).</td></tr>
+        <tr><td class="wrap-first">Seeing the pattern</td><td>QI</td><td>The same cluster appears flagged "Up 4" against the prior 30 days — the complaint is not isolated.</td></tr>
+        <tr><td class="wrap-first">Making the call</td><td>Vendors</td><td>One tap opens the vendor card, confirms contacts, and drafts "Email QA Team about this RP" with facts attached.</td></tr>
+        <tr><td class="wrap-first">The payoff</td><td>—</td><td>By the time anyone on the quality team sits down, the decision is on top of the queue — S1 flag, evidence attached, next move suggested. No inbox diving.</td></tr>
+      </tbody>
+    </table>
+    <figure><div class="ph">Figure 10-1 · screenshot</div><figcaption>The trigger — B2721 on top, 98% match.</figcaption></figure>
+    <figure><div class="ph">Figure 10-2 · screenshot</div><figcaption>The story — full evidence trail.</figcaption></figure>
+  </section>
+
+  <section id="s11">
+    <h2 class="sec"><span class="n">11</span>Product principles</h2>
+    <p>Four rules explain most of the design decisions in this guide:</p>
+    <div class="grid">
+      <div class="principle"><h4>1 · Decide, don't display</h4><p>The app's job is to reduce the day to decisions that matter. A queue of 7 beats a dashboard of 400.</p></div>
+      <div class="principle"><h4>2 · Evidence is not optional</h4><p>Every number, rating and flag carries its provenance. If it can't show its work, it doesn't ship.</p></div>
+      <div class="principle"><h4>3 · Honesty over green</h4><p>"Partly ready" is an acceptable state; a stale-source banner is a feature. Trust is earned by admitting uncertainty.</p></div>
+      <div class="principle"><h4>4 · One shared view</h4><p>Built around the Director's day first, but the same queue and evidence serve the whole quality operation — no private truth.</p></div>
+    </div>
+  </section>
+
+  <section id="s12">
+    <h2 class="sec"><span class="n">12</span>Roadmap</h2>
+    <p>From working prototype to corporate platform, in three deliberate steps:</p>
+    <div class="stages">
+      <div class="stage"><span class="tag">Now</span><h4>Working prototype</h4><p>Web app on xwork, in daily use; the data pipeline has processed 400+ real rejection threads end to end.</p></div>
+      <div class="stage"><span class="tag">Next</span><h4>Corporate rebuild</h4><p>IT rebuilds the backend on corporate infrastructure; the app switches to live enterprise data — same UX, governed sources.</p></div>
+      <div class="stage"><span class="tag">Later</span><h4>Quality Data Hub</h4><p>All quality analytics fed from one internal data hub — vendor mappings, rosters and KPIs always current, retire-proof.</p></div>
+    </div>
+    <p><strong>The app is the product — and it is device-agnostic.</strong> The prototype backend was scaffolding — the rebuild replaces it, the app doesn't change. Hosted on xwork, it opens on whatever device the reader has — phone, tablet or laptop — with no install. And as the platform matures, it won't stay a one-desk tool: the same queue, evidence and briefings can serve QA leads and plant teams, while today's single view scales into per-role experiences.</p>
+    <div class="pull"><strong>Sequencing note:</strong> the Quality Data Hub also de-risks the planned EDW retirement — it becomes the single analytical source for vendor mappings, rosters and KPIs.</div>
+  </section>
+
+  <section id="s13">
+    <h2 class="sec"><span class="n">13</span>Making it enterprise-grade</h2>
+    <p>The prototype proved the product works. Enterprise-grade is a different bar — not "it works" but "the company can trust it, operate it, and live without the person who built it". This section records honestly how we are getting there and where the hard parts are.</p>
+
+    <h3><span class="n">13.1</span>What had to change</h3>
+    <table>
+      <thead><tr><th>Dimension</th><th>Prototype</th><th>Enterprise target</th></tr></thead>
+      <tbody>
+        <tr><td class="wrap-first">Where data comes from</td><td>Direct reads from the quality system's database and exports, assembled by hand where needed.</td><td>Governed feeds: a corporate rebuild of the pipeline on IT-managed infrastructure, then a single Quality Data Hub as the analytical source.</td></tr>
+        <tr><td class="wrap-first">Who owns it</td><td>The product's author — a single person runs the pipeline on a Mac dispatcher.</td><td>IT operations with service ownership, monitoring and on-call — the app must survive its creator.</td></tr>
+        <tr><td class="wrap-first">Identity &amp; access</td><td>Effectively single-user.</td><td>Corporate SSO, role-based access, least-privilege data connections (e.g. site-scoped read-only permissions already granted for quality import data).</td></tr>
+        <tr><td class="wrap-first">Data authority</td><td>Working stand-ins where the source system's own exports were ambiguous.</td><td>Reconciled master data: vendor/RP mappings confirmed with the data owners, with the split semantics (retired vendors stay at 0%) preserved exactly.</td></tr>
+        <tr><td class="wrap-first">Change management</td><td>Deploy = copy files.</td><td>Versioned releases, staged rollout, documented contracts between the app and every data source.</td></tr>
+      </tbody>
+    </table>
+
+    <h3><span class="n">13.2</span>The eight hard problems</h3>
+    <p>Ranked by how much they hurt. The first two are the reason the rebuild takes real engineering, not just a migration.</p>
+
+    <div class="hard"><h4><span class="n">1</span>Entity resolution at the source</h4>
+      <p>An email says "wrong part arrived". The queue needs: which RP, which item, which vendor at that time, which QA team owns it. The quality system keeps these relations with demand-split semantics — an item can map to several vendors, historical vendors stay attached at 0% split, and "first seen" ordering is not the same as majority ordering. Getting this wrong means pointing S1 complaints at the wrong factory. This was the single biggest data problem in the whole rebuild, and it was solved by going to the source system's own records and confirming semantics with the data owners — not by inferring from exports.</p></div>
+
+    <div class="hard"><h4><span class="n">2</span>The source system was never meant to be read</h4>
+      <p>The authoritative tables belong to a vendor system that is not ours to modify. The enterprise path avoids changing it: read-only access where granted, the governed pipeline as the single extraction point, and — as the durable answer — the Quality Data Hub, so no product team ever depends on that system's internals again. This also hedges the planned retirement of the old warehouse (EDW), whose vendor-number formats don't even line up with the source of truth.</p></div>
+
+    <div class="hard"><h4><span class="n">3</span>Surviving the founder problem</h4>
+      <p>A prototype maintained by its author is always one vacation away from darkness. Enterprise-grade means the Mac dispatcher heartbeat on the health screen becomes an actual operations commitment: monitored canaries, documented runbooks, and an IT team that can rebuild the pipeline from documentation alone. The rebuild is as much an organizational handover as a technical one.</p></div>
+
+    <div class="hard"><h4><span class="n">4</span>Trust has to be provable</h4>
+      <p>In the prototype, "the numbers are fresh" was a promise. At enterprise scale it must be auditable: every feed has an age, every check on the health screen has a rule behind it, and the 30-day staleness banner becomes a contractual guarantee rather than a product courtesy. "Partly ready" must survive corporate scrutiny — an honest yellow beats a fake green.</p></div>
+
+    <div class="hard"><h4><span class="n">5</span>Scope discipline under new voices</h4>
+      <p>Once a prototype works, every stakeholder sees their use case in it. The enterprise risk is not failure to extend — it is extending before the foundation is governed. The roadmap sequence (rebuild first, hub second, per-role experiences after) exists to keep the single shared view honest before it multiplies.</p></div>
+
+    <div class="hard"><h4><span class="n">6</span>Making implicit knowledge explicit</h4>
+      <p>The prototype's hardest asset is not in the code. The demand-split rules, the match thresholds, the reasons a mapping is trusted or doubted — these live in the author's head and in months of one-off email threads. Enterprise-grade means writing them down where the system can enforce them: validation rules and data contracts that the pipeline checks mechanically, so the system raises an alarm when the data is "wrong" instead of relying on someone noticing. A rule that exists only as tribal memory is a rule the company cannot keep.</p></div>
+
+    <div class="hard"><h4><span class="n">7</span>The first exception sets the culture</h4>
+      <p>Governance is easy until the first urgent case arrives. The moment a senior user asks to bypass the governed pipeline "just this once", the real test begins: if the exception is granted quietly, a shadow copy of the data starts growing somewhere and the single shared view quietly loses its authority. The answer is not rigidity — it is a fast, documented exception path, so the first "no" comes with a legitimate route instead of a workaround.</p></div>
+
+    <div class="hard"><h4><span class="n">8</span>Landing the transition</h4>
+      <p>Enterprise-grade is also about the switch itself. During the parallel-run period the governed pipeline and the prototype will not agree perfectly — the split-semantics work means they should diverge on the messy cases. So "cutover ready" cannot mean "numbers match yesterday's"; it means agreed acceptance criteria: a defined adjudication process for each class of divergence, replay-safe feeds (re-running a day must not double-count it), source-tolerance to schema drift, and observability that can answer "why did this number change?" — lineage plus a day-over-day diff, not just a green dashboard.</p></div>
+
+    <div class="pull">The pattern across all eight: the hard parts were never the app itself. They were semantics, ownership and trust — making sure the right vendor is attached to the right case, that someone runs it after the author leaves, and that the company can defend every number it shows.</div>
+
+    <h3><span class="n">13.3</span>Three more, from the author</h3>
+    <p>Beyond the engineering problems above, the product's author names three harder ones — they explain why the enterprise path looks the way it does.</p>
+
+    <div class="hard"><h4>First structured data in the decision loop</h4>
+      <p>This is the first time structured data has been pushed directly into a daily decision chain at Ashley. That makes the app more than a product — it is a rehearsal for the SOR itself: the entity semantics recovered during the rebuild (vendor/RP mappings, demand splits) are exactly what the system of record should eventually consume back. The bar this sets is higher than "an app that works" — the semantics must be clean enough to be promoted into the SOR, not just read from it.</p></div>
+
+    <div class="hard"><h4>The stack was personal</h4>
+      <p>Like most vibe-coding projects, large parts of the prototype are fitted to the author's own equipment — a Mac Studio running the dispatch pipeline, local paths, personal automation habits. None of that is a flaw; it is how the prototype got built in weeks. But it means enterprise-grade is not a deployment, it is a rebuild on an enterprise technology stack — which is exactly why the roadmap starts there rather than with new features.</p></div>
+
+    <div class="hard"><h4>Iteration has to flow back</h4>
+      <p>Users will keep experimenting in their own vibe-coding projects — that is healthy and should not be stopped. The hard question is how their improvements get extracted and merged back into the enterprise project instead of forking into private copies. The plan: once the enterprise version ships, open its code to the users and let them iterate on that baseline. The official repository becomes the shared trunk — the same answer to the shadow-copy risk in problem 7, but as an open door rather than a locked one.</p></div>
+  </section>
+
+  <section id="s14">
+    <h2 class="sec"><span class="n">14</span>Glossary</h2>
+    <table>
+      <thead><tr><th>Term</th><th>Meaning</th></tr></thead>
+      <tbody>
+        <tr><td>RP</td><td>Replacement Part — the product identifier that ties complaints, rejections and vendor records together.</td></tr>
+        <tr><td>S1 / S2 / S3</td><td>Priority classes assigned by the decision engine; S1 is the most severe (e.g. safety/pest issues).</td></tr>
+        <tr><td>VC / CI</td><td>Vendor Coordinator and Corporate Intelligence contact — the two people on a supplier call.</td></tr>
+        <tr><td>CVRO QA Team</td><td>The corporate quality team that owns a vendor relationship.</td></tr>
+        <tr><td>AQL</td><td>Acceptable Quality Limit — the sampling standard behind audit pass rates (e.g. AQL 96.67% passing).</td></tr>
+        <tr><td>R&amp;A</td><td>Repair &amp; Allowance — the monthly spend incurred by quality issues, tracked per factory.</td></tr>
+        <tr><td>QI</td><td>Quality Import — the quality data source streams feeding the cross-stream pattern analysis tab.</td></tr>
+        <tr><td>Watching</td><td>The holding area for items not yet ready for a decision today.</td></tr>
+        <tr><td>Archive</td><td>Closed items with a one-line closure reason — visible and reversible, never a black hole.</td></tr>
+        <tr><td class="wrap-first">Confidence / match %</td><td>How strongly a case resolved to a vendor/factory entity (e.g. 98% match).</td></tr>
+        <tr><td class="wrap-first"><code>stale_mapping_source_over_30d</code></td><td>The product rule that raises a banner when a mapping source is older than 30 days.</td></tr>
+        <tr><td class="wrap-first">Quality Data Hub</td><td>The planned internal analytical data hub that will feed the app after the corporate rebuild.</td></tr>
+        <tr><td>SOR</td><td>System of Record — the corporate system that holds the authoritative version of business data (e.g. the quality system this app reads from).</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="s15">
+    <h2 class="sec"><span class="n">15</span>FAQ</h2>
+    <details open>
+      <summary>Is the data in the screenshots real?</summary>
+      <p>Yes. Every screenshot in this guide and in the overview deck is from the live app running on production data — August 2026: 419 rejection emails, 321 threads processed end-to-end, 1,240 parts-rejection records, 276 fabric tests, 150 suppliers.</p>
+    </details>
+    <details>
+      <summary>Why is the queue capped at 7?</summary>
+      <p>On purpose. The cap mirrors real triage capacity — a queue of 40 is a queue of none. Items that don't make today's list wait in Watching and earn their way in; nothing is lost (Archive keeps closure reasons), but nothing clutters the day either.</p>
+    </details>
+    <details>
+      <summary>What happens if a data source goes stale?</summary>
+      <p>The app warns before it misleads: any mapping source older than 30 days raises a banner on every screen that depends on it. The health screen also shows which checks are pending ("Partly ready" is an allowed state).</p>
+    </details>
+    <details>
+      <summary>Does the corporate rebuild change the app?</summary>
+      <p>No. The rebuild replaces the prototype backend with governed corporate infrastructure and live enterprise data. The UX, the rules and the five tabs stay the same — that is the point of "the app doesn't change".</p>
+    </details>
+    <details>
+      <summary>Who uses it besides the Quality Director?</summary>
+      <p>Today the product is optimized around the Director's working day, but it is not a one-person tool: the same queue, evidence trail and briefing packs keep QA leads and the wider quality team aligned with the same view. Per-role experiences are on the roadmap as the platform matures.</p>
+    </details>
+    <details>
+      <summary>How do I get access or ask for a change?</summary>
+      <p>Access requests and change proposals go through the Quality Operations team. The health screen ("More" tab) is the first place to check if something looks off — it says exactly what the pipeline has verified and what is still pending.</p>
+    </details>
+  </section>
+
+  <div class="sources">
+    <h2>Sources &amp; related material</h2>
+    <ol>
+      <li>Ashley Director — Product Overview (companion presentation deck), September 2026. <code>docs/presentations/ashley-director-product-overview/ashley-director-product-overview.html</code></li>
+      <li>Live app production data, August 2026 — 419 rejection emails / 321 threads / 1,240 RP records / 276 fabric tests / 150 suppliers. Internal telemetry</li>
+      <li>Quality Data Hub — Technical Design (data platform behind the Roadmap), September 2026. <code>docs/analysis/quality-data-hub-tech-design.html</code></li>
+      <li>Source verification &amp; entity-resolution findings — RP→Item→Vendor mappings, demand-split semantics confirmed with data owners, September 2026. <code>docs/traceability/analysis/2026-09-09_Quality_Data_Hub_Source_Verification.md</code></li>
+    </ol>
+  </div>
+
+  <footer>Ashley Director — Product Guide · Version 1.0 · September 2026 · Internal</footer>
+</div>
+</body>
+</html>

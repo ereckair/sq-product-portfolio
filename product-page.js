@@ -28,13 +28,22 @@
   const isValidUrl = (url) => Boolean(url && url !== '#');
   const isVideoFile = (url) => Boolean(url && /\.(mov|mp4|webm)$/i.test(url));
 
-  const statusLabel = product.status === 'live' ? 'Live' : product.status === 'building' ? 'In UAT' : 'Planned';
+  const statusLabel =
+    product.status === 'live'
+      ? 'Live'
+      : product.status === 'uat'
+        ? 'In UAT'
+        : product.status === 'building'
+          ? 'Building'
+          : 'Planned';
   const statusClass =
     product.status === 'live'
       ? 'bg-emerald-50 text-emerald-700 border-emerald-200'
-      : product.status === 'building'
+      : product.status === 'uat'
         ? 'bg-teal-50 text-teal-700 border-teal-200'
-        : 'bg-amber-50 text-amber-700 border-amber-200';
+        : product.status === 'building'
+          ? 'bg-amber-50 text-amber-700 border-amber-200'
+          : 'bg-zinc-100 text-zinc-600 border-zinc-200';
 
   function migrationSection(m) {
     if (!m) return '';
@@ -151,10 +160,12 @@
   function moduleStatusBadge(status) {
     const map = {
       live: 'product-mod-status--live',
+      uat: 'product-mod-status--building',
       building: 'product-mod-status--building',
       planned: 'product-mod-status--planned',
     };
-    const label = status === 'live' ? 'Live' : status === 'building' ? 'In UAT' : 'Planned';
+    const label =
+      status === 'live' ? 'Live' : status === 'uat' ? 'In UAT' : status === 'building' ? 'Building' : 'Planned';
     return `<span class="product-mod-status ${map[status] || map.planned}">${label}</span>`;
   }
 

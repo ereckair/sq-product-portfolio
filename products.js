@@ -81,6 +81,12 @@ const PORTFOLIO = {
             prd: { url: 'pre-plm-agent/docs/PRD_EN.pdf', label: 'PRD (EN)' },
             demoVideo: { url: '/pre-plm-agent/tutorial.mp4', label: 'Tutorial video' },
             documents: [
+              {
+                url: 'post.html?slug=pre-plm-design-alignment-platform',
+                label: 'Merchandising & Design sponsorship news',
+                meta: 'Laura Forsythe and Cory Neudeck teams backing Pre-PLM as an early design-alignment platform',
+                type: 'post',
+              },
               { url: 'pre-plm-agent/docs/PRD_EN.pdf', label: 'PRD (EN)', meta: 'Product requirements document' },
               { url: 'pre-plm-agent/docs/User_guide_EN.pdf', label: 'User Guide (EN)', meta: 'How to chat with the bot, commands & field reference' },
               { url: 'pre-plm-agent/docs/Technical_EN.pdf', label: 'Technical Doc (EN)', meta: 'Architecture, routing layers & implementation' },
@@ -88,6 +94,8 @@ const PORTFOLIO = {
             ],
           },
           feedback: [
+            { quote: 'OMG this is AMAZING!', author: 'Cory Neudeck' },
+            { quote: 'Absolutely 💯 — Efficiency', author: 'Cory Neudeck' },
             { quote: 'Stop filling forms and start shipping reports — the team just talks to the chatbot.', author: 'Sampling Team Lead' },
             { quote: 'Every entry previews first, so a misread never silently changes our data.', author: 'Product Developer' },
           ],
@@ -399,7 +407,7 @@ const PORTFOLIO = {
         {
           id: 'cpms',
           name: 'Color Panel Management System',
-          status: 'building',
+          status: 'uat',
           summary: 'Manage color panel requests, reviews, and distribution across product development.',
           description:
             'CPMS coordinates color panel workflows — from request and review through distribution to factories and downstream systems. Replaces ad-hoc color swatch tracking with a structured pipeline tied to product development.',
@@ -421,7 +429,7 @@ const PORTFOLIO = {
         {
           id: 'dpcs',
           name: 'Dynamic Product Costing System',
-          status: 'building',
+          status: 'uat',
           summary: 'Accurate product costing driven by BOM detail and live raw material prices from SMMS.',
           description:
             'DPCS replaces estimated "bone" costing where MDF and other materials were lump-priced. Cost formulas (by area, piece, etc.) are maintained in the cost model team\'s Milan system; DPCS applies them using actual BOM line items and SMMS price management data.',
@@ -445,7 +453,7 @@ const PORTFOLIO = {
         {
           id: 'eco',
           name: 'ECO Workflow',
-          status: 'building',
+          status: 'uat',
           summary: 'Electronic engineering change orders with automatic compliance, cost, and spec impact feedback.',
           description:
             'ECO connects changes to BOM/PIM and the raw material library. When materials, dimensions, structure, color swatches, or suppliers change, the system surfaces impacts on compliance tests, file tests, and cost — instead of relying on Excel text descriptions and manual memory.',
@@ -468,7 +476,7 @@ const PORTFOLIO = {
         {
           id: 'market-research',
           name: 'Market Research and Trends',
-          status: 'building',
+          status: 'uat',
           summary: 'Commodity pricing intelligence and market signals for sourcing negotiation.',
           description:
             'Planned capability to ingest public commodity exchange data and exchange rates — replacing manual price collection and the ~$50K/year third-party raw material data subscription (Dusty). Feeds price negotiation agent in SMMS.',
@@ -499,7 +507,7 @@ const PORTFOLIO = {
         {
           id: 'cms',
           name: 'Compliance Test Management System',
-          status: 'building',
+          status: 'uat',
           summary: 'Compliance workflow hub — BOM-driven question lists and test coordination (Lois team).',
           description:
             'CMS (Lois\'s compliance system) uses PIM BOM data and question checklists to generate regulatory requirements. Previously compliance engineers manually inspected products, looked at photos, and asked factories — now BOM triggers the workflow.',
@@ -521,7 +529,7 @@ const PORTFOLIO = {
         {
           id: 'compliance-test',
           name: 'Compliance Test Create',
-          status: 'building',
+          status: 'uat',
           summary: 'Auto-generates required compliance tests from BOM materials and protocol rules.',
           description:
             'When a product BOM is complete, the system maps each material to protocol rules (e.g. sponge → physical, chemical, flammability tests) and tells the team exactly which tests to run — replacing manual protocol lookup by compliance engineers.',
@@ -547,7 +555,7 @@ const PORTFOLIO = {
         {
           id: 'law-label',
           name: 'Law Label Systems',
-          status: 'building',
+          status: 'uat',
           summary: 'Law label generation from structured product and material data.',
           description:
             'Generates jurisdiction-correct law labels from product composition in PIM/SMMS — part of the compliance ecosystem triggered by accurate BOM and material attributes. Non-compliance means recalls, blocked shipments, and legal cost — labels must match what the BOM actually contains.',
@@ -564,7 +572,7 @@ const PORTFOLIO = {
         {
           id: 'law-license',
           name: 'Law License System',
-          status: 'building',
+          status: 'uat',
           summary: 'Track product licenses, registrations, and renewal deadlines by jurisdiction.',
           description:
             'Manages license applications, renewals, and document storage for products requiring government registration. Works alongside CMS and law labels as part of the compliance stack — a missing license blocks sales the same way a failed test does.',
@@ -577,7 +585,7 @@ const PORTFOLIO = {
         {
           id: 'chain-of-custody',
           name: 'Chain of Custody',
-          status: 'building',
+          status: 'uat',
           summary: 'Trace material and product provenance from supplier to finished goods.',
           description:
             'Records custody transfers, batch linkage, and audit trails for regulated materials and sustainability claims (FSC, recycled content). Extends the SMMS material master and PIM BOM into provenance — required when compliance or customers ask "where did this material come from?"',
@@ -598,7 +606,7 @@ const PORTFOLIO = {
         {
           id: 'gls',
           name: 'Global Laboratory System',
-          status: 'building',
+          status: 'uat',
           summary: 'Lab scheduling and results — receives test plans from auto-generated compliance workflows.',
           description:
             'GLS coordinates internal and third-party labs. Works downstream of Compliance Test Create — when BOM triggers required tests (e.g. sponge → physical, chemical, flammability), results flow back into CMS compliance status instead of siloed spreadsheets.',
@@ -628,7 +636,7 @@ const PORTFOLIO = {
           id: 'quality-workbench',
           name: 'Quality Agent Platform',
           subtitle: 'Agent-led quality analytics · Daedalus',
-          status: 'building',
+          status: 'uat',
           summary: 'From dashboard sprawl to insights, narratives, and action — AI quality reports, Top N drill-down, and agent chat on live data.',
           description:
             'The Quality Agent Platform is a Daedalus agent layer on top of trusted PowerBI KPIs — not another dashboard. Business users get contribution-ranked priorities, AI narratives, natural-language Q&A, and a path to trigger QIS projects from what they find. Frontline QC stays in Checklist; QM leads and quality office work here.',
@@ -685,6 +693,92 @@ const PORTFOLIO = {
           },
           feedback: [],
         },
+        {
+          id: 'ashley-director',
+          name: 'Ashley Director',
+          subtitle: 'Quality-operations copilot · daily triage',
+          status: 'building',
+          summary:
+            'Not a dashboard — a ranked, evidence-backed daily decision queue for Quality Directors and QA teams: what to act on, who to call, and why.',
+          description:
+            'Ashley Director is a quality-operations copilot hosted on XWork. Every morning it reads overnight rejection emails, consumer complaints, and test results, then puts a short ranked queue (capped at 7) in front of the reader — with vendor, owner, confidence, and evidence already attached. Five tabs cover Queue, Vendors, Briefings, QI patterns, and system-health trust.',
+          contribution:
+            'Turns 30+ parallel quality threads into a first-hour decision list. Entity resolution (RP → item → vendor) and freshness banners mean supplier calls and factory visits start from facts, not inbox archaeology. Live prototype on production data (Aug 2026: 419 rejection emails, 321 threads, 150 suppliers); next step is corporate backend rebuild and Quality Data Hub.',
+          beforeAfter: {
+            before:
+              'Scan 30+ email threads for urgency, dig for factory/owner/history, call from old spreadsheets, and rebuild the big picture by hand every morning.',
+            after:
+              "Day's decisions ranked and waiting; vendor, owner, and evidence on one screen; one-tap contacts with facts attached; patterns and R&A spend roll up automatically.",
+          },
+          highlights: [
+            'Queue capped at 7 — triage capacity is the feature, not a bug',
+            '150 suppliers with contacts, grades, and repeat-offender signals',
+            'Factory visit briefing packs — audit KPIs, walk-in priorities, monthly R&A',
+            'QI cross-stream patterns from 1,240+ rejection records and 276 fabric tests',
+            'Freshness as a product rule — stale mapping sources raise banners after 30 days',
+          ],
+          integrations: [
+            'Rejection mailbox / quality import',
+            'Consumer complaints',
+            'Fabric & lab test results',
+            'Vendor rosters & pricing',
+            'XWork (hosting)',
+            'Quality Data Hub (roadmap)',
+          ],
+          roadmap: [
+            'Corporate rebuild of the pipeline on IT-managed infrastructure',
+            'Switch app to governed enterprise data feeds — same UX',
+            'Quality Data Hub as single analytical source (vendor mappings, rosters, KPIs)',
+            'Per-role experiences for QA leads and plant teams on the same foundation',
+            'Corporate SSO and role-based access',
+          ],
+          detailSections: [
+            {
+              title: 'Five tabs',
+              type: 'pairs',
+              items: [
+                {
+                  label: 'Queue',
+                  detail:
+                    'Daily decision list — priority, trigger, confidence, owner, and age; Watching and Archive so nothing is silently lost.',
+                },
+                {
+                  label: 'Vendors',
+                  detail: 'Supplier directory with VC/CI contacts, performance grades, and repeat-offender defect mix.',
+                },
+                {
+                  label: 'Briefings',
+                  detail:
+                    'Factory visit packs — rating with reasons, numbered walk-in priorities, and monthly Repair & Allowance spend.',
+                },
+                {
+                  label: 'QI',
+                  detail: 'Cross-stream patterns from quality import — not just the loudest email.',
+                },
+                {
+                  label: 'More',
+                  detail:
+                    'System health and trust — pipeline canaries, heartbeats, and what the app honestly does not know yet.',
+                },
+              ],
+            },
+          ],
+          resources: {
+            prd: {
+              url: 'docs/ashley-director/product-guide.html',
+              label: 'Ashley Director Product Guide',
+            },
+            documents: [
+              {
+                url: 'docs/ashley-director/product-guide.html',
+                label: 'Product Guide (v1.0)',
+                meta: 'What the app does, rules behind every screen, data pipeline, roadmap, and FAQ — September 2026',
+              },
+            ],
+            mcpTools: [],
+          },
+          feedback: [],
+        },
       ],
     },
     {
@@ -697,7 +791,7 @@ const PORTFOLIO = {
           id: 'intelligent-sourcing-agent',
           name: 'Intelligent Sourcing Agent',
           subtitle: 'Vendor decision agent',
-          status: 'building',
+          status: 'uat',
           summary:
             'Standalone Daedalus agent — federates vendor performance, expertise, history, capacity, quality, cost, and communication to recommend sourcing choices with evidence.',
           description:
@@ -854,7 +948,7 @@ const PORTFOLIO = {
         {
           id: 'ashley-purchase',
           name: 'Ashley Purchase System',
-          status: 'building',
+          status: 'uat',
           summary: 'Enterprise PO and procurement — with planned AI price intelligence from raw material cost feeds.',
           description:
             'APS manages purchase orders, approvals, and supplier communication. Unlike Automation/Feel teams who still quote via email and phone, APS provides systematic PO management. Planned: auto price-drop alerts when SMMS raw material costs fall, and order-level savings calculations for Gavin\'s KPI.',
@@ -1862,7 +1956,8 @@ function getPortfolioStats() {
     totalProducts: products.length,
     totalCategories: PORTFOLIO.categories.length,
     live: products.filter((p) => p.status === 'live').length,
-    building: products.filter((p) => p.status === 'building').length,
+    building: products.filter((p) => p.status === 'building' || p.status === 'uat').length,
+    uat: products.filter((p) => p.status === 'uat').length,
   };
 }
 

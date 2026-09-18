@@ -4,8 +4,70 @@
  */
 const BLOG = {
   /** Always shown first on the homepage Latest updates row */
-  pinnedSlugs: ['quality-agent-m365-copilot', 'sq-team-daedalus-execution', 'plm-executive-overview'],
+  pinnedSlugs: ['pre-plm-design-alignment-platform', 'quality-agent-m365-copilot', 'sq-team-daedalus-execution', 'plm-executive-overview'],
   posts: [
+    {
+      slug: 'pre-plm-design-alignment-platform',
+      type: 'news',
+      title: 'Pre-PLM gains strong backing from Merchandising & Design — toward an early design-alignment platform',
+      excerpt:
+        'Laura Forsythe’s and Cory Neudeck’s teams are strongly supporting Pre-PLM as it grows into an intelligent platform for product design teams to align design changes and collaborate before formal PLM.',
+      date: '2026-09-18',
+      author: 'SQ Product Team',
+      tags: ['Pre-PLM', 'Design', 'Merchandising', 'Collaboration', 'News'],
+      relatedProduct: 'pre-plm-agent',
+      layout: 'wide',
+      assets: ['pre-plm-design-alignment.css'],
+      body: `
+<p><strong>Pre-PLM Agent</strong> is no longer only a sampling chatbot story. With strong support from <strong>Laura Forsythe</strong> and <strong>Cory Neudeck</strong> and their teams, Pre-PLM is becoming the early-stage intelligent platform where product design teams <strong>align design changes and collaborate</strong> — before work hardens in formal PLM.</p>
+
+<div class="preplm-news-video">
+  <h3>Product concept video</h3>
+  <p>The full Pre-PLM product concept walkthrough shared with Design &amp; Merchandising.</p>
+  <video controls playsinline preload="metadata" src="/docs/pre-plm-agent/news/pre-plm-concept-demo.mp4">
+    <source src="/docs/pre-plm-agent/news/pre-plm-concept-demo.mp4" type="video/mp4" />
+    <a href="/docs/pre-plm-agent/news/pre-plm-concept-demo.mp4">Download pre-plm-concept-demo.mp4</a>
+  </video>
+</div>
+
+<h2>What the team said</h2>
+<div class="preplm-news-feedback">
+  <blockquote class="preplm-news-quote">
+    <p>“OMG this is AMAZING!”</p>
+    <footer>— Cory Neudeck, after watching the product concept video</footer>
+  </blockquote>
+  <blockquote class="preplm-news-quote">
+    <p>“Absolutely 💯” · “Efficiency”</p>
+    <footer>— Cory Neudeck</footer>
+  </blockquote>
+</div>
+<p>Next: a rough first pass so Cory can review with Laura in the coming weeks — the sponsorship is already turning into a concrete design-alignment path.</p>
+
+<h2>Who is behind it</h2>
+<ul>
+  <li><strong>Laura Forsythe</strong> and her team are backing Pre-PLM as a shared front door for merchandising and design alignment.</li>
+  <li><strong>Cory Neudeck</strong> and his team are driving how design changes get discussed, confirmed, and handed off with clear context.</li>
+</ul>
+<p>That sponsorship matters: Pre-PLM sits where Design &amp; Develop and Merchandising already work together — not as another form after decisions are made.</p>
+
+<h2>What it is becoming</h2>
+<p>The live Pre-PLM Agent already turns chat into structured sampling records — entry, edits, images, and PPT reports that flow toward PLM. With Merchandising and Design leadership aligned, the product direction is expanding:</p>
+<ul>
+  <li><strong>Early alignment on design changes</strong> — so teams share one view of what changed, why, and what still needs a decision.</li>
+  <li><strong>Collaboration before formal PLM</strong> — Design &amp; Develop and Merchandising stay in sync while specs are still forming, not after the fact.</li>
+  <li><strong>Intelligent capture</strong> — conversation and attachments become structured product context, ready for POM / PLM instead of living in email threads and local files.</li>
+</ul>
+
+<h2>Why this matters</h2>
+<p>Product design moves fast. Without a shared early platform, alignment happens in parallel chats, decks, and memory — and PLM inherits gaps. Pre-PLM, backed by Laura’s and Cory’s teams, is the bet that <strong>alignment and collaboration should happen upstream</strong>, with an intelligent layer that keeps the record clean as teams decide.</p>
+
+<p class="mt-8">
+  <a href="product.html?id=pre-plm-agent">View Pre-PLM Agent on the portfolio →</a><br />
+  <a href="pre-plm-agent/">Open the Pre-PLM landing page →</a><br />
+  <a href="post.html?slug=pre-plm-agent-chat-first-sampling">Read the chat-first sampling story →</a>
+</p>
+      `.trim(),
+    },
     {
       slug: 'quality-agent-m365-copilot',
       type: 'news',

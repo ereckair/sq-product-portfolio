@@ -170,8 +170,10 @@
   }
 
   function statusBadge(status) {
-    const cls = status === 'live' ? 'status-live' : status === 'building' ? 'status-building' : 'status-planned';
-    const label = status === 'live' ? 'Live' : status === 'building' ? 'In UAT' : 'Planned';
+    const cls =
+      status === 'live' ? 'status-live' : status === 'uat' || status === 'building' ? 'status-building' : 'status-planned';
+    const label =
+      status === 'live' ? 'Live' : status === 'uat' ? 'In UAT' : status === 'building' ? 'Building' : 'Planned';
     return `<span class="status-badge ${cls}">${label}</span>`;
   }
 })();
