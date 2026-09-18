@@ -933,7 +933,16 @@ const PORTFOLIO = {
             'Ongoing: expand material categories and automation coverage',
           ],
           resources: {
+            prd: {
+              url: 'docs/price-impact-analysis-agent/smart-sourcing-agent-product-plan.html',
+              label: 'Smart Sourcing Agent Product Plan',
+            },
             documents: [
+              {
+                url: 'docs/price-impact-analysis-agent/smart-sourcing-agent-product-plan.html',
+                label: 'Smart Sourcing Agent Product Plan (EN v1)',
+                meta: 'Commodity → Material Category mapping, cost impact alerts, quotation review, and APS negotiation — Phase 0–3',
+              },
               {
                 url: 'post.html?slug=price-impact-analysis-agent-roadmap',
                 label: 'Agent roadmap',
