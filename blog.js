@@ -4,8 +4,73 @@
  */
 const BLOG = {
   /** Always shown first on the homepage Latest updates row */
-  pinnedSlugs: ['pre-plm-design-alignment-platform', 'quality-agent-m365-copilot', 'sq-team-daedalus-execution', 'plm-executive-overview'],
+  pinnedSlugs: [
+    'quality-ai-product-portfolio-trend-intelligence',
+    'pre-plm-design-alignment-platform',
+    'quality-agent-m365-copilot',
+    'sq-team-daedalus-execution',
+    'plm-executive-overview',
+  ],
   posts: [
+    {
+      slug: 'quality-ai-product-portfolio-trend-intelligence',
+      type: 'news',
+      title: 'Quality AI Platform ships Product Portfolio & Trend Intelligence to test',
+      excerpt:
+        'Two Quality Report & Narrative modules are development-complete and deployed to the test environment — ready for user testing and feedback.',
+      date: '2026-09-18',
+      author: 'SQ Product Team',
+      tags: ['Quality', 'Quality AI', 'Release', 'UAT'],
+      relatedProduct: 'quality-workbench',
+      layout: 'wide',
+      assets: ['quality-ai-modules-news.css'],
+      body: `
+<div class="qai-modules">
+  <p class="qai-modules-kicker">One Ashley · Quality AI Platform</p>
+  <p class="qai-modules-lede">Development is complete for <strong>Product Portfolio</strong> and <strong>Trend Intelligence</strong> in Quality Report &amp; Narrative. Both modules are now deployed to the <strong>test environment</strong> — we are waiting on user testing and feedback before the next rollout step.</p>
+  <p class="qai-modules-status">Status · Deployed to test · Feedback welcome</p>
+
+  <h2>What shipped</h2>
+  <ul>
+    <li><strong>Product Portfolio</strong> — quality cost per unit heat maps by item grouping across fiscal months, plus top deteriorating / improving groupings vs prior year.</li>
+    <li><strong>Trend Intelligence</strong> — KPI strip (quality cost, cost per unit, post-delivery issues, health index, and more) with period trends, prior-year comparison, and metric status (improving / stable / deteriorating).</li>
+  </ul>
+  <p>Both sit alongside Quantum QA Reports, Narrative, and Mission Control in the Quality Report &amp; Narrative workspace — the same Quality AI Platform path QM leads already use for insights and drill-down.</p>
+
+  <div class="qai-modules-shot">
+    <h3>Product Portfolio</h3>
+    <p>Heat map by item grouping with YoY deteriorating / improving callouts.</p>
+    <figure>
+      <img src="docs/quality-workbench/news/product-portfolio.png" alt="Quality AI Platform — Product Portfolio heat map and YoY rankings" />
+      <figcaption>Product Portfolio — Cost Per Unit heat map by Item Grouping (YTD view).</figcaption>
+    </figure>
+  </div>
+
+  <div class="qai-modules-shot">
+    <h3>Trend Intelligence</h3>
+    <p>Executive KPI trends and metric status in one screen.</p>
+    <figure>
+      <img src="docs/quality-workbench/news/trend-intelligence.png" alt="Quality AI Platform — Trend Intelligence KPIs and metric trend summary" />
+      <figcaption>Trend Intelligence — Total Quality Cost trend with metric status summary.</figcaption>
+    </figure>
+  </div>
+
+  <h2>What we need from you</h2>
+  <p>Please exercise the two modules in the test environment and send feedback on:</p>
+  <ul>
+    <li>Whether the heat maps and rankings match how you review portfolio quality cost today</li>
+    <li>Whether Trend Intelligence KPIs and statuses are clear enough for a morning read</li>
+    <li>Anything missing before we promote the modules further</li>
+  </ul>
+
+  <p class="mt-8">
+    <a href="product.html?id=quality-workbench">Open the Quality Agent Platform product page →</a><br />
+    <a href="https://quality-agent.ashgso.com/wboc/agent-platform-quality/chat" target="_blank" rel="noopener">Launch the live Quality Agent Platform →</a><br />
+    <a href="post.html?slug=quality-agent-platform-tour">Read the platform tour →</a>
+  </p>
+</div>
+      `.trim(),
+    },
     {
       slug: 'pre-plm-design-alignment-platform',
       type: 'news',

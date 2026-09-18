@@ -1,0 +1,75 @@
+/* Quality AI Platform — Product Portfolio & Trend Intelligence news */
+
+.qai-modules {
+  margin-top: 0.5rem;
+}
+
+.qai-modules-kicker {
+  font-family: ui-monospace, monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0d9488;
+  margin-bottom: 0.5rem;
+}
+
+.qai-modules-lede {
+  font-size: 1.0625rem;
+  color: rgba(0, 0, 0, 0.72);
+  line-height: 1.65;
+  margin-bottom: 1.5rem;
+  max-width: 46rem;
+}
+
+.qai-modules-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.55rem 0.9rem;
+  border-radius: 8px;
+  border: 1px solid #99f6e4;
+  background: #f0fdfa;
+  color: #0f766e;
+  font-size: 0.875rem;
+  font-weight: 600;
+  margin: 0 0 1.75rem;
+}
+
+.qai-modules-shot {
+  margin: 1.5rem 0 2rem;
+}
+
+.qai-modules-shot h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 0 0 0.35rem;
+}
+
+.qai-modules-shot > p {
+  font-size: 0.875rem;
+  color: rgba(0, 0, 0, 0.55);
+  margin: 0 0 0.85rem;
+}
+
+.qai-modules-shot figure {
+  margin: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  background: #0b1220;
+}
+
+.qai-modules-shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.qai-modules-shot figcaption {
+  padding: 0.65rem 0.9rem;
+  font-size: 0.8125rem;
+  color: rgba(0, 0, 0, 0.5);
+  background: #f8fafc;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+}

@@ -677,6 +677,12 @@ const PORTFOLIO = {
             },
             documents: [
               {
+                url: 'post.html?slug=quality-ai-product-portfolio-trend-intelligence',
+                label: 'Product Portfolio & Trend Intelligence in test',
+                meta: 'Development complete — deployed to test; awaiting user feedback',
+                type: 'post',
+              },
+              {
                 url: 'post.html?slug=quality-agent-m365-copilot',
                 label: 'Quality Agent in Microsoft 365 Copilot',
                 meta: 'From supplier risk to supplier action — walkthrough video',
